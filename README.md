@@ -1,6 +1,15 @@
-# Supplementary R code associated with the article "Social insect castes evolved by re-timing ancient, seasonally expressed pathways"
-## Anneline Mattens¹*, Viviana Di Pietro¹*, Cintia Akemi Oi², Ricardo Caliari Oliveira³, Chris Wyatt², Fabio Santos do Nascimento⁴ & Tom Wenseleers¹
-### ¹ KU Leuven, Leuven, Belgium; ² The Sumner Lab, University College London, London, UK; ³ Universitat Autònoma de Barcelona, Barcelona, Spain; ⁴ Universidade de São Paulo, Ribeirão Preto, Brazil; *These authors contributed equally.; Correspondence: anneline.mattens@kuleuven.be; annelinemattens1@gmail.com; tom.wenseleers@kuleuven.be
+# Supplementary R code associated with the article “Social insect castes evolved by re-timing ancient, seasonally expressed pathways”
+
+**Anneline Mattens<sup>1,\*</sup>, Viviana Di Pietro<sup>1,\*</sup>, Cintia Akemi Oi<sup>2</sup>, Ricardo Caliari Oliveira<sup>3</sup>, Chris Wyatt<sup>2</sup>, Fabio Santos do Nascimento<sup>4</sup> and Tom Wenseleers<sup>1</sup>**
+
+<sup>1</sup> KU Leuven, Leuven, Belgium  
+<sup>2</sup> The Sumner Lab, University College London, London, UK  
+<sup>3</sup> Universitat Autònoma de Barcelona, Barcelona, Spain  
+<sup>4</sup> Universidade de São Paulo, Ribeirão Preto, Brazil  
+
+<sup>\*</sup> These authors contributed equally.
+
+**Correspondence:** [anneline.mattens@kuleuven.be](mailto:anneline.mattens@kuleuven.be), [annelinemattens1@gmail.com](mailto:annelinemattens1@gmail.com) or [tom.wenseleers@kuleuven.be](mailto:tom.wenseleers@kuleuven.be)
 
 This repository contains the code to reproduce the results presented in the article "Social insect castes evolved by re-timing ancient, seasonally expressed pathways", in which we show that queen-worker caste differentiation in vespine wasps recapitulates ancestral seasonally expressed pathways. Included are the final R workflows, compact reloadable analysis objects, required local inputs, and manuscript outputs (figures, supplementary figures and supplementary tables) related to functional annotation and the comparative transcriptomic and gene-family analyses.
 
