@@ -1,0 +1,7 @@
+species	source	annotated_genes	gene_GO_pairs	GO_IDs	source_unique_gene_GO_pairs	shared_gene_GO_pairs
+pd	EXCON_EggNOG_mapper	7365	855219	17973	1238	853981
+pd	Galaxy_EggNOG_mapper_2.1.8	7775	913677	18235	58717	854960
+pd	Galaxy_InterProScan	2260	5880	1304	1044	4836
+vv	EXCON_EggNOG_mapper	7366	850338	17960	5820	844518
+vv	Galaxy_EggNOG_mapper_2.1.8	7735	903388	18215	55989	847399
+vv	Galaxy_InterProScan	6516	17459	2279	2990	14469

@@ -1,0 +1,6 @@
+Calibrated clade	Age (Ma)	Source	Use
+Crown Aculeata	142.30	{Blaimer, 2023 #1096}	Primary molecular estimate
+Formicidae + Apoidea	108.60	{Blaimer, 2023 #1096}	Primary molecular estimate
+Crown Apoidea	102.13	{Blaimer, 2023 #1096}	Primary molecular estimate
+Sampled Vespidae	110.00	{Luo, 2022 #1102}	Checked against {Blaimer, 2023 #1096}
+Polistinae + Vespinae	75.00	{Luo, 2022 #1102}	Focal Node 20 calibration

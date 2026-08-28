@@ -1,0 +1,8 @@
+VALIDATION_OK
+final_GO_nonempty	TRUE
+no_duplicate_HOG_GO_pairs	TRUE
+canonical_GO_IDs	TRUE
+full_GO_names	TRUE
+final_GO_exported	TRUE
+KEGG_exported	TRUE
+workspace_exported	TRUE

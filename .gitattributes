@@ -1,0 +1,15 @@
+*.R text eol=lf
+*.md text eol=lf
+*.tsv text eol=lf
+*.csv text eol=lf
+*.txt text eol=lf
+*.py text eol=lf
+*.nwk text eol=lf
+*.obo text eol=lf
+*.rds binary
+*.RData binary
+*.gz binary
+*.pptx binary
+*.xlsx binary
+*.pdf binary
+*.png binary

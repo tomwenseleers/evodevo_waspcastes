@@ -1,0 +1,96 @@
+GO.ID	Term	Annotated	Significant	Expected	FoldEnrichment	topGOresult	p_raw	holm	hochberg	hommel	bonferroni	BH	BY	fdr	none	ontology	algorithm	statistic	Members_n	Members
+GO:0006723	cuticle hydrocarbon biosynthetic process	9	2	0.01	200	2.9e-05	2.9e-05	0.403274	0.403274	0.403274	0.403274	0.403274	1	0.403274	2.9e-05	BP	weight01	fisher	2	N0.HOG0000101;N0.HOG0000639
+GO:0004984	olfactory receptor activity	23	2	0.03	66.6666666666667	0.00026	0.00026	0.91156	0.91156	0.9113	0.91156	0.54343	1	0.54343	0.00026	MF	weight01	fisher	2	N0.HOG0000028;N0.HOG0000158
+GO:0005549	odorant binding	25	2	0.03	66.6666666666667	0.00031	0.00031	1	1	1	1	0.54343	1	0.54343	0.00031	MF	weight01	fisher	2	N0.HOG0000028;N0.HOG0000158
+GO:0050911	detection of chemical stimulus involved in sensory perception of smell	34	2	0.03	66.6666666666667	0.00045	0.00045	1	1	1	1	1	1	1	0.00045	BP	weight01	fisher	2	N0.HOG0000028;N0.HOG0000158
+GO:0032590	dendrite membrane	41	2	0.04	50	0.00069	0.00069	1	1	1	1	1	1	1	0.00069	CC	weight01	fisher	2	N0.HOG0000028;N0.HOG0000158
+GO:0019373	epoxygenase P450 pathway	1	1	0	Inf	0.00098	0.00098	1	1	1	1	1	1	1	0.00098	BP	weight01	fisher	1	N0.HOG0000101
+GO:0006713	glucocorticoid catabolic process	1	1	0	Inf	0.00098	0.00098	1	1	1	1	1	1	1	0.00098	BP	weight01	fisher	1	N0.HOG0000058
+GO:0003845	11-beta-hydroxysteroid dehydrogenase [NAD(P)+] activity	1	1	0	Inf	0.00111	0.00111	1	1	1	1	0.778332	1	0.778332	0.00111	MF	weight01	fisher	1	N0.HOG0000058
+GO:0047886	farnesol dehydrogenase activity	1	1	0	Inf	0.00111	0.00111	1	1	1	1	0.778332	1	0.778332	0.00111	MF	weight01	fisher	1	N0.HOG0000058
+GO:0008392	arachidonate epoxygenase activity	1	1	0	Inf	0.00111	0.00111	1	1	1	1	0.778332	1	0.778332	0.00111	MF	weight01	fisher	1	N0.HOG0000101
+GO:0018904	ether metabolic process	13	2	0.01	200	0.00168	0.00168	1	1	1	1	1	1	1	0.00168	BP	weight01	fisher	2	N0.HOG0000101;N0.HOG0000639
+GO:0043456	regulation of pentose-phosphate shunt	2	1	0	Inf	0.00195	0.00195	1	1	1	1	1	1	1	0.00195	BP	weight01	fisher	1	N0.HOG0000058
+GO:0046222	aflatoxin metabolic process	2	1	0	Inf	0.00195	0.00195	1	1	1	1	1	1	1	0.00195	BP	weight01	fisher	1	N0.HOG0000101
+GO:0072582	17-beta-hydroxysteroid dehydrogenase (NADP+) activity	2	1	0	Inf	0.00222	0.00222	1	1	1	1	1	1	1	0.00222	MF	weight01	fisher	1	N0.HOG0000058
+GO:0071771	aldehyde oxygenase (deformylating) activity	2	1	0	Inf	0.00222	0.00222	1	1	1	1	1	1	1	0.00222	MF	weight01	fisher	1	N0.HOG0000101
+GO:1902321	methyl-branched fatty acid biosynthetic process	3	1	0	Inf	0.00293	0.00293	1	1	1	1	1	1	1	0.00293	BP	weight01	fisher	1	N0.HOG0000639
+GO:0032100	positive regulation of appetite	3	1	0	Inf	0.00293	0.00293	1	1	1	1	1	1	1	0.00293	BP	weight01	fisher	1	N0.HOG0000639
+GO:1990616	magnesium ion export from mitochondrion	3	1	0	Inf	0.00293	0.00293	1	1	1	1	1	1	1	0.00293	BP	weight01	fisher	1	N0.HOG0000058
+GO:0005476	carnitine:O-acyl-L-carnitine antiporter activity	3	1	0	Inf	0.00333	0.00333	1	1	1	1	1	1	1	0.00333	MF	weight01	fisher	1	N0.HOG0000058
+GO:0000253	3-beta-hydroxysteroid 3-dehydrogenase (NADP+) activity	3	1	0	Inf	0.00333	0.00333	1	1	1	1	1	1	1	0.00333	MF	weight01	fisher	1	N0.HOG0000058
+GO:1902603	carnitine transmembrane transport	4	1	0	Inf	0.00390	0.0039	1	1	1	1	1	1	1	0.0039	BP	weight01	fisher	1	N0.HOG0000058
+GO:0010961	intracellular magnesium ion homeostasis	4	1	0	Inf	0.00390	0.0039	1	1	1	1	1	1	1	0.0039	BP	weight01	fisher	1	N0.HOG0000058
+GO:0002003	angiotensin maturation	4	1	0	Inf	0.00390	0.0039	1	1	1	1	1	1	1	0.0039	BP	weight01	fisher	1	N0.HOG0000299
+GO:1902616	O-acyl-L-carnitine transmembrane transport	4	1	0	Inf	0.00390	0.0039	1	1	1	1	1	1	1	0.0039	BP	weight01	fisher	1	N0.HOG0000058
+GO:0019233	sensory perception of pain	105	2	0.1	20	0.00426	0.00426	1	1	1	1	1	1	1	0.00426	BP	weight01	fisher	2	N0.HOG0000028;N0.HOG0000101
+GO:0006718	juvenile hormone biosynthetic process	5	1	0	Inf	0.00488	0.00488	1	1	1	1	1	1	1	0.00488	BP	weight01	fisher	1	N0.HOG0000058
+GO:0010430	fatty acid omega-oxidation	5	1	0	Inf	0.00488	0.00488	1	1	1	1	1	1	1	0.00488	BP	weight01	fisher	1	N0.HOG0000101
+GO:0004303	estradiol 17-beta-dehydrogenase [NAD(P)+] activity	5	1	0.01	100	0.00554	0.00554	1	1	1	1	1	1	1	0.00554	MF	weight01	fisher	1	N0.HOG0000058
+GO:0004745	all-trans-retinol dehydrogenase (NAD+) activity	5	1	0.01	100	0.00554	0.00554	1	1	1	1	1	1	1	0.00554	MF	weight01	fisher	1	N0.HOG0000058
+GO:0030223	neutrophil differentiation	6	1	0.01	100	0.00585	0.00585	1	1	1	1	1	1	1	0.00585	BP	weight01	fisher	1	N0.HOG0000639
+GO:0006704	glucocorticoid biosynthetic process	7	1	0.01	100	0.00682	0.00682	1	1	1	1	1	1	1	0.00682	BP	weight01	fisher	1	N0.HOG0000058
+GO:0006853	carnitine shuttle	7	1	0.01	100	0.00682	0.00682	1	1	1	1	1	1	1	0.00682	BP	weight01	fisher	1	N0.HOG0000058
+GO:0051538	3 iron, 4 sulfur cluster binding	7	1	0.01	100	0.00775	0.00775	1	1	1	1	1	1	1	0.00775	MF	weight01	fisher	1	N0.HOG0000158
+GO:0015095	magnesium ion transmembrane transporter activity	7	1	0.01	100	0.00775	0.00775	1	1	1	1	1	1	1	0.00775	MF	weight01	fisher	1	N0.HOG0000058
+GO:0040022	feminization of hermaphroditic germ-line	8	1	0.01	100	0.00780	0.0078	1	1	1	1	1	1	1	0.0078	BP	weight01	fisher	1	N0.HOG0000028
+GO:0008611	ether lipid biosynthetic process	8	1	0.01	100	0.00780	0.0078	1	1	1	1	1	1	1	0.0078	BP	weight01	fisher	1	N0.HOG0000639
+GO:0042587	glycogen granule	8	1	0.01	100	0.00800	0.008	1	1	1	1	1	1	1	0.008	CC	weight01	fisher	1	N0.HOG0000639
+GO:0071329	cellular response to sucrose stimulus	9	1	0.01	100	0.00877	0.00877	1	1	1	1	1	1	1	0.00877	BP	weight01	fisher	1	N0.HOG0000639
+GO:0016125	sterol metabolic process	98	2	0.1	20	0.00929	0.00929	1	1	1	1	1	1	1	0.00929	BP	weight01	fisher	2	N0.HOG0000101;N0.HOG0000639
+GO:0006121	mitochondrial electron transport, succinate to ubiquinone	10	1	0.01	100	0.00974	0.00974	1	1	1	1	1	1	1	0.00974	BP	weight01	fisher	1	N0.HOG0000158
+GO:0004571	mannosyl-oligosaccharide 1,2-alpha-mannosidase activity	9	1	0.01	100	0.00996	0.00996	1	1	1	1	1	1	1	0.00996	MF	weight01	fisher	1	N0.HOG0000158
+GO:0045283	fumarate reductase complex	10	1	0.01	100	0.00999	0.00999	1	1	1	1	1	1	1	0.00999	CC	weight01	fisher	1	N0.HOG0000158
+GO:0045273	respiratory chain complex II (succinate dehydrogenase)	10	1	0.01	100	0.00999	0.00999	1	1	1	1	1	1	1	0.00999	CC	weight01	fisher	1	N0.HOG0000158
+GO:0090557	establishment of endothelial intestinal barrier	11	1	0.01	100	0.01070	0.0107	1	1	1	1	1	1	1	0.0107	BP	weight01	fisher	1	N0.HOG0000639
+GO:0070402	NADPH binding	10	1	0.01	100	0.01106	0.01106	1	1	1	1	1	1	1	0.01106	MF	weight01	fisher	1	N0.HOG0000639
+GO:0008177	succinate dehydrogenase (quinone) activity	10	1	0.01	100	0.01106	0.01106	1	1	1	1	1	1	1	0.01106	MF	weight01	fisher	1	N0.HOG0000158
+GO:0004312	fatty acid synthase activity	10	1	0.01	100	0.01106	0.01106	1	1	1	1	1	1	1	0.01106	MF	weight01	fisher	1	N0.HOG0000639
+GO:0000786	nucleosome	12	1	0.01	100	0.01198	0.01198	1	1	1	1	1	1	1	0.01198	CC	weight01	fisher	1	N0.HOG0000103
+GO:0008395	steroid hydroxylase activity	11	1	0.01	100	0.01216	0.01216	1	1	1	1	1	1	1	0.01216	MF	weight01	fisher	1	N0.HOG0000101
+GO:0006089	lactate metabolic process	13	1	0.01	100	0.01264	0.01264	1	1	1	1	1	1	1	0.01264	BP	weight01	fisher	1	N0.HOG0000639
+GO:0051539	4 iron, 4 sulfur cluster binding	12	1	0.01	100	0.01326	0.01326	1	1	1	1	1	1	1	0.01326	MF	weight01	fisher	1	N0.HOG0000158
+GO:0048039	ubiquinone binding	12	1	0.01	100	0.01326	0.01326	1	1	1	1	1	1	1	0.01326	MF	weight01	fisher	1	N0.HOG0000158
+GO:0006105	succinate metabolic process	14	1	0.01	100	0.01361	0.01361	1	1	1	1	1	1	1	0.01361	BP	weight01	fisher	1	N0.HOG0000158
+GO:0006825	copper ion transport	14	1	0.01	100	0.01361	0.01361	1	1	1	1	1	1	1	0.01361	BP	weight01	fisher	1	N0.HOG0000028
+GO:0016063	rhodopsin biosynthetic process	15	1	0.01	100	0.01457	0.01457	1	1	1	1	1	1	1	0.01457	BP	weight01	fisher	1	N0.HOG0000058
+GO:0005847	mRNA cleavage and polyadenylation specificity factor complex	16	1	0.02	50	0.01595	0.01595	1	1	1	1	1	1	1	0.01595	CC	weight01	fisher	1	N0.HOG0000101
+GO:0030224	monocyte differentiation	17	1	0.02	50	0.01650	0.0165	1	1	1	1	1	1	1	0.0165	BP	weight01	fisher	1	N0.HOG0000639
+GO:0042447	hormone catabolic process	17	1	0.02	50	0.01650	0.0165	1	1	1	1	1	1	1	0.0165	BP	weight01	fisher	1	N0.HOG0000058
+GO:0043455	regulation of secondary metabolic process	17	1	0.02	50	0.01650	0.0165	1	1	1	1	1	1	1	0.0165	BP	weight01	fisher	1	N0.HOG0000058
+GO:0070006	metalloaminopeptidase activity	15	1	0.02	50	0.01655	0.01655	1	1	1	1	1	1	1	0.01655	MF	weight01	fisher	1	N0.HOG0000299
+GO:0051537	2 iron, 2 sulfur cluster binding	16	1	0.02	50	0.01764	0.01764	1	1	1	1	1	1	1	0.01764	MF	weight01	fisher	1	N0.HOG0000158
+GO:0050661	NADP binding	29	2	0.03	66.6666666666667	0.01799	0.01799	1	1	1	1	1	1	1	0.01799	MF	weight01	fisher	2	N0.HOG0000058;N0.HOG0000639
+GO:1901568	fatty acid derivative metabolic process	72	2	0.07	28.5714285714286	0.01842	0.01842	1	1	1	1	1	1	1	0.01842	BP	weight01	fisher	2	N0.HOG0000101;N0.HOG0000639
+GO:0043171	peptide catabolic process	19	1	0.02	50	0.01843	0.01843	1	1	1	1	1	1	1	0.01843	BP	weight01	fisher	1	N0.HOG0000299
+GO:0072488	ammonium transmembrane transport	19	1	0.02	50	0.01843	0.01843	1	1	1	1	1	1	1	0.01843	BP	weight01	fisher	1	N0.HOG0000058
+GO:0035002	liquid clearance, open tracheal system	19	1	0.02	50	0.01843	0.01843	1	1	1	1	1	1	1	0.01843	BP	weight01	fisher	1	N0.HOG0000058
+GO:0071392	cellular response to estradiol stimulus	20	1	0.02	50	0.01939	0.01939	1	1	1	1	1	1	1	0.01939	BP	weight01	fisher	1	N0.HOG0000058
+GO:0008519	ammonium channel activity	19	1	0.02	50	0.02092	0.02092	1	1	1	1	1	1	1	0.02092	MF	weight01	fisher	1	N0.HOG0000058
+GO:0046949	fatty-acyl-CoA biosynthetic process	22	1	0.02	50	0.02131	0.02131	1	1	1	1	1	1	1	0.02131	BP	weight01	fisher	1	N0.HOG0000639
+GO:0071353	cellular response to interleukin-4	22	1	0.02	50	0.02131	0.02131	1	1	1	1	1	1	1	0.02131	BP	weight01	fisher	1	N0.HOG0000639
+GO:0006491	N-glycan processing	22	1	0.02	50	0.02131	0.02131	1	1	1	1	1	1	1	0.02131	BP	weight01	fisher	1	N0.HOG0000158
+GO:0055070	copper ion homeostasis	23	1	0.02	50	0.02227	0.02227	1	1	1	1	1	1	1	0.02227	BP	weight01	fisher	1	N0.HOG0000028
+GO:0040038	polar body extrusion after meiotic divisions	23	1	0.02	50	0.02227	0.02227	1	1	1	1	1	1	1	0.02227	BP	weight01	fisher	1	N0.HOG0000101
+GO:0006084	acetyl-CoA metabolic process	25	1	0.02	50	0.02419	0.02419	1	1	1	1	1	1	1	0.02419	BP	weight01	fisher	1	N0.HOG0000639
+GO:0033227	dsRNA transport	27	1	0.03	33.3333333333333	0.02610	0.0261	1	1	1	1	1	1	1	0.0261	BP	weight01	fisher	1	N0.HOG0000299
+GO:0001523	retinoid metabolic process	28	1	0.03	33.3333333333333	0.02706	0.02706	1	1	1	1	1	1	1	0.02706	BP	weight01	fisher	1	N0.HOG0000101
+GO:0019432	triglyceride biosynthetic process	30	1	0.03	33.3333333333333	0.02896	0.02896	1	1	1	1	1	1	1	0.02896	BP	weight01	fisher	1	N0.HOG0000639
+GO:0006369	termination of RNA polymerase II transcription	32	1	0.03	33.3333333333333	0.03087	0.03087	1	1	1	1	1	1	1	0.03087	BP	weight01	fisher	1	N0.HOG0000101
+GO:0045540	regulation of cholesterol biosynthetic process	33	1	0.03	33.3333333333333	0.03182	0.03182	1	1	1	1	1	1	1	0.03182	BP	weight01	fisher	1	N0.HOG0000639
+GO:0008610	lipid biosynthetic process	440	3	0.43	6.97674418604651	0.03210	0.0321	1	1	1	1	1	1	1	0.0321	BP	weight01	fisher	3	N0.HOG0000058;N0.HOG0000101;N0.HOG0000639
+GO:0005507	copper ion binding	30	1	0.03	33.3333333333333	0.03286	0.03286	1	1	1	1	1	1	1	0.03286	MF	weight01	fisher	1	N0.HOG0000028
+GO:0046688	response to copper ion	36	1	0.04	25	0.03467	0.03467	1	1	1	1	1	1	1	0.03467	BP	weight01	fisher	1	N0.HOG0000028
+GO:0000398	mRNA splicing, via spliceosome	326	2	0.32	6.25	0.03726	0.03726	1	1	1	1	1	1	1	0.03726	BP	weight01	fisher	2	N0.HOG0000028;N0.HOG0000101
+GO:0007608	sensory perception of smell	88	3	0.09	33.3333333333333	0.03731	0.03731	1	1	1	1	1	1	1	0.03731	BP	weight01	fisher	3	N0.HOG0000028;N0.HOG0000058;N0.HOG0000158
+GO:0034030	ribonucleoside bisphosphate biosynthetic process	40	1	0.04	25	0.03846	0.03846	1	1	1	1	1	1	1	0.03846	BP	weight01	fisher	1	N0.HOG0000639
+GO:0034033	purine nucleoside bisphosphate biosynthetic process	40	1	0.04	25	0.03846	0.03846	1	1	1	1	1	1	1	0.03846	BP	weight01	fisher	1	N0.HOG0000639
+GO:0032835	glomerulus development	41	1	0.04	25	0.03940	0.0394	1	1	1	1	1	1	1	0.0394	BP	weight01	fisher	1	N0.HOG0000299
+GO:0006099	tricarboxylic acid cycle	42	1	0.04	25	0.04035	0.04035	1	1	1	1	1	1	1	0.04035	BP	weight01	fisher	1	N0.HOG0000158
+GO:0035010	encapsulation of foreign target	43	1	0.04	25	0.04129	0.04129	1	1	1	1	1	1	1	0.04129	BP	weight01	fisher	1	N0.HOG0000158
+GO:0006301	postreplication repair	43	1	0.04	25	0.04129	0.04129	1	1	1	1	1	1	1	0.04129	BP	weight01	fisher	1	N0.HOG0000101
+GO:0003382	epithelial cell morphogenesis	44	1	0.04	25	0.04223	0.04223	1	1	1	1	1	1	1	0.04223	BP	weight01	fisher	1	N0.HOG0000058
+GO:0006334	nucleosome assembly	44	1	0.04	25	0.04223	0.04223	1	1	1	1	1	1	1	0.04223	BP	weight01	fisher	1	N0.HOG0000103
+GO:0005496	steroid binding	39	1	0.04	25	0.04254	0.04254	1	1	1	1	1	1	1	0.04254	MF	weight01	fisher	1	N0.HOG0000058
+GO:0010172	embryonic body morphogenesis	45	1	0.04	25	0.04317	0.04317	1	1	1	1	1	1	1	0.04317	BP	weight01	fisher	1	N0.HOG0000028
+GO:0006101	citrate metabolic process	45	1	0.04	25	0.04317	0.04317	1	1	1	1	1	1	1	0.04317	BP	weight01	fisher	1	N0.HOG0000158

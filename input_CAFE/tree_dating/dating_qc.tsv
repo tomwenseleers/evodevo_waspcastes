@@ -1,0 +1,4 @@
+tree	input_file	input_scale_removed	n_tips	n_internal_nodes	dating_method	derived_from	model	lambda	rate_categories	root_age_Ma	min_root_to_tip_Ma	max_root_to_tip_Ma	min_edge_Ma	ultrametric	binary	warnings
+Vespidae	input_CAFE/tree_dating/orthofinder_pruned_tree_scaled.nwk	1000	15	14	chronos		discrete	1	20	110	110	110	4.13375212085073	TRUE	TRUE	
+Vespidae_with_outgroups	input_CAFE/tree_dating/orthofinder_pruned_tree_scaled.nwk	1000	17	16	pruned_dated_tree	Aculeata_dated_primary	discrete	1	20	138.283496122601	138.283496122601	138.283496122601	3.44491515761129	TRUE	TRUE	
+Aculeata	input_CAFE/tree_dating/orthofinder_pruned_tree_scaled.nwk	1000	62	61	chronos		discrete	1	20	142.3	142.3	142.3	1.91742438784238	TRUE	TRUE	

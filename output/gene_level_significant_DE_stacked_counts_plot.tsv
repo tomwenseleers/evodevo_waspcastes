@@ -1,0 +1,37 @@
+species	stage	plot_category	n_genes
+Polistes dominula	L1	ncRNA	36
+Polistes dominula	L1	without orthology	36
+Polistes dominula	L1	with orthology	712
+Polistes dominula	L2	ncRNA	35
+Polistes dominula	L2	without orthology	37
+Polistes dominula	L2	with orthology	472
+Polistes dominula	L3	ncRNA	20
+Polistes dominula	L3	without orthology	33
+Polistes dominula	L3	with orthology	294
+Polistes dominula	L4	ncRNA	58
+Polistes dominula	L4	without orthology	81
+Polistes dominula	L4	with orthology	1145
+Polistes dominula	L5	ncRNA	22
+Polistes dominula	L5	without orthology	49
+Polistes dominula	L5	with orthology	597
+Polistes dominula	P	ncRNA	26
+Polistes dominula	P	without orthology	52
+Polistes dominula	P	with orthology	570
+Vespula vulgaris	L1	ncRNA	41
+Vespula vulgaris	L1	without orthology	25
+Vespula vulgaris	L1	with orthology	489
+Vespula vulgaris	L2	ncRNA	86
+Vespula vulgaris	L2	without orthology	100
+Vespula vulgaris	L2	with orthology	1040
+Vespula vulgaris	L3	ncRNA	50
+Vespula vulgaris	L3	without orthology	34
+Vespula vulgaris	L3	with orthology	587
+Vespula vulgaris	L4	ncRNA	39
+Vespula vulgaris	L4	without orthology	22
+Vespula vulgaris	L4	with orthology	438
+Vespula vulgaris	L5	ncRNA	158
+Vespula vulgaris	L5	without orthology	177
+Vespula vulgaris	L5	with orthology	3213
+Vespula vulgaris	P	ncRNA	137
+Vespula vulgaris	P	without orthology	134
+Vespula vulgaris	P	with orthology	2511

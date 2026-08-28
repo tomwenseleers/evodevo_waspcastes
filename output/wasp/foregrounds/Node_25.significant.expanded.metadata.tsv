@@ -1,0 +1,9 @@
+HOG	change	family_p	branch_p	result_source	consensus_gene_name	go_annotated
+N0.HOG0000114	6	0	2.43212e-08	main_model	fatty acid synthase	TRUE
+N0.HOG0000504	3	0	8.39423e-05	main_model	antizyme inhibitor 2-like / ornithine decarboxylase-like	TRUE
+N0.HOG0000050	11	0	0.000801973	large_family_individual_run	odorant receptor family	TRUE
+N0.HOG0000108	8	0	0.000943866	large_family_individual_run	glutamate receptor ionotropic, delta-1-like / probable glutamate receptor	TRUE
+N0.HOG0000042	3	0	0.00101874	main_model	odorant receptor family	TRUE
+N0.HOG0000155	2	0	0.00304223	main_model	late histone H1-like / histone H1-like	TRUE
+N0.HOG0000814	2	0	0.00304223	main_model	estradiol 17-beta-dehydrogenase 11-like / short-chain dehydrogenase/reductase family 16C member 6	TRUE
+N0.HOG0000162	2	0.011	0.00695568	main_model	elongation of very long chain fatty acids protein 1-like / elongation of very long chain fatty acids protein AAEL008004-like	TRUE

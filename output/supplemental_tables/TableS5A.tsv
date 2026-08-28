@@ -1,0 +1,4 @@
+Axis	Biological_contrast	PLS_component	X_variance_explained_percent	HOGs_in_final_model
+Axis 1	Season/caste	Component 3	8.246914618380515	4750
+Axis 2	Developmental stage	Component 2	22.243654496958126	4750
+Axis 3	Species	Component 1	34.94062496076259	4750

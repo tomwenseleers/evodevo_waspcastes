@@ -1,0 +1,9 @@
+item	value
+focal_event_rows	22
+unique_focal_HOGs	22
+named_unique_HOGs	19
+unannotated_unique_HOGs	3
+chemosensory_unique_HOGs	4
+focal_TE_HOG_rows_excluded	2
+tested_TE_HOGs_excluded_from_GO_universe	23
+root_zero_HOGs_not_tested_by_CAFE	2198

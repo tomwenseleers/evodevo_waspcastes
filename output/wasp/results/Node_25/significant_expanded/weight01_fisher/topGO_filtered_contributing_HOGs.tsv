@@ -1,0 +1,59 @@
+GO.ID	Term	ontology	HOG	change	branch_p	p_raw	topGOresult	Significant	Expected	FoldEnrichment
+GO:0033387	putrescine biosynthetic process from arginine, via ornithine	BP	N0.HOG0000504	3	8.39423e-05	0.0022	0.0022	1	0	Inf
+GO:1905268	negative regulation of chromatin organization	BP	N0.HOG0000155	2	0.00304223	0.0025	0.0025	2	0.08	25
+GO:1905268	negative regulation of chromatin organization	BP	N0.HOG0000814	2	0.00304223	0.0025	0.0025	2	0.08	25
+GO:0032100	positive regulation of appetite	BP	N0.HOG0000114	6	2.43212e-08	0.0033	0.0033	1	0	Inf
+GO:1902321	methyl-branched fatty acid biosynthetic process	BP	N0.HOG0000114	6	2.43212e-08	0.0033	0.0033	1	0	Inf
+GO:0019367	fatty acid elongation, saturated fatty acid	BP	N0.HOG0000162	2	0.00695568	0.0056	0.0056	1	0.01	100
+GO:0034625	fatty acid elongation, monounsaturated fatty acid	BP	N0.HOG0000162	2	0.00695568	0.0056	0.0056	1	0.01	100
+GO:0034626	fatty acid elongation, polyunsaturated fatty acid	BP	N0.HOG0000162	2	0.00695568	0.0056	0.0056	1	0.01	100
+GO:0030223	neutrophil differentiation	BP	N0.HOG0000114	6	2.43212e-08	0.0067	0.0067	1	0.01	100
+GO:0042572	retinol metabolic process	BP	N0.HOG0000814	2	0.00304223	0.0067	0.0067	1	0.01	100
+GO:0042574	retinal metabolic process	BP	N0.HOG0000814	2	0.00304223	0.0067	0.0067	1	0.01	100
+GO:0006591	ornithine metabolic process	BP	N0.HOG0000504	3	8.39423e-05	0.0078	0.0078	1	0.01	100
+GO:2000435	negative regulation of protein neddylation	BP	N0.HOG0000042	3	0.00101874	0.0078	0.0078	1	0.01	100
+GO:0008611	ether lipid biosynthetic process	BP	N0.HOG0000114	6	2.43212e-08	0.0089	0.0089	1	0.01	100
+GO:0042761	very long-chain fatty acid biosynthetic process	BP	N0.HOG0000162	2	0.00695568	0.0089	0.0089	1	0.01	100
+GO:0006723	cuticle hydrocarbon biosynthetic process	BP	N0.HOG0000114	6	2.43212e-08	0.01	0.0100	1	0.01	100
+GO:0071329	cellular response to sucrose stimulus	BP	N0.HOG0000114	6	2.43212e-08	0.01	0.0100	1	0.01	100
+GO:0090557	establishment of endothelial intestinal barrier	BP	N0.HOG0000114	6	2.43212e-08	0.0122	0.0122	1	0.01	100
+GO:1904667	negative regulation of ubiquitin protein ligase activity	BP	N0.HOG0000042	3	0.00101874	0.0122	0.0122	1	0.01	100
+GO:2001251	negative regulation of chromosome organization	BP	N0.HOG0000155	2	0.00304223	0.0136	0.0136	2	0.19	10.5263157894737
+GO:2001251	negative regulation of chromosome organization	BP	N0.HOG0000814	2	0.00304223	0.0136	0.0136	2	0.19	10.5263157894737
+GO:0006089	lactate metabolic process	BP	N0.HOG0000114	6	2.43212e-08	0.0144	0.0144	1	0.01	100
+GO:0006521	regulation of amino acid metabolic process	BP	N0.HOG0000504	3	8.39423e-05	0.0144	0.0144	1	0.01	100
+GO:1902255	positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator	BP	N0.HOG0000042	3	0.00101874	0.0144	0.0144	1	0.01	100
+GO:0030224	monocyte differentiation	BP	N0.HOG0000114	6	2.43212e-08	0.0188	0.0188	1	0.02	50
+GO:0090312	positive regulation of protein deacetylation	BP	N0.HOG0000814	2	0.00304223	0.0199	0.0199	1	0.02	50
+GO:0043616	keratinocyte proliferation	BP	N0.HOG0000814	2	0.00304223	0.0232	0.0232	1	0.02	50
+GO:0002803	positive regulation of antibacterial peptide production	BP	N0.HOG0000108	8	0.000943866	0.0243	0.0243	1	0.02	50
+GO:0046949	fatty-acyl-CoA biosynthetic process	BP	N0.HOG0000114	6	2.43212e-08	0.0243	0.0243	1	0.02	50
+GO:0071353	cellular response to interleukin-4	BP	N0.HOG0000114	6	2.43212e-08	0.0243	0.0243	1	0.02	50
+GO:2000757	negative regulation of peptidyl-lysine acetylation	BP	N0.HOG0000814	2	0.00304223	0.0265	0.0265	1	0.03	33.3333333333333
+GO:0006084	acetyl-CoA metabolic process	BP	N0.HOG0000114	6	2.43212e-08	0.0276	0.0276	1	0.03	33.3333333333333
+GO:0019432	triglyceride biosynthetic process	BP	N0.HOG0000114	6	2.43212e-08	0.033	0.0330	1	0.03	33.3333333333333
+GO:0000027	ribosomal large subunit assembly	BP	N0.HOG0000042	3	0.00101874	0.0352	0.0352	1	0.04	25
+GO:0022617	extracellular matrix disassembly	BP	N0.HOG0000108	8	0.000943866	0.0363	0.0363	1	0.04	25
+GO:0032435	negative regulation of proteasomal ubiquitin-dependent protein catabolic process	BP	N0.HOG0000042	3	0.00101874	0.0363	0.0363	1	0.04	25
+GO:0033238	regulation of amine metabolic process	BP	N0.HOG0000504	3	8.39423e-05	0.0363	0.0363	1	0.04	25
+GO:0045540	regulation of cholesterol biosynthetic process	BP	N0.HOG0000114	6	2.43212e-08	0.0363	0.0363	1	0.04	25
+GO:0050911	detection of chemical stimulus involved in sensory perception of smell	BP	N0.HOG0000050	11	0.000801973	0.0374	0.0374	1	0.04	25
+GO:0034030	ribonucleoside bisphosphate biosynthetic process	BP	N0.HOG0000114	6	2.43212e-08	0.0438	0.0438	1	0.04	25
+GO:0034033	purine nucleoside bisphosphate biosynthetic process	BP	N0.HOG0000114	6	2.43212e-08	0.0438	0.0438	1	0.04	25
+GO:0006334	nucleosome assembly	BP	N0.HOG0000155	2	0.00304223	0.0481	0.0481	1	0.05	20
+GO:0097209	epidermal lamellar body	CC	N0.HOG0000108	8	0.000943866	0.0034	0.0034	1	0	Inf
+GO:0042587	glycogen granule	CC	N0.HOG0000114	6	2.43212e-08	0.0091	0.0091	1	0.01	100
+GO:0000786	nucleosome	CC	N0.HOG0000155	2	0.00304223	0.0137	0.0137	1	0.01	100
+GO:0098556	cytoplasmic side of rough endoplasmic reticulum membrane	CC	N0.HOG0000042	3	0.00101874	0.0193	0.0193	1	0.02	50
+GO:0032590	dendrite membrane	CC	N0.HOG0000050	11	0.000801973	0.0461	0.0461	1	0.05	20
+GO:0004312	fatty acid synthase activity	MF	N0.HOG0000114	6	2.43212e-08	6.3e-05	6.3e-05	2	0.01	200
+GO:0004312	fatty acid synthase activity	MF	N0.HOG0000162	2	0.00695568	6.3e-05	6.3e-05	2	0.01	200
+GO:0004586	ornithine decarboxylase activity	MF	N0.HOG0000504	3	8.39423e-05	0.0025	0.0025	1	0	Inf
+GO:0004745	all-trans-retinol dehydrogenase (NAD+) activity	MF	N0.HOG0000814	2	0.00304223	0.0063	0.0063	1	0.01	100
+GO:0009922	fatty acid elongase activity	MF	N0.HOG0000162	2	0.00695568	0.0063	0.0063	1	0.01	100
+GO:1990948	ubiquitin ligase inhibitor activity	MF	N0.HOG0000042	3	0.00101874	0.0076	0.0076	1	0.01	100
+GO:0070402	NADPH binding	MF	N0.HOG0000114	6	2.43212e-08	0.0126	0.0126	1	0.01	100
+GO:0042975	peroxisome proliferator activated receptor binding	MF	N0.HOG0000042	3	0.00101874	0.0151	0.0151	1	0.02	50
+GO:0008097	5S rRNA binding	MF	N0.HOG0000042	3	0.00101874	0.0201	0.0201	1	0.02	50
+GO:0004984	olfactory receptor activity	MF	N0.HOG0000050	11	0.000801973	0.0288	0.0288	1	0.03	33.3333333333333
+GO:0005549	odorant binding	MF	N0.HOG0000050	11	0.000801973	0.0313	0.0313	1	0.03	33.3333333333333

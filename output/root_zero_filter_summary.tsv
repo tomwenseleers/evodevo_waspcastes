@@ -1,0 +1,3 @@
+CAFE_track	run	run_label	n_removed_empty_at_root	n_present_in_social_wasps	n_annotated	n_chemosensory	n_other_biologically_relevant	n_prepared_for_CAFE	percent_of_prepared_families_removed	interpretation
+main_model	wasp_CAFE	Vespidae_plus_outgroups	2184	2033	582	5	15	10982	19.8870879621198	These HOGs were not tested by CAFE; no significant branch expansion or contraction can be inferred for them in the wasp CAFE analysis.
+large_family_individual_run	wasp_CAFE	Vespidae_plus_outgroups	14	14	10	1	2	43	32.5581395348837	These HOGs were not tested by CAFE; no significant branch expansion or contraction can be inferred for them in the wasp CAFE analysis.

@@ -1,0 +1,43 @@
+#NEXUS
+[R-package APE, Fri Aug 28 16:30:23 2026]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 15;
+	TAXLABELS
+		Ancistrocerus_nigricornis
+		Mischocyttarus_mexicanus
+		Polistes_dominula
+		Polistes_fuscatus
+		Polistes_exclamans
+		Polistes_canadensis
+		Vespula_germanica
+		Vespula_pensylvanica
+		Vespula_vulgaris
+		Vespa_crabro
+		Vespa_mandarinia
+		Vespa_velutina
+		Dolichovespula_media
+		Dolichovespula_saxonica
+		Dolichovespula_sylvestris
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	Ancistrocerus_nigricornis,
+		2	Mischocyttarus_mexicanus,
+		3	Polistes_dominula,
+		4	Polistes_fuscatus,
+		5	Polistes_exclamans,
+		6	Polistes_canadensis,
+		7	Vespula_germanica,
+		8	Vespula_pensylvanica,
+		9	Vespula_vulgaris,
+		10	Vespa_crabro,
+		11	Vespa_mandarinia,
+		12	Vespa_velutina,
+		13	Dolichovespula_media,
+		14	Dolichovespula_saxonica,
+		15	Dolichovespula_sylvestris
+	;
+	TREE * UNTITLED = [&R] (1:110,((2:49.90303692,(3:33.28839208,(4:22.16922385,(5:13.42465015,6:13.42465015):8.744573701):11.11916823):16.61464484):25.09696308,((7:21.1702173,(8:5.517052423,9:5.517052423):15.65316488):26.1967278,(((10:5.890074815,11:5.890074815):4.133752121,12:10.02382694):29.9147217,(13:26.738922,(14:19.67919066,15:19.67919066):7.059731341):13.19962664):7.428396467):27.6330549):35);
+END;

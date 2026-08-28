@@ -1,0 +1,17 @@
+Quantity	Value	Interpretation
+Included species	17	15 Vespidae plus Tiphia femorata and Anoplius nigerrimus outgroups
+Prepared standard-track HOGs	10982	Before CAFE root-size filtering
+Prepared high-differential HOGs	43	Maximum among-species differential >20
+Root-zero standard HOGs	2184	No family-wide or branch-specific result assigned
+Root-zero high-differential HOGs	14	No family-wide or branch-specific result assigned
+Standard HOGs with results	8798	Joint Gamma-rate model
+High-differential HOGs with results	29	Fitted as individual high-differential families
+Gamma categories	6	Selected by AIC
+Root-family-size distribution	Poisson	Favoured over uniform
+Mean lambda	0.00111128	Per gene per million years
+Gamma alpha	0.194417	Gamma-rate shape parameter
+Symmetric error	0.0178021	Gene-count error model
+Focal family screen	P < 0.05	Nominal family-wide screen; no FDR correction
+Focal branch threshold	Viterbi probability < 0.01	Focal-branch Viterbi-probability threshold; no FDR correction
+Node 20 non-TE changes	+10 / -2	Displayed and interpreted after TE exclusion
+Node 25 non-TE changes	+8 / -2	Displayed and interpreted after TE exclusion

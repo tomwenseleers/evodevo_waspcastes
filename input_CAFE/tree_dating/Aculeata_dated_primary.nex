@@ -1,0 +1,137 @@
+#NEXUS
+[R-package APE, Fri Aug 28 16:28:34 2026]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 62;
+	TAXLABELS
+		Harpegnathos_saltator
+		Ooceraea_biroi
+		Linepithema_humile
+		Atta_cephalotes
+		Acromyrmex_echinatior
+		Monomorium_pharaonis
+		Solenopsis_invicta
+		Camponotus_floridanus
+		Nysson_spinosus
+		Pemphredon_lugubris
+		Macropis_europaea
+		Andrena_flavipes
+		Colletes_latitarsis
+		Dufourea_novaeangliae
+		Halictus_rubicundus
+		Lasioglossum_calceatum
+		Lasioglossum_morio
+		Lasioglossum_lativentre
+		Megalopta_genalis
+		Megachile_rotundata
+		Osmia_bicornis_bicornis
+		Habropoda_laboriosa
+		Ceratina_calcarata
+		Xylocopa_sonorina
+		Eufriesea_mexicana
+		Apis_florea
+		Apis_mellifera
+		Apis_cerana
+		Apis_dorsata
+		Apis_laboriosa
+		Bombus_hortorum
+		Bombus_lapidarius
+		Bombus_terrestris
+		Bombus_monticola
+		Bombus_impatiens
+		Bombus_hypnorum
+		Bombus_pratorum
+		Bombus_campestris
+		Bombus_vestalis
+		Bombus_sylvestris
+		Bombus_pascuorum
+		Bombus_muscorum
+		Tetragonisca_angustula
+		Melipona_bicolor
+		Melipona_quadrifasciata
+		Ancistrocerus_nigricornis
+		Mischocyttarus_mexicanus
+		Polistes_dominula
+		Polistes_fuscatus
+		Polistes_exclamans
+		Polistes_canadensis
+		Vespula_germanica
+		Vespula_pensylvanica
+		Vespula_vulgaris
+		Vespa_crabro
+		Vespa_mandarinia
+		Vespa_velutina
+		Dolichovespula_media
+		Dolichovespula_saxonica
+		Dolichovespula_sylvestris
+		Anoplius_nigerrimus
+		Tiphia_femorata
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	Harpegnathos_saltator,
+		2	Ooceraea_biroi,
+		3	Linepithema_humile,
+		4	Atta_cephalotes,
+		5	Acromyrmex_echinatior,
+		6	Monomorium_pharaonis,
+		7	Solenopsis_invicta,
+		8	Camponotus_floridanus,
+		9	Nysson_spinosus,
+		10	Pemphredon_lugubris,
+		11	Macropis_europaea,
+		12	Andrena_flavipes,
+		13	Colletes_latitarsis,
+		14	Dufourea_novaeangliae,
+		15	Halictus_rubicundus,
+		16	Lasioglossum_calceatum,
+		17	Lasioglossum_morio,
+		18	Lasioglossum_lativentre,
+		19	Megalopta_genalis,
+		20	Megachile_rotundata,
+		21	Osmia_bicornis_bicornis,
+		22	Habropoda_laboriosa,
+		23	Ceratina_calcarata,
+		24	Xylocopa_sonorina,
+		25	Eufriesea_mexicana,
+		26	Apis_florea,
+		27	Apis_mellifera,
+		28	Apis_cerana,
+		29	Apis_dorsata,
+		30	Apis_laboriosa,
+		31	Bombus_hortorum,
+		32	Bombus_lapidarius,
+		33	Bombus_terrestris,
+		34	Bombus_monticola,
+		35	Bombus_impatiens,
+		36	Bombus_hypnorum,
+		37	Bombus_pratorum,
+		38	Bombus_campestris,
+		39	Bombus_vestalis,
+		40	Bombus_sylvestris,
+		41	Bombus_pascuorum,
+		42	Bombus_muscorum,
+		43	Tetragonisca_angustula,
+		44	Melipona_bicolor,
+		45	Melipona_quadrifasciata,
+		46	Ancistrocerus_nigricornis,
+		47	Mischocyttarus_mexicanus,
+		48	Polistes_dominula,
+		49	Polistes_fuscatus,
+		50	Polistes_exclamans,
+		51	Polistes_canadensis,
+		52	Vespula_germanica,
+		53	Vespula_pensylvanica,
+		54	Vespula_vulgaris,
+		55	Vespa_crabro,
+		56	Vespa_mandarinia,
+		57	Vespa_velutina,
+		58	Dolichovespula_media,
+		59	Dolichovespula_saxonica,
+		60	Dolichovespula_sylvestris,
+		61	Anoplius_nigerrimus,
+		62	Tiphia_femorata
+	;
+	TREE * UNTITLED = [&R] (((1:81.99016514,(2:70.38696299,(3:63.82663103,(((4:19.33883824,5:19.33883824):25.98259737,(6:34.59624828,7:34.59624828):10.72518733):13.86656623,8:59.18800184):4.63862919):6.560331957):11.60320215):26.60983486,(9:102.13,(10:94.72280072,((11:78.48234077,(12:73.97546382,(13:69.26134016,(14:60.22885336,((15:31.91278218,((16:20.42811043,17:20.42811043):6.299857335,18:26.72796777):5.184814418):12.3899616,19:44.30274379):15.92610957):9.032486806):4.71412366):4.506876946):4.704572185,((20:44.94588978,21:44.94588978):30.18059206,(22:68.46058131,((23:58.46676187,24:58.46676187):6.212093833,((25:52.88863937,(26:18.02755677,((27:8.706642205,28:8.706642205):4.015866842,(29:7.218528326,30:7.218528326):5.503980721):5.30504772):34.86108261):5.946795226,((31:24.11344195,((32:15.57978469,(33:13.6623603,((34:7.984216427,35:7.984216427):3.162772585,(36:7.553816563,37:7.553816563):3.59317245):2.515371287):1.917424388):2.91794424,((38:10.47221855,(39:6.926332547,40:6.926332547):3.545886007):5.810245625,(41:7.974719725,42:7.974719725):8.307744454):2.215264749):5.61571302):26.35512494,(43:30.82617011,(44:24.47467682,45:24.47467682):6.351493296):19.64239678):8.366867711):5.843421108):3.781725604):6.665900525):8.060431117):11.53588776):7.407199284):6.47):33.7,((46:110,((47:46.54654847,(48:29.37628275,(49:19.01457261,(50:11.35798253,51:11.35798253):7.65659008):10.36171014):17.17026571):28.45345153,((52:17.98876778,(53:4.565982366,54:4.565982366):13.42278542):23.98973344,(((55:4.833660917,56:4.833660917):3.444915158,57:8.278576075):26.33970429,(58:22.72471324,(59:16.59300922,60:16.59300922):6.131704029):11.89356712):7.360220857):33.02149877):35):28.28349612,(61:125.2004516,62:125.2004516):13.08304455):4.016503877);
+END;

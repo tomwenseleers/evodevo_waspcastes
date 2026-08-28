@@ -1,0 +1,7 @@
+Table	Worksheet	Description
+S4	S4_DE_summary	Differential-expression counts by species, analysis unit and stage
+S5A	S5A_PLS_axes	PLS-axis mapping and variance explained
+S5B	S5B_PLS_LOOCV	Leave-one-sample-out season/caste contrasts on PLS axis 1
+S6	S6_Fig1_GO	GO terms displayed in Fig. 1B
+S7	S7_Fig2A_regressions	Stagewise robust-regression results underlying Fig. 2A
+S8	S8_Fig2B_ridge	Nonnegative-ridge partial slopes underlying Fig. 2B

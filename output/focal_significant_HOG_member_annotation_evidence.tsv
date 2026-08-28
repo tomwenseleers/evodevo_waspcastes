@@ -1,0 +1,422 @@
+HOG	species	gene_id	gene_symbol	gene_name	annotation_source	annotation_quality
+N0.HOG0000028	Ancistrocerus_nigricornis	ENSANRG00005001850	LOC107066280	odorant receptor 46a	OrthoFinder orthology transfer from: Polistes_dominula	orthology-inferred; not a direct NCBI name
+N0.HOG0000028	Ancistrocerus_nigricornis	ENSANRG00005010340	LOC107068557; LOC107068559; LOC127069756; LOC127069858; LOC127069859	odorant receptor 94a-like; odorant receptor 67c-like; odorant receptor 46a-like; odorant receptor 42a-like; 7tm Odorant receptor	OrthoFinder orthology transfer from: Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000028	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000028	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000028	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000028	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000028	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000028	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000028	Polistes_dominula	LOC107066280	LOC107066280	odorant receptor 46a	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000028	Polistes_dominula	LOC107068556	LOC107068556	odorant receptor Or1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000028	Polistes_dominula	LOC107068557	LOC107068557	odorant receptor 94a-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000028	Polistes_dominula	LOC107068558	LOC107068558	Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000028	Polistes_dominula	LOC107068559	LOC107068559	odorant receptor 67c-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000028	Polistes_dominula	LOC107068604	LOC107068604	odorant receptor Or1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000028	Vespula_vulgaris	LOC127069756	LOC127069756	odorant receptor 46a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000028	Vespula_vulgaris	LOC127069757	LOC127069757	odorant receptor 94a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000028	Vespula_vulgaris	LOC127069766	LOC127069766	odorant receptor Or1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000028	Vespula_vulgaris	LOC127069857	LOC127069857	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000028	Vespula_vulgaris	LOC127069858	LOC127069858	odorant receptor 42a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000028	Vespula_vulgaris	LOC127069859	LOC127069859	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000042	Ancistrocerus_nigricornis	ENSANRG00005002235	LOC107069471	odorant receptor 43a-like	OrthoFinder orthology transfer from: Polistes_dominula	orthology-inferred; not a direct NCBI name
+N0.HOG0000042	Ancistrocerus_nigricornis	ENSANRG00005002618	LOC107069496; LOC127070846	odorant receptor 43a-like; 7tm Odorant receptor	OrthoFinder orthology transfer from: Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000042	Ancistrocerus_nigricornis	ENSANRG00005003785	LOC127071909	odorant receptor 30a-like	OrthoFinder orthology transfer from: Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000042	Ancistrocerus_nigricornis	ENSANRG00005004452	LOC107068975; LOC127071912	odorant receptor Or2-like; odorant receptor 30a-like	OrthoFinder orthology transfer from: Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000042	Ancistrocerus_nigricornis	ENSANRG00005005061	LOC127071773; LOC127071911	odorant receptor 13a-like; 7tm Odorant receptor	OrthoFinder orthology transfer from: Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000042	Ancistrocerus_nigricornis	ENSANRG00005006495	LOC127071773; LOC127071911	odorant receptor 13a-like; 7tm Odorant receptor	OrthoFinder orthology transfer from: Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000042	Polistes_dominula	LOC107068975	LOC107068975	odorant receptor Or2-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000042	Polistes_dominula	LOC107069471	LOC107069471	odorant receptor 43a-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000042	Polistes_dominula	LOC107069472	LOC107069472	odorant receptor 30a-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000042	Polistes_dominula	LOC107069496	LOC107069496	odorant receptor 43a-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000042	Vespula_vulgaris	LOC127070846	LOC127070846	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000042	Vespula_vulgaris	LOC127070879	LOC127070879	odorant receptor 30a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000042	Vespula_vulgaris	LOC127071773	LOC127071773	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000042	Vespula_vulgaris	LOC127071909	LOC127071909	odorant receptor 30a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000042	Vespula_vulgaris	LOC127071910	LOC127071910	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000042	Vespula_vulgaris	LOC127071911	LOC127071911	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000042	Vespula_vulgaris	LOC127071912	LOC127071912	odorant receptor 30a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005001794	LOC107073493; LOC127064088	odorant receptor 82a-like	OrthoFinder orthology transfer from: Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005003315	LOC107073299; LOC127072299	odorant receptor 85c-like	OrthoFinder orthology transfer from: Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005003420	LOC127072289; LOC127072290; LOC127072307; LOC127072310; LOC127072311; LOC127072462	Odorant receptor; odorant receptor 82a-like; odorant receptor 10a-like	OrthoFinder orthology transfer from: Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005003443	LOC107069745	odorant receptor 85f-like	OrthoFinder orthology transfer from: Polistes_dominula	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005003554	LOC107067895; LOC127072298	Odorant receptor; odorant receptor 2a-like	OrthoFinder orthology transfer from: Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005003635	LOC127072297	odorant receptor 13a-like	OrthoFinder orthology transfer from: Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005003735	LOC107069745	odorant receptor 85f-like	OrthoFinder orthology transfer from: Polistes_dominula	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005003771	LOC107069745	odorant receptor 85f-like	OrthoFinder orthology transfer from: Polistes_dominula	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005003940	LOC107069745	odorant receptor 85f-like	OrthoFinder orthology transfer from: Polistes_dominula	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005003968				not directly annotated
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005003990	LOC107073299; LOC127072299	odorant receptor 85c-like	OrthoFinder orthology transfer from: Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005004044	LOC127072297	odorant receptor 13a-like	OrthoFinder orthology transfer from: Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005004238	LOC127072281; LOC127072282; LOC127072283; LOC127072284; LOC127072285; LOC127072286; LOC127072287; LOC127072288; LOC127072308; LOC127072309; LOC127072312; LOC127072313	odorant receptor 13a-like; Odorant receptor; odorant receptor 9a-like; odorant receptor 67a-like; odorant receptor 45b-like; odorant receptor 4-like; putative odorant receptor 85d	OrthoFinder orthology transfer from: Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Ancistrocerus_nigricornis	ENSANRG00005004425	LOC107071314; LOC107073503; LOC107073504; LOC127071154; LOC127072279; LOC127072296; LOC127072416	odorant receptor 13a-like; Odorant receptor; odorant receptor 4-like; odorant receptor 10a-like	OrthoFinder orthology transfer from: Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000050	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000050	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000050	Polistes_dominula	LOC107067895	LOC107067895	Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000050	Polistes_dominula	LOC107069745	LOC107069745	odorant receptor 85f-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Polistes_dominula	LOC107069746	LOC107069746	Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000050	Polistes_dominula	LOC107071314	LOC107071314	odorant receptor 13a-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Polistes_dominula	LOC107073299	LOC107073299	odorant receptor 85c-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Polistes_dominula	LOC107073493	LOC107073493	odorant receptor 82a-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Polistes_dominula	LOC107073503	LOC107073503	odorant receptor 13a-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Polistes_dominula	LOC107073504	LOC107073504	Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127064088	LOC127064088	odorant receptor 82a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127071010	LOC127071010	odorant receptor 4-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127071154	LOC127071154	odorant receptor 4-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072278	LOC127072278	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072279	LOC127072279	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072281	LOC127072281	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072282	LOC127072282	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072283	LOC127072283	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072284	LOC127072284	odorant receptor 9a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072285	LOC127072285	odorant receptor 67a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072286	LOC127072286	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072287	LOC127072287	odorant receptor 45b-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072288	LOC127072288	odorant receptor 4-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072289	LOC127072289	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072290	LOC127072290	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072291	LOC127072291	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072292	LOC127072292	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072293	LOC127072293	putative odorant receptor 69a	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072294	LOC127072294	odorant receptor 4-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072295	LOC127072295	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072296	LOC127072296	odorant receptor 10a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072297	LOC127072297	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072298	LOC127072298	odorant receptor 2a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072299	LOC127072299	odorant receptor 85c-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072307	LOC127072307	odorant receptor 82a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072308	LOC127072308	odorant receptor 4-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072309	LOC127072309	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072310	LOC127072310	odorant receptor 82a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072311	LOC127072311	odorant receptor 82a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072312	LOC127072312	odorant receptor 4-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072313	LOC127072313	putative odorant receptor 85d	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072413	LOC127072413	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072414	LOC127072414	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072415	LOC127072415	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072416	LOC127072416	odorant receptor 4-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072417	LOC127072417	odorant receptor 13a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000050	Vespula_vulgaris	LOC127072462	LOC127072462	odorant receptor 10a-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Ancistrocerus_nigricornis	ENSANRG00005001615	CG10962; CG3301; CG40485; CG40486; CG8757; CG9150; CG9360; LOC107068935; LOC107068937; LOC107068949; LOC107073573; LOC127066140; LOC127066141; LOC127066142; LOC127066143; LOC127066198	farnesol dehydrogenase-like	OrthoFinder orthology transfer from: Drosophila_melanogaster; Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000058	Ancistrocerus_nigricornis	ENSANRG00005002355	CG10962; CG3301; CG40485; CG40486; CG8757; CG9150; CG9360; LOC107069231	dehydrogenase/reductase SDR family member 11-like	OrthoFinder orthology transfer from: Drosophila_melanogaster; Polistes_dominula	orthology-inferred; not a direct NCBI name
+N0.HOG0000058	Ancistrocerus_nigricornis	ENSANRG00005003475	CG10962; CG3301; CG40485; CG40486; CG8757; CG9150; CG9360; LOC107069232; LOC127062191	farnesol dehydrogenase-like; Enoyl-(Acyl carrier protein) reductase	OrthoFinder orthology transfer from: Drosophila_melanogaster; Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000058	Ancistrocerus_nigricornis	ENSANRG00005003948	CG10962; CG3301; CG40485; CG40486; CG8757; CG9150; CG9360; LOC107064054; LOC107072739; LOC107072839; LOC127067492	dehydrogenase/reductase SDR family member 11-like; farnesol dehydrogenase-like	OrthoFinder orthology transfer from: Drosophila_melanogaster; Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000058	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000058	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000058	Drosophila_melanogaster	FBgn0030073	CG10962		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000058	Drosophila_melanogaster	FBgn0030332	CG9360		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000058	Drosophila_melanogaster	FBgn0031775	CG9150		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000058	Drosophila_melanogaster	FBgn0036380	CG8757		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000058	Drosophila_melanogaster	FBgn0038878	CG3301		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000058	Drosophila_melanogaster	FBgn0069973	CG40485		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000058	Drosophila_melanogaster	FBgn0263830	CG40486		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000058	Polistes_dominula	LOC107064054	LOC107064054	dehydrogenase/reductase SDR family member 11-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Polistes_dominula	LOC107068869	LOC107068869	farnesol dehydrogenase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Polistes_dominula	LOC107068935	LOC107068935	farnesol dehydrogenase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Polistes_dominula	LOC107068937	LOC107068937	farnesol dehydrogenase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Polistes_dominula	LOC107068949	LOC107068949	farnesol dehydrogenase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Polistes_dominula	LOC107069231	LOC107069231	dehydrogenase/reductase SDR family member 11-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Polistes_dominula	LOC107069232	LOC107069232	farnesol dehydrogenase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Polistes_dominula	LOC107069372	LOC107069372	farnesol dehydrogenase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Polistes_dominula	LOC107072739	LOC107072739	dehydrogenase/reductase SDR family member 11-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Polistes_dominula	LOC107072839	LOC107072839	farnesol dehydrogenase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Polistes_dominula	LOC107073573	LOC107073573	farnesol dehydrogenase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Vespula_vulgaris	LOC127062191	LOC127062191	Enoyl-(Acyl carrier protein) reductase	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000058	Vespula_vulgaris	LOC127066140	LOC127066140	farnesol dehydrogenase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Vespula_vulgaris	LOC127066141	LOC127066141	farnesol dehydrogenase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Vespula_vulgaris	LOC127066142	LOC127066142	farnesol dehydrogenase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Vespula_vulgaris	LOC127066143	LOC127066143	farnesol dehydrogenase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Vespula_vulgaris	LOC127066198	LOC127066198	farnesol dehydrogenase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Vespula_vulgaris	LOC127067492	LOC127067492	farnesol dehydrogenase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000058	Vespula_vulgaris	LOC127071841	LOC127071841	farnesol dehydrogenase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000101	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000101	Polistes_dominula	LOC107064932	LOC107064932	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107064933	LOC107064933	cytochrome P450 3A13-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107065068	LOC107065068	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107065070	LOC107065070	cytochrome P450 4g15-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107065071	LOC107065071	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107065359	LOC107065359	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107065361	LOC107065361	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107065602	LOC107065602	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107065768	LOC107065768	probable cytochrome P450 4ac1	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107069071	LOC107069071	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107069800	LOC107069800	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107071176	LOC107071176	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107071388	LOC107071388	Cytochrome P-450	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073471	LOC107073471	cytochrome P450 4c3-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073472	LOC107073472	cytochrome P450 4V2-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073473	LOC107073473	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073593	LOC107073593	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073594	LOC107073594	cytochrome P450 4c3-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073595	LOC107073595	cytochrome P450 4p1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073620	LOC107073620	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073672	LOC107073672	cytochrome P450 4g15-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073688	LOC107073688	cytochrome P450 4V2-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073689	LOC107073689	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073729	LOC107073729	cytochrome P450 4V2-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073748	LOC107073748	cytochrome P450 4V2-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073749	LOC107073749	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Polistes_dominula	LOC107073787	LOC107073787	cytochrome P450 4C1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Vespula_vulgaris	LOC127071128	LOC127071128	cytochrome P450 4C1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Vespula_vulgaris	LOC127071129	LOC127071129	cytochrome P450 4C1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Vespula_vulgaris	LOC127071130	LOC127071130	cytochrome P450 4C1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Vespula_vulgaris	LOC127071131	LOC127071131	cytochrome P450 4C1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Vespula_vulgaris	LOC127071132	LOC127071132	probable cytochrome P450 4p2	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000101	Vespula_vulgaris	LOC127072492	LOC127072492	cytochrome P450 4C1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000103	Polistes_dominula	LOC107066966	LOC107066966	histone H2B-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Polistes_dominula	LOC107068925	LOC107068925	histone H2B	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Vespula_vulgaris	LOC127064416	LOC127064416	histone H2B-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Vespula_vulgaris	LOC127064417	LOC127064417	histone H2B-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Vespula_vulgaris	LOC127064418	LOC127064418	histone H2B-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Vespula_vulgaris	LOC127064431	LOC127064431	histone H2B-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Vespula_vulgaris	LOC127064538	LOC127064538	histone H2B-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Vespula_vulgaris	LOC127064668	LOC127064668	histone H2B-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Vespula_vulgaris	LOC127064833	LOC127064833	late histone H2B.L4-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Vespula_vulgaris	LOC127067993	LOC127067993	histone H2B-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Vespula_vulgaris	LOC127070618	LOC127070618	histone H2B-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000103	Vespula_vulgaris	LOC127070680	LOC127070680	histone H2B	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Ancistrocerus_nigricornis	ENSANRG00005002011	LOC107066062; LOC107073709; LOC107074055; LOC107074235; LOC107074236; LOC127064451; LOC127064452; LOC127064453; LOC127064771; LOC127064772; LOC127064773; LOC127064774; LOC127064775; LOC127064776; LOC127064777; LOC127064821; LOC127064822; LOC127064823; LOC127064824; LOC127064825; LOC127064871; LOC127064886; LOC127070958; LOC127070959; LOC127071066; LOC127071068; LOC127071070; LOC127071073; LOC127071083; LOC127071149; LOC127071150; LOC127071152; LOC127071153; LOC127071156	Ligated ion channel L-glutamate- and glycine-binding site; glutamate receptor 1-like; glutamate receptor ionotropic, delta-1-like; glutamate receptor 2-like; glutamate receptor ionotropic, NMDA 3A-like; probable glutamate receptor; glutamate receptor ionotropic, delta-2-like; glutamate receptor ionotropic, kainate glr-3-like; glutamate receptor U1-like; glutamate receptor-like; glutamate receptor 3-like	OrthoFinder orthology transfer from: Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000108	Polistes_dominula	LOC107066062	LOC107066062	Ligated ion channel L-glutamate- and glycine-binding site	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000108	Polistes_dominula	LOC107073709	LOC107073709	glutamate receptor 1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Polistes_dominula	LOC107074054	LOC107074054	glutamate receptor ionotropic, delta-1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Polistes_dominula	LOC107074055	LOC107074055	glutamate receptor ionotropic, delta-1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Polistes_dominula	LOC107074235	LOC107074235	glutamate receptor ionotropic, delta-1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Polistes_dominula	LOC107074236	LOC107074236	glutamate receptor ionotropic, delta-1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064451	LOC127064451	glutamate receptor 2-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064452	LOC127064452	glutamate receptor ionotropic, delta-1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064453	LOC127064453	Ligated ion channel L-glutamate- and glycine-binding site	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064461	LOC127064461	glutamate receptor 3-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064772	LOC127064772	Ligated ion channel L-glutamate- and glycine-binding site	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064773	LOC127064773	glutamate receptor ionotropic, delta-1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064774	LOC127064774	glutamate receptor ionotropic, delta-1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064775	LOC127064775	probable glutamate receptor	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064776	LOC127064776	glutamate receptor ionotropic, delta-2-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064777	LOC127064777	Ligated ion channel L-glutamate- and glycine-binding site	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064821	LOC127064821	probable glutamate receptor	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064822	LOC127064822	glutamate receptor 1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064823	LOC127064823	probable glutamate receptor	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064824	LOC127064824	glutamate receptor ionotropic, kainate glr-3-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064825	LOC127064825	probable glutamate receptor	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064871	LOC127064871	glutamate receptor U1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127064886	LOC127064886	glutamate receptor ionotropic, kainate glr-3-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127070958	LOC127070958	probable glutamate receptor	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127070959	LOC127070959	glutamate receptor ionotropic, delta-1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127071066	LOC127071066	glutamate receptor ionotropic, delta-2-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127071068	LOC127071068	glutamate receptor ionotropic, delta-1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127071070	LOC127071070	glutamate receptor-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127071073	LOC127071073	glutamate receptor 3-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127071083	LOC127071083	Ligated ion channel L-glutamate- and glycine-binding site	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127071149	LOC127071149	glutamate receptor ionotropic, delta-1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127071150	LOC127071150	probable glutamate receptor	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127071152	LOC127071152	glutamate receptor ionotropic, delta-1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127071153	LOC127071153	glutamate receptor 1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000108	Vespula_vulgaris	LOC127071156	LOC127071156	glutamate receptor ionotropic, delta-1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000114	Polistes_dominula	LOC107067738	FASN3	Fatty acid synthase 3	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Polistes_dominula	LOC107071460	LOC107071460	fatty acid synthase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127062155	LOC127062155	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127062156	LOC127062156	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127062188	LOC127062188	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127062193	LOC127062193	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127062547	LOC127062547	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127062548	LOC127062548	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127062549	LOC127062549	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127062550	LOC127062550	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127062556	LOC127062556	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127062557	LOC127062557	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127063701	LOC127063701	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127064300	LOC127064300	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000114	Vespula_vulgaris	LOC127069621	LOC127069621	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000155	Ancistrocerus_nigricornis	ENSANRG00005005713	LOC127072370	Domain in histone families 1 and 5	OrthoFinder orthology transfer from: Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000155	Ancistrocerus_nigricornis	ENSANRG00005009432	LOC127064408; LOC127064551	late histone H1-like; histone H1-like	OrthoFinder orthology transfer from: Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000155	Polistes_dominula	LOC107066965	LOC107066965	late histone H1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000155	Vespula_vulgaris	LOC127064394	LOC127064394	late histone H1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000155	Vespula_vulgaris	LOC127064408	LOC127064408	late histone H1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000155	Vespula_vulgaris	LOC127064551	LOC127064551	histone H1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000155	Vespula_vulgaris	LOC127069419	LOC127069419	histone H1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000155	Vespula_vulgaris	LOC127070667	LOC127070667	late histone H1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000155	Vespula_vulgaris	LOC127072370	LOC127072370	Domain in histone families 1 and 5	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Ancistrocerus_nigricornis	ENSANRG00005000946				not directly annotated
+N0.HOG0000158	Ancistrocerus_nigricornis	ENSANRG00005000960				not directly annotated
+N0.HOG0000158	Ancistrocerus_nigricornis	ENSANRG00005001001				not directly annotated
+N0.HOG0000158	Ancistrocerus_nigricornis	ENSANRG00005001116				not directly annotated
+N0.HOG0000158	Ancistrocerus_nigricornis	ENSANRG00005001263				not directly annotated
+N0.HOG0000158	Ancistrocerus_nigricornis	ENSANRG00005002860	LOC127069930	Odorant receptor	OrthoFinder orthology transfer from: Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000158	Ancistrocerus_nigricornis	ENSANRG00005003832	LOC107070831	odorant receptor 10a-like	OrthoFinder orthology transfer from: Polistes_dominula	orthology-inferred; not a direct NCBI name
+N0.HOG0000158	Ancistrocerus_nigricornis	ENSANRG00005004439				not directly annotated
+N0.HOG0000158	Polistes_dominula	LOC107066992	LOC107066992	7tm Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107066993	LOC107066993	7tm Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107070831	LOC107070831	odorant receptor 10a-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107073260	LOC107073260	Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107073261	LOC107073261	7tm Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107073262	LOC107073262	7tm Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107073263	LOC107073263	7tm Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107073547	LOC107073547	7tm Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107073597	LOC107073597	Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107073639	LOC107073639		NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107073708	LOC107073708		NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107073765	LOC107073765	7tm Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Polistes_dominula	LOC107073776	LOC107073776	7tm Odorant receptor	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127064791	LOC127064791		NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068513	LOC127068513	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068516	LOC127068516	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068517	LOC127068517	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068519	LOC127068519		NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068520	LOC127068520	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068521	LOC127068521	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068522	LOC127068522	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068540	LOC127068540		NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068541	LOC127068541	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068647	LOC127068647	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068648	LOC127068648	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068649	LOC127068649	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127068650	LOC127068650	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127069927	LOC127069927	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127069930	LOC127069930	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127072280	LOC127072280	7tm Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127072300	LOC127072300	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127072301	LOC127072301	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000158	Vespula_vulgaris	LOC127072452	LOC127072452	Odorant receptor	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000159	Ancistrocerus_nigricornis	ENSANRG00005008156				not directly annotated
+N0.HOG0000159	Ancistrocerus_nigricornis	ENSANRG00005008164				not directly annotated
+N0.HOG0000159	Ancistrocerus_nigricornis	ENSANRG00005008845				not directly annotated
+N0.HOG0000159	Ancistrocerus_nigricornis	ENSANRG00005009042				not directly annotated
+N0.HOG0000159	Ancistrocerus_nigricornis	ENSANRG00005009053				not directly annotated
+N0.HOG0000159	Ancistrocerus_nigricornis	ENSANRG00005009200				not directly annotated
+N0.HOG0000159	Ancistrocerus_nigricornis	ENSANRG00005010061				not directly annotated
+N0.HOG0000159	Ancistrocerus_nigricornis	ENSANRG00005010473				not directly annotated
+N0.HOG0000162	Ancistrocerus_nigricornis	ENSANRG00005003292	LOC107074093	elongation of very long chain fatty acids protein 1-like	OrthoFinder orthology transfer from: Polistes_dominula	orthology-inferred; not a direct NCBI name
+N0.HOG0000162	Ancistrocerus_nigricornis	ENSANRG00005005959	CG30008		OrthoFinder orthology transfer from: Drosophila_melanogaster	orthology-inferred; not a direct NCBI name
+N0.HOG0000162	Ancistrocerus_nigricornis	ENSANRG00005006367	CG30008; LOC107066959; LOC107066960; LOC127070504; LOC127070514; LOC127070519; LOC127070554; LOC127070563; LOC127070634	elongation of very long chain fatty acids protein 1-like; elongation of very long chain fatty acids protein AAEL008004-like; elongation of very long chain fatty acids protein-like; elongation of very long chain fatty acids protein F-like	OrthoFinder orthology transfer from: Drosophila_melanogaster; Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000162	Polistes_dominula	LOC107066959	LOC107066959	elongation of very long chain fatty acids protein 1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000162	Polistes_dominula	LOC107066960	LOC107066960	elongation of very long chain fatty acids protein AAEL008004-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000162	Polistes_dominula	LOC107074093	LOC107074093	elongation of very long chain fatty acids protein 1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000162	Vespula_vulgaris	LOC127070504	LOC127070504	elongation of very long chain fatty acids protein 1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000162	Vespula_vulgaris	LOC127070514	LOC127070514	elongation of very long chain fatty acids protein AAEL008004-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000162	Vespula_vulgaris	LOC127070519	LOC127070519	elongation of very long chain fatty acids protein 1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000162	Vespula_vulgaris	LOC127070554	LOC127070554	elongation of very long chain fatty acids protein-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000162	Vespula_vulgaris	LOC127070563	LOC127070563	elongation of very long chain fatty acids protein 1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000162	Vespula_vulgaris	LOC127070634	LOC127070634	elongation of very long chain fatty acids protein F-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000166	Ancistrocerus_nigricornis	ENSANRG00005002483				not directly annotated
+N0.HOG0000166	Ancistrocerus_nigricornis	ENSANRG00005002515				not directly annotated
+N0.HOG0000166	Ancistrocerus_nigricornis	ENSANRG00005002887				not directly annotated
+N0.HOG0000166	Ancistrocerus_nigricornis	ENSANRG00005006294				not directly annotated
+N0.HOG0000166	Ancistrocerus_nigricornis	ENSANRG00005008819				not directly annotated
+N0.HOG0000166	Ancistrocerus_nigricornis	ENSANRG00005009768				not directly annotated
+N0.HOG0000166	Ancistrocerus_nigricornis	ENSANRG00005010320				not directly annotated
+N0.HOG0000299	Ancistrocerus_nigricornis	ENSANRG00005008082	CG32473; CG8773; CG8774; LOC107063913; LOC127067317	glutamyl aminopeptidase-like; aminopeptidase A-like	OrthoFinder orthology transfer from: Drosophila_melanogaster; Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000299	Drosophila_melanogaster	FBgn0038135	CG8773		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000299	Drosophila_melanogaster	FBgn0038136	CG8774		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000299	Drosophila_melanogaster	FBgn0052473	CG32473		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000299	Polistes_dominula	LOC107063631	LOC107063631	glutamyl aminopeptidase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000299	Polistes_dominula	LOC107063711	LOC107063711	glutamyl aminopeptidase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000299	Polistes_dominula	LOC107063913	LOC107063913	glutamyl aminopeptidase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000299	Vespula_vulgaris	LOC127065312	LOC127065312	glutamyl aminopeptidase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000299	Vespula_vulgaris	LOC127067317	LOC127067317	aminopeptidase A-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000373	Ancistrocerus_nigricornis	ENSANRG00005003372				not directly annotated
+N0.HOG0000373	Ancistrocerus_nigricornis	ENSANRG00005005838				not directly annotated
+N0.HOG0000373	Ancistrocerus_nigricornis	ENSANRG00005006147				not directly annotated
+N0.HOG0000373	Ancistrocerus_nigricornis	ENSANRG00005006209				not directly annotated
+N0.HOG0000373	Ancistrocerus_nigricornis	ENSANRG00005006265				not directly annotated
+N0.HOG0000373	Ancistrocerus_nigricornis	ENSANRG00005010062				not directly annotated
+N0.HOG0000373	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000373	Polistes_dominula	LOC107073329	LOC107073329	Zinc knuckle	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000373	Polistes_dominula	LOC107073421	LOC107073421	Zinc knuckle	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000470	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000470	Polistes_dominula	LOC107070864	LOC107070864	carbonic anhydrase 7-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000470	Polistes_dominula	LOC107070865	LOC107070865	carbonic anhydrase 1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000470	Polistes_dominula	LOC107070866	LOC107070866	carbonic anhydrase 1-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000470	Vespula_vulgaris	LOC127068450	LOC127068450	carbonic anhydrase 2-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000470	Vespula_vulgaris	LOC127068451	LOC127068451	carbonic anhydrase 7-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000470	Vespula_vulgaris	LOC127068452	LOC127068452	carbonic anhydrase-related protein-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000504	Ancistrocerus_nigricornis	ENSANRG00005010300	LOC107070384; LOC107070385; LOC127072431; LOC127072432; LOC127072433; LOC127072434; LOC127072435	antizyme inhibitor 2-like; ornithine decarboxylase 2-like; ornithine decarboxylase-like; ornithine decarboxylase 1-like	OrthoFinder orthology transfer from: Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000504	Drosophila_melanogaster				FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000504	Polistes_dominula	LOC107070384	LOC107070384	antizyme inhibitor 2-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000504	Polistes_dominula	LOC107070385	LOC107070385	antizyme inhibitor 2-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000504	Vespula_vulgaris	LOC127072431	LOC127072431	ornithine decarboxylase 2-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000504	Vespula_vulgaris	LOC127072432	LOC127072432	ornithine decarboxylase 2-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000504	Vespula_vulgaris	LOC127072433	LOC127072433	ornithine decarboxylase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000504	Vespula_vulgaris	LOC127072434	LOC127072434	ornithine decarboxylase 1-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000504	Vespula_vulgaris	LOC127072435	LOC127072435	ornithine decarboxylase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000518	Ancistrocerus_nigricornis	ENSANRG00005001617	CG33262; LOC107069680; LOC127068207	DM4/DM12 family	OrthoFinder orthology transfer from: Drosophila_melanogaster; Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000518	Drosophila_melanogaster	FBgn0037940	CG14720		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000518	Drosophila_melanogaster	FBgn0053262	CG33262		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000518	Drosophila_melanogaster	FBgn0085457	CG34428		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000518	Drosophila_melanogaster	FBgn0085458	CG34429		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000518	Polistes_dominula	LOC107069680	LOC107069680	DM4/DM12 family	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000518	Polistes_dominula	LOC107069681	LOC107069681	DM4/DM12 family	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000518	Polistes_dominula	LOC107069744	LOC107069744	DM4/DM12 family	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000518	Vespula_vulgaris	LOC127067955	LOC127067955	DM4/DM12 family	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000518	Vespula_vulgaris	LOC127068206	LOC127068206	DM4/DM12 family	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000518	Vespula_vulgaris	LOC127068207	LOC127068207	DM4/DM12 family	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000592	Ancistrocerus_nigricornis	ENSANRG00005006182	CG18542; CG32939; LOC107064044; LOC107064053; LOC107071244; LOC127069921; LOC127069925; LOC127072823	ESCO1/2 acetyl-transferase; N-acetyltransferase activity; probable N-acetyltransferase camello; N-acetyltransferase family 8 member 3-like	OrthoFinder orthology transfer from: Drosophila_melanogaster; Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000592	Drosophila_melanogaster	FBgn0037731	CG18542		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000592	Drosophila_melanogaster	FBgn0052939	CG32939		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000592	Polistes_dominula	LOC107064044	LOC107064044	ESCO1/2 acetyl-transferase	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000592	Polistes_dominula	LOC107064053	LOC107064053	ESCO1/2 acetyl-transferase	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000592	Polistes_dominula	LOC107071244	LOC107071244	N-acetyltransferase activity	NCBI: pd_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000592	Vespula_vulgaris	LOC127069921	LOC127069921	probable N-acetyltransferase camello	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000592	Vespula_vulgaris	LOC127069925	LOC127069925	N-acetyltransferase family 8 member 3-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000592	Vespula_vulgaris	LOC127072823	LOC127072823	ESCO1/2 acetyl-transferase	NCBI: vv_genetable.csv; eggNOG-mapper exact-gene-ID fallback	direct NCBI-derived annotation
+N0.HOG0000639	Polistes_dominula	LOC107073675	LOC107073675	fatty acid synthase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000639	Polistes_dominula	LOC107073738	LOC107073738	fatty acid synthase-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000639	Vespula_vulgaris	LOC127062212	LOC127062212	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000639	Vespula_vulgaris	LOC127062551	LOC127062551	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000639	Vespula_vulgaris	LOC127062553	LOC127062553	fatty acid synthase-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000742	Ancistrocerus_nigricornis	ENSANRG00005001443				not directly annotated
+N0.HOG0000742	Ancistrocerus_nigricornis	ENSANRG00005009186				not directly annotated
+N0.HOG0000742	Ancistrocerus_nigricornis	ENSANRG00005010129				not directly annotated
+N0.HOG0000814	Ancistrocerus_nigricornis	ENSANRG00005010059	CG9265; LOC107072132; LOC127068286; LOC127068287; LOC127068288; LOC127071340	short-chain dehydrogenase/reductase family 16C member 6-like; estradiol 17-beta-dehydrogenase 11-like; short-chain dehydrogenase/reductase family 16C member 6	OrthoFinder orthology transfer from: Drosophila_melanogaster; Polistes_dominula; Vespula_vulgaris	orthology-inferred; not a direct NCBI name
+N0.HOG0000814	Drosophila_melanogaster	FBgn0032910	CG9265		FlyBase-derived dmel_genetable.csv	FlyBase-derived outgroup evidence
+N0.HOG0000814	Polistes_dominula	LOC107072132	LOC107072132	short-chain dehydrogenase/reductase family 16C member 6-like	NCBI: pd_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000814	Vespula_vulgaris	LOC127068286	LOC127068286	estradiol 17-beta-dehydrogenase 11-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000814	Vespula_vulgaris	LOC127068287	LOC127068287	estradiol 17-beta-dehydrogenase 11-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000814	Vespula_vulgaris	LOC127068288	LOC127068288	estradiol 17-beta-dehydrogenase 11-like	NCBI: vv_genetable.csv	direct NCBI-derived annotation
+N0.HOG0000814	Vespula_vulgaris	LOC127071340	LOC127071340	short-chain dehydrogenase/reductase family 16C member 6	NCBI: vv_genetable.csv	direct NCBI-derived annotation

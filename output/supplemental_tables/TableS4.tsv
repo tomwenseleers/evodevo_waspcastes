@@ -1,0 +1,25 @@
+Species	Analysis_unit	Stage	Contrast	tested	significant	higher_in_late_or_queen	higher_in_early_or_worker
+Polistes dominula	Gene	L1	Late versus early	10326	784	526	258
+Polistes dominula	Gene	L2	Late versus early	10326	544	220	324
+Polistes dominula	Gene	L3	Late versus early	10326	347	211	136
+Polistes dominula	Gene	L4	Late versus early	10326	1284	648	636
+Polistes dominula	Gene	L5	Late versus early	10326	668	342	326
+Polistes dominula	Gene	P	Late versus early	10326	648	145	503
+Polistes dominula	N13 HOG	L1	Late versus early	9342	736	495	241
+Polistes dominula	N13 HOG	L2	Late versus early	9342	501	211	290
+Polistes dominula	N13 HOG	L3	Late versus early	9342	318	188	130
+Polistes dominula	N13 HOG	L4	Late versus early	9342	1199	588	611
+Polistes dominula	N13 HOG	L5	Late versus early	9342	615	312	303
+Polistes dominula	N13 HOG	P	Late versus early	9342	601	133	468
+Vespula vulgaris	Gene	L1	Queen versus worker	10353	555	245	310
+Vespula vulgaris	Gene	L2	Queen versus worker	10353	1226	823	403
+Vespula vulgaris	Gene	L3	Queen versus worker	10353	671	297	374
+Vespula vulgaris	Gene	L4	Queen versus worker	10353	499	299	200
+Vespula vulgaris	Gene	L5	Queen versus worker	10353	3548	2046	1502
+Vespula vulgaris	Gene	P	Queen versus worker	10353	2782	1247	1535
+Vespula vulgaris	N13 HOG	L1	Queen versus worker	9280	508	227	281
+Vespula vulgaris	N13 HOG	L2	Queen versus worker	9280	1123	754	369
+Vespula vulgaris	N13 HOG	L3	Queen versus worker	9280	609	266	343
+Vespula vulgaris	N13 HOG	L4	Queen versus worker	9280	448	269	179
+Vespula vulgaris	N13 HOG	L5	Queen versus worker	9280	3352	1934	1418
+Vespula vulgaris	N13 HOG	P	Queen versus worker	9280	2583	1142	1441

@@ -1,0 +1,4 @@
+annotation_set	annotated_features	feature_term_pairs	distinct_terms
+N13 final GO: direct conserved plus Dmel experimental	7702	239890	15392
+N13 KEGG pathway union	3634	16367	380
+N13 KEGG pathway conserved	3593	16178	380

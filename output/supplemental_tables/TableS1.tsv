@@ -1,0 +1,25 @@
+Species	Contrast	State	Stage	n	Colonies
+Polistes dominula	Season	Early	L1	6	1, 2, 3
+Polistes dominula	Season	Early	L2	6	1, 2, 3
+Polistes dominula	Season	Early	L3	7	1, 2, 3
+Polistes dominula	Season	Early	L4	6	1, 2, 3
+Polistes dominula	Season	Early	L5	6	1, 2, 3
+Polistes dominula	Season	Early	P	6	1, 2, 3
+Polistes dominula	Season	Late	L1	6	5, 6, 8
+Polistes dominula	Season	Late	L2	8	5, 6, 8
+Polistes dominula	Season	Late	L3	7	5, 6, 8
+Polistes dominula	Season	Late	L4	7	5, 6, 8
+Polistes dominula	Season	Late	L5	6	5, 6, 8
+Polistes dominula	Season	Late	P	6	5, 6, 8
+Vespula vulgaris	Caste	Worker	L1	6	2, 5, 11
+Vespula vulgaris	Caste	Worker	L2	6	2, 5, 11
+Vespula vulgaris	Caste	Worker	L3	4	2, 11
+Vespula vulgaris	Caste	Worker	L4	3	5, 11
+Vespula vulgaris	Caste	Worker	L5	6	2, 5, 11
+Vespula vulgaris	Caste	Worker	P	6	2, 5, 11
+Vespula vulgaris	Caste	Queen	L1	6	26, 27, 29
+Vespula vulgaris	Caste	Queen	L2	6	26, 27, 29
+Vespula vulgaris	Caste	Queen	L3	6	26, 27, 29
+Vespula vulgaris	Caste	Queen	L4	6	26, 27, 29
+Vespula vulgaris	Caste	Queen	L5	5	26, 27, 29
+Vespula vulgaris	Caste	Queen	P	6	26, 27, 29

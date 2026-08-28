@@ -1,0 +1,7 @@
+.Rhistory
+.Rproj.user/
+.gdtools-cache/
+.R_library/
+*.tmp
+*.inspect.ndjson
+~$*

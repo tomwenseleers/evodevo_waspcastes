@@ -1,0 +1,24 @@
+HOG	Interest class	Consensus HOG name	Vespula vulgaris copies	Polistes dominula copies	Ancistrocerus nigricornis copies	Copies across all solitary/outgroup taxa	Total member copies across all social wasps
+N0.HOG0000279	chemoperception	odorant-binding protein family	1	1	0	0	13
+N0.HOG0000320	chemoperception	odorant receptor family	1	0	0	0	91
+N0.HOG0000659	chemoperception	odorant receptor family	1	0	0	0	8
+N0.HOG0010009	chemoperception	odorant-binding protein family	1	1	1	1	10
+N0.HOG0010396	chemoperception	odorant receptor family	1	0	1	1	13
+N0.HOG0012646	chemoperception	odorant receptor family	1	0	0	0	6
+N0.HOG0001500	digestion / nutrition	mitochondrial inner membrane protease subunit 2	1	1	0	0	9
+N0.HOG0002073	digestion / nutrition	protein toll-like / carboxypeptidase N subunit 2-like	0	23	0	0	78
+N0.HOG0008498	digestion / nutrition	serine protease family	1	1	1	1	12
+N0.HOG0008752	digestion / nutrition	serine protease family	1	1	1	1	14
+N0.HOG0015051	digestion / nutrition	Zinc carboxypeptidase	0	1	0	0	4
+N0.HOG0007603	endocrine / reproductive physiology	Ecdysone-inducible gene L2	1	1	1	1	14
+N0.HOG0010098	endocrine / reproductive physiology	ecdysone-induced protein 74EF-like / mitochondrial distribution and morphology protein 12-like	1	1	0	0	8
+N0.HOG0000582	lipid metabolism / possible chemical communication	fatty acid synthase	2	9	0	0	114
+N0.HOG0000758	lipid metabolism / possible chemical communication	fatty acid-binding protein 12-like; fatty acid-binding protein, adipocyte-like	0	0	1	1	1
+N0.HOG0009102	lipid metabolism / possible chemical communication	fatty acid synthase	2	0	0	0	35
+N0.HOG0010036	lipid metabolism / possible chemical communication	fatty acid synthase	3	0	0	0	19
+N0.HOG0017867	lipid metabolism / possible chemical communication	ATP-binding cassette sub-family A member 1-like; retinal-specific phospholipid-transporting ATPase ABCA4-like	0	0	1	1	1
+N0.HOG0000073	venom / defence	Seminal fluid protein 53D / venom peptide SjAPI-2-like	2	1	0	0	20
+N0.HOG0000164	venom / defence	venom allergen 3-like / venom allergen 5-like	1	1	1	1	14
+N0.HOG0007363	venom / defence	phospholipase B1, membrane-associated-like	0	1	0	0	11
+N0.HOG0009981	venom / defence	zinc metalloproteinase nas-4-like / astacin-like metalloprotease toxin 1	1	1	1	1	13
+N0.HOG0014963	venom / defence	phospholipase D C-like	0	1	0	0	2

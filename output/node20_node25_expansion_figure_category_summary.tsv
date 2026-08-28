@@ -1,0 +1,10 @@
+node	focal_transition	figure_category	n_HOGs	HOGs	category_order	percent_of_expanded_HOGs
+20	Stem Polistinae+Vespinae; associated with the inferred origin of eusociality in this sampled wasp clade	Lipid / CHC	2	N0.HOG0000101;N0.HOG0000639	1	20
+20	Stem Polistinae+Vespinae; associated with the inferred origin of eusociality in this sampled wasp clade	Chemoperception	2	N0.HOG0000028;N0.HOG0000158	2	20
+20	Stem Polistinae+Vespinae; associated with the inferred origin of eusociality in this sampled wasp clade	Digestion / nutrition	1	N0.HOG0000299	3	10
+20	Stem Polistinae+Vespinae; associated with the inferred origin of eusociality in this sampled wasp clade	Endocrine	1	N0.HOG0000058	4	10
+20	Stem Polistinae+Vespinae; associated with the inferred origin of eusociality in this sampled wasp clade	Other / unresolved	4	N0.HOG0000103;N0.HOG0000470;N0.HOG0000518;N0.HOG0000592	7	40
+25	Stem Vespinae; associated with the origin of advanced eusociality and morphologically distinct castes	Lipid / CHC	3	N0.HOG0000114;N0.HOG0000162;N0.HOG0000814	1	37.5
+25	Stem Vespinae; associated with the origin of advanced eusociality and morphologically distinct castes	Chemoperception	2	N0.HOG0000042;N0.HOG0000050	2	25
+25	Stem Vespinae; associated with the origin of advanced eusociality and morphologically distinct castes	Digestion / nutrition	1	N0.HOG0000504	3	12.5
+25	Stem Vespinae; associated with the origin of advanced eusociality and morphologically distinct castes	Other / unresolved	2	N0.HOG0000108;N0.HOG0000155	7	25

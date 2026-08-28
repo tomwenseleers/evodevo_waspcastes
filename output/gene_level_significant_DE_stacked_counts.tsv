@@ -1,0 +1,49 @@
+species	stage	category	n_genes
+Polistes dominula	L1	DE in both species	44
+Polistes dominula	L1	DE in focal species only	701
+Polistes dominula	L1	No N13 HOG	3
+Polistes dominula	L1	Non-coding RNA	36
+Polistes dominula	L2	DE in both species	61
+Polistes dominula	L2	DE in focal species only	444
+Polistes dominula	L2	No N13 HOG	4
+Polistes dominula	L2	Non-coding RNA	35
+Polistes dominula	L3	DE in both species	18
+Polistes dominula	L3	DE in focal species only	301
+Polistes dominula	L3	No N13 HOG	8
+Polistes dominula	L3	Non-coding RNA	20
+Polistes dominula	L4	DE in both species	50
+Polistes dominula	L4	DE in focal species only	1164
+Polistes dominula	L4	No N13 HOG	12
+Polistes dominula	L4	Non-coding RNA	58
+Polistes dominula	L5	DE in both species	194
+Polistes dominula	L5	DE in focal species only	446
+Polistes dominula	L5	No N13 HOG	6
+Polistes dominula	L5	Non-coding RNA	22
+Polistes dominula	P	DE in both species	196
+Polistes dominula	P	DE in focal species only	423
+Polistes dominula	P	No N13 HOG	3
+Polistes dominula	P	Non-coding RNA	26
+Vespula vulgaris	L1	DE in both species	44
+Vespula vulgaris	L1	DE in focal species only	470
+Vespula vulgaris	L1	No N13 HOG	0
+Vespula vulgaris	L1	Non-coding RNA	41
+Vespula vulgaris	L2	DE in both species	61
+Vespula vulgaris	L2	DE in focal species only	1072
+Vespula vulgaris	L2	No N13 HOG	7
+Vespula vulgaris	L2	Non-coding RNA	86
+Vespula vulgaris	L3	DE in both species	17
+Vespula vulgaris	L3	DE in focal species only	602
+Vespula vulgaris	L3	No N13 HOG	2
+Vespula vulgaris	L3	Non-coding RNA	50
+Vespula vulgaris	L4	DE in both species	50
+Vespula vulgaris	L4	DE in focal species only	410
+Vespula vulgaris	L4	No N13 HOG	0
+Vespula vulgaris	L4	Non-coding RNA	39
+Vespula vulgaris	L5	DE in both species	194
+Vespula vulgaris	L5	DE in focal species only	3191
+Vespula vulgaris	L5	No N13 HOG	5
+Vespula vulgaris	L5	Non-coding RNA	158
+Vespula vulgaris	P	DE in both species	203
+Vespula vulgaris	P	DE in focal species only	2435
+Vespula vulgaris	P	No N13 HOG	7
+Vespula vulgaris	P	Non-coding RNA	137

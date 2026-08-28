@@ -1,0 +1,11 @@
+HOG	change	family_p	branch_p	result_source	consensus_gene_name	go_annotated
+N0.HOG0000058	3	0	0.000638988	main_model	farnesol dehydrogenase-like / dehydrogenase/reductase SDR family member 11-like	TRUE
+N0.HOG0000103	2	0	0.000699837	main_model	histone H2B-like family	TRUE
+N0.HOG0000299	2	0	0.000699837	main_model	glutamyl aminopeptidase-like / aminopeptidase A-like	TRUE
+N0.HOG0000470	2	0.001	0.000699837	main_model	carbonic anhydrase 7-like / carbonic anhydrase 1-like	FALSE
+N0.HOG0000518	2	0.001	0.000699837	main_model	DM4/DM12 family	FALSE
+N0.HOG0000592	2	0	0.000699837	main_model	ESCO1/2 acetyl-transferase / N-acetyltransferase activity	FALSE
+N0.HOG0000639	2	0	0.000699837	main_model	fatty acid synthase	TRUE
+N0.HOG0000101	6	0	0.00287406	large_family_individual_run	cytochrome P450 family	TRUE
+N0.HOG0000158	6	0	0.00447613	large_family_individual_run	odorant receptor family	TRUE
+N0.HOG0000028	2	0	0.00774613	main_model	odorant receptor family	TRUE

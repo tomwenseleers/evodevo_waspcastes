@@ -1,0 +1,15 @@
+VALIDATION_OK
+final_GO_input	TRUE
+top_300_foreground	TRUE
+full_GO_names	TRUE
+no_duplicate_HOG_GO_pairs	TRUE
+reproduction_terms_plotted	TRUE
+complete_topGO_export	TRUE
+figure1_exported	TRUE
+figure1_panel_labels	TRUE
+figure1_category_order	TRUE
+figure2_exported	TRUE
+figure2_panel_labels	TRUE
+supplementary_workbook_exported	TRUE
+supplementary_GO_names_complete	TRUE
+supplementary_tables_nonempty	TRUE

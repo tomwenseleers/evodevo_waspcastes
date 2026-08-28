@@ -1,0 +1,85 @@
+HOG	primary_category	vizueta_like_group	confidence	chc_specificity	rationale
+N0.HOG0000058	Neural, endocrine and behavioural signalling	Endocrine signalling candidate	Moderate	Isoprenoid related, not CHC specific	Farnesol dehydrogenase catalyses a late step in insect juvenile-hormone biosynthesis, making this an endocrine-metabolism candidate; exact orthology and corpora-allata expression remain unverified in these wasps.
+N0.HOG0000103	Gene regulation, chromatin and development	Other	High	Not applicable	Histone H2B-like chromatin protein family.
+N0.HOG0000299	Digestion and nutrient metabolism	Digestion	Moderate	Not applicable	Glutamyl aminopeptidase/aminopeptidase A can mediate peptide hydrolysis, although a specifically digestive tissue role is not established.
+N0.HOG0000470	Core metabolism, bioenergetics and transport	Other	High	Not applicable	Carbonic anhydrase family involved in acid-base and ion physiology.
+N0.HOG0000518	Unknown or insufficiently characterised	Uncertain	Low	Not applicable	Only a DM4/DM12 domain-family annotation is available; this does not establish a specific biological process.
+N0.HOG0000592	Gene regulation, chromatin and development	Other	High	Not applicable	ESCO1/2-like acetyltransferase involved in sister-chromatid cohesion and cell-cycle regulation.
+N0.HOG0000639	Lipid metabolism and potential CHC production	CHC/lipid metabolism	Moderate	Plausible upstream CHC pathway component	Fatty acid synthase supplies long-chain fatty-acid precursors used in many lipid pathways, including CHC biosynthesis, but is not CHC specific.
+N0.HOG0000101	Detoxification, defence and venom	CHC/lipid metabolism candidate	Low	P450 subfamily unresolved	Mixed CYP4-like HOG dominated by CYP4C/CYP4p annotations with only some CYP4G-like members; the whole HOG cannot be assigned to CHC biosynthesis.
+N0.HOG0000032	Transposable elements	Other	High	Not applicable	Reverse-transcriptase/transposable-element family; expansion may partly reflect repeat or gene-model behaviour.
+N0.HOG0000158	Chemoperception	Chemoperception	High	Not applicable	Odorant receptor family.
+N0.HOG0000028	Chemoperception	Chemoperception	High	Not applicable	Odorant receptor family.
+N0.HOG0000108	Neural, endocrine and behavioural signalling	Other	Moderate	Not applicable	Predominantly conventional ionotropic glutamate-receptor annotations; a chemosensory IR role is not demonstrated for this broad HOG.
+N0.HOG0000858	Gene regulation, chromatin and development	Other	High	Not applicable	Geminin-like DNA-replication inhibitor and cell-cycle regulator.
+N0.HOG0000865	Gene regulation, chromatin and development	Other	Low	Not applicable	Conflicting slit-like and AF4/FMR2-like annotations imply developmental or transcriptional roles but do not support a precise function.
+N0.HOG0000881	Core metabolism, bioenergetics and transport	Other	High	Not applicable	AP-1 mu subunit involved in vesicle trafficking.
+N0.HOG0000894	Neural, endocrine and behavioural signalling	Endocrine signalling	High	Not applicable	E74 is a direct ecdysone-response transcription factor involved in metamorphic developmental regulation.
+N0.HOG0000895	Gene regulation, chromatin and development	Other	Moderate	Not applicable	Zinc-finger protein family, most plausibly transcriptional regulation; specific targets are unknown.
+N0.HOG0000901	Unknown or insufficiently characterised	Uncertain	Low	Not applicable	DUF4818-only annotation.
+N0.HOG0000947	Unknown or insufficiently characterised	Uncertain	Low	Not applicable	DUF4708-only annotation.
+N0.HOG0000957	Gene regulation, chromatin and development	Other	High	Not applicable	Bric-a-brac transcription-factor family involved in developmental patterning.
+N0.HOG0001360	Core metabolism, bioenergetics and transport	Other	Moderate	Not applicable	Golgin-like protein, consistent with Golgi organisation and membrane trafficking.
+N0.HOG0001062	Gene regulation, chromatin and development	Other	High	Not applicable	RAD21/REC8-like cohesin component involved in chromosome cohesion.
+N0.HOG0001142	Unknown or insufficiently characterised	Uncertain	Low	Not applicable	No informative annotation available.
+N0.HOG0001238	Gene regulation, chromatin and development	Other	Low	Not applicable	MYND-finger/PKC-binding annotation suggests regulatory interactions but no specific pathway can be assigned.
+N0.HOG0001313	Protein synthesis and RNA/protein processing	Other	High	Not applicable	DDX43/DDX53-like ATP-dependent RNA helicase family.
+N0.HOG0000841	Cytoskeleton, cilia and adhesion	Other	Moderate	Not applicable	Ropporin/sperm-capacitation protein family associated with flagellar or cytoskeletal function.
+N0.HOG0001531	Protein synthesis and RNA/protein processing	Other	High	Not applicable	Ribosomal protein family.
+N0.HOG0001978	Core metabolism, bioenergetics and transport	Other	High	Not applicable	Mitochondrial complex-I 49-kDa/NADH dehydrogenase subunit family.
+N0.HOG0001035	Cytoskeleton, cilia and adhesion	Other	Moderate	Not applicable	Tectonic/B9-domain family associated with ciliary organisation and developmental signalling.
+N0.HOG0000815	Protein synthesis and RNA/protein processing	Other	High	Not applicable	Ribosomal protein family.
+N0.HOG0001071	Protein synthesis and RNA/protein processing	Other	High	Not applicable	Ribosomal protein family.
+N0.HOG0000770	Gene regulation, chromatin and development	Other	Moderate	Not applicable	F-box protein family, consistent with regulated protein turnover.
+N0.HOG0000814	Lipid metabolism and potential CHC production	CHC/lipid metabolism candidate	Low	Lipid related, not CHC specific	SDR16C6/17-beta-hydroxysteroid-dehydrogenase-like proteins act in lipid or retinoid/steroid metabolism. Vizueta et al. treated a related SDR16C family as CHC associated, but a direct CHC role is not established here.
+N0.HOG0000066	Cytoskeleton, cilia and adhesion	Other	High	Not applicable	Tubulin family.
+N0.HOG0000351	Unknown or insufficiently characterised	Uncertain	Low	Not applicable	DUF4746-only annotation.
+N0.HOG0000382	Cytoskeleton, cilia and adhesion	Other	High	Not applicable	Tubulin family.
+N0.HOG0000465	Unknown or insufficiently characterised	Uncertain	Low	Not applicable	Only a DM4/DM12 domain-family annotation is available.
+N0.HOG0000496	Lipid metabolism and potential CHC production	CHC/lipid metabolism candidate	Moderate	Lipid related, not CHC specific	Apolipoprotein D/lipocalin-like family likely involved in hydrophobic-ligand or lipid transport, not CHC synthesis specifically.
+N0.HOG0000504	Digestion and nutrient metabolism	Digestion/nutrient metabolism	Moderate	Not applicable	Antizyme-inhibitor/ornithine-decarboxylase-like family points to polyamine and amino-acid metabolism rather than a digestive enzyme per se.
+N0.HOG0000589	Chemoperception	Chemoperception	High	Not applicable	Gustatory receptor family.
+N0.HOG0000550	Cytoskeleton, cilia and adhesion	Other	High	Not applicable	Muscle-specific protein 300 kDa family, a large cytoskeletal scaffold.
+N0.HOG0000643	Unknown or insufficiently characterised	Uncertain	Low	Not applicable	Only a DM4/DM12 domain-family annotation is available.
+N0.HOG0000658	Detoxification, defence and venom	Venom candidate	Moderate	Not applicable	Venom-metalloproteinase-like/sol narae annotation supports extracellular proteolysis and a plausible venom function, but direct venom-gland expression has not been demonstrated for these members.
+N0.HOG0000666	Cytoskeleton, cilia and adhesion	Other	High	Not applicable	Axonemal microtubule-stabilizer family.
+N0.HOG0000668	Core metabolism, bioenergetics and transport	Other	High	Not applicable	Mitochondrial cytochrome-c oxidase subunit VIa family.
+N0.HOG0000679	Unknown or insufficiently characterised	Uncertain	Low	Not applicable	The '48 related 2'/dimerisation annotation is insufficient for biological assignment.
+N0.HOG0000690	Gene regulation, chromatin and development	Other	High	Not applicable	Cyclin-dependent-kinase regulatory subunit family.
+N0.HOG0000765	Gene regulation, chromatin and development	Other	Moderate	Not applicable	Stem-cell-tumor family, associated with germline differentiation and cell-cycle regulation in insects.
+N0.HOG0000769	Core metabolism, bioenergetics and transport	Other	High	Not applicable	Voltage-dependent anion channel family involved in mitochondrial metabolite transport.
+N0.HOG0000633	Core metabolism, bioenergetics and transport	Other	Moderate	Not applicable	Organic-cation transporter family.
+N0.HOG0000019	Digestion and nutrient metabolism	Digestion/nutrient metabolism	Moderate	Not applicable	FAD-dependent glucose dehydrogenase indicates carbohydrate metabolism, although a gut-digestive role is not established.
+N0.HOG0000269	Gene regulation, chromatin and development	Other	Moderate	Not applicable	Diversified C2H2 zinc-finger family; likely transcriptional regulation, but targets and social/caste relevance are unknown.
+N0.HOG0001179	Detoxification, defence and venom	Venom	High	Not applicable	Vespid venom phospholipase A1 family. The Vespula vulgaris member LOC127066728 is the characterised venom allergen Ves v 1, and Polistes members include phospholipase A1/Pol d 1-like paralogs.
+N0.HOG0000499	Core metabolism, bioenergetics and transport	Other	High	Not applicable	Mitochondrial malate dehydrogenase family.
+N0.HOG0000262	Chemoperception	Chemoperception	Moderate	Not applicable	Includes an ionotropic receptor 75a-like annotation and is consistent with a chemosensory IR family, but the HOG also contains generic glutamate-receptor annotations.
+N0.HOG0000295	Cytoskeleton, cilia and adhesion	Other	Moderate	Not applicable	Ankyrin/nuclear-anchorage annotation suggests structural linkage between membrane, cytoskeleton, or nucleus.
+N0.HOG0000207	Lipid metabolism and potential CHC production	CHC/lipid metabolism candidate	Low	Lipid related, not CHC specific	Mixed 4-coumarate-CoA-ligase/AMP-binding/long-chain-fatty-acid-CoA-ligase annotations suggest acyl-CoA metabolism but not a resolved CHC enzyme.
+N0.HOG0000203	Cytoskeleton, cilia and adhesion	Other	High	Not applicable	Skeletor family associated with mitotic spindle and nuclear/cytoskeletal organisation.
+N0.HOG0000179	Cytoskeleton, cilia and adhesion	Other	Low	Not applicable	LRR15/osteomodulin-like annotation suggests extracellular or adhesion-related function, but insect function is unresolved.
+N0.HOG0000163	Detoxification, defence and venom	Defence/detoxification candidate	Low	Not applicable	Insect-allergen/nitrile-specifier annotation suggests defence or detoxification, but the annotation is sparse and does not establish a venom role.
+N0.HOG0000222	Cytoskeleton, cilia and adhesion	Other	High	Not applicable	Tropomyosin family.
+N0.HOG0000056	Detoxification, defence and venom	CHC/lipid metabolism candidate	Low	P450 subfamily unresolved	Predominantly CYP4C1/4C3-like rather than CYP4G; detoxification or lipid oxidation is more defensible than CHC biosynthesis.
+N0.HOG0000114	Lipid metabolism and potential CHC production	CHC/lipid metabolism	Moderate	Plausible upstream CHC pathway component	Fatty acid synthase supplies lipid and potential CHC precursors, but is not CHC specific.
+N0.HOG0000050	Chemoperception	Chemoperception	High	Not applicable	Odorant receptor family.
+N0.HOG0000042	Chemoperception	Chemoperception	High	Not applicable	Odorant receptor family.
+N0.HOG0000155	Gene regulation, chromatin and development	Other	High	Not applicable	Histone H1-like chromatin protein family.
+N0.HOG0000162	Lipid metabolism and potential CHC production	CHC/lipid metabolism	Moderate	Plausible upstream CHC pathway component	ELOVL-like very-long-chain fatty-acid elongase is a plausible upstream CHC-pathway enzyme, but also serves other lipid pathways.
+N0.HOG0001384	Gene regulation, chromatin and development	Other	Moderate	Not applicable	RING-finger protein 212B/narya-like family, consistent with ubiquitin-mediated meiotic or cell-cycle regulation.
+N0.HOG0010095	Unknown or insufficiently characterised	Uncertain	Low	Not applicable	Conflicting serine-rich adhesin and Ras-GEF-Q-like annotations do not support a stable functional assignment.
+N0.HOG0001351	Protein synthesis and RNA/protein processing	Other	High	Not applicable	Ribosomal protein family.
+N0.HOG0001284	Protein synthesis and RNA/protein processing	Other	High	Not applicable	Ribosomal protein family.
+N0.HOG0001246	Cytoskeleton, cilia and adhesion	Other	Moderate	Not applicable	Cilia- and flagella-associated protein 47 family.
+N0.HOG0001157	Neural, endocrine and behavioural signalling	Endocrine/behavioural signalling	Moderate	Not applicable	Foraging/PKG family affects feeding, locomotion, metabolism, learning, stress and social behaviour; it is signalling-related but not a canonical endocrine-hormone enzyme.
+N0.HOG0001139	Gene regulation, chromatin and development	Other	High	Not applicable	TAF9 general transcription-factor family.
+N0.HOG0000484	Cytoskeleton, cilia and adhesion	Other	High	Not applicable	Tubulin family.
+N0.HOG0000817	Cytoskeleton, cilia and adhesion	Other	Moderate	Not applicable	Thrombospondin-repeat protein family, consistent with extracellular interactions or adhesion.
+N0.HOG0000808	Gene regulation, chromatin and development	Other	Low	Not applicable	Only a broad 'negative regulation of cell proliferation' annotation is available and the member-level annotation is weak.
+N0.HOG0000794	Gene regulation, chromatin and development	Other	High	Not applicable	Replication protein A2 family involved in DNA replication and repair.
+N0.HOG0000744	Cytoskeleton, cilia and adhesion	Other	High	Not applicable	CFAP251/WDR66 family involved in cilia or flagella.
+N0.HOG0000442	Detoxification, defence and venom	CHC/lipid metabolism candidate	Low	P450 subfamily unresolved	Very small P450 HOG with CYP4C1-like annotation; no resolved CYP4G assignment supports a specific CHC claim.
+N0.HOG0000854	Lipid metabolism and potential CHC production	CHC/lipid metabolism candidate	Moderate	Lipid related, not CHC specific	Lipid-storage-droplet surface protein, relevant to lipid handling but not a canonical CHC-biosynthetic enzyme.
+N0.HOG0000069	Digestion and nutrient metabolism	Digestion	High	Not applicable	Maltase/glucosidase family directly consistent with carbohydrate digestion.
+N0.HOG0000094	Detoxification, defence and venom	Other	High	Not applicable	UDP-glucuronosyltransferase family involved in xenobiotic and endogenous-compound conjugation.
+N0.HOG0000223	Protein synthesis and RNA/protein processing	Digestion candidate	Low	Not applicable	Transmembrane serine protease 9-like supports extracellular or membrane-associated proteolysis; a digestive role is possible but not established.

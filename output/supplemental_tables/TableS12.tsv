@@ -1,0 +1,151 @@
+Node	Ontology	GO ID	GO term	Total HOGs (n)	Foreground HOGs (n)	Expected	Fold enrichment	weight01 P	Contributing HOGs
+20	BP	GO:0006723	cuticle hydrocarbon biosynthetic process	9	2	0.01	200	2.9e-05	N0.HOG0000101;N0.HOG0000639
+20	BP	GO:0050911	detection of chemical stimulus involved in sensory perception of smell	34	2	0.03	66.6666666666667	0.00045	N0.HOG0000028;N0.HOG0000158
+20	BP	GO:0006713	glucocorticoid catabolic process	1	1	0	Inf	0.00098	N0.HOG0000058
+20	BP	GO:0019373	epoxygenase P450 pathway	1	1	0	Inf	0.00098	N0.HOG0000101
+20	BP	GO:0018904	ether metabolic process	13	2	0.01	200	0.00168	N0.HOG0000101;N0.HOG0000639
+20	BP	GO:0043456	regulation of pentose-phosphate shunt	2	1	0	Inf	0.00195	N0.HOG0000058
+20	BP	GO:0046222	aflatoxin metabolic process	2	1	0	Inf	0.00195	N0.HOG0000101
+20	BP	GO:0032100	positive regulation of appetite	3	1	0	Inf	0.00293	N0.HOG0000639
+20	BP	GO:1902321	methyl-branched fatty acid biosynthetic process	3	1	0	Inf	0.00293	N0.HOG0000639
+20	BP	GO:1990616	magnesium ion export from mitochondrion	3	1	0	Inf	0.00293	N0.HOG0000058
+20	BP	GO:0002003	angiotensin maturation	4	1	0	Inf	0.0039	N0.HOG0000299
+20	BP	GO:0010961	intracellular magnesium ion homeostasis	4	1	0	Inf	0.0039	N0.HOG0000058
+20	BP	GO:1902603	carnitine transmembrane transport	4	1	0	Inf	0.0039	N0.HOG0000058
+20	BP	GO:1902616	O-acyl-L-carnitine transmembrane transport	4	1	0	Inf	0.0039	N0.HOG0000058
+20	BP	GO:0019233	sensory perception of pain	105	2	0.1	20	0.00426	N0.HOG0000028;N0.HOG0000101
+20	BP	GO:0006718	juvenile hormone biosynthetic process	5	1	0	Inf	0.00488	N0.HOG0000058
+20	BP	GO:0010430	fatty acid omega-oxidation	5	1	0	Inf	0.00488	N0.HOG0000101
+20	BP	GO:0030223	neutrophil differentiation	6	1	0.01	100	0.00585	N0.HOG0000639
+20	BP	GO:0006704	glucocorticoid biosynthetic process	7	1	0.01	100	0.00682	N0.HOG0000058
+20	BP	GO:0006853	carnitine shuttle	7	1	0.01	100	0.00682	N0.HOG0000058
+20	BP	GO:0008611	ether lipid biosynthetic process	8	1	0.01	100	0.0078	N0.HOG0000639
+20	BP	GO:0040022	feminization of hermaphroditic germ-line	8	1	0.01	100	0.0078	N0.HOG0000028
+20	BP	GO:0071329	cellular response to sucrose stimulus	9	1	0.01	100	0.00877	N0.HOG0000639
+20	BP	GO:0016125	sterol metabolic process	98	2	0.1	20	0.00929	N0.HOG0000101;N0.HOG0000639
+20	BP	GO:0006121	mitochondrial electron transport, succinate to ubiquinone	10	1	0.01	100	0.00974	N0.HOG0000158
+20	BP	GO:0090557	establishment of endothelial intestinal barrier	11	1	0.01	100	0.0107	N0.HOG0000639
+20	BP	GO:0006089	lactate metabolic process	13	1	0.01	100	0.01264	N0.HOG0000639
+20	BP	GO:0006105	succinate metabolic process	14	1	0.01	100	0.01361	N0.HOG0000158
+20	BP	GO:0006825	copper ion transport	14	1	0.01	100	0.01361	N0.HOG0000028
+20	BP	GO:0016063	rhodopsin biosynthetic process	15	1	0.01	100	0.01457	N0.HOG0000058
+20	BP	GO:0030224	monocyte differentiation	17	1	0.02	50	0.0165	N0.HOG0000639
+20	BP	GO:0042447	hormone catabolic process	17	1	0.02	50	0.0165	N0.HOG0000058
+20	BP	GO:0043455	regulation of secondary metabolic process	17	1	0.02	50	0.0165	N0.HOG0000058
+20	BP	GO:1901568	fatty acid derivative metabolic process	72	2	0.07	28.5714285714286	0.01842	N0.HOG0000101;N0.HOG0000639
+20	BP	GO:0035002	liquid clearance, open tracheal system	19	1	0.02	50	0.01843	N0.HOG0000058
+20	BP	GO:0043171	peptide catabolic process	19	1	0.02	50	0.01843	N0.HOG0000299
+20	BP	GO:0072488	ammonium transmembrane transport	19	1	0.02	50	0.01843	N0.HOG0000058
+20	BP	GO:0071392	cellular response to estradiol stimulus	20	1	0.02	50	0.01939	N0.HOG0000058
+20	BP	GO:0006491	N-glycan processing	22	1	0.02	50	0.02131	N0.HOG0000158
+20	BP	GO:0046949	fatty-acyl-CoA biosynthetic process	22	1	0.02	50	0.02131	N0.HOG0000639
+20	BP	GO:0071353	cellular response to interleukin-4	22	1	0.02	50	0.02131	N0.HOG0000639
+20	BP	GO:0040038	polar body extrusion after meiotic divisions	23	1	0.02	50	0.02227	N0.HOG0000101
+20	BP	GO:0055070	copper ion homeostasis	23	1	0.02	50	0.02227	N0.HOG0000028
+20	BP	GO:0006084	acetyl-CoA metabolic process	25	1	0.02	50	0.02419	N0.HOG0000639
+20	BP	GO:0033227	dsRNA transport	27	1	0.03	33.3333333333333	0.0261	N0.HOG0000299
+20	BP	GO:0001523	retinoid metabolic process	28	1	0.03	33.3333333333333	0.02706	N0.HOG0000101
+20	BP	GO:0019432	triglyceride biosynthetic process	30	1	0.03	33.3333333333333	0.02896	N0.HOG0000639
+20	BP	GO:0006369	termination of RNA polymerase II transcription	32	1	0.03	33.3333333333333	0.03087	N0.HOG0000101
+20	BP	GO:0045540	regulation of cholesterol biosynthetic process	33	1	0.03	33.3333333333333	0.03182	N0.HOG0000639
+20	BP	GO:0008610	lipid biosynthetic process	440	3	0.43	6.97674418604651	0.0321	N0.HOG0000058;N0.HOG0000101;N0.HOG0000639
+20	BP	GO:0046688	response to copper ion	36	1	0.04	25	0.03467	N0.HOG0000028
+20	BP	GO:0000398	mRNA splicing, via spliceosome	326	2	0.32	6.25	0.03726	N0.HOG0000028;N0.HOG0000101
+20	BP	GO:0007608	sensory perception of smell	88	3	0.09	33.3333333333333	0.03731	N0.HOG0000028;N0.HOG0000058;N0.HOG0000158
+20	BP	GO:0034030	ribonucleoside bisphosphate biosynthetic process	40	1	0.04	25	0.03846	N0.HOG0000639
+20	BP	GO:0034033	purine nucleoside bisphosphate biosynthetic process	40	1	0.04	25	0.03846	N0.HOG0000639
+20	BP	GO:0032835	glomerulus development	41	1	0.04	25	0.0394	N0.HOG0000299
+20	BP	GO:0006099	tricarboxylic acid cycle	42	1	0.04	25	0.04035	N0.HOG0000158
+20	BP	GO:0006301	postreplication repair	43	1	0.04	25	0.04129	N0.HOG0000101
+20	BP	GO:0035010	encapsulation of foreign target	43	1	0.04	25	0.04129	N0.HOG0000158
+20	BP	GO:0003382	epithelial cell morphogenesis	44	1	0.04	25	0.04223	N0.HOG0000058
+20	BP	GO:0006334	nucleosome assembly	44	1	0.04	25	0.04223	N0.HOG0000103
+20	BP	GO:0006101	citrate metabolic process	45	1	0.04	25	0.04317	N0.HOG0000158
+20	BP	GO:0010172	embryonic body morphogenesis	45	1	0.04	25	0.04317	N0.HOG0000028
+20	CC	GO:0032590	dendrite membrane	41	2	0.04	50	0.00069	N0.HOG0000028;N0.HOG0000158
+20	CC	GO:0042587	glycogen granule	8	1	0.01	100	0.008	N0.HOG0000639
+20	CC	GO:0045273	respiratory chain complex II (succinate dehydrogenase)	10	1	0.01	100	0.00999	N0.HOG0000158
+20	CC	GO:0045283	fumarate reductase complex	10	1	0.01	100	0.00999	N0.HOG0000158
+20	CC	GO:0000786	nucleosome	12	1	0.01	100	0.01198	N0.HOG0000103
+20	CC	GO:0005847	mRNA cleavage and polyadenylation specificity factor complex	16	1	0.02	50	0.01595	N0.HOG0000101
+20	MF	GO:0004984	olfactory receptor activity	23	2	0.03	66.6666666666667	0.00026	N0.HOG0000028;N0.HOG0000158
+20	MF	GO:0005549	odorant binding	25	2	0.03	66.6666666666667	0.00031	N0.HOG0000028;N0.HOG0000158
+20	MF	GO:0003845	11-beta-hydroxysteroid dehydrogenase [NAD(P)+] activity	1	1	0	Inf	0.00111	N0.HOG0000058
+20	MF	GO:0008392	arachidonate epoxygenase activity	1	1	0	Inf	0.00111	N0.HOG0000101
+20	MF	GO:0047886	farnesol dehydrogenase activity	1	1	0	Inf	0.00111	N0.HOG0000058
+20	MF	GO:0071771	aldehyde oxygenase (deformylating) activity	2	1	0	Inf	0.00222	N0.HOG0000101
+20	MF	GO:0072582	17-beta-hydroxysteroid dehydrogenase (NADP+) activity	2	1	0	Inf	0.00222	N0.HOG0000058
+20	MF	GO:0000253	3-beta-hydroxysteroid 3-dehydrogenase (NADP+) activity	3	1	0	Inf	0.00333	N0.HOG0000058
+20	MF	GO:0005476	carnitine:O-acyl-L-carnitine antiporter activity	3	1	0	Inf	0.00333	N0.HOG0000058
+20	MF	GO:0004303	estradiol 17-beta-dehydrogenase [NAD(P)+] activity	5	1	0.01	100	0.00554	N0.HOG0000058
+20	MF	GO:0004745	all-trans-retinol dehydrogenase (NAD+) activity	5	1	0.01	100	0.00554	N0.HOG0000058
+20	MF	GO:0015095	magnesium ion transmembrane transporter activity	7	1	0.01	100	0.00775	N0.HOG0000058
+20	MF	GO:0051538	3 iron, 4 sulfur cluster binding	7	1	0.01	100	0.00775	N0.HOG0000158
+20	MF	GO:0004571	mannosyl-oligosaccharide 1,2-alpha-mannosidase activity	9	1	0.01	100	0.00996	N0.HOG0000158
+20	MF	GO:0004312	fatty acid synthase activity	10	1	0.01	100	0.01106	N0.HOG0000639
+20	MF	GO:0008177	succinate dehydrogenase (quinone) activity	10	1	0.01	100	0.01106	N0.HOG0000158
+20	MF	GO:0070402	NADPH binding	10	1	0.01	100	0.01106	N0.HOG0000639
+20	MF	GO:0008395	steroid hydroxylase activity	11	1	0.01	100	0.01216	N0.HOG0000101
+20	MF	GO:0048039	ubiquinone binding	12	1	0.01	100	0.01326	N0.HOG0000158
+20	MF	GO:0051539	4 iron, 4 sulfur cluster binding	12	1	0.01	100	0.01326	N0.HOG0000158
+20	MF	GO:0070006	metalloaminopeptidase activity	15	1	0.02	50	0.01655	N0.HOG0000299
+20	MF	GO:0051537	2 iron, 2 sulfur cluster binding	16	1	0.02	50	0.01764	N0.HOG0000158
+20	MF	GO:0050661	NADP binding	29	2	0.03	66.6666666666667	0.01799	N0.HOG0000058;N0.HOG0000639
+20	MF	GO:0008519	ammonium channel activity	19	1	0.02	50	0.02092	N0.HOG0000058
+20	MF	GO:0005507	copper ion binding	30	1	0.03	33.3333333333333	0.03286	N0.HOG0000028
+20	MF	GO:0005496	steroid binding	39	1	0.04	25	0.04254	N0.HOG0000058
+25	BP	GO:0033387	putrescine biosynthetic process from arginine, via ornithine	2	1	0	Inf	0.0022	N0.HOG0000504
+25	BP	GO:1905268	negative regulation of chromatin organization	70	2	0.08	25	0.0025	N0.HOG0000155;N0.HOG0000814
+25	BP	GO:0032100	positive regulation of appetite	3	1	0	Inf	0.0033	N0.HOG0000114
+25	BP	GO:1902321	methyl-branched fatty acid biosynthetic process	3	1	0	Inf	0.0033	N0.HOG0000114
+25	BP	GO:0019367	fatty acid elongation, saturated fatty acid	5	1	0.01	100	0.0056	N0.HOG0000162
+25	BP	GO:0034625	fatty acid elongation, monounsaturated fatty acid	5	1	0.01	100	0.0056	N0.HOG0000162
+25	BP	GO:0034626	fatty acid elongation, polyunsaturated fatty acid	5	1	0.01	100	0.0056	N0.HOG0000162
+25	BP	GO:0030223	neutrophil differentiation	6	1	0.01	100	0.0067	N0.HOG0000114
+25	BP	GO:0042572	retinol metabolic process	6	1	0.01	100	0.0067	N0.HOG0000814
+25	BP	GO:0042574	retinal metabolic process	6	1	0.01	100	0.0067	N0.HOG0000814
+25	BP	GO:0006591	ornithine metabolic process	7	1	0.01	100	0.0078	N0.HOG0000504
+25	BP	GO:2000435	negative regulation of protein neddylation	7	1	0.01	100	0.0078	N0.HOG0000042
+25	BP	GO:0008611	ether lipid biosynthetic process	8	1	0.01	100	0.0089	N0.HOG0000114
+25	BP	GO:0042761	very long-chain fatty acid biosynthetic process	8	1	0.01	100	0.0089	N0.HOG0000162
+25	BP	GO:0006723	cuticle hydrocarbon biosynthetic process	9	1	0.01	100	0.01	N0.HOG0000114
+25	BP	GO:0071329	cellular response to sucrose stimulus	9	1	0.01	100	0.01	N0.HOG0000114
+25	BP	GO:0090557	establishment of endothelial intestinal barrier	11	1	0.01	100	0.0122	N0.HOG0000114
+25	BP	GO:1904667	negative regulation of ubiquitin protein ligase activity	11	1	0.01	100	0.0122	N0.HOG0000042
+25	BP	GO:2001251	negative regulation of chromosome organization	166	2	0.19	10.5263157894737	0.0136	N0.HOG0000155;N0.HOG0000814
+25	BP	GO:0006089	lactate metabolic process	13	1	0.01	100	0.0144	N0.HOG0000114
+25	BP	GO:0006521	regulation of amino acid metabolic process	13	1	0.01	100	0.0144	N0.HOG0000504
+25	BP	GO:1902255	positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator	13	1	0.01	100	0.0144	N0.HOG0000042
+25	BP	GO:0030224	monocyte differentiation	17	1	0.02	50	0.0188	N0.HOG0000114
+25	BP	GO:0090312	positive regulation of protein deacetylation	18	1	0.02	50	0.0199	N0.HOG0000814
+25	BP	GO:0043616	keratinocyte proliferation	21	1	0.02	50	0.0232	N0.HOG0000814
+25	BP	GO:0002803	positive regulation of antibacterial peptide production	22	1	0.02	50	0.0243	N0.HOG0000108
+25	BP	GO:0046949	fatty-acyl-CoA biosynthetic process	22	1	0.02	50	0.0243	N0.HOG0000114
+25	BP	GO:0071353	cellular response to interleukin-4	22	1	0.02	50	0.0243	N0.HOG0000114
+25	BP	GO:2000757	negative regulation of peptidyl-lysine acetylation	24	1	0.03	33.3333333333333	0.0265	N0.HOG0000814
+25	BP	GO:0006084	acetyl-CoA metabolic process	25	1	0.03	33.3333333333333	0.0276	N0.HOG0000114
+25	BP	GO:0019432	triglyceride biosynthetic process	30	1	0.03	33.3333333333333	0.033	N0.HOG0000114
+25	BP	GO:0000027	ribosomal large subunit assembly	32	1	0.04	25	0.0352	N0.HOG0000042
+25	BP	GO:0022617	extracellular matrix disassembly	33	1	0.04	25	0.0363	N0.HOG0000108
+25	BP	GO:0032435	negative regulation of proteasomal ubiquitin-dependent protein catabolic process	33	1	0.04	25	0.0363	N0.HOG0000042
+25	BP	GO:0033238	regulation of amine metabolic process	33	1	0.04	25	0.0363	N0.HOG0000504
+25	BP	GO:0045540	regulation of cholesterol biosynthetic process	33	1	0.04	25	0.0363	N0.HOG0000114
+25	BP	GO:0050911	detection of chemical stimulus involved in sensory perception of smell	34	1	0.04	25	0.0374	N0.HOG0000050
+25	BP	GO:0034030	ribonucleoside bisphosphate biosynthetic process	40	1	0.04	25	0.0438	N0.HOG0000114
+25	BP	GO:0034033	purine nucleoside bisphosphate biosynthetic process	40	1	0.04	25	0.0438	N0.HOG0000114
+25	BP	GO:0006334	nucleosome assembly	44	1	0.05	20	0.0481	N0.HOG0000155
+25	CC	GO:0097209	epidermal lamellar body	3	1	0	Inf	0.0034	N0.HOG0000108
+25	CC	GO:0042587	glycogen granule	8	1	0.01	100	0.0091	N0.HOG0000114
+25	CC	GO:0000786	nucleosome	12	1	0.01	100	0.0137	N0.HOG0000155
+25	CC	GO:0098556	cytoplasmic side of rough endoplasmic reticulum membrane	17	1	0.02	50	0.0193	N0.HOG0000042
+25	CC	GO:0032590	dendrite membrane	41	1	0.05	20	0.0461	N0.HOG0000050
+25	MF	GO:0004312	fatty acid synthase activity	10	2	0.01	200	6.3e-05	N0.HOG0000114;N0.HOG0000162
+25	MF	GO:0004586	ornithine decarboxylase activity	2	1	0	Inf	0.0025	N0.HOG0000504
+25	MF	GO:0004745	all-trans-retinol dehydrogenase (NAD+) activity	5	1	0.01	100	0.0063	N0.HOG0000814
+25	MF	GO:0009922	fatty acid elongase activity	5	1	0.01	100	0.0063	N0.HOG0000162
+25	MF	GO:1990948	ubiquitin ligase inhibitor activity	6	1	0.01	100	0.0076	N0.HOG0000042
+25	MF	GO:0070402	NADPH binding	10	1	0.01	100	0.0126	N0.HOG0000114
+25	MF	GO:0042975	peroxisome proliferator activated receptor binding	12	1	0.02	50	0.0151	N0.HOG0000042
+25	MF	GO:0008097	5S rRNA binding	16	1	0.02	50	0.0201	N0.HOG0000042
+25	MF	GO:0004984	olfactory receptor activity	23	1	0.03	33.3333333333333	0.0288	N0.HOG0000050
+25	MF	GO:0005549	odorant binding	25	1	0.03	33.3333333333333	0.0313	N0.HOG0000050

@@ -1,0 +1,17 @@
+key	value
+script	B_differential expression analysis_FINAL.R
+analysis_date	2026-08-28
+gene_model	glmmTMB nbinom2 with gene-by-sample length/library offset and colonyNested random intercept
+HOG_model	same model fitted directly to tximport-summarised N13 HOG counts; ASH shrinkage by species and stage
+orthology_unit	OrthoFinder hierarchical orthogroups at node N13
+multiple_testing	global BH within species for differential-expression tests
+DEU_included	FALSE
+PLS_features	8681
+PLS_X_variance_by_component	0.349406;0.222437;0.0824691
+GO_annotation	direct EXCON/Galaxy EggNOG and InterProScan conserved across wasps plus experimental FlyBase GO transferred through N13 Drosophila orthologues
+GO_foreground	top 300 N13 HOGs in each oriented PLS loading direction
+GO_test	topGO weight01 Fisher; nodeSize 20
+GO_multiple_testing	none; nominal topGO p values exported
+Figure1	output/figures/Fig1.pptx
+Figure2	output/figures/Fig2.pptx
+Supplementary_tables	output/supplemental_tables/TablesS4-S8.xlsx

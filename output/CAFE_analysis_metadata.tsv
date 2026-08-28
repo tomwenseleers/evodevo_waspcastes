@@ -1,0 +1,12 @@
+item	value
+primary_analysis	EXCON/CAFE analysis of Vespidae plus Ancistrocerus, Anoplius and Tiphia outgroups
+family_wide_screen	CAFE family-wide p < 0.05
+focal_branch_threshold	Focal-branch Viterbi probability < 0.01
+threshold_logic	Both strict inequalities must be satisfied for a focal event
+multiple_testing	No FDR correction applied to CAFE or topGO p-values
+TE_policy	Conservatively annotated TE HOGs are excluded downstream from biological totals, functional classification, GO foregrounds and GO backgrounds
+TE_scope_caution	TEs were retained in the fitted CAFE model; this is a downstream interpretive exclusion, not a refitted TE-free CAFE analysis
+root_zero_policy	Families absent from CAFE family results after inferred root-size-zero filtering are reported separately and cannot receive branch significance
+GO_method	topGO weight01 / fisher; nominal p < 0.05
+GO_ontologies	BP,MF,CC
+text_truncation_policy	GO names are recovered in full from GO.db by GO identifier; annotation text is exported in full and is never shortened with an ellipsis
