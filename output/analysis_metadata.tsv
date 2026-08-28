@@ -1,5 +1,5 @@
 key	value
-script	B_differential expression analysis_FINAL.R
+script	B_differential expression analysis.R
 analysis_date	2026-08-28
 gene_model	glmmTMB nbinom2 with gene-by-sample length/library offset and colonyNested random intercept
 HOG_model	same model fitted directly to tximport-summarised N13 HOG counts; ASH shrinkage by species and stage

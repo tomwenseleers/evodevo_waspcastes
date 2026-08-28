@@ -1,4 +1,4 @@
-# B_differential expression analysis_FINAL.R
+# B_differential expression analysis.R
 # Final transcriptomic analyses for the Vespula-Polistes caste evo-devo study.
 #
 # This script uses the final gene-level and N13 hierarchical-orthogroup (HOG)
@@ -32,7 +32,7 @@ set.seed(20260826)
 options(stringsAsFactors = FALSE)
 
 if (!exists("PROJECT_ROOT", inherits = TRUE)) {
-  stop("PROJECT_ROOT must be set by B_differential expression analysis_FINAL.R before sourcing this pipeline.")
+  stop("PROJECT_ROOT must be set by B_differential expression analysis.R before sourcing this pipeline.")
 }
 dir_base <- normalizePath(PROJECT_ROOT, winslash = "/", mustWork = TRUE)
 dir_annotations <- file.path(dir_base, "input_annotation")
@@ -106,7 +106,7 @@ if (length(missing_inputs)) {
 if (!exists("rerun_mixed_models", inherits = TRUE)) rerun_mixed_models <- FALSE
 if (isTRUE(rerun_mixed_models)) {
   stop(
-    "The mixed-model fits are intentionally not rerun inside B_differential expression analysis_FINAL.R. ",
+    "The mixed-model fits are intentionally not rerun inside B_differential expression analysis.R. ",
     "Run these one-worker scripts independently, then restart this script:\n",
     gene_model_script, "\n", hog_model_script
   )
@@ -3076,7 +3076,7 @@ analysis_metadata_final <- tibble(
     "Figure1", "Figure2", "Supplementary_tables"
   ),
   value = c(
-    "B_differential expression analysis_FINAL.R", as.character(Sys.Date()),
+    "B_differential expression analysis.R", as.character(Sys.Date()),
     "glmmTMB nbinom2 with gene-by-sample length/library offset and colonyNested random intercept",
     "same model fitted directly to tximport-summarised N13 HOG counts; ASH shrinkage by species and stage",
     "OrthoFinder hierarchical orthogroups at node N13",
@@ -3168,5 +3168,5 @@ writeLines(
   file.path(output_dir, "VALIDATION.txt")
 )
 writeLines(capture.output(sessionInfo()), file.path(output_dir, "sessionInfo.txt"))
-message("B_differential expression analysis_FINAL completed. Outputs: ", output_dir)
+message("B_differential expression analysis completed. Outputs: ", output_dir)
 

@@ -2,7 +2,6 @@
 ## Anneline Mattens¹*, Viviana Di Pietro¹*, Cintia Akemi Oi², Ricardo Caliari Oliveira³, Chris Wyatt², Fabio Santos do Nascimento⁴ & Tom Wenseleers¹
 ### ¹ KU Leuven, Leuven, Belgium; ² The Sumner Lab, University College London, London, UK; ³ Universitat Autònoma de Barcelona, Barcelona, Spain; ⁴ Universidade de São Paulo, Ribeirão Preto, Brazil; *These authors contributed equally.; Correspondence: anneline.mattens@kuleuven.be; annelinemattens1@gmail.com; tom.wenseleers@kuleuven.be
 
-
 This repository contains the code to reproduce the results presented in the article "Social insect castes evolved by re-timing ancient, seasonally expressed pathways", in which we show that queen-worker caste differentiation in vespine wasps recapitulates ancestral seasonally expressed pathways. Included are the final R workflows, compact reloadable analysis objects, required local inputs, and manuscript outputs (figures, supplementary figures and supplementary tables) related to functional annotation and the comparative transcriptomic and gene-family analyses.
 
 All paths are defined relative to the repository root.
@@ -11,9 +10,9 @@ All paths are defined relative to the repository root.
 
 The three root scripts are the public entry points:
 
-1. `A_annotation_FINAL.R`
-2. `B_differential expression analysis_FINAL.R`
-3. `C_EXCON CAFE analysis_FINAL.R`
+1. `A_annotation.R`
+2. `B_differential expression analysis.R`
+3. `C_EXCON CAFE analysis.R`
 
 Each begins with an editable `rerun <- FALSE` flag. With this default, the
 script loads the corresponding compact RDS/RData objects without recomputing
@@ -23,7 +22,7 @@ variable, for example in PowerShell:
 
 ```powershell
 $env:EVODEVO_RERUN = "true"
-Rscript "B_differential expression analysis_FINAL.R"
+Rscript "B_differential expression analysis.R"
 ```
 
 The B workflow reruns the downstream PLS, regression, GO, table, and figure
@@ -35,9 +34,9 @@ two one-worker scripts in `scripts/upstream/` and should be run sequentially.
 
 ```text
 .
-|-- A_annotation_FINAL.R
-|-- B_differential expression analysis_FINAL.R
-|-- C_EXCON CAFE analysis_FINAL.R
+|-- A_annotation.R
+|-- B_differential expression analysis.R
+|-- C_EXCON CAFE analysis.R
 |-- input_annotation/
 |   |-- raw/                 # InterProScan, EggNOG, FlyBase and GO inputs
 |   |-- reference/           # N13 HOG and identifier reference objects
@@ -69,7 +68,7 @@ Large TSV files are not included in this repository, but can be recreated from t
 
 ## A. Functional annotation
 
-`A_annotation_FINAL.R` integrates direct *Polistes dominula* and *Vespula
+`A_annotation.R` integrates direct *Polistes dominula* and *Vespula
 vulgaris* annotations from two EggNOG-mapper analyses and InterProScan. It also
 transfers release-matched, experimentally supported FlyBase GO annotations
 through *Drosophila melanogaster* members of the shared N13 hierarchical
@@ -91,7 +90,7 @@ random intercept, and a gene/HOG-by-sample offset combining library-size and
 effective-length normalisation. Original Salmon estimated counts were rounded
 only at the count-model interface. Wald contrasts tested late versus early
 season within each *P. dominula* stage and queen versus worker within each
-*V. vulgaris* stage. BH FDR correction was applied globally across all stage-by-gene
+*V. vulgaris* stage. BH correction was applied globally across all stage-by-gene
 or stage-by-HOG tests within each species, and coefficients were shrunk with
 ASH separately by species and stage.
 
@@ -183,10 +182,8 @@ The analyses were validated with R 4.5.x. Principal R dependencies are:
 `pheatmap`, and `openxlsx`. The supplementary XLSX builder additionally uses
 Python 3 with `openpyxl`.
 
-`FILE_MANIFEST.tsv` records the relative path, size, SHA-256 checksum, and role
-of the packaged files (excluding the manifest itself). Because model
-checkpoints and compressed raw annotation files are large, allow sufficient
-disk space and clone time.
+Because model checkpoints and compressed raw annotation files are large, allow
+sufficient disk space and clone time.
 
 ## Use of artificial intelligence
 

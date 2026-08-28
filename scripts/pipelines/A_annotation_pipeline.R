@@ -24,7 +24,7 @@ suppressPackageStartupMessages({
 options(stringsAsFactors = FALSE)
 
 if (!exists("PROJECT_ROOT", inherits = TRUE)) {
-  stop("PROJECT_ROOT must be set by A_annotation_FINAL.R before sourcing this pipeline.")
+  stop("PROJECT_ROOT must be set by A_annotation.R before sourcing this pipeline.")
 }
 base_dir <- normalizePath(PROJECT_ROOT, winslash = "/", mustWork = TRUE)
 annotation_dir <- file.path(base_dir, "input_annotation")

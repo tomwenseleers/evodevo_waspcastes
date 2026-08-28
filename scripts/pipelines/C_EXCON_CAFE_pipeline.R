@@ -1,4 +1,4 @@
-# C_EXCON CAFE analysis_FINAL.R
+# C_EXCON CAFE analysis.R
 #
 # Self-contained final workflow for the wasp-focused EXCON/CAFE analysis.
 # It summarises and annotates significant expansions and contractions at Nodes
@@ -44,7 +44,7 @@ resolve_repository_root <- function() {
       candidate, winslash = "/", mustWork = FALSE
     )
     if (
-      file.exists(file.path(candidate, "A_annotation_FINAL.R")) &&
+      file.exists(file.path(candidate, "A_annotation.R")) &&
       dir.exists(file.path(candidate, "input_CAFE"))
     ) {
       return(candidate)

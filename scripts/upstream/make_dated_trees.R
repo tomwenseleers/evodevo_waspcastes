@@ -26,7 +26,7 @@ resolve_repository_root <- function() {
         file.path(candidate, paste(rep("..", up), collapse = "/")),
         winslash = "/", mustWork = FALSE
       )
-      if (file.exists(file.path(probe, "A_annotation_FINAL.R")) &&
+      if (file.exists(file.path(probe, "A_annotation.R")) &&
           dir.exists(file.path(probe, "input_CAFE"))) return(probe)
     }
   }
