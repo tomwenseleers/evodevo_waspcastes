@@ -187,3 +187,7 @@ Python 3 with `openpyxl`.
 of the packaged files (excluding the manifest itself). Because model
 checkpoints and compressed raw annotation files are large, allow sufficient
 disk space and clone time.
+
+## Use of artificial intelligence
+
+OpenAI Codex/GPT 5.6 was used as an AI-assisted coding and editing tool to help refactor and document R scripts, organise this repository, troubleshoot software execution, and prepare preliminary table and figure exports. The authors specified the study design, statistical models and tools to use, significance criteria, and biological questions; reviewed and edited all AI-assisted code and text; and reran and validated the reported workflows. Generative AI was not used to create or alter the underlying research data, and it did not independently determine the biological interpretations or conclusions. The authors take full responsibility for the accuracy and reproducibility of all analyses and repository contents.
