@@ -1,7 +1,8 @@
 # Final functional-annotation workflow for the wasp caste evo-devo study.
 
 # FALSE loads the versioned workspace and existing compact annotation exports.
-# TRUE reconstructs all annotation outputs from input_annotation/raw.
+# TRUE reconstructs all annotation outputs from the study-specific annotation
+# inputs and the archived EXCON EggNOG-mapper output under nextflow_runs/.
 rerun <- FALSE
 
 resolve_repository_root <- function() {
@@ -19,7 +20,8 @@ resolve_repository_root <- function() {
   for (candidate in unique(candidates)) {
     candidate <- normalizePath(candidate, winslash = "/", mustWork = FALSE)
     if (file.exists(file.path(candidate, "A_annotation.R")) &&
-        dir.exists(file.path(candidate, "input_annotation"))) return(candidate)
+        dir.exists(file.path(candidate, "input_annotation")) &&
+        dir.exists(file.path(candidate, "nextflow_runs"))) return(candidate)
   }
   stop("Could not locate the evodevo_waspcastes repository root.")
 }
@@ -38,6 +40,6 @@ if (isTRUE(rerun)) {
   load(workspace, envir = .GlobalEnv)
   message(
     "Loaded the final annotation workspace. Set rerun <- TRUE to rebuild ",
-    "output_annotation from the raw input files."
+    "output_annotation from the archived pipeline and annotation inputs."
   )
 }

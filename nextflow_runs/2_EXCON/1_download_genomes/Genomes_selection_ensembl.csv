@@ -1,0 +1,26 @@
+Superfamily,Family,Subfamily,Tribe,Species,NCBI_GCA,NCBI_GCF,Level / Annotation,Topick
+Vespoidea,Vespidae,Eumeninae,Odynerini,Ancistrocerus nigricornis,GCA_916049575.1,,Chromosome,Ensembl
+Vespoidea,Vespidae,Vespinae,Vespini,Vespula germanica,GCA_905340365.1,,Chromosome,Ensembl
+Vespoidea,Vespidae,Vespinae,Vespini,Dolichovespula sylvestris,GCA_918808275.2,,Chromosome,Ensembl
+Vespoidea,Vespidae,Vespinae,Vespini,Dolichovespula media,GCA_911387685.1,,Chromosome,Ensembl
+Vespoidea,Vespidae,Vespinae,Vespini,Dolichovespula saxonica,GCA_911387935.1,,Chromosome,Ensembl
+Tiphioidea,Tiphiidae,Tiphiinae,Tiphiini,Tiphia femorata,GCA_944319695.1,,Chromosome,Ensembl
+Pompiloidea,Pompilidae,Pompilinae,Pompilini,Anoplius nigerrimus,GCA_914767735.1,,Chromosome,Ensembl
+Apoidea,Melittidae,Melittinae,Macropidini,Macropis europaea,GCA_916610135.2,,Chromosome,Ensembl
+Apoidea,Andrenidae,Andreninae,Andrenini,Andrena flavipes,GCA_963971345.1,,Chromosome,Ensembl
+Apoidea,Halictidae,Halictinae,Halictini,Lasioglossum morio,GCA_916610235.2,,Chromosome,Ensembl
+Apoidea,Halictidae,Halictinae,Halictini,Lasioglossum calceatum,GCA_963966675.1,,Chromosome,Ensembl
+Apoidea,Halictidae,Halictinae,Halictini,Lasioglossum lativentre,GCA_916610255.1,,Chromosome,Ensembl
+Apoidea,Apidae,Apinae,Bombini,Bombus hypnorum,GCA_911387925.2,,Chromosome,Ensembl
+Apoidea,Apidae,Apinae,Bombini,Bombus lapidarius,GCA_964186655.1,,Chromosome,Ensembl
+Apoidea,Apidae,Apinae,Bombini,Bombus hortorum,GCA_905332935.1,,Chromosome,Ensembl
+Apoidea,Apidae,Apinae,Bombini,Bombus vestalis,GCA_963556215.1,,Chromosome,Ensembl
+Apoidea,Apidae,Apinae,Bombini,Bombus muscorum,GCA_963971185.1,,Chromosome,Ensembl
+Apoidea,Apidae,Apinae,Bombini,Bombus monticola,GCA_965178685.1,,Chromosome,Ensembl
+Apoidea,Apidae,Apinae,Bombini,Bombus sylvestris,GCA_911622165.2,,Chromosome,Ensembl
+Apoidea,Apidae,Apinae,Bombini,Bombus campestris,GCA_905333015.3,,Chromosome,Ensembl
+Apoidea,Apidae,Apinae,Bombini,Bombus pratorum,GCA_930367275.1,,Chromosome,Ensembl
+Apoidea,Cabronidae,Bembicinae,Nyssonini,Nysson spinosus,GCA_910591585.2,,Chromosome,Ensembl
+Apoidea,Cabronidae,Pemphredoninae,Pemphredonini,Pemphredon lugubris,GCA_933228935.1,,Chromosome,Ensembl
+Evanioidea,Gasteruptiidae,Gasteruptiinae,,Gasteruption jaculator,GCA_949825005.1,,Chromosome,Ensembl
+Ichneumonoidea,Ichneumonidae,Cryptinae,,Buathra laborator,GCA_934046635.1,,Chromosome,Ensembl

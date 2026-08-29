@@ -19,7 +19,8 @@ resolve_repository_root <- function() {
   for (candidate in unique(candidates)) {
     candidate <- normalizePath(candidate, winslash = "/", mustWork = FALSE)
     if (file.exists(file.path(candidate, "A_annotation.R")) &&
-        dir.exists(file.path(candidate, "input_CAFE"))) return(candidate)
+        dir.exists(file.path(candidate, "input_CAFE")) &&
+        dir.exists(file.path(candidate, "nextflow_runs"))) return(candidate)
   }
   stop("Could not locate the evodevo_waspcastes repository root.")
 }

@@ -45,7 +45,8 @@ resolve_repository_root <- function() {
     )
     if (
       file.exists(file.path(candidate, "A_annotation.R")) &&
-      dir.exists(file.path(candidate, "input_CAFE"))
+      dir.exists(file.path(candidate, "input_CAFE")) &&
+      dir.exists(file.path(candidate, "nextflow_runs"))
     ) {
       return(candidate)
     }
@@ -101,7 +102,9 @@ make_wasp_annotation_config <- function(project_dir, excon_dir, run_dir) {
       excon_dir, "annotation", "Vespula_vulgaris_EggNOG.tsv"
     ),
     ancistrocerus_ortholog_file = file.path(
-      excon_dir, "orthology", "Ancistrocerus_nigricornis.clean.tsv"
+      project_dir, "nextflow_runs", "2_EXCON",
+      "2_EXCON_orthofinder_eggnogmapper_run", "results_EXCON",
+      "orthofinder", "Orthologues", "Ancistrocerus_nigricornis.clean.tsv"
     )
   )
 }
@@ -1218,6 +1221,14 @@ run_wasp_cafe_analysis <- function(
 
 excon_dir <- file.path(project_dir, "input_CAFE")
 mapping_dir <- file.path(excon_dir, "GO")
+nextflow_dir <- file.path(project_dir, "nextflow_runs")
+cafe_run_dir <- file.path(
+  nextflow_dir, "2_EXCON", "3_EXCON_CAFE_run", "results_EXCON"
+)
+busco_file <- file.path(
+  nextflow_dir, "2_EXCON", "1_download_genomes",
+  "000_BUSCO_annotations_summary.tsv"
+)
 if (is.null(output_root)) {
   output_root <- file.path(project_dir, "output")
 }
@@ -1230,7 +1241,7 @@ output_root <- normalizePath(
 run_definitions <- list(
   wasp = list(
     run_label = "Vespidae_plus_outgroups",
-    run_dir = file.path(excon_dir, "wasp_CAFE"),
+    run_dir = cafe_run_dir,
     nodes = data.table(
       node = c("20", "25"),
       biological_label = c(
@@ -1248,7 +1259,7 @@ run_definitions <- list(
 required_inputs <- c(
   file.path(mapping_dir, "OG_GO_format_gene2GO.rds"),
   file.path(run_definitions$wasp$run_dir, "cafe", "base", "N0.tsv"),
-  file.path(excon_dir, "annotation", "000_BUSCO_annotations_summary.tsv"),
+  busco_file,
   file.path(excon_dir, "annotation", "expansion_functional_classification_curated.tsv")
 )
 for (definition in run_definitions) {
@@ -2080,7 +2091,7 @@ fwrite(
 # Add BUSCO context for every tip descending from the focal clades. The full
 # table is retained because branch calls can be influenced by any included tip.
 busco <- fread(
-  file.path(excon_dir, "annotation", "000_BUSCO_annotations_summary.tsv")
+  busco_file
 )
 read_tree_species <- function(definition) {
   tree <- paste(readLines(file.path(

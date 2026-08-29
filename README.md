@@ -46,20 +46,24 @@ two one-worker scripts in `scripts/upstream/` and should be run sequentially.
 |-- A_annotation.R
 |-- B_differential expression analysis.R
 |-- C_EXCON CAFE analysis.R
+|-- nextflow_runs/
+|   |-- 1_rnaseq/            # nf-core/rnaseq inputs, launcher and retained outputs
+|   `-- 2_EXCON/
+|       |-- 1_download_genomes/                    # genome preparation and BUSCO summary
+|       |-- 2_EXCON_orthofinder_eggnogmapper_run/ # EXCON orthology/annotation run
+|       `-- 3_EXCON_CAFE_run/                     # wasp EXCON/CAFE run
 |-- input_annotation/
-|   |-- raw/                 # InterProScan, EggNOG, FlyBase and GO inputs
+|   |-- raw/                 # Galaxy, InterProScan, FlyBase and GO inputs
 |   |-- reference/           # N13 HOG and identifier reference objects
 |   `-- workspaces/          # compact final annotation workspace
 |-- output_annotation/       # final GO, KEGG and functional annotations
 |-- input_differential_expression/
-|   |-- raw/                 # Salmon counts, TPMs, lengths, metadata and N13.tsv
+|   |-- raw/                 # study-specific sample metadata
 |   |-- checkpoints/         # fitted gene- and N13-HOG glmmTMB objects
 |   `-- workspaces/          # compact downstream key-results RDS
 |-- input_CAFE/
-|   |-- wasp_CAFE/           # CAFE input/count/result files used downstream
-|   |-- annotation/          # gene tables, curated HOG classes and BUSCO table
+|   |-- annotation/          # gene tables and curated HOG classifications
 |   |-- GO/                  # HOG-to-GO mapping
-|   |-- orthology/           # Ancistrocerus orthology annotation evidence
 |   |-- tree_dating/         # dated wasp tree and calibration summary
 |   `-- workspaces/          # compact CAFE/GO key-results RDS
 |-- scripts/
@@ -73,7 +77,13 @@ two one-worker scripts in `scripts/upstream/` and should be run sequentially.
     `-- ...                  # complete derived analysis and audit tables
 ```
 
-Large TSV files are not included in this repository, but can be recreated from the compact R objects by rerunning the relevant downstream script. 
+The retained Nextflow directories preserve substantially more of the original
+pipeline structure than is strictly required by the R workflows. The R scripts
+read Salmon matrices, EXCON EggNOG-mapper GO files, OrthoFinder HOG tables,
+BUSCO summaries and CAFE results directly from these directories, avoiding
+duplicate copies under the downstream `input_*` folders. Compact R objects are
+also included so that the final analyses can be inspected without rerunning the
+computationally expensive upstream pipelines.
 
 ## A. Functional annotation
 
@@ -85,14 +95,39 @@ orthogroups. The final N13-HOG GO set combines direct GO terms conserved across
 the two wasps with these orthology-transferred FlyBase terms. KEGG and related
 functional fields are imported from the Galaxy EggNOG-mapper tables.
 
+The EXCON EggNOG-mapper GO files are read directly from
+`nextflow_runs/2_EXCON/2_EXCON_orthofinder_eggnogmapper_run/results_EXCON/eggnogmapper/go_files/`;
+the non-EXCON annotation sources remain under `input_annotation/raw/`.
+
 The compact final mapping consumed by B is
 `output_annotation/N13_HOG_GO_final_long.tsv.gz`. Full source-level provenance
 is stored efficiently as `output_annotation/wasp_direct_GO_provenance_long.rds`.
 
 ## B. Differential expression and cross-species analyses
 
-Raw Salmon gene counts, sample-specific effective gene lengths, TPMs, and
-sample metadata are under `input_differential_expression/raw/`. At both gene
+RNA-seq reads from each species were processed in separate nf-core/rnaseq
+v3.14.0 runs under Nextflow v24.10.1. The pipeline used its `star_salmon`
+workflow, with STAR v2.7.9a for alignment and Salmon v1.10.1 for transcript
+quantification. Paired-end library strandedness was inferred from the reads,
+and `--featurecounts_group_type transcript_id` was supplied in both runs. The
+complete samplesheets, parameter files, software-version records, execution
+reports and retained outputs are under `nextflow_runs/1_rnaseq/`. The two runs
+can be launched in the same form with:
+
+```bash
+bash nextflow_runs/1_rnaseq/run_rnaseq_both_species.sh
+```
+
+The launcher resolves its working directories relative to its own location and
+pins nf-core/rnaseq v3.14.0 by default. The archived samplesheets retain the
+original FASTQ paths, while reference FASTA and GTF files are not duplicated in
+this repository; these paths must therefore be supplied for a new installation
+as described in the launcher comments.
+
+Raw Salmon gene counts, sample-specific effective gene lengths and TPMs are
+read directly from the species-specific `star_salmon/` directories under
+`nextflow_runs/1_rnaseq/output_files/`. Study-specific sample metadata are
+under `input_differential_expression/raw/`. At both gene
 and N13-HOG levels, the fitted model was a negative-binomial (`nbinom2`)
 `glmmTMB` model with stage-specific condition effects, a colony-within-condition
 random intercept, and a gene/HOG-by-sample offset combining library-size and
@@ -108,8 +143,7 @@ HOGs before model fitting. The final PLS, robust stage-wise regressions, and
 nonnegative ridge heterochrony model use ASH-shrunken N13-HOG log2 fold changes.
 Figure 1 GO foregrounds comprise the top 300 HOGs in each oriented PLS loading
 direction. GO enrichment uses topGO's `weight01` algorithm with Fisher's exact
-test and no post-hoc multiple-testing correction to the topology-adjusted
-topGO values.
+test. Given the dependencies in the GO ontology tree, and as recommended by the topGO package authors, these p values are not FDR corrected.
 
 ## C. EXCON, OrthoFinder, EggNOG-mapper and CAFE
 
@@ -121,17 +155,42 @@ two-species transcriptomic comparison, whereas root-level N0 HOGs and resolved
 gene trees are used for CAFE. HOG identifiers are analysis-specific and should
 not be treated as stable identifiers across independent OrthoFinder reruns.
 
+The EXCON orthology/EggNOG-mapper run is under
+`nextflow_runs/2_EXCON/2_EXCON_orthofinder_eggnogmapper_run/`. The wasp CAFE
+run is under `nextflow_runs/2_EXCON/3_EXCON_CAFE_run/`. The downstream CAFE R
+workflow reads the retained `results_EXCON/` output directly; the N13
+transcriptomic workflow similarly reads `N13.tsv` directly from the retained
+OrthoFinder hierarchical-orthogroup directory. The consolidated
+*Ancistrocerus nigricornis* orthology table used as an annotation fallback is
+retained in the same run under `results_EXCON/orthofinder/Orthologues/`.
+
+The archived orthology/annotation run report records Nextflow v25.10.0,
+OrthoFinder v3.1.3, eggNOG-mapper v2.1.13, AGAT v1.6.1 and gffread v0.12.7. The CAFE execution report records EXCON v2.3.2 (script ID
+`5862d5fe137d0a3c587c84128848e3e0`) under Nextflow v26.04.6, with CAFE v4.2.1,
+cafeplotter v0.2.0 and R v4.3.1. The retained `pipeline_info/` directories are
+the authoritative provenance records for these upstream runs.
+
 The orthology/annotation stage was run in the following form (machine-specific
 paths omitted):
 
 ```bash
 nextflow run main.nf -resume -profile local,docker \
   --input input.csv \
-  --outdir results_orthology \
+  --outdir results_EXCON \
   --run_eggnog \
   --eggnog_data_dir eggnog_data \
   --max_cpus 24 --max_memory 96.GB
 ```
+
+The repository-relative launchers are
+`nextflow_runs/2_EXCON/2_EXCON_orthofinder_eggnogmapper_run/2.run_excon_pipeline.sh`
+and `nextflow_runs/2_EXCON/3_EXCON_CAFE_run/2.run_excon_CAFE_pipeline.sh`.
+Genome downloads, longest-isoform extraction, BUSCO assessment and regeneration
+of `input_excon.csv` are likewise scripted under
+`nextflow_runs/2_EXCON/1_download_genomes/` and the orthology-run directory.
+Machine-specific executables, container profiles, data caches and cluster
+configuration files can be supplied through the environment variables
+documented at the start of each launcher.
 
 The wasp tree was pruned from the OrthoFinder species tree, re-estimated using
 IQ-TREE 3, and dated with `scripts/upstream/make_dated_trees.R`. The dating
@@ -150,7 +209,7 @@ nextflow run main.nf -profile singularity --custom_config cluster.config \
   --cafe_focus_clades \
     'Vespa_crabro,Vespula_vulgaris|Vespa_crabro,Polistes_dominula|Polistes_dominula,Mischocyttarus_mexicanus' \
   --orthofinder_genetree_dir Resolved_Gene_Trees \
-  --outdir wasp_CAFE \
+  --outdir results_EXCON \
   --cafe_max_differential 20 --cafe_filter_first -bg -resume
 ```
 
@@ -166,8 +225,7 @@ family-wide or branch-specific CAFE result can be assigned to them.
 
 Node-wise GO enrichment tests significantly expanded, non-TE HOGs at Node 20
 (stem Polistinae+Vespinae) and Node 25 (stem Vespinae) against all GO-annotated,
-tested non-TE HOGs. BP, MF, and CC are tested with topGO `weight01`/Fisher,
-without FDR correction and without truncating the ranked ontology output.
+tested non-TE HOGs. BP, MF, and CC are tested with topGO `weight01`/Fisher. Given the dependencies in the GO ontology tree, and as recommended by the topGO package authors, these p values are not FDR corrected.
 
 ## Manuscript outputs
 
@@ -188,8 +246,9 @@ The analyses were validated with R 4.5.x. Principal R dependencies are:
 `dplyr`, `tidyr`, `readr`, `stringr`, `purrr`, `KEGGREST`, `ontologyIndex`,
 `edgeR`, `glmmTMB`, `DESeq2`, `tximport`, `ashr`, `mixOmics`, `topGO`, `GO.db`,
 `AnnotationDbi`, `estimatr`, `robustbase`, `glmnet`, `ape`, `export`, `officer`,
-`pheatmap`, and `openxlsx`. The supplementary XLSX builder additionally uses
-Python 3 with `openpyxl`.
+`pheatmap`, and `openxlsx`. The genome-download helper uses Python 3 with
+`requests` and `beautifulsoup4`; the supplementary XLSX builder additionally
+uses Python 3 with `openpyxl`.
 
 Because model checkpoints and compressed raw annotation files are large, allow
 sufficient disk space and clone time.

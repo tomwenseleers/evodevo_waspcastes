@@ -1,0 +1,144 @@
+
+Command line: cafe5 -i hog_gene_counts.tsv -t cafe_input_tree.txt --cores 8 -o Out_cafe 
+
+Filtering families not present at the root from: 10982 to 8798
+
+No root family size distribution specified, using uniform distribution
+
+Optimizer strategy: Nelder-Mead with similarity cutoff
+Iterations: 300
+Expansion: 2
+Reflection: 1
+
+Starting Search for Initial Parameter Values
+Lambda: 0.0025705202269552
+Score (-lnL): 115845.02280247
+Lambda: 0.0025705202269552
+Score (-lnL): 115845.02280247
+Lambda: 0.002699046238303
+Score (-lnL): 116740.96012853
+Lambda: 0.0024419942156075
+Score (-lnL): 114974.26568083
+Lambda: 0.0023134682042597
+Score (-lnL):  114132.6238971
+Lambda: 0.0020564161815642
+Score (-lnL):  112556.0982191
+Lambda: 0.0017993641588687
+Score (-lnL): 111165.15783787
+Lambda: 0.0012852601134776
+Score (-lnL): 109274.34823186
+Lambda: 0.00077115606808656
+Score (-lnL): 109821.03506791
+Lambda: 0.00077115606808656
+Score (-lnL): 109821.03506791
+Lambda: 0.0017993641588687
+Score (-lnL): 111165.15783787
+Lambda: 0.0015423121361731
+Score (-lnL): 110033.06496819
+Lambda: 0.0010282080907821
+Score (-lnL): 109082.39661208
+Lambda: 0.00077115606808656
+Score (-lnL): 109821.03506791
+Lambda: 0.00089968207943432
+Score (-lnL):  109300.9564973
+Lambda: 0.0011567341021298
+Score (-lnL): 109090.56791955
+Lambda: 0.00089968207943432
+Score (-lnL):  109300.9564973
+Lambda: 0.0009639450851082
+Score (-lnL): 109159.34385426
+Lambda: 0.001092471096456
+Score (-lnL): 109061.78033843
+Lambda: 0.0011567341021298
+Score (-lnL): 109090.56791955
+Lambda: 0.0011246025992929
+Score (-lnL): 109070.38671812
+Lambda: 0.001060339593619
+Score (-lnL): 109065.50331429
+Lambda: 0.0011246025992929
+Score (-lnL): 109070.38671812
+Lambda: 0.0011085368478744
+Score (-lnL):  109064.5998221
+Lambda: 0.0010764053450375
+Score (-lnL): 109062.04799802
+Lambda: 0.0011085368478744
+Score (-lnL):  109064.5998221
+Lambda: 0.0011005039721652
+Score (-lnL): 109062.81026796
+Lambda: 0.0010844382207467
+Score (-lnL):  109061.5220686
+Lambda: 0.0010764053450375
+Score (-lnL): 109062.04799802
+Lambda: 0.0010804217828921
+Score (-lnL): 109061.68625758
+Lambda: 0.0010884546586013
+Score (-lnL): 109061.55394168
+Lambda: 0.0010804217828921
+Score (-lnL): 109061.68625758
+Lambda: 0.0010824300018194
+Score (-lnL): 109061.57953303
+Lambda: 0.001086446439674
+Score (-lnL): 109061.51360305
+Lambda: 0.0010884546586013
+Score (-lnL): 109061.55394168
+Lambda: 0.0010874505491377
+Score (-lnL): 109061.52768398
+Lambda: 0.0010854423302104
+Score (-lnL): 109061.51172317
+Lambda: 0.0010844382207467
+Score (-lnL):  109061.5220686
+Lambda: 0.0010849402754786
+Score (-lnL): 109061.51536619
+Lambda: 0.0010859443849422
+Score (-lnL): 109061.51113646
+Lambda: 0.001086446439674
+Score (-lnL): 109061.51360305
+Lambda: 0.0010861954123081
+Score (-lnL): 109061.51198829
+Lambda: 0.0010856933575763
+Score (-lnL): 109061.51104796
+Lambda: 0.0010854423302104
+Score (-lnL): 109061.51172317
+Lambda: 0.0010855678438933
+Score (-lnL): 109061.51129143
+Lambda: 0.0010858188712593
+Score (-lnL):  109061.5109966
+Lambda: 0.0010859443849422
+Score (-lnL): 109061.51113646
+Lambda: 0.0010858816281007
+Score (-lnL): 109061.51104249
+Lambda: 0.0010857561144178
+Score (-lnL): 109061.51099841
+Lambda: 0.0010858816281007
+Score (-lnL): 109061.51104249
+Lambda: 0.00108585024968
+Score (-lnL): 109061.51101388
+Lambda: 0.0010857874928385
+Score (-lnL): 109061.51099168
+Lambda: 0.0010857561144178
+Score (-lnL): 109061.51099841
+Lambda: 0.0010857718036281
+Score (-lnL): 109061.51099369
+Lambda: 0.0010858031820489
+Score (-lnL): 109061.51099277
+Lambda: 0.0010857718036281
+Score (-lnL): 109061.51099369
+Lambda: 0.0010857796482333
+Score (-lnL):  109061.5109923
+
+Completed 25 iterations
+Time: 0H 2M 12S
+Best match is: 0.0010857874928385
+Final -lnL: 109061.51099168
+
+57 values were attempted (0% rejected)
+
+Inferring processes for Base model
+Score (-lnL): 109061.51099168
+Maximum possible lambda for this topology: 0.0079871916372544
+Computing pvalues...
+done!
+
+Starting reconstruction processes for Base model
+Done!
+

@@ -1,0 +1,24 @@
+CAFE_MODEL_COMPARE:
+    cafe: 4.2.1
+CAFE_NODE_GUIDE:
+    R: 4.3.1
+CAFE_PLOT:
+    cafeplotter: v0.2.0
+CAFE_PLOT_LARGE:
+    cafeplotter: v0.2.0
+CAFE_PREP:
+    R: 4.3.1
+CAFE_PREP:
+    cafe: 4.2.1
+CAFE_RUN_BEST:
+    cafe: 4.2.1
+CAFE_RUN_K:
+    cafe: 4.2.1
+CAFE_RUN_LARGE:
+    cafe: 4.2.1
+CAFE_SELECT_K:
+    python: 3.10.13
+CAFE_SIG_FAMILIES:
+    R: 4.3.1
+CAFE_SIG_FAMILIES_LARGE:
+    R: 4.3.1

@@ -1,0 +1,187 @@
+<!--
+  ~ Copyright 2013-2026, Seqera Labs
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+<pre class="mermaid" style="text-align: center;">
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#B6ECE2',
+      'primaryTextColor': '#160F26',
+      'primaryBorderColor': '#065647',
+      'lineColor': '#545555',
+      'clusterBkg': '#BABCBD22',
+      'clusterBorder': '#DDDEDE',
+      'fontFamily': 'arial'
+    }
+  }
+}%%
+flowchart TB
+    subgraph " "
+    v0["channel.empty"]
+    v2["channel.fromPath"]
+    v3["channel.fromPath"]
+    v27["channel.of"]
+    v40["channel.of"]
+    v55["channel.fromPath"]
+    v56["channel.fromPath"]
+    v74[" "]
+    end
+    subgraph " "
+    v1["ch_orthofinder_dir"]
+    v5[" "]
+    v6[" "]
+    v7[" "]
+    v8[" "]
+    v9[" "]
+    v10[" "]
+    v11[" "]
+    v12[" "]
+    v13[" "]
+    v14[" "]
+    v20[" "]
+    v21[" "]
+    v25[" "]
+    v26[" "]
+    v29[" "]
+    v30[" "]
+    v34[" "]
+    v35[" "]
+    v42[" "]
+    v43[" "]
+    v45[" "]
+    v46[" "]
+    v47[" "]
+    v49[" "]
+    v50[" "]
+    v52[" "]
+    v53[" "]
+    v54[" "]
+    v58[" "]
+    v59[" "]
+    v60[" "]
+    v64[" "]
+    v65[" "]
+    v68[" "]
+    v69[" "]
+    v70[" "]
+    v72[" "]
+    v73[" "]
+    v78[" "]
+    end
+    v4(["CAFE_PREP"])
+    v19(["CAFE_RUN_LARGE"])
+    v24(["MERGE_CAFE_LARGE_RESULTS"])
+    v28(["CAFE_RUN_K"])
+    v33(["CAFE_SELECT_K"])
+    v41(["CAFE_RUN_BEST"])
+    v44(["CAFE_MODEL_COMPARE"])
+    v48(["CAFE_PLOT"])
+    v51(["CAFE_NODE_GUIDE"])
+    v57(["CAFE_SIG_FAMILIES"])
+    v63(["CAFE_PLOT_LARGE"])
+    v67(["CAFE_SIG_FAMILIES_LARGE"])
+    v71(["COMBINE_CAFE_SIG_FAMILIES"])
+    v15(( ))
+    v22(( ))
+    v31(( ))
+    v36(( ))
+    v61(( ))
+    v75(( ))
+    v0 --> v1
+    v2 --> v4
+    v3 --> v4
+    v4 --> v28
+    v4 --> v14
+    v4 --> v13
+    v4 --> v57
+    v4 --> v12
+    v4 --> v11
+    v4 --> v10
+    v4 --> v9
+    v4 --> v8
+    v4 --> v7
+    v4 --> v6
+    v4 --> v5
+    v4 --> v41
+    v4 --> v67
+    v4 --> v15
+    v15 --> v19
+    v19 --> v21
+    v19 --> v20
+    v19 --> v22
+    v22 --> v24
+    v24 --> v26
+    v24 --> v25
+    v24 --> v61
+    v27 --> v28
+    v28 --> v30
+    v28 --> v29
+    v28 --> v31
+    v28 --> v36
+    v31 --> v33
+    v33 --> v35
+    v33 --> v34
+    v33 --> v36
+    v40 --> v41
+    v36 --> v41
+    v41 --> v44
+    v41 --> v43
+    v41 --> v42
+    v36 --> v44
+    v44 --> v47
+    v44 --> v46
+    v44 --> v48
+    v44 --> v45
+    v44 --> v51
+    v44 --> v57
+    v48 --> v50
+    v48 --> v49
+    v51 --> v54
+    v51 --> v53
+    v51 --> v52
+    v55 --> v57
+    v55 --> v67
+    v56 --> v57
+    v56 --> v67
+    v57 --> v71
+    v57 --> v60
+    v57 --> v59
+    v57 --> v58
+    v61 --> v63
+    v63 --> v65
+    v63 --> v64
+    v61 --> v67
+    v67 --> v71
+    v67 --> v70
+    v67 --> v69
+    v67 --> v68
+    v71 --> v73
+    v71 --> v72
+    v74 --> v75
+    v75 --> v78
+
+</pre>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, maxTextSize: Number.MAX_SAFE_INTEGER, maxEdges: Number.MAX_SAFE_INTEGER });
+</script>
+</body>
+</html>

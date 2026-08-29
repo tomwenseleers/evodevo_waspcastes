@@ -37,6 +37,7 @@ if (!exists("PROJECT_ROOT", inherits = TRUE)) {
 dir_base <- normalizePath(PROJECT_ROOT, winslash = "/", mustWork = TRUE)
 dir_annotations <- file.path(dir_base, "input_annotation")
 dir_de <- file.path(dir_base, "input_differential_expression")
+dir_cafe_inputs <- file.path(dir_base, "input_CAFE")
 dir_go <- file.path(dir_annotations, "raw", "GO")
 output_dir <- file.path(dir_base, "output")
 figure_dir <- file.path(output_dir, "figures")
@@ -50,8 +51,8 @@ invisible(lapply(
 stages <- c("L1", "L2", "L3", "L4", "L5", "P")
 alpha_de <- 0.05
 
-f_genetable_pd <- file.path(dir_de, "raw", "pd", "pd_genetable.csv")
-f_genetable_vv <- file.path(dir_de, "raw", "vv", "vv_genetable.csv")
+f_genetable_pd <- file.path(dir_cafe_inputs, "annotation", "pd_genetable.csv")
+f_genetable_vv <- file.path(dir_cafe_inputs, "annotation", "vv_genetable.csv")
 f_obo <- file.path(dir_go, "go-basic.obo")
 go_annot_orthologs <- file.path(
   dir_base, "output_annotation", "N13_HOG_GO_final_long.tsv.gz"

@@ -1,0 +1,18 @@
+AGAT_CONVERTSPGXF2GXF:
+    agat: 1.6.1
+AGAT_SPKEEPLONGESTISOFORM:
+    agat: 1.6.1
+EGGNOGMAPPER:
+    eggnog-mapper: 2.1.13
+EGGNOG_TO_GO:
+    python: 3.11.9
+EGGNOG_TO_OG_GO:
+    python: 3.11.9
+GFFREAD:
+    gffread: 0.12.7
+ORTHOFINDER_CAFE:
+    orthofinder: 3.1.3
+RENAME_FASTA:
+    python: 3.11.9
+RESCALE_TREE:
+    python: 3.11.9

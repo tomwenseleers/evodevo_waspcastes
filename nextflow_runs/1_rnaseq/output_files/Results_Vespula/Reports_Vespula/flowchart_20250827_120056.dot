@@ -1,0 +1,2286 @@
+digraph "flowchart_20250827_120056" {
+v0 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.fromPath"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v0 -> v523 [label="ch_multiqc_config"];
+
+v1 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v452 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v1 -> v452 [label="ch_multiqc_custom_config"];
+
+v2 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v459 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v2 -> v459 [label="ch_multiqc_logo"];
+
+v3 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v40 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v3 -> v40 [label="ch_versions"];
+
+v4 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v4 -> v8 [label="ch_versions"];
+
+v5 [shape=point,label="",fixedsize=true,width=0.1];
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v5 -> v7 [label="fasta"];
+
+v6 [shape=point,label="",fixedsize=true,width=0.1];
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v6 -> v7 [label="ch_gtf"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v9 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF2BED"];
+v7 -> v9 [label="gtf"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v7 -> v8;
+
+v8 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v10 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v8 -> v10 [label="ch_versions"];
+
+v9 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF2BED"];
+v377 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INNERDISTANCE"];
+v9 -> v377 [label="ch_bed"];
+
+v9 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF2BED"];
+v10 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v9 -> v10;
+
+v10 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v13 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v10 -> v13 [label="ch_versions"];
+
+v5 [shape=point,label="",fixedsize=true,width=0.1];
+v11 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:MAKE_TRANSCRIPTS_FASTA"];
+v5 -> v11 [label="fasta"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v11 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:MAKE_TRANSCRIPTS_FASTA"];
+v7 -> v11 [label="gtf"];
+
+v11 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:MAKE_TRANSCRIPTS_FASTA"];
+v12 [shape=point];
+v11 -> v12;
+
+v11 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:MAKE_TRANSCRIPTS_FASTA"];
+v105 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_INDEX"];
+v11 -> v105 [label="transcript_fasta"];
+
+v11 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:MAKE_TRANSCRIPTS_FASTA"];
+v13 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v11 -> v13;
+
+v13 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v19 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v13 -> v19 [label="ch_versions"];
+
+v5 [shape=point,label="",fixedsize=true,width=0.1];
+v14 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v5 -> v14 [label="fasta"];
+
+v14 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v15 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:CUSTOM_GETCHROMSIZES"];
+v14 -> v15;
+
+v15 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:CUSTOM_GETCHROMSIZES"];
+v18 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v15 -> v18;
+
+v15 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:CUSTOM_GETCHROMSIZES"];
+v17 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v15 -> v17;
+
+v15 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:CUSTOM_GETCHROMSIZES"];
+v16 [shape=point];
+v15 -> v16;
+
+v15 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:CUSTOM_GETCHROMSIZES"];
+v19 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v15 -> v19;
+
+v17 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v41 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v17 -> v41 [label="fai"];
+
+v18 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v311 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_FORWARD:UCSC_BEDCLIP"];
+v18 -> v311 [label="sizes"];
+
+v19 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v28 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v19 -> v28 [label="ch_versions"];
+
+v20 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v21 [shape=point];
+v20 -> v21 [label="bbsplit_index"];
+
+v22 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v23 [shape=point];
+v22 -> v23 [label="ch_star_index"];
+
+v5 [shape=point,label="",fixedsize=true,width=0.1];
+v24 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v5 -> v24 [label="fasta"];
+
+v24 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v26 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:STAR_GENOMEGENERATE"];
+v24 -> v26;
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v25 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v7 -> v25 [label="gtf"];
+
+v25 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v26 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:STAR_GENOMEGENERATE"];
+v25 -> v26;
+
+v26 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:STAR_GENOMEGENERATE"];
+v27 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v26 -> v27;
+
+v26 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:STAR_GENOMEGENERATE"];
+v28 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v26 -> v28;
+
+v27 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v136 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v27 -> v136 [label="star_index"];
+
+v28 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v39 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v28 -> v39 [label="ch_versions"];
+
+v29 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v30 [shape=point];
+v29 -> v30 [label="rsem_index"];
+
+v31 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v32 [shape=point];
+v31 -> v32 [label="splicesites"];
+
+v33 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v34 [shape=point];
+v33 -> v34 [label="hisat2_index"];
+
+v35 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v36 [shape=point];
+v35 -> v36 [label="ch_index"];
+
+v37 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v38 [shape=point];
+v37 -> v38 [label="kallisto_index"];
+
+v39 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v40 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v39 -> v40 [label="versions"];
+
+v40 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v52 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v40 -> v52 [label="ch_versions"];
+
+v41 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v42 [shape=point];
+v41 -> v42;
+
+v43 [shape=point,label="",fixedsize=true,width=0.1,xlabel="channel.fromSamplesheet"];
+v44 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v43 -> v44;
+
+v44 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v45 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="groupTuple"];
+v44 -> v45;
+
+v45 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="groupTuple"];
+v46 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v45 -> v46;
+
+v46 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v47 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="branch"];
+v46 -> v47;
+
+v47 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="branch"];
+v49 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v47 -> v49;
+
+v47 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="branch"];
+v48 [label="NFCORE_RNASEQ:RNASEQ:CAT_FASTQ"];
+v47 -> v48;
+
+v48 [label="NFCORE_RNASEQ:RNASEQ:CAT_FASTQ"];
+v49 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v48 -> v49;
+
+v48 [label="NFCORE_RNASEQ:RNASEQ:CAT_FASTQ"];
+v50 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v48 -> v50;
+
+v49 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v68 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:FASTQC"];
+v49 -> v68 [label="trim_reads"];
+
+v50 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v51 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v50 -> v51;
+
+v51 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v52 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v51 -> v52;
+
+v52 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v95 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v52 -> v95 [label="ch_versions"];
+
+v53 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v54 [shape=point];
+v53 -> v54 [label="ch_filtered_reads"];
+
+v55 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v56 [shape=point];
+v55 -> v56 [label="ch_fastqc_raw_multiqc"];
+
+v57 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v58 [shape=point];
+v57 -> v58 [label="ch_fastqc_trim_multiqc"];
+
+v59 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v60 [shape=point];
+v59 -> v60 [label="ch_trim_log_multiqc"];
+
+v61 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v62 [shape=point];
+v61 -> v62 [label="ch_trim_read_count"];
+
+v63 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v71 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v63 -> v71 [label="ch_versions"];
+
+v64 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v65 [shape=point];
+v64 -> v65 [label="fastqc_html"];
+
+v66 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v67 [shape=point];
+v66 -> v67 [label="fastqc_zip"];
+
+v68 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:FASTQC"];
+v69 [shape=point];
+v68 -> v69 [label="fastqc_html"];
+
+v68 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:FASTQC"];
+v467 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v68 -> v467 [label="ch_fastqc_raw_multiqc"];
+
+v68 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:FASTQC"];
+v70 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v68 -> v70;
+
+v70 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v71 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v70 -> v71;
+
+v71 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v88 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v71 -> v88 [label="ch_versions"];
+
+v72 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v73 [shape=point];
+v72 -> v73 [label="umi_log"];
+
+v74 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v75 [shape=point];
+v74 -> v75 [label="trim_unpaired"];
+
+v76 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v77 [shape=point];
+v76 -> v77 [label="trim_html"];
+
+v78 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v79 [shape=point];
+v78 -> v79 [label="trim_zip"];
+
+v80 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v81 [shape=point];
+v80 -> v81 [label="trim_log"];
+
+v82 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v83 [shape=point];
+v82 -> v83 [label="trim_read_count"];
+
+v49 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v84 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:TRIMGALORE"];
+v49 -> v84 [label="trim_reads"];
+
+v84 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:TRIMGALORE"];
+v89 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v84 -> v89;
+
+v84 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:TRIMGALORE"];
+v89 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v84 -> v89 [label="ch_trim_log_multiqc"];
+
+v84 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:TRIMGALORE"];
+v86 [shape=point];
+v84 -> v86 [label="trim_unpaired"];
+
+v84 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:TRIMGALORE"];
+v85 [shape=point];
+v84 -> v85 [label="trim_html"];
+
+v84 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:TRIMGALORE"];
+v469 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v84 -> v469 [label="ch_fastqc_trim_multiqc"];
+
+v84 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:TRIMGALORE"];
+v87 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v84 -> v87;
+
+v87 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v88 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v87 -> v88;
+
+v88 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v94 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v88 -> v94 [label="ch_versions"];
+
+v89 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v90 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v89 -> v90;
+
+v90 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v91 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="filter"];
+v90 -> v91 [label="ch_num_trimmed_reads"];
+
+v91 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="filter"];
+v92 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v91 -> v92;
+
+v92 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v100 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="branch"];
+v92 -> v100 [label="ch_filtered_reads"];
+
+v90 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v93 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v90 -> v93 [label="ch_num_trimmed_reads"];
+
+v93 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v96 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v93 -> v96 [label="ch_trim_read_count"];
+
+v94 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v95 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v94 -> v95 [label="versions"];
+
+v95 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v116 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v95 -> v116 [label="ch_versions"];
+
+v96 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v97 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v96 -> v97;
+
+v97 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v98 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v97 -> v98;
+
+v98 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v461 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v98 -> v461 [label="ch_fail_trimming_multiqc"];
+
+v99 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v473 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v99 -> v473 [label="ch_sortmerna_multiqc"];
+
+v100 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="branch"];
+v101 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="combine"];
+v100 -> v101 [label="ch_reads"];
+
+v100 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="branch"];
+v119 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v100 -> v119;
+
+v5 [shape=point,label="",fixedsize=true,width=0.1];
+v101 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="combine"];
+v5 -> v101 [label="fasta"];
+
+v101 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="combine"];
+v102 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v101 -> v102;
+
+v102 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v103 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v102 -> v103;
+
+v103 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v105 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_INDEX"];
+v103 -> v105 [label="ch_genome_fasta"];
+
+v104 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v106 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v104 -> v106 [label="ch_versions"];
+
+v105 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_INDEX"];
+v112 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_QUANT"];
+v105 -> v112 [label="index"];
+
+v105 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_INDEX"];
+v106 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v105 -> v106;
+
+v106 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v109 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v106 -> v109 [label="ch_versions"];
+
+v100 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="branch"];
+v107 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:FQ_SUBSAMPLE"];
+v100 -> v107 [label="ch_reads"];
+
+v107 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:FQ_SUBSAMPLE"];
+v112 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_QUANT"];
+v107 -> v112 [label="reads"];
+
+v107 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:FQ_SUBSAMPLE"];
+v108 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v107 -> v108;
+
+v108 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v109 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v108 -> v109;
+
+v109 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v115 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v109 -> v115 [label="ch_versions"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v112 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_QUANT"];
+v7 -> v112 [label="gtf"];
+
+v11 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:MAKE_TRANSCRIPTS_FASTA"];
+v112 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_QUANT"];
+v11 -> v112 [label="transcript_fasta"];
+
+v110 [shape=point,label="",fixedsize=true,width=0.1];
+v112 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_QUANT"];
+v110 -> v112 [label="alignment_mode"];
+
+v111 [shape=point,label="",fixedsize=true,width=0.1];
+v112 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_QUANT"];
+v111 -> v112 [label="lib_type"];
+
+v112 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_QUANT"];
+v113 [shape=point];
+v112 -> v113 [label="results"];
+
+v112 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_QUANT"];
+v117 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v112 -> v117 [label="json_info"];
+
+v112 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_SUBSAMPLE_FQ_SALMON:SALMON_QUANT"];
+v114 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v112 -> v114;
+
+v114 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v115 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v114 -> v115;
+
+v115 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v116 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v115 -> v116 [label="versions"];
+
+v116 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v198 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v116 -> v198 [label="ch_versions"];
+
+v100 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="branch"];
+v117 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v100 -> v117 [label="ch_reads"];
+
+v117 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v118 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v117 -> v118;
+
+v118 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v119 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v118 -> v119;
+
+v119 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v119 -> v159 [label="reads"];
+
+v120 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v121 [shape=point];
+v120 -> v121 [label="ch_genome_bam"];
+
+v122 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v123 [shape=point];
+v122 -> v123 [label="ch_genome_bam_index"];
+
+v124 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v125 [shape=point];
+v124 -> v125 [label="ch_samtools_stats"];
+
+v126 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v127 [shape=point];
+v126 -> v127 [label="ch_samtools_flagstat"];
+
+v128 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v129 [shape=point];
+v128 -> v129 [label="ch_samtools_idxstats"];
+
+v130 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v131 [shape=point];
+v130 -> v131 [label="ch_star_multiqc"];
+
+v132 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v133 [shape=point];
+v132 -> v133 [label="ch_aligner_pca_multiqc"];
+
+v134 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v135 [shape=point];
+v134 -> v135 [label="ch_aligner_clustering_multiqc"];
+
+v136 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v136 -> v159 [label="index"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v137 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v7 -> v137 [label="gtf"];
+
+v137 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v137 -> v159 [label="gtf"];
+
+v5 [shape=point,label="",fixedsize=true,width=0.1];
+v138 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v5 -> v138 [label="fasta"];
+
+v138 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v187 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:BAM_STATS_SAMTOOLS:SAMTOOLS_STATS"];
+v138 -> v187 [label="ch_fasta"];
+
+v139 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v173 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v139 -> v173 [label="ch_versions"];
+
+v140 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v141 [shape=point];
+v140 -> v141 [label="ch_orig_bam"];
+
+v142 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v143 [shape=point];
+v142 -> v143 [label="ch_log_final"];
+
+v144 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v145 [shape=point];
+v144 -> v145 [label="ch_log_out"];
+
+v146 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v147 [shape=point];
+v146 -> v147 [label="ch_log_progress"];
+
+v148 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v149 [shape=point];
+v148 -> v149 [label="ch_bam_sorted"];
+
+v150 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v151 [shape=point];
+v150 -> v151 [label="ch_bam_transcript"];
+
+v152 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v153 [shape=point];
+v152 -> v153 [label="ch_fastq"];
+
+v154 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v155 [shape=point];
+v154 -> v155 [label="ch_tab"];
+
+v156 [shape=point,label="",fixedsize=true,width=0.1];
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v156 -> v159 [label="star_ignore_sjdbgtf"];
+
+v157 [shape=point,label="",fixedsize=true,width=0.1];
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v157 -> v159 [label="seq_platform"];
+
+v158 [shape=point,label="",fixedsize=true,width=0.1];
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v158 -> v159 [label="seq_center"];
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v249 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v159 -> v249 [label="ch_star_multiqc"];
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v171 [shape=point];
+v159 -> v171 [label="log_out"];
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v170 [shape=point];
+v159 -> v170 [label="log_progress"];
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v172 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v159 -> v172;
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v175 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_SORT"];
+v159 -> v175 [label="orig_bam"];
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v169 [shape=point];
+v159 -> v169 [label="bam_sorted"];
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v203 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_QUANT"];
+v159 -> v203 [label="reads"];
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v168 [shape=point];
+v159 -> v168;
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v167 [shape=point];
+v159 -> v167 [label="fastq"];
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v166 [shape=point];
+v159 -> v166 [label="tab"];
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v165 [shape=point];
+v159 -> v165;
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v164 [shape=point];
+v159 -> v164;
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v163 [shape=point];
+v159 -> v163;
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v162 [shape=point];
+v159 -> v162;
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v161 [shape=point];
+v159 -> v161;
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v160 [shape=point];
+v159 -> v160;
+
+v172 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v173 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v172 -> v173;
+
+v173 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v197 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v173 -> v197 [label="ch_versions"];
+
+v174 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v178 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v174 -> v178 [label="ch_versions"];
+
+v175 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_SORT"];
+v179 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_INDEX"];
+v175 -> v179 [label="ch_genome_bam"];
+
+v175 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_SORT"];
+v176 [shape=point];
+v175 -> v176;
+
+v175 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_SORT"];
+v177 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v175 -> v177;
+
+v177 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v178 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v177 -> v178;
+
+v178 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v182 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v178 -> v182 [label="ch_versions"];
+
+v179 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_INDEX"];
+v183 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v179 -> v183 [label="ch_genome_bam_index"];
+
+v179 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_INDEX"];
+v184 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v179 -> v184 [label="csi"];
+
+v179 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_INDEX"];
+v180 [shape=point];
+v179 -> v180;
+
+v179 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_INDEX"];
+v181 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v179 -> v181;
+
+v181 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v182 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v181 -> v182;
+
+v182 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v196 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v182 -> v196 [label="ch_versions"];
+
+v175 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_SORT"];
+v183 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v175 -> v183 [label="ch_genome_bam"];
+
+v183 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v184 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v183 -> v184;
+
+v184 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v185 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v184 -> v185;
+
+v185 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v187 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:BAM_STATS_SAMTOOLS:SAMTOOLS_STATS"];
+v185 -> v187 [label="ch_bam_bai"];
+
+v186 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v189 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v186 -> v189 [label="ch_versions"];
+
+v187 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:BAM_STATS_SAMTOOLS:SAMTOOLS_STATS"];
+v188 [shape=point];
+v187 -> v188 [label="ch_samtools_stats"];
+
+v187 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:BAM_STATS_SAMTOOLS:SAMTOOLS_STATS"];
+v189 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v187 -> v189;
+
+v189 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v192 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v189 -> v192 [label="ch_versions"];
+
+v185 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v190 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:BAM_STATS_SAMTOOLS:SAMTOOLS_FLAGSTAT"];
+v185 -> v190 [label="ch_bam_bai"];
+
+v190 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:BAM_STATS_SAMTOOLS:SAMTOOLS_FLAGSTAT"];
+v191 [shape=point];
+v190 -> v191 [label="ch_samtools_flagstat"];
+
+v190 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:BAM_STATS_SAMTOOLS:SAMTOOLS_FLAGSTAT"];
+v192 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v190 -> v192;
+
+v192 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v195 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v192 -> v195 [label="ch_versions"];
+
+v185 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v193 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:BAM_STATS_SAMTOOLS:SAMTOOLS_IDXSTATS"];
+v185 -> v193 [label="ch_bam_bai"];
+
+v193 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:BAM_STATS_SAMTOOLS:SAMTOOLS_IDXSTATS"];
+v194 [shape=point];
+v193 -> v194 [label="ch_samtools_idxstats"];
+
+v193 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:BAM_STATS_SAMTOOLS:SAMTOOLS_IDXSTATS"];
+v195 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v193 -> v195;
+
+v195 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v196 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v195 -> v196 [label="versions"];
+
+v196 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v197 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v196 -> v197 [label="versions"];
+
+v197 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v198 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v197 -> v198 [label="versions"];
+
+v198 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v234 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v198 -> v234 [label="ch_versions"];
+
+v199 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v206 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v199 -> v206 [label="ch_versions"];
+
+v200 [shape=point,label="",fixedsize=true,width=0.1];
+v203 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_QUANT"];
+v200 -> v203 [label="index"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v203 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_QUANT"];
+v7 -> v203 [label="gtf"];
+
+v11 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:MAKE_TRANSCRIPTS_FASTA"];
+v203 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_QUANT"];
+v11 -> v203 [label="transcript_fasta"];
+
+v201 [shape=point,label="",fixedsize=true,width=0.1];
+v203 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_QUANT"];
+v201 -> v203 [label="alignment_mode"];
+
+v202 [shape=point,label="",fixedsize=true,width=0.1];
+v203 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_QUANT"];
+v202 -> v203 [label="lib_type"];
+
+v203 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_QUANT"];
+v207 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v203 -> v207 [label="multiqc"];
+
+v203 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_QUANT"];
+v204 [shape=point];
+v203 -> v204;
+
+v203 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_QUANT"];
+v205 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v203 -> v205;
+
+v205 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v206 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v205 -> v206;
+
+v206 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v210 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v206 -> v210 [label="ch_versions"];
+
+v207 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v209 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TX2GENE"];
+v207 -> v209;
+
+v208 [shape=point,label="",fixedsize=true,width=0.1];
+v209 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TX2GENE"];
+v208 -> v209 [label="quant_type"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v209 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TX2GENE"];
+v7 -> v209 [label="gtf"];
+
+v209 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TX2GENE"];
+v212 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v209 -> v212;
+
+v209 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TX2GENE"];
+v210 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v209 -> v210;
+
+v210 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v217 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v210 -> v217 [label="ch_versions"];
+
+v203 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_QUANT"];
+v211 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v203 -> v211 [label="multiqc"];
+
+v211 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v211 -> v214;
+
+v212 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v212 -> v214;
+
+v213 [shape=point,label="",fixedsize=true,width=0.1];
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v213 -> v214 [label="quant_type"];
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v219 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE"];
+v214 -> v219 [label="tpm_gene"];
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v219 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE"];
+v214 -> v219 [label="counts_gene"];
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v223 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE_LENGTH_SCALED"];
+v214 -> v223 [label="counts_gene_length_scaled"];
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v227 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE_SCALED"];
+v214 -> v227 [label="counts_gene_scaled"];
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v216 [shape=point];
+v214 -> v216 [label="lengths_gene"];
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v231 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_TRANSCRIPT"];
+v214 -> v231 [label="merged_tpm_transcript"];
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v231 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_TRANSCRIPT"];
+v214 -> v231 [label="merged_counts_transcript"];
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v215 [shape=point];
+v214 -> v215 [label="lengths_transcript"];
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v217 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v214 -> v217;
+
+v217 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v221 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v217 -> v221 [label="ch_versions"];
+
+v209 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TX2GENE"];
+v218 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v209 -> v218;
+
+v218 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v219 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE"];
+v218 -> v219;
+
+v219 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE"];
+v220 [shape=point];
+v219 -> v220 [label="merged_gene_rds"];
+
+v219 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE"];
+v221 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v219 -> v221;
+
+v221 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v234 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v221 -> v234 [label="versions"];
+
+v209 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TX2GENE"];
+v222 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v209 -> v222;
+
+v222 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v223 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE_LENGTH_SCALED"];
+v222 -> v223;
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v223 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE_LENGTH_SCALED"];
+v214 -> v223 [label="tpm_gene"];
+
+v223 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE_LENGTH_SCALED"];
+v225 [shape=point];
+v223 -> v225 [label="merged_gene_rds_length_scaled"];
+
+v223 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE_LENGTH_SCALED"];
+v224 [shape=point];
+v223 -> v224;
+
+v209 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TX2GENE"];
+v226 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v209 -> v226;
+
+v226 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v227 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE_SCALED"];
+v226 -> v227;
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v227 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE_SCALED"];
+v214 -> v227 [label="tpm_gene"];
+
+v227 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE_SCALED"];
+v229 [shape=point];
+v227 -> v229 [label="merged_gene_rds_scaled"];
+
+v227 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE_SCALED"];
+v228 [shape=point];
+v227 -> v228;
+
+v209 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TX2GENE"];
+v230 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v209 -> v230;
+
+v230 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v231 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_TRANSCRIPT"];
+v230 -> v231;
+
+v231 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_TRANSCRIPT"];
+v233 [shape=point];
+v231 -> v233 [label="merged_transcript_rds"];
+
+v231 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_TRANSCRIPT"];
+v232 [shape=point];
+v231 -> v232;
+
+v234 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v244 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v234 -> v244 [label="ch_versions"];
+
+v214 [label="NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:TXIMPORT"];
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v214 -> v237 [label="counts_gene_length_scaled"];
+
+v235 [shape=point,label="",fixedsize=true,width=0.1];
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v235 -> v237 [label="pca_header_multiqc"];
+
+v236 [shape=point,label="",fixedsize=true,width=0.1];
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v236 -> v237 [label="clustering_header_multiqc"];
+
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v243 [shape=point];
+v237 -> v243;
+
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v242 [shape=point];
+v237 -> v242;
+
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v241 [shape=point];
+v237 -> v241;
+
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v493 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v237 -> v493 [label="ch_aligner_pca_multiqc"];
+
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v240 [shape=point];
+v237 -> v240;
+
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v495 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v237 -> v495 [label="ch_aligner_clustering_multiqc"];
+
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v239 [shape=point];
+v237 -> v239;
+
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v238 [shape=point];
+v237 -> v238;
+
+v237 [label="NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON"];
+v244 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v237 -> v244;
+
+v244 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v284 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v244 -> v284 [label="ch_versions"];
+
+v245 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v479 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v245 -> v479 [label="ch_rsem_multiqc"];
+
+v246 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v477 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v246 -> v477 [label="ch_hisat2_multiqc"];
+
+v247 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v248 [shape=point];
+v247 -> v248 [label="ch_fail_mapping_multiqc"];
+
+v249 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v250 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v249 -> v250 [label="ch_percent_mapped"];
+
+v175 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_SORT"];
+v250 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v175 -> v250 [label="ch_genome_bam"];
+
+v250 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v251 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v250 -> v251;
+
+v251 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v251 -> v265 [label="ch_bam"];
+
+v249 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v252 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v249 -> v252 [label="ch_percent_mapped"];
+
+v179 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:SAMTOOLS_INDEX"];
+v252 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v179 -> v252 [label="ch_genome_bam_index"];
+
+v252 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v253 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v252 -> v253;
+
+v253 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v254 [shape=point];
+v253 -> v254 [label="ch_genome_bam_index"];
+
+v249 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v255 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="branch"];
+v249 -> v255 [label="ch_percent_mapped"];
+
+v255 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="branch"];
+v256 [shape=point];
+v255 -> v256;
+
+v255 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="branch"];
+v257 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v255 -> v257;
+
+v257 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v258 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v257 -> v258;
+
+v258 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v463 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v258 -> v463 [label="ch_fail_mapping_multiqc"];
+
+v259 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v501 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v259 -> v501 [label="ch_preseq_multiqc"];
+
+v260 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v261 [shape=point];
+v260 -> v261 [label="ch_markduplicates_multiqc"];
+
+v5 [shape=point,label="",fixedsize=true,width=0.1];
+v262 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v5 -> v262 [label="fasta"];
+
+v262 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v262 -> v265 [label="ch_fasta"];
+
+v17 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v263 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v17 -> v263 [label="fai"];
+
+v263 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v263 -> v265 [label="ch_fai"];
+
+v264 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v268 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v264 -> v268 [label="ch_versions"];
+
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v269 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:SAMTOOLS_INDEX"];
+v265 -> v269 [label="ch_genome_bam"];
+
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v266 [shape=point];
+v265 -> v266;
+
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v489 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v265 -> v489 [label="ch_markduplicates_multiqc"];
+
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v267 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v265 -> v267;
+
+v267 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v268 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v267 -> v268;
+
+v268 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v272 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v268 -> v272 [label="ch_versions"];
+
+v269 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:SAMTOOLS_INDEX"];
+v273 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v269 -> v273 [label="ch_genome_bam_index"];
+
+v269 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:SAMTOOLS_INDEX"];
+v274 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v269 -> v274 [label="csi"];
+
+v269 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:SAMTOOLS_INDEX"];
+v270 [shape=point];
+v269 -> v270;
+
+v269 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:SAMTOOLS_INDEX"];
+v271 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v269 -> v271;
+
+v271 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v272 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v271 -> v272;
+
+v272 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v283 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v272 -> v283 [label="ch_versions"];
+
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v273 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v265 -> v273 [label="ch_genome_bam"];
+
+v273 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v274 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v273 -> v274;
+
+v274 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v275 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v274 -> v275;
+
+v275 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v277 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:BAM_STATS_SAMTOOLS:SAMTOOLS_STATS"];
+v275 -> v277 [label="ch_bam_bai"];
+
+v276 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v278 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v276 -> v278 [label="ch_versions"];
+
+v262 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v277 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:BAM_STATS_SAMTOOLS:SAMTOOLS_STATS"];
+v262 -> v277 [label="ch_fasta"];
+
+v277 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:BAM_STATS_SAMTOOLS:SAMTOOLS_STATS"];
+v483 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v277 -> v483 [label="ch_samtools_stats"];
+
+v277 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:BAM_STATS_SAMTOOLS:SAMTOOLS_STATS"];
+v278 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v277 -> v278;
+
+v278 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v280 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v278 -> v280 [label="ch_versions"];
+
+v275 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v279 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:BAM_STATS_SAMTOOLS:SAMTOOLS_FLAGSTAT"];
+v275 -> v279 [label="ch_bam_bai"];
+
+v279 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:BAM_STATS_SAMTOOLS:SAMTOOLS_FLAGSTAT"];
+v485 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v279 -> v485 [label="ch_samtools_flagstat"];
+
+v279 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:BAM_STATS_SAMTOOLS:SAMTOOLS_FLAGSTAT"];
+v280 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v279 -> v280;
+
+v280 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v282 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v280 -> v282 [label="ch_versions"];
+
+v275 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v281 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:BAM_STATS_SAMTOOLS:SAMTOOLS_IDXSTATS"];
+v275 -> v281 [label="ch_bam_bai"];
+
+v281 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:BAM_STATS_SAMTOOLS:SAMTOOLS_IDXSTATS"];
+v487 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v281 -> v487 [label="ch_samtools_idxstats"];
+
+v281 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:BAM_STATS_SAMTOOLS:SAMTOOLS_IDXSTATS"];
+v282 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v281 -> v282;
+
+v282 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v283 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v282 -> v283 [label="versions"];
+
+v283 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v284 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v283 -> v284 [label="versions"];
+
+v284 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v291 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v284 -> v291 [label="ch_versions"];
+
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v285 [label="NFCORE_RNASEQ:RNASEQ:STRINGTIE_STRINGTIE"];
+v265 -> v285 [label="ch_genome_bam"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v285 [label="NFCORE_RNASEQ:RNASEQ:STRINGTIE_STRINGTIE"];
+v7 -> v285 [label="gtf"];
+
+v285 [label="NFCORE_RNASEQ:RNASEQ:STRINGTIE_STRINGTIE"];
+v289 [shape=point];
+v285 -> v289;
+
+v285 [label="NFCORE_RNASEQ:RNASEQ:STRINGTIE_STRINGTIE"];
+v288 [shape=point];
+v285 -> v288;
+
+v285 [label="NFCORE_RNASEQ:RNASEQ:STRINGTIE_STRINGTIE"];
+v287 [shape=point];
+v285 -> v287;
+
+v285 [label="NFCORE_RNASEQ:RNASEQ:STRINGTIE_STRINGTIE"];
+v286 [shape=point];
+v285 -> v286;
+
+v285 [label="NFCORE_RNASEQ:RNASEQ:STRINGTIE_STRINGTIE"];
+v290 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v285 -> v290;
+
+v290 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v291 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v290 -> v291;
+
+v291 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v302 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v291 -> v302 [label="ch_versions"];
+
+v292 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v293 [shape=point];
+v292 -> v293 [label="ch_featurecounts_multiqc"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v294 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v7 -> v294 [label="gtf"];
+
+v294 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v296 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="combine"];
+v294 -> v296 [label="biotype_in_gtf"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v295 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="combine"];
+v7 -> v295 [label="gtf"];
+
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v295 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="combine"];
+v265 -> v295 [label="ch_genome_bam"];
+
+v295 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="combine"];
+v296 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="combine"];
+v295 -> v296;
+
+v296 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="combine"];
+v297 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="filter"];
+v296 -> v297;
+
+v297 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="filter"];
+v298 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v297 -> v298;
+
+v298 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v299 [label="NFCORE_RNASEQ:RNASEQ:SUBREAD_FEATURECOUNTS"];
+v298 -> v299 [label="ch_featurecounts"];
+
+v299 [label="NFCORE_RNASEQ:RNASEQ:SUBREAD_FEATURECOUNTS"];
+v304 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC_CUSTOM_BIOTYPE"];
+v299 -> v304;
+
+v299 [label="NFCORE_RNASEQ:RNASEQ:SUBREAD_FEATURECOUNTS"];
+v300 [shape=point];
+v299 -> v300;
+
+v299 [label="NFCORE_RNASEQ:RNASEQ:SUBREAD_FEATURECOUNTS"];
+v301 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v299 -> v301;
+
+v301 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v302 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v301 -> v302;
+
+v302 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v306 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v302 -> v306 [label="ch_versions"];
+
+v303 [shape=point,label="",fixedsize=true,width=0.1];
+v304 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC_CUSTOM_BIOTYPE"];
+v303 -> v304 [label="header"];
+
+v304 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC_CUSTOM_BIOTYPE"];
+v491 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v304 -> v491 [label="ch_featurecounts_multiqc"];
+
+v304 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC_CUSTOM_BIOTYPE"];
+v305 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v304 -> v305;
+
+v305 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v306 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v305 -> v306;
+
+v306 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v309 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v306 -> v309 [label="ch_versions"];
+
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v307 [label="NFCORE_RNASEQ:RNASEQ:BEDTOOLS_GENOMECOV"];
+v265 -> v307 [label="ch_genome_bam"];
+
+v307 [label="NFCORE_RNASEQ:RNASEQ:BEDTOOLS_GENOMECOV"];
+v311 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_FORWARD:UCSC_BEDCLIP"];
+v307 -> v311 [label="bedgraph"];
+
+v307 [label="NFCORE_RNASEQ:RNASEQ:BEDTOOLS_GENOMECOV"];
+v320 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_REVERSE:UCSC_BEDCLIP"];
+v307 -> v320 [label="bedgraph"];
+
+v307 [label="NFCORE_RNASEQ:RNASEQ:BEDTOOLS_GENOMECOV"];
+v308 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v307 -> v308;
+
+v308 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v309 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v308 -> v309;
+
+v309 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v318 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v309 -> v318 [label="ch_versions"];
+
+v310 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v313 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v310 -> v313 [label="ch_versions"];
+
+v311 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_FORWARD:UCSC_BEDCLIP"];
+v314 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_FORWARD:UCSC_BEDGRAPHTOBIGWIG"];
+v311 -> v314 [label="bedgraph"];
+
+v311 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_FORWARD:UCSC_BEDCLIP"];
+v312 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v311 -> v312;
+
+v312 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v313 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v312 -> v313;
+
+v313 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v317 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v313 -> v317 [label="ch_versions"];
+
+v18 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v314 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_FORWARD:UCSC_BEDGRAPHTOBIGWIG"];
+v18 -> v314 [label="sizes"];
+
+v314 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_FORWARD:UCSC_BEDGRAPHTOBIGWIG"];
+v315 [shape=point];
+v314 -> v315 [label="bigwig"];
+
+v314 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_FORWARD:UCSC_BEDGRAPHTOBIGWIG"];
+v316 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v314 -> v316;
+
+v316 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v317 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v316 -> v317;
+
+v317 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v318 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v317 -> v318 [label="versions"];
+
+v318 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v353 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v318 -> v353 [label="ch_versions"];
+
+v319 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v322 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v319 -> v322 [label="ch_versions"];
+
+v18 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v320 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_REVERSE:UCSC_BEDCLIP"];
+v18 -> v320 [label="sizes"];
+
+v320 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_REVERSE:UCSC_BEDCLIP"];
+v323 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_REVERSE:UCSC_BEDGRAPHTOBIGWIG"];
+v320 -> v323 [label="bedgraph"];
+
+v320 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_REVERSE:UCSC_BEDCLIP"];
+v321 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v320 -> v321;
+
+v321 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v322 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v321 -> v322;
+
+v322 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v326 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v322 -> v326 [label="ch_versions"];
+
+v18 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v323 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_REVERSE:UCSC_BEDGRAPHTOBIGWIG"];
+v18 -> v323 [label="sizes"];
+
+v323 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_REVERSE:UCSC_BEDGRAPHTOBIGWIG"];
+v324 [shape=point];
+v323 -> v324 [label="bigwig"];
+
+v323 [label="NFCORE_RNASEQ:RNASEQ:BEDGRAPH_BEDCLIP_BEDGRAPHTOBIGWIG_REVERSE:UCSC_BEDGRAPHTOBIGWIG"];
+v325 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v323 -> v325;
+
+v325 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v326 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v325 -> v326;
+
+v326 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v327 [shape=point];
+v326 -> v327 [label="versions"];
+
+v328 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v329 [shape=point];
+v328 -> v329 [label="ch_qualimap_multiqc"];
+
+v330 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v331 [shape=point];
+v330 -> v331 [label="ch_dupradar_multiqc"];
+
+v332 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v333 [shape=point];
+v332 -> v333 [label="ch_bamstat_multiqc"];
+
+v334 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v335 [shape=point];
+v334 -> v335 [label="ch_inferexperiment_multiqc"];
+
+v336 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v337 [shape=point];
+v336 -> v337 [label="ch_innerdistance_multiqc"];
+
+v338 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v339 [shape=point];
+v338 -> v339 [label="ch_junctionannotation_multiqc"];
+
+v340 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v341 [shape=point];
+v340 -> v341 [label="ch_junctionsaturation_multiqc"];
+
+v342 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v343 [shape=point];
+v342 -> v343 [label="ch_readdistribution_multiqc"];
+
+v344 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v345 [shape=point];
+v344 -> v345 [label="ch_readduplication_multiqc"];
+
+v346 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v347 [shape=point];
+v346 -> v347 [label="ch_fail_strand_multiqc"];
+
+v348 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v349 [shape=point];
+v348 -> v349 [label="ch_tin_multiqc"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v350 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v7 -> v350 [label="gtf"];
+
+v350 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v351 [label="NFCORE_RNASEQ:RNASEQ:QUALIMAP_RNASEQ"];
+v350 -> v351;
+
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v351 [label="NFCORE_RNASEQ:RNASEQ:QUALIMAP_RNASEQ"];
+v265 -> v351 [label="ch_genome_bam"];
+
+v351 [label="NFCORE_RNASEQ:RNASEQ:QUALIMAP_RNASEQ"];
+v503 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v351 -> v503 [label="ch_qualimap_multiqc"];
+
+v351 [label="NFCORE_RNASEQ:RNASEQ:QUALIMAP_RNASEQ"];
+v352 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v351 -> v352;
+
+v352 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v353 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v352 -> v353;
+
+v353 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v358 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v353 -> v358 [label="ch_versions"];
+
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v354 [label="NFCORE_RNASEQ:RNASEQ:DUPRADAR"];
+v265 -> v354 [label="ch_genome_bam"];
+
+v7 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF_FILTER"];
+v354 [label="NFCORE_RNASEQ:RNASEQ:DUPRADAR"];
+v7 -> v354 [label="gtf"];
+
+v354 [label="NFCORE_RNASEQ:RNASEQ:DUPRADAR"];
+v356 [shape=point];
+v354 -> v356;
+
+v354 [label="NFCORE_RNASEQ:RNASEQ:DUPRADAR"];
+v355 [shape=point];
+v354 -> v355;
+
+v354 [label="NFCORE_RNASEQ:RNASEQ:DUPRADAR"];
+v505 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v354 -> v505 [label="ch_dupradar_multiqc"];
+
+v354 [label="NFCORE_RNASEQ:RNASEQ:DUPRADAR"];
+v357 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v354 -> v357;
+
+v357 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v358 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v357 -> v358;
+
+v358 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v440 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v358 -> v440 [label="ch_versions"];
+
+v269 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:SAMTOOLS_INDEX"];
+v359 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v269 -> v359 [label="ch_genome_bam_index"];
+
+v265 [label="NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES"];
+v359 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v265 -> v359 [label="ch_genome_bam"];
+
+v359 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="join"];
+v361 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v359 -> v361 [label="ch_bam_bai"];
+
+v360 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v366 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v360 -> v366 [label="ch_versions"];
+
+v361 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v364 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_BAMSTAT"];
+v361 -> v364 [label="ch_bam"];
+
+v362 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v363 [shape=point];
+v362 -> v363 [label="bamstat_txt"];
+
+v364 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_BAMSTAT"];
+v507 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v364 -> v507 [label="ch_bamstat_multiqc"];
+
+v364 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_BAMSTAT"];
+v365 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v364 -> v365;
+
+v365 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v366 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v365 -> v366;
+
+v366 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v383 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v366 -> v383 [label="ch_versions"];
+
+v367 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v368 [shape=point];
+v367 -> v368 [label="innerdistance_distance"];
+
+v369 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v370 [shape=point];
+v369 -> v370 [label="innerdistance_freq"];
+
+v371 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v372 [shape=point];
+v371 -> v372 [label="innerdistance_mean"];
+
+v373 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v374 [shape=point];
+v373 -> v374 [label="innerdistance_pdf"];
+
+v375 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v376 [shape=point];
+v375 -> v376 [label="innerdistance_rscript"];
+
+v361 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v377 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INNERDISTANCE"];
+v361 -> v377 [label="ch_bam"];
+
+v377 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INNERDISTANCE"];
+v381 [shape=point];
+v377 -> v381 [label="innerdistance_distance"];
+
+v377 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INNERDISTANCE"];
+v511 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v377 -> v511 [label="ch_innerdistance_multiqc"];
+
+v377 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INNERDISTANCE"];
+v380 [shape=point];
+v377 -> v380 [label="innerdistance_mean"];
+
+v377 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INNERDISTANCE"];
+v379 [shape=point];
+v377 -> v379 [label="innerdistance_pdf"];
+
+v377 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INNERDISTANCE"];
+v378 [shape=point];
+v377 -> v378 [label="innerdistance_rscript"];
+
+v377 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INNERDISTANCE"];
+v382 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v377 -> v382;
+
+v382 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v383 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v382 -> v383;
+
+v383 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v388 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v383 -> v388 [label="ch_versions"];
+
+v384 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v385 [shape=point];
+v384 -> v385 [label="inferexperiment_txt"];
+
+v361 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v386 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INFEREXPERIMENT"];
+v361 -> v386 [label="ch_bam"];
+
+v9 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF2BED"];
+v386 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INFEREXPERIMENT"];
+v9 -> v386 [label="ch_bed"];
+
+v386 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INFEREXPERIMENT"];
+v441 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v386 -> v441 [label="ch_inferexperiment_multiqc"];
+
+v386 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INFEREXPERIMENT"];
+v387 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v386 -> v387;
+
+v387 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v388 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v387 -> v388;
+
+v388 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v411 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v388 -> v411 [label="ch_versions"];
+
+v389 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v390 [shape=point];
+v389 -> v390 [label="junctionannotation_bed"];
+
+v391 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v392 [shape=point];
+v391 -> v392 [label="junctionannotation_interact_bed"];
+
+v393 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v394 [shape=point];
+v393 -> v394 [label="junctionannotation_xls"];
+
+v395 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v396 [shape=point];
+v395 -> v396 [label="junctionannotation_pdf"];
+
+v397 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v398 [shape=point];
+v397 -> v398 [label="junctionannotation_events_pdf"];
+
+v399 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v400 [shape=point];
+v399 -> v400 [label="junctionannotation_rscript"];
+
+v401 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v402 [shape=point];
+v401 -> v402 [label="junctionannotation_log"];
+
+v361 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v403 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONANNOTATION"];
+v361 -> v403 [label="ch_bam"];
+
+v9 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF2BED"];
+v403 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONANNOTATION"];
+v9 -> v403 [label="ch_bed"];
+
+v403 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONANNOTATION"];
+v409 [shape=point];
+v403 -> v409 [label="junctionannotation_xls"];
+
+v403 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONANNOTATION"];
+v408 [shape=point];
+v403 -> v408 [label="junctionannotation_rscript"];
+
+v403 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONANNOTATION"];
+v513 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v403 -> v513 [label="ch_junctionannotation_multiqc"];
+
+v403 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONANNOTATION"];
+v407 [shape=point];
+v403 -> v407 [label="junctionannotation_bed"];
+
+v403 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONANNOTATION"];
+v406 [shape=point];
+v403 -> v406 [label="junctionannotation_interact_bed"];
+
+v403 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONANNOTATION"];
+v405 [shape=point];
+v403 -> v405 [label="junctionannotation_pdf"];
+
+v403 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONANNOTATION"];
+v404 [shape=point];
+v403 -> v404 [label="junctionannotation_events_pdf"];
+
+v403 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONANNOTATION"];
+v410 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v403 -> v410;
+
+v410 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v411 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v410 -> v411;
+
+v411 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v419 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v411 -> v419 [label="ch_versions"];
+
+v412 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v413 [shape=point];
+v412 -> v413 [label="junctionsaturation_pdf"];
+
+v414 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v415 [shape=point];
+v414 -> v415 [label="junctionsaturation_rscript"];
+
+v361 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v416 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONSATURATION"];
+v361 -> v416 [label="ch_bam"];
+
+v9 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF2BED"];
+v416 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONSATURATION"];
+v9 -> v416 [label="ch_bed"];
+
+v416 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONSATURATION"];
+v417 [shape=point];
+v416 -> v417 [label="junctionsaturation_pdf"];
+
+v416 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONSATURATION"];
+v515 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v416 -> v515 [label="ch_junctionsaturation_multiqc"];
+
+v416 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_JUNCTIONSATURATION"];
+v418 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v416 -> v418;
+
+v418 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v419 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v418 -> v419;
+
+v419 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v424 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v419 -> v424 [label="ch_versions"];
+
+v420 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v421 [shape=point];
+v420 -> v421 [label="readdistribution_txt"];
+
+v361 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v422 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_READDISTRIBUTION"];
+v361 -> v422 [label="ch_bam"];
+
+v9 [label="NFCORE_RNASEQ:RNASEQ:PREPARE_GENOME:GTF2BED"];
+v422 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_READDISTRIBUTION"];
+v9 -> v422 [label="ch_bed"];
+
+v422 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_READDISTRIBUTION"];
+v517 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v422 -> v517 [label="ch_readdistribution_multiqc"];
+
+v422 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_READDISTRIBUTION"];
+v423 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v422 -> v423;
+
+v423 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v424 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v423 -> v424;
+
+v424 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v438 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v424 -> v438 [label="ch_versions"];
+
+v425 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v426 [shape=point];
+v425 -> v426 [label="readduplication_seq_xls"];
+
+v427 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v428 [shape=point];
+v427 -> v428 [label="readduplication_pos_xls"];
+
+v429 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v430 [shape=point];
+v429 -> v430 [label="readduplication_pdf"];
+
+v431 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v432 [shape=point];
+v431 -> v432 [label="readduplication_rscript"];
+
+v361 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v433 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_READDUPLICATION"];
+v361 -> v433 [label="ch_bam"];
+
+v433 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_READDUPLICATION"];
+v436 [shape=point];
+v433 -> v436 [label="readduplication_seq_xls"];
+
+v433 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_READDUPLICATION"];
+v519 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v433 -> v519 [label="ch_readduplication_multiqc"];
+
+v433 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_READDUPLICATION"];
+v435 [shape=point];
+v433 -> v435 [label="readduplication_pdf"];
+
+v433 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_READDUPLICATION"];
+v434 [shape=point];
+v433 -> v434 [label="readduplication_rscript"];
+
+v433 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_READDUPLICATION"];
+v437 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v433 -> v437;
+
+v437 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="first"];
+v438 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v437 -> v438;
+
+v438 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v440 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v438 -> v440 [label="versions"];
+
+v439 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v521 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v439 -> v521 [label="ch_tin_multiqc"];
+
+v440 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="mix"];
+v447 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="unique"];
+v440 -> v447 [label="ch_versions"];
+
+v441 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v442 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v441 -> v442;
+
+v442 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v443 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v442 -> v443;
+
+v443 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="map"];
+v465 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v443 -> v465 [label="ch_fail_strand_multiqc"];
+
+v444 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v481 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v444 -> v481 [label="ch_pseudo_multiqc"];
+
+v445 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v497 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v445 -> v497 [label="ch_pseudoaligner_pca_multiqc"];
+
+v446 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.empty"];
+v499 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v446 -> v499 [label="ch_pseudoaligner_clustering_multiqc"];
+
+v447 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="unique"];
+v448 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v447 -> v448;
+
+v448 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v449 [label="NFCORE_RNASEQ:RNASEQ:CUSTOM_DUMPSOFTWAREVERSIONS"];
+v448 -> v449;
+
+v449 [label="NFCORE_RNASEQ:RNASEQ:CUSTOM_DUMPSOFTWAREVERSIONS"];
+v451 [shape=point];
+v449 -> v451;
+
+v449 [label="NFCORE_RNASEQ:RNASEQ:CUSTOM_DUMPSOFTWAREVERSIONS"];
+v454 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v449 -> v454;
+
+v449 [label="NFCORE_RNASEQ:RNASEQ:CUSTOM_DUMPSOFTWAREVERSIONS"];
+v450 [shape=point];
+v449 -> v450;
+
+v452 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v453 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v452 -> v453;
+
+v453 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v453 -> v523;
+
+v454 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v454 -> v523;
+
+v455 [shape=point,label="",fixedsize=true,width=0.1];
+v456 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v455 -> v456 [label="ch_workflow_summary"];
+
+v456 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v456 -> v523;
+
+v457 [shape=point,label="",fixedsize=true,width=0.1];
+v458 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v457 -> v458 [label="ch_methods_description"];
+
+v458 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v458 -> v523;
+
+v459 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v460 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v459 -> v460;
+
+v460 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v460 -> v523;
+
+v461 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v462 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v461 -> v462;
+
+v462 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v462 -> v523;
+
+v463 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v464 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v463 -> v464;
+
+v464 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v464 -> v523;
+
+v465 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collectFile"];
+v466 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v465 -> v466;
+
+v466 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v466 -> v523;
+
+v467 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v468 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v467 -> v468;
+
+v468 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v468 -> v523;
+
+v469 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v470 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v469 -> v470;
+
+v470 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v470 -> v523;
+
+v84 [label="NFCORE_RNASEQ:RNASEQ:FASTQ_FASTQC_UMITOOLS_TRIMGALORE:TRIMGALORE"];
+v471 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v84 -> v471 [label="ch_trim_log_multiqc"];
+
+v471 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v472 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v471 -> v472;
+
+v472 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v472 -> v523;
+
+v473 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v474 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v473 -> v474;
+
+v474 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v474 -> v523;
+
+v159 [label="NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:STAR_ALIGN"];
+v475 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v159 -> v475 [label="ch_star_multiqc"];
+
+v475 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v476 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v475 -> v476;
+
+v476 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v476 -> v523;
+
+v477 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v478 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v477 -> v478;
+
+v478 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v478 -> v523;
+
+v479 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v480 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v479 -> v480;
+
+v480 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v480 -> v523;
+
+v481 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v482 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v481 -> v482;
+
+v482 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v482 -> v523;
+
+v483 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v484 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v483 -> v484;
+
+v484 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v484 -> v523;
+
+v485 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v486 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v485 -> v486;
+
+v486 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v486 -> v523;
+
+v487 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v488 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v487 -> v488;
+
+v488 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v488 -> v523;
+
+v489 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v490 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v489 -> v490;
+
+v490 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v490 -> v523;
+
+v491 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v492 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v491 -> v492;
+
+v492 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v492 -> v523;
+
+v493 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v494 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v493 -> v494;
+
+v494 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v494 -> v523;
+
+v495 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v496 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v495 -> v496;
+
+v496 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v496 -> v523;
+
+v497 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v498 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v497 -> v498;
+
+v498 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v498 -> v523;
+
+v499 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v500 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v499 -> v500;
+
+v500 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v500 -> v523;
+
+v501 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v502 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v501 -> v502;
+
+v502 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v502 -> v523;
+
+v503 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v504 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v503 -> v504;
+
+v504 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v504 -> v523;
+
+v505 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v506 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v505 -> v506;
+
+v506 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v506 -> v523;
+
+v507 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v508 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v507 -> v508;
+
+v508 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v508 -> v523;
+
+v386 [label="NFCORE_RNASEQ:RNASEQ:BAM_RSEQC:RSEQC_INFEREXPERIMENT"];
+v509 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v386 -> v509 [label="ch_inferexperiment_multiqc"];
+
+v509 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v510 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v509 -> v510;
+
+v510 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v510 -> v523;
+
+v511 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v512 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v511 -> v512;
+
+v512 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v512 -> v523;
+
+v513 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v514 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v513 -> v514;
+
+v514 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v514 -> v523;
+
+v515 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v516 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v515 -> v516;
+
+v516 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v516 -> v523;
+
+v517 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v518 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v517 -> v518;
+
+v518 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v518 -> v523;
+
+v519 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v520 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v519 -> v520;
+
+v520 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v520 -> v523;
+
+v521 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="collect"];
+v522 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v521 -> v522;
+
+v522 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="ifEmpty"];
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v522 -> v523;
+
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v527 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="toList"];
+v523 -> v527;
+
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v526 [shape=point];
+v523 -> v526;
+
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v525 [shape=point];
+v523 -> v525;
+
+v523 [label="NFCORE_RNASEQ:RNASEQ:MULTIQC"];
+v524 [shape=point];
+v523 -> v524;
+
+v527 [shape=circle,label="",fixedsize=true,width=0.1,xlabel="toList"];
+v528 [shape=point];
+v527 -> v528;
+
+}

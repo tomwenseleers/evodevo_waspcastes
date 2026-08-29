@@ -9,8 +9,12 @@ if (!exists("PROJECT_ROOT", inherits = TRUE)) {
   stop("Set PROJECT_ROOT to the repository root before sourcing this script.")
 }
 dir_base <- normalizePath(PROJECT_ROOT, winslash = "/", mustWork = TRUE)
-input_root <- file.path(dir_base, "input_differential_expression", "raw")
-output_root <- file.path(dir_base, "input_differential_expression", "checkpoints")
+de_input_dir <- file.path(dir_base, "input_differential_expression")
+metadata_dir <- file.path(de_input_dir, "raw")
+rnaseq_results_dir <- file.path(
+  dir_base, "nextflow_runs", "1_rnaseq", "output_files"
+)
+output_root <- file.path(de_input_dir, "checkpoints")
 output_dir <- file.path(output_root, "gene")
 local_library <- file.path(dir_base, ".R_library")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
@@ -60,13 +64,19 @@ read_gene_matrix <- function(path) {
 }
 
 metadata_path <- function(species_code) {
-  path <- file.path(input_root, species_code, paste0("metadata_", species_code, ".csv"))
+  path <- file.path(metadata_dir, paste0("metadata_", species_code, ".csv"))
   if (!file.exists(path)) stop("Metadata file not found for ", species_code, ": ", path)
   path
 }
 
 read_species_data <- function(species_code, low_level, high_level) {
-  input_dir <- file.path(input_root, species_code)
+  result_folder <- switch(
+    species_code,
+    pd = "Results_Polistes",
+    vv = "Results_Vespula",
+    stop("Unknown species code: ", species_code)
+  )
+  input_dir <- file.path(rnaseq_results_dir, result_folder, "star_salmon")
   counts_obj <- read_gene_matrix(file.path(input_dir, "salmon.merged.gene_counts.tsv"))
   lengths_obj <- read_gene_matrix(file.path(input_dir, "salmon.merged.gene_lengths.tsv"))
   tpm_obj <- read_gene_matrix(file.path(input_dir, "salmon.merged.gene_tpm.tsv"))

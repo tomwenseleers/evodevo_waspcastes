@@ -20,3 +20,9 @@ The computationally costly gene-wise and N13-HOG mixed-model refits are
 provided as one-worker upstream scripts but were not repeated during this
 final packaging check; their fitted checkpoints are included and were used by
 the validated downstream workflow.
+
+On 29 August 2026, the packaged input paths were migrated to the retained
+`nextflow_runs/` directory. Byte-identical duplicate Salmon, EXCON GO,
+OrthoFinder HOG and CAFE files were removed from the downstream input folders;
+all R scripts were parsed again and the revised required-input paths were
+checked against the repository contents.

@@ -1,0 +1,7 @@
+Superfamily,Family,Subfamily,Tribe,Species,NCBI_GCA,NCBI_GCF,Level / Annotation,Topick
+Vespoidea,Vespidae,Vespinae,Vespini,Vespula vulgaris,GCA_905475345.1,GCF_905475345.1,Chromosome,Both
+Vespoidea,Vespidae,Vespinae,Vespini,Vespa crabro,GCA_910589235.1,GCF_910589235.1,Chromosome,Both
+Vespoidea,Vespidae,Vespinae,Vespini,Vespa velutina,GCF_912470025.1,GCF_912470025.1,Chromosome,Both
+Apoidea,Apidae,Apinae,Bombini,Bombus terrestris,GCA_910591885.2,GCF_910591885.1,Chromosome,Both
+Apoidea,Apidae,Apinae,Bombini,Bombus pascuorum,GCA_905332965.1,GCF_905332965.1,Chromosome,Both
+Ichneumonoidea,Ichneumonidae,Campopleginae,,Venturia canescens,GCA_019457755.1,GCF_019457755.1,Chromosome,Both

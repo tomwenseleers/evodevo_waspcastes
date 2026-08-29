@@ -1,0 +1,42 @@
+Superfamily,Family,Subfamily,Tribe,Species,NCBI_GCA,NCBI_GCF,Level / Annotation,Topick
+Vespoidea,Vespidae,Polistinae,Mischocyttarini,Mischocyttarus mexicanus,GCA_023678845.1,,Scaffold,NCBI
+Vespoidea,Vespidae,Polistinae,Polistini,Polistes fuscatus,GCA_010416935.1,GCF_010416935.1,Scaffold,NCBI
+Vespoidea,Vespidae,Polistinae,Polistini,Polistes canadensis,GCA_001313835.1,GCF_001313835.1,Scaffold,NCBI
+Vespoidea,Vespidae,Polistinae,Polistini,Polistes dominula,GCA_001465965.1,GCF_001465965.1,Scaffold,NCBI
+Vespoidea,Vespidae,Polistinae,Polistini,Polistes exclamans,GCA_023678865.1,,Scaffold,NCBI
+Vespoidea,Vespidae,Vespinae,Vespini,Vespula pensylvanica,GCA_014466175.1,GCF_014466175.1,Chromosome,NCBI
+Vespoidea,Vespidae,Vespinae,Vespini,Vespa mandarinia,GCA_014083535.1,GCF_014083535.2,Chromosome,NCBI
+Formicoidea,Formicidae,Dolichoderinae,,Linepithema humile,GCA_040581485.1,GCF_040581485.1,Chromosome,NCBI
+Formicoidea,Formicidae,Dorylinae,,Ooceraea biroi,GCA_003672135.1,GCF_003672135.1,Chromosome,NCBI
+Formicoidea,Formicidae,Formicinae,,Camponotus floridanus,GCA_003227725.1,GCF_003227725.1,Scaffold,NCBI
+Formicoidea,Formicidae,Myrmicinae,,Acromyrmex echinatior,GCA_000204515.1,GCF_000204515.1,Scaffold,NCBI
+Formicoidea,Formicidae,Myrmicinae,,Atta cephalotes,GCA_000143395.2,GCF_000143395.1,Scaffold,NCBI
+Formicoidea,Formicidae,Myrmicinae,,Monomorium pharaonis,GCA_013373865.2,GCF_013373865.1,Chromosome,NCBI
+Formicoidea,Formicidae,Myrmicinae,,Solenopsis invicta,GCA_016802725.1,GCF_016802725.1,Chromosome,NCBI
+Formicoidea,Formicidae,Ponerinae,,Harpegnathos saltator,GCA_003227715.2,GCF_003227715.2,Scaffold,NCBI
+Apoidea,Halictidae,Halictinae,Halictini,Halictus rubicundus,GCA_050948215.1,GCF_050948215.1,Chromosome,NCBI
+Apoidea,Halictidae,Halictinae,,Megalopta genalis,GCA_051020955.1,GCF_051020955.1,Chromosome,NCBI
+Apoidea,Halictidae,Rophitinae,,Dufourea novaeangliae,GCA_001272555.1,GCF_001272555.1,Scaffold,NCBI
+Apoidea,Colletidae,Colletinae,Colletini,Colletes latitarsis,GCA_051014445.1,GCF_051014445.1,Chromosome,NCBI
+Apoidea,Megachilidae,Megachilinae,Megachilini,Megachile rotundata,GCA_050947335.1,GCF_050947335.1,Chromosome,NCBI
+Apoidea,Megachilidae,Megachilinae,Osmiini,Osmia bicornis bicornis,GCA_907164935.1,GCF_907164935.1,Chromosome,NCBI
+Apoidea,Apidae,Apinae,Anthophorini ,Habropoda laboriosa,GCA_001263275.1,GCF_001263275.1,Scaffold,NCBI
+Apoidea,Apidae,Apinae,Apini,Apis mellifera,GCA_003254395.2,GCF_003254395.2,Chromosome,NCBI
+Apoidea,Apidae,Apinae,Apini,Apis florea,GCA_000184785.2,GCF_000184785.3,Scaffold,NCBI
+Apoidea,Apidae,Apinae,Apini,Apis cerana,GCA_029169275.1,GCF_029169275.1,Chromosome,NCBI
+Apoidea,Apidae,Apinae,Apini,Apis dorsata,GCA_000469605.1,GCF_000469605.1,Scaffold,NCBI
+Apoidea,Apidae,Apinae,Apini,Apis laboriosa,GCA_014066325.1,GCF_014066325.1,Scaffold,NCBI
+Apoidea,Apidae,Apinae,Bombini,Bombus impatiens,GCA_000188095.4,GCF_000188095.3,Scaffold,NCBI
+Apoidea,Apidae,Apinae,Euglossini,Eufriesea mexicana,GCA_001483705.2,GCF_001483705.2,Scaffold,NCBI
+Apoidea,Apidae,Xylocopinae,Ceratinini,Ceratina calcarata,GCA_001652005.1,GCF_001652005.2,Scaffold,NCBI
+Apoidea,Apidae,Xylocopinae,Xylocopini,Xylocopa sonorina,GCA_050948175.1,GCF_050948175.1,Chromosome,NCBI
+Chalcidoidea,Encyrtidae,Encyrtinae,,Copidosoma floridanum,GCA_000648655.2,GCF_000648655.2,Scaffold,NCBI
+Chalcidoidea,Pteromalidae,Pteromalinae,,Nasonia vitripennis,GCA_009193385.2,GCF_009193385.2,Chromosome,NCBI
+Cynipoidea,Cynipidae,Cynipinae,,Belonocnema kinseyi,GCA_010883055.1,GCF_010883055.1,Chromosome,NCBI
+Ephydroidea,Drosophilidae,Drosophilinae,,Drosophila melanogaster,GCA_000001215.4,GCF_000001215.4,Chromosome,NCBI
+Orussoidea,Orussidae,Orussinae,,Orussus abietinus,GCA_000612105.2,GCF_000612105.2,Scaffold,NCBI
+,Rhabditidae,,,Caenorhabditis elegans,GCA_000002985.3,GCF_000002985.6,Complete,NCBI
+Tenebrionidea,Tenebrionidae,Tenebrioninae,,Tribolium castaneum,GCA_031307605.1,GCF_031307605.1,Chromosome,NCBI
+Apoidea,Apidae,Apinae,Meliponini,Tetragonisca angustula,GCA_036937485.2,,Scaffold,NCBI
+Apoidea,Apidae,Apinae,Meliponini,Melipona quadrifasciata,GCA_001276565.1,,Scaffold,NCBI
+Apoidea,Apidae,Apinae,Meliponini,Melipona bicolor,GCA_030673865.1,,Scaffold,NCBI

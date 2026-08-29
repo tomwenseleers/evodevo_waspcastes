@@ -1,0 +1,3 @@
+model	directory	neg_lnL	Selected
+uniform	Out_cafe_k6	102789	
+poisson	Out_cafe_k6_poisson	60933.6	BEST

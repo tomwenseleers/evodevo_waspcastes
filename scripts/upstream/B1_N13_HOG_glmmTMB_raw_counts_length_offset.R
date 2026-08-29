@@ -10,11 +10,21 @@ if (!exists("PROJECT_ROOT", inherits = TRUE)) {
   stop("Set PROJECT_ROOT to the repository root before sourcing this script.")
 }
 dir_base <- normalizePath(PROJECT_ROOT, winslash = "/", mustWork = TRUE)
-input_root <- file.path(dir_base, "input_differential_expression", "raw")
-output_root <- file.path(dir_base, "input_differential_expression", "checkpoints")
+de_input_dir <- file.path(dir_base, "input_differential_expression")
+metadata_dir <- file.path(de_input_dir, "raw")
+rnaseq_results_dir <- file.path(
+  dir_base, "nextflow_runs", "1_rnaseq", "output_files"
+)
+orthofinder_results_dir <- file.path(
+  dir_base, "nextflow_runs", "2_EXCON",
+  "2_EXCON_orthofinder_eggnogmapper_run", "results_EXCON", "orthofinder"
+)
+output_root <- file.path(de_input_dir, "checkpoints")
 output_dir <- file.path(output_root, "HOG")
 local_library <- file.path(dir_base, ".R_library")
-hog_path <- file.path(input_root, "orthology", "N13.tsv")
+hog_path <- file.path(
+  orthofinder_results_dir, "Phylogenetic_Hierarchical_Orthogroups", "N13.tsv"
+)
 gene_result_dir <- file.path(output_root, "gene")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
@@ -180,13 +190,19 @@ read_gene_matrix <- function(path) {
 }
 
 metadata_path <- function(species_code) {
-  path <- file.path(input_root, species_code, paste0("metadata_", species_code, ".csv"))
+  path <- file.path(metadata_dir, paste0("metadata_", species_code, ".csv"))
   if (!file.exists(path)) stop("Metadata file not found for ", species_code, ": ", path)
   path
 }
 
 read_species_data <- function(info) {
-  input_dir <- file.path(input_root, info$species_code)
+  result_folder <- switch(
+    info$species_code,
+    pd = "Results_Polistes",
+    vv = "Results_Vespula",
+    stop("Unknown species code: ", info$species_code)
+  )
+  input_dir <- file.path(rnaseq_results_dir, result_folder, "star_salmon")
   counts_obj <- read_gene_matrix(file.path(input_dir, "salmon.merged.gene_counts.tsv"))
   lengths_obj <- read_gene_matrix(file.path(input_dir, "salmon.merged.gene_lengths.tsv"))
   tpm_obj <- read_gene_matrix(file.path(input_dir, "salmon.merged.gene_tpm.tsv"))
@@ -880,7 +896,8 @@ analysis_metadata <- tibble::tibble(
   value = c(
     "B1_analysis_differential_expression_N13_HOG_glmmTMB_raw_counts_gene_offset.R",
     as.character(Sys.Date()), "N13 (MRCA of sampled Polistinae and Vespinae)",
-    "input_orthology/N13.tsv", as.character(global_BH),
+    "nextflow_runs/2_EXCON/2_EXCON_orthofinder_eggnogmapper_run/results_EXCON/orthofinder/Phylogenetic_Hierarchical_Orthogroups/N13.tsv",
+    as.character(global_BH),
     "count ~ 0 + larvalStage + larvalStage:lifeStage + offset(offset_gs) + (1 | colonyNested)",
     "colony nested within lifeStage/condition", "glmmTMB nbinom2",
     "tximport::summarizeToGene from genes to N13 HOGs",

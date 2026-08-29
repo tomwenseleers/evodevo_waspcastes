@@ -30,7 +30,11 @@ base_dir <- normalizePath(PROJECT_ROOT, winslash = "/", mustWork = TRUE)
 annotation_dir <- file.path(base_dir, "input_annotation")
 raw_dir <- file.path(annotation_dir, "raw")
 galaxy_dir <- file.path(raw_dir, "GalaxyOutput")
-excon_dir <- file.path(raw_dir, "excon_go_files")
+excon_go_dir <- file.path(
+  base_dir, "nextflow_runs", "2_EXCON",
+  "2_EXCON_orthofinder_eggnogmapper_run", "results_EXCON",
+  "eggnogmapper", "go_files"
+)
 flybase_dir <- file.path(raw_dir, "FlyBase")
 output_dir <- file.path(base_dir, "output_annotation")
 legacy_output_dir <- output_dir
@@ -41,8 +45,8 @@ files <- list(
   vv_interpro = file.path(galaxy_dir, "Vespula_vulgaris_InterProScan.tsv.gz"),
   pd_eggnog = file.path(galaxy_dir, "Polistes_dominula_EggNOG.tsv"),
   vv_eggnog = file.path(galaxy_dir, "Vespula_vulgaris_EggNOG.tsv"),
-  pd_excon_go = file.path(excon_dir, "Polistes_dominula.go.txt"),
-  vv_excon_go = file.path(excon_dir, "Vespula_vulgaris.go.txt"),
+  pd_excon_go = file.path(excon_go_dir, "Polistes_dominula.go.txt"),
+  vv_excon_go = file.path(excon_go_dir, "Vespula_vulgaris.go.txt"),
   dmel_flybase_go = file.path(flybase_dir, "gene_association.fb.gz"),
   hogs = file.path(annotation_dir, "reference", "pd_vv_N13_HOGs_annotated.rds"),
   vv_lookup = file.path(annotation_dir, "reference", "vv_refseq_to_ensemblrapid_full.csv"),
