@@ -1,4 +1,4 @@
-# Supplementary R code associated with the article “Social insect castes evolved by re-timing ancient, seasonally expressed pathways”
+# Supplementary code associated with the article “Social insect castes evolved by re-timing ancient, seasonally expressed pathways”
 
 **Anneline Mattens<sup>1,\*</sup>, Viviana Di Pietro<sup>1,\*</sup>, Marthe Van Marsenille<sup>1</sup>, Christopher D.R. Wyatt<sup>2</sup>, Ricardo Caliari Oliveira<sup>3</sup>, Cintia Akemi Oi<sup>2</sup>, Fabio Santos do Nascimento<sup>4</sup> and Tom Wenseleers<sup>1</sup>**
 
