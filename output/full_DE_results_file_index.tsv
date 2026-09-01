@@ -1,0 +1,3 @@
+analysis_unit	file	rows	significant_global_FDR_lt_0.05	compressed_bytes
+Gene	full_gene_level_differential_expression_results.tsv.gz	124074	13556	13465565
+N13 HOG	full_N13_HOG_level_differential_expression_results.tsv.gz	111732	12593	16013952

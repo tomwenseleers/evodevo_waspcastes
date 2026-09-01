@@ -138,6 +138,17 @@ season within each *P. dominula* stage and queen versus worker within each
 or stage-by-HOG tests within each species, and coefficients were shrunk with
 ASH separately by species and stage.
 
+Complete machine-readable results for every fitted contrast, rather than only
+the significant subsets, are exported as
+`output/full_gene_level_differential_expression_results.tsv.gz` and
+`output/full_N13_HOG_level_differential_expression_results.tsv.gz`. Both tables
+contain raw and ASH-shrunken effect estimates, Wald statistics, nominal p
+values, stage-wise BH values, the primary global BH value, and an explicit
+`global_FDR_lt_0.05` indicator. The gene-level table additionally contains gene
+symbols, descriptions, gene types and N13-HOG assignments; the HOG-level table
+contains member genes and aggregated gene annotations for both wasps. The
+compressed TSV files can be read directly with `readr::read_tsv()`.
+
 For cross-species analyses, genes were summarised directly to OrthoFinder N13
 HOGs before model fitting. The final PLS, robust stage-wise regressions, and
 nonnegative ridge heterochrony model use ASH-shrunken N13-HOG log2 fold changes.
@@ -236,6 +247,9 @@ tested non-TE HOGs. BP, MF, and CC are tested with topGO `weight01`/Fisher. Give
 - `output/supplemental_figures/FigS2.*`: numbers of differentially expressed genes by stage.
 - `output/supplemental_figures/FigS3.*`: stage-specific absolute shrunken log2 fold-change heatmap.
 - `output/supplemental_tables/TableS1.tsv` to `TableS13.tsv`: final supplementary tables; Table S5 is split into `TableS5A.tsv` and `TableS5B.tsv`.
+- `output/full_gene_level_differential_expression_results.tsv.gz`: complete annotated gene-by-stage differential-expression results for both species.
+- `output/full_N13_HOG_level_differential_expression_results.tsv.gz`: complete annotated N13-HOG-by-stage differential-expression results for both species.
+- `output/full_DE_results_file_index.tsv`: row counts, significant-test counts and compressed sizes for the two complete DE tables.
 
 Tables S1-S3 and S9 summarise sampling, microsatellites, genome quality, and
 tree calibrations. B generates Tables S4-S8. C generates Tables S10-S13.

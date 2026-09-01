@@ -150,6 +150,246 @@ genetable_pd <- read_csv(f_genetable_pd, show_col_types = FALSE)
 genetable_vv <- read_csv(f_genetable_vv, show_col_types = FALSE)
 
 
+## 1.3 Complete gene- and N13 HOG-level differential-expression exports ####
+
+# These repository tables contain every fitted stage contrast. The primary
+# significance field uses the manuscript-wide correction: BH across all
+# stage-by-gene or stage-by-HOG tests within each species.
+collapse_unique_values <- function(x) {
+  x <- unique(as.character(x[!is.na(x) & nzchar(as.character(x))]))
+  if (!length(x)) NA_character_ else paste(x, collapse = "; ")
+}
+
+gene_annotation <- bind_rows(
+  genetable_pd %>%
+    transmute(
+      species_code = "pd", gene_id = gene_pd,
+      gene_symbol = symbol_pd, gene_description = description_pd,
+      gene_type = genetype_pd, n_transcripts = ntranscripts_pd
+    ),
+  genetable_vv %>%
+    transmute(
+      species_code = "vv", gene_id = gene_vv,
+      gene_symbol = symbol_vv, gene_description = description_vv,
+      gene_type = genetype_vv, n_transcripts = ntranscripts_vv
+    )
+) %>%
+  distinct(species_code, gene_id, .keep_all = TRUE)
+
+hog_metadata <- bind_rows(
+  as_tibble(hog_obj_pd$results),
+  as_tibble(hog_obj_vv$results)
+) %>%
+  transmute(
+    HOG, OG, present_in_both_species, relationship_class,
+    genomic_member_count_pd, genomic_member_count_vv
+  ) %>%
+  distinct(HOG, .keep_all = TRUE)
+
+hog_member_annotations <- hog_membership %>%
+  left_join(gene_annotation, by = c("species_code", "gene_id")) %>%
+  group_by(HOG, OG) %>%
+  summarise(
+    Polistes_member_gene_ids = collapse_unique_values(
+      gene_id[species_code == "pd"]
+    ),
+    Polistes_member_gene_symbols = collapse_unique_values(
+      gene_symbol[species_code == "pd"]
+    ),
+    Polistes_member_gene_descriptions = collapse_unique_values(
+      gene_description[species_code == "pd"]
+    ),
+    Vespula_member_gene_ids = collapse_unique_values(
+      gene_id[species_code == "vv"]
+    ),
+    Vespula_member_gene_symbols = collapse_unique_values(
+      gene_symbol[species_code == "vv"]
+    ),
+    Vespula_member_gene_descriptions = collapse_unique_values(
+      gene_description[species_code == "vv"]
+    ),
+    .groups = "drop"
+  )
+
+prepare_gene_de_export <- function(dat, species_code_value, species_value,
+                                   contrast_value, positive_label,
+                                   negative_label) {
+  species_hog_map <- hog_membership %>%
+    filter(species_code == species_code_value) %>%
+    transmute(gene = gene_id, HOG, OG) %>%
+    distinct(gene, .keep_all = TRUE)
+
+  dat %>%
+    mutate(stage = as.character(stage)) %>%
+    left_join(species_hog_map, by = "gene") %>%
+    left_join(hog_metadata, by = c("HOG", "OG")) %>%
+    left_join(
+      gene_annotation %>% filter(species_code == species_code_value),
+      by = c("gene" = "gene_id")
+    ) %>%
+    mutate(
+      global_FDR_lt_0.05 = is.finite(padj_global) & padj_global < alpha_de,
+      effect_direction = case_when(
+        !is.finite(log2FC_raw) ~ NA_character_,
+        log2FC_raw > 0 ~ positive_label,
+        log2FC_raw < 0 ~ negative_label,
+        TRUE ~ "No estimated difference"
+      ),
+      significant_effect = if_else(
+        global_FDR_lt_0.05,
+        paste("Significant:", effect_direction),
+        "Not significant at global FDR < 0.05"
+      )
+    ) %>%
+    transmute(
+      species_code = species_code_value,
+      species = species_value,
+      contrast = contrast_value,
+      stage,
+      gene_id = gene,
+      gene_symbol,
+      gene_description,
+      gene_type,
+      n_transcripts,
+      N13_HOG = HOG,
+      orthogroup = OG,
+      HOG_present_in_both_species = present_in_both_species,
+      HOG_relationship_class = relationship_class,
+      HOG_member_count_Polistes = genomic_member_count_pd,
+      HOG_member_count_Vespula = genomic_member_count_vv,
+      base_mean = baseMean,
+      log2FC_raw,
+      SE_raw = lfcSE_raw,
+      Wald_z = z,
+      P_value = pvalue,
+      stage_wise_FDR = padj_stage_wise,
+      global_FDR = padj_global,
+      global_FDR_lt_0.05,
+      effect_direction,
+      significant_effect,
+      log2FC_ASH_shrunk = log2FC_shrunk,
+      SE_ASH_shrunk = lfcSE_shrunk,
+      analysis_method = method,
+      shrinkage_method = lfc_shrinkage
+    )
+}
+
+prepare_hog_de_export <- function(dat, species_code_value, species_value,
+                                  contrast_value, positive_label,
+                                  negative_label) {
+  dat %>%
+    mutate(stage = as.character(stage)) %>%
+    left_join(hog_member_annotations, by = c("HOG", "OG")) %>%
+    mutate(
+      global_FDR_lt_0.05 = is.finite(padj_global) & padj_global < alpha_de,
+      effect_direction = case_when(
+        !is.finite(log2FC_raw) ~ NA_character_,
+        log2FC_raw > 0 ~ positive_label,
+        log2FC_raw < 0 ~ negative_label,
+        TRUE ~ "No estimated difference"
+      ),
+      significant_effect = if_else(
+        global_FDR_lt_0.05,
+        paste("Significant:", effect_direction),
+        "Not significant at global FDR < 0.05"
+      )
+    ) %>%
+    transmute(
+      species_code = species_code_value,
+      species = species_value,
+      contrast = contrast_value,
+      stage,
+      N13_HOG = HOG,
+      orthogroup = OG,
+      present_in_both_species,
+      relationship_class,
+      HOG_member_count_Polistes = genomic_member_count_pd,
+      HOG_member_count_Vespula = genomic_member_count_vv,
+      Polistes_member_gene_ids,
+      Polistes_member_gene_symbols,
+      Polistes_member_gene_descriptions,
+      Vespula_member_gene_ids,
+      Vespula_member_gene_symbols,
+      Vespula_member_gene_descriptions,
+      base_mean = baseMean,
+      log2FC_raw,
+      SE_raw = lfcSE_raw,
+      Wald_z = z,
+      P_value = pvalue,
+      stage_wise_FDR = padj_stage_wise,
+      global_FDR = padj_global,
+      global_FDR_lt_0.05,
+      effect_direction,
+      significant_effect,
+      log2FC_ASH_shrunk = log2FC_ash,
+      SE_ASH_shrunk = lfcSE_ash,
+      ASH_local_false_sign_rate = ash_lfsr,
+      ASH_q_value = ash_qvalue,
+      analysis_method = method,
+      shrinkage_method = lfc_shrinkage
+    )
+}
+
+full_gene_de_results <- bind_rows(
+  prepare_gene_de_export(
+    gene_de_pd, "pd", "Polistes dominula",
+    "Late versus early season", "Higher in late-season females",
+    "Higher in early-season females"
+  ),
+  prepare_gene_de_export(
+    gene_de_vv, "vv", "Vespula vulgaris",
+    "Queen versus worker", "Higher in queen-destined females",
+    "Higher in worker-destined females"
+  )
+) %>%
+  arrange(factor(species_code, c("pd", "vv")), factor(stage, stages), gene_id)
+
+full_hog_de_results <- bind_rows(
+  prepare_hog_de_export(
+    as_tibble(hog_obj_pd$results), "pd", "Polistes dominula",
+    "Late versus early season", "Higher in late-season females",
+    "Higher in early-season females"
+  ),
+  prepare_hog_de_export(
+    as_tibble(hog_obj_vv$results), "vv", "Vespula vulgaris",
+    "Queen versus worker", "Higher in queen-destined females",
+    "Higher in worker-destined females"
+  )
+) %>%
+  arrange(factor(species_code, c("pd", "vv")), factor(stage, stages), N13_HOG)
+
+full_gene_de_file <- file.path(
+  output_dir, "full_gene_level_differential_expression_results.tsv.gz"
+)
+full_hog_de_file <- file.path(
+  output_dir, "full_N13_HOG_level_differential_expression_results.tsv.gz"
+)
+write_tsv(full_gene_de_results, full_gene_de_file)
+write_tsv(full_hog_de_results, full_hog_de_file)
+
+full_de_export_index <- bind_rows(
+  tibble(
+    analysis_unit = "Gene",
+    file = basename(full_gene_de_file),
+    rows = nrow(full_gene_de_results),
+    significant_global_FDR_lt_0.05 = sum(
+      full_gene_de_results$global_FDR_lt_0.05, na.rm = TRUE
+    ),
+    compressed_bytes = file.info(full_gene_de_file)$size
+  ),
+  tibble(
+    analysis_unit = "N13 HOG",
+    file = basename(full_hog_de_file),
+    rows = nrow(full_hog_de_results),
+    significant_global_FDR_lt_0.05 = sum(
+      full_hog_de_results$global_FDR_lt_0.05, na.rm = TRUE
+    ),
+    compressed_bytes = file.info(full_hog_de_file)$size
+  )
+)
+write_tsv(full_de_export_index, file.path(output_dir, "full_DE_results_file_index.tsv"))
+
+
 ## 1.4.1 N13 HOG-level cross-species differential-expression table ####
 
 make_species_hog_wide <- function(dat, species = c("Pd", "Vv")) {
@@ -3083,6 +3323,7 @@ analysis_metadata_final <- tibble(
     "PLS_features", "PLS_X_variance_by_component",
     "GO_annotation", "GO_foreground", "GO_test", "GO_multiple_testing",
     "ridge_bootstrap_test", "ridge_multiple_testing",
+    "full_gene_DE_results", "full_N13_HOG_DE_results",
     "Figure1", "Figure2", "Supplementary_tables"
   ),
   value = c(
@@ -3100,6 +3341,8 @@ analysis_metadata_final <- tibble(
     "none; nominal topGO p values exported",
     "500 pairs-bootstrap replicates; two-sided centred-bootstrap P value with plus-one finite-sample correction",
     "Bonferroni correction across allowed Polistes predictors within each Vespula response stage",
+    repository_relative_path(full_gene_de_file),
+    repository_relative_path(full_hog_de_file),
     repository_relative_path(figure1_file),
     repository_relative_path(figure2_file),
     repository_relative_path(supplementary_xlsx)
@@ -3162,6 +3405,24 @@ validation_checks <- c(
     is.na(grid_mult$p.value) |
       (grid_mult$p.value > 0 & grid_mult$p.value <= 1)
   ),
+  full_DE_exports_exist = all(file.exists(c(
+    full_gene_de_file, full_hog_de_file
+  ))),
+  full_DE_exports_under_100_MB = all(file.info(c(
+    full_gene_de_file, full_hog_de_file
+  ))$size < 100 * 1024^2),
+  full_DE_global_FDR_flags_consistent = all(c(
+    identical(
+      full_gene_de_results$global_FDR_lt_0.05,
+      is.finite(full_gene_de_results$global_FDR) &
+        full_gene_de_results$global_FDR < alpha_de
+    ),
+    identical(
+      full_hog_de_results$global_FDR_lt_0.05,
+      is.finite(full_hog_de_results$global_FDR) &
+        full_hog_de_results$global_FDR < alpha_de
+    )
+  )),
   supplementary_workbook_exported = file.exists(supplementary_xlsx),
   supplementary_GO_names_complete = !any(str_detect(
     supp_table_s6$GO_term, fixed("...")
