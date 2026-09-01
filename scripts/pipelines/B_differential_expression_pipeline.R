@@ -3083,7 +3083,7 @@ analysis_metadata_final <- tibble(
     "OrthoFinder hierarchical orthogroups at node N13",
     "global BH within species for differential-expression tests",
     "FALSE",
-    as.character(length(features)),
+    as.character(length(sel)),
     paste(signif(plsfit$prop_expl_var$X, 6), collapse = ";"),
     "direct EXCON/Galaxy EggNOG and InterProScan conserved across wasps plus experimental FlyBase GO transferred through N13 Drosophila orthologues",
     "top 300 N13 HOGs in each oriented PLS loading direction",
