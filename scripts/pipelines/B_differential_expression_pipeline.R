@@ -1985,6 +1985,17 @@ bootstrap_ridge <- function(dat, x_names,
 }
 
 
+# Finite two-sided test based on the centred bootstrap error distribution.
+# The plus-one correction prevents impossible P = 0 values with finite B.
+centred_bootstrap_p <- function(beta_hat, boot) {
+  boot <- boot[is.finite(boot)]
+  if (!length(boot) || !is.finite(beta_hat)) return(NA_real_)
+
+  null_distance <- abs(beta_hat)
+  bootstrap_error <- abs(boot - beta_hat)
+  min(1, (sum(bootstrap_error >= null_distance) + 1) / (length(boot) + 1))
+}
+
 # Summarise bootstrap distribution into estimate/SE/CI/p
 summarise_boot <- function(beta_hat, boot_mat) {
   # boot_mat: B x p
@@ -1993,12 +2004,9 @@ summarise_boot <- function(beta_hat, boot_mat) {
     stats::quantile(z, c(0.025, 0.975), na.rm = TRUE)
   }))
   
-  # simple 2-sided empirical p-value around 0
+  # Two-sided centred-bootstrap P value with finite-sample correction.
   pval <- vapply(seq_along(beta_hat), function(j) {
-    z <- boot_mat[, j]
-    z <- z[is.finite(z)]
-    if (!length(z)) return(NA_real_)
-    min(1, 2 * min(mean(z <= 0), mean(z >= 0)))
+    centred_bootstrap_p(beta_hat[j], boot_mat[, j])
   }, numeric(1))
   
   tibble(
@@ -2089,10 +2097,10 @@ fit_mult_stage2 <- function(dat, y_stage,
       se  <- sd(boot, na.rm = TRUE)
       ci  <- quantile(boot, c(0.025, 0.975), na.rm = TRUE)
       
-      # same pragmatic empirical two-sided p-value around 0
+      # Same centred two-sided bootstrap test used for multivariable fits.
       z <- boot[is.finite(boot)]
       p <- if (!length(z) || !is.finite(se) || se == 0) NA_real_
-      else min(1, 2 * min(mean(z <= 0), mean(z >= 0)))
+      else centred_bootstrap_p(f1$slope, z)
       
       return(tibble(
         vv_stage = y_stage,
@@ -2950,7 +2958,7 @@ supp_table_s8 <- grid_mult %>%
     Bootstrap_SE = std.error,
     CI_95_lower = conf.low,
     CI_95_upper = conf.high,
-    Empirical_P = p.value,
+    Centred_bootstrap_P = p.value,
     Bonferroni_P = p.adj
   ) %>%
   arrange(factor(Vespula_response_stage, stages),
@@ -3074,6 +3082,7 @@ analysis_metadata_final <- tibble(
     "orthology_unit", "multiple_testing", "DEU_included",
     "PLS_features", "PLS_X_variance_by_component",
     "GO_annotation", "GO_foreground", "GO_test", "GO_multiple_testing",
+    "ridge_bootstrap_test", "ridge_multiple_testing",
     "Figure1", "Figure2", "Supplementary_tables"
   ),
   value = c(
@@ -3089,6 +3098,8 @@ analysis_metadata_final <- tibble(
     "top 300 N13 HOGs in each oriented PLS loading direction",
     "topGO weight01 Fisher; nodeSize 20",
     "none; nominal topGO p values exported",
+    "500 pairs-bootstrap replicates; two-sided centred-bootstrap P value with plus-one finite-sample correction",
+    "Bonferroni correction across allowed Polistes predictors within each Vespula response stage",
     repository_relative_path(figure1_file),
     repository_relative_path(figure2_file),
     repository_relative_path(supplementary_xlsx)
@@ -3147,6 +3158,10 @@ validation_checks <- c(
   figure2_panel_labels = all(c("A", "B") %in% officer::pptx_summary(
     officer::read_pptx(figure2_file)
   )$text),
+  finite_nonzero_bootstrap_p = all(
+    is.na(grid_mult$p.value) |
+      (grid_mult$p.value > 0 & grid_mult$p.value <= 1)
+  ),
   supplementary_workbook_exported = file.exists(supplementary_xlsx),
   supplementary_GO_names_complete = !any(str_detect(
     supp_table_s6$GO_term, fixed("...")

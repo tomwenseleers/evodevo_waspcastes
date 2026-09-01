@@ -10,6 +10,7 @@ figure1_panel_labels	TRUE
 figure1_category_order	TRUE
 figure2_exported	TRUE
 figure2_panel_labels	TRUE
+finite_nonzero_bootstrap_p	TRUE
 supplementary_workbook_exported	TRUE
 supplementary_GO_names_complete	TRUE
 supplementary_tables_nonempty	TRUE

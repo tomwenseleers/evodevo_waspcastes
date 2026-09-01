@@ -1,6 +1,6 @@
 key	value
 script	B_differential expression analysis.R
-analysis_date	2026-08-28
+analysis_date	2026-09-01
 gene_model	glmmTMB nbinom2 with gene-by-sample length/library offset and colonyNested random intercept
 HOG_model	same model fitted directly to tximport-summarised N13 HOG counts; ASH shrinkage by species and stage
 orthology_unit	OrthoFinder hierarchical orthogroups at node N13
@@ -12,6 +12,8 @@ GO_annotation	direct EXCON/Galaxy EggNOG and InterProScan conserved across wasps
 GO_foreground	top 300 N13 HOGs in each oriented PLS loading direction
 GO_test	topGO weight01 Fisher; nodeSize 20
 GO_multiple_testing	none; nominal topGO p values exported
+ridge_bootstrap_test	500 pairs-bootstrap replicates; two-sided centred-bootstrap P value with plus-one finite-sample correction
+ridge_multiple_testing	Bonferroni correction across allowed Polistes predictors within each Vespula response stage
 Figure1	output/figures/Fig1.pptx
 Figure2	output/figures/Fig2.pptx
 Supplementary_tables	output/supplemental_tables/TablesS4-S8.xlsx
