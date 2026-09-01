@@ -1,6 +1,6 @@
 # Supplementary R code associated with the article “Social insect castes evolved by re-timing ancient, seasonally expressed pathways”
 
-**Anneline Mattens<sup>1,\*</sup>, Viviana Di Pietro<sup>1,\*</sup>, Marthe Van Marsenille<sup>1,\*</sup>, Cintia Akemi Oi<sup>2</sup>, Ricardo Caliari Oliveira<sup>3</sup>, Chris Wyatt<sup>2</sup>, Fabio Santos do Nascimento<sup>4</sup> and Tom Wenseleers<sup>1</sup>**
+**Anneline Mattens<sup>1,\*</sup>, Viviana Di Pietro<sup>1,\*</sup>, Marthe Van Marsenille<sup>1,\*</sup>, Chris Wyatt<sup>2</sup>, Ricardo Caliari Oliveira<sup>3</sup>, Cintia Akemi Oi<sup>2</sup>, Fabio Santos do Nascimento<sup>4</sup> and Tom Wenseleers<sup>1</sup>**
 
 <sup>1</sup> KU Leuven, Leuven, Belgium  
 <sup>2</sup> The Sumner Lab, University College London, London, UK  
