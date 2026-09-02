@@ -258,7 +258,7 @@ tree calibrations. B generates Tables S4-S8. C generates Tables S10-S13.
 
 The analyses were validated with R 4.5.x. Principal R dependencies are:
 `dplyr`, `tidyr`, `readr`, `stringr`, `purrr`, `KEGGREST`, `ontologyIndex`,
-`edgeR`, `glmmTMB`, `DESeq2`, `tximport`, `ashr`, `mixOmics`, `topGO`, `GO.db`,
+`edgeR`, `glmmTMB`, `DESeq2`, `tximport`, `ashr`, `mixOmics`, `emmeans`, `topGO`, `GO.db`,
 `AnnotationDbi`, `estimatr`, `robustbase`, `glmnet`, `ape`, `export`, `officer`,
 `pheatmap`, and `openxlsx`. The genome-download helper uses Python 3 with
 `requests` and `beautifulsoup4`; the supplementary XLSX builder additionally
