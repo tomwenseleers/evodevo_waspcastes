@@ -14,6 +14,7 @@ GO_test	topGO weight01 Fisher; nodeSize 20
 GO_multiple_testing	none; nominal topGO p values exported
 ridge_bootstrap_test	500 pairs-bootstrap replicates; two-sided centred-bootstrap P value with plus-one finite-sample correction
 ridge_multiple_testing	Bonferroni correction across allowed Polistes predictors within each Vespula response stage
+N13_orthology_composition	output/N13_HOG_orthology_composition_summary.tsv
 full_gene_DE_results	output/full_gene_level_differential_expression_results.tsv.gz
 full_N13_HOG_DE_results	output/full_N13_HOG_level_differential_expression_results.tsv.gz
 Figure1	output/figures/Fig1.pptx

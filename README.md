@@ -152,6 +152,9 @@ compressed TSV files can be read directly with `readr::read_tsv()`.
 For cross-species analyses, genes were summarised directly to OrthoFinder N13
 HOGs before model fitting. The final PLS, robust stage-wise regressions, and
 nonnegative ridge heterochrony model use ASH-shrunken N13-HOG log2 fold changes.
+The unfiltered focal-species mapping and the numbers of one-to-one,
+one-to-many, many-to-one and many-to-many HOGs are exported to
+`output/N13_HOG_orthology_composition_summary.tsv`.
 Figure 1 GO foregrounds comprise the top 300 HOGs in each oriented PLS loading
 direction. GO enrichment uses topGO's `weight01` algorithm with Fisher's exact
 test. Given the dependencies in the GO ontology tree, and as recommended by the topGO package authors, these p values are not FDR corrected.
@@ -250,6 +253,7 @@ tested non-TE HOGs. BP, MF, and CC are tested with topGO `weight01`/Fisher. Give
 - `output/full_gene_level_differential_expression_results.tsv.gz`: complete annotated gene-by-stage differential-expression results for both species.
 - `output/full_N13_HOG_level_differential_expression_results.tsv.gz`: complete annotated N13-HOG-by-stage differential-expression results for both species.
 - `output/full_DE_results_file_index.tsv`: row counts, significant-test counts and compressed sizes for the two complete DE tables.
+- `output/N13_HOG_orthology_composition_summary.tsv`: unfiltered N13 mapping totals and focal-species one-to-one, one-to-many, many-to-one and many-to-many HOG counts.
 
 Tables S1-S3 and S9 summarise sampling, microsatellites, genome quality, and
 tree calibrations. B generates Tables S4-S8. C generates Tables S10-S13.

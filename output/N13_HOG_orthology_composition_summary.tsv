@@ -1,0 +1,14 @@
+analysis_scope	summary_group	metric	count	denominator	percentage	definition
+Unfiltered N13.tsv mapping before expression and PLS filtering	HOG presence	All N13 HOGs	13860	13860	100	All nonoverlapping HOGs defined at OrthoFinder node N13.
+Unfiltered N13.tsv mapping before expression and PLS filtering	HOG presence	HOGs containing Polistes dominula	9559	13860	68.97	N13 HOGs with at least one P. dominula gene.
+Unfiltered N13.tsv mapping before expression and PLS filtering	HOG presence	HOGs containing Vespula vulgaris	9623	13860	69.43	N13 HOGs with at least one V. vulgaris gene.
+Unfiltered N13.tsv mapping before expression and PLS filtering	HOG presence	HOGs represented in both focal species	8942	13860	64.52	N13 HOGs with at least one gene from each focal species.
+Unfiltered N13.tsv mapping before expression and PLS filtering	HOG presence	HOGs represented only in Polistes among the focal species	617	13860	4.45	May also contain genes from nonfocal taxa in the OrthoFinder analysis.
+Unfiltered N13.tsv mapping before expression and PLS filtering	HOG presence	HOGs represented only in Vespula among the focal species	681	13860	4.91	May also contain genes from nonfocal taxa in the OrthoFinder analysis.
+Unfiltered N13.tsv mapping before expression and PLS filtering	HOG presence	HOGs containing neither focal species	3620	13860	26.12	N13 HOGs represented only by other taxa in the OrthoFinder analysis.
+Unfiltered N13.tsv mapping before expression and PLS filtering	Shared-HOG composition	One Polistes gene : one Vespula gene	8661	8942	96.86	One-to-one HOG composition between the two focal species.
+Unfiltered N13.tsv mapping before expression and PLS filtering	Shared-HOG composition	One Polistes gene : multiple Vespula genes	99	8942	1.11	One-to-many HOG composition in the Polistes-to-Vespula direction.
+Unfiltered N13.tsv mapping before expression and PLS filtering	Shared-HOG composition	Multiple Polistes genes : one Vespula gene	148	8942	1.66	Many-to-one HOG composition in the Polistes-to-Vespula direction.
+Unfiltered N13.tsv mapping before expression and PLS filtering	Shared-HOG composition	Multiple genes in both focal species	34	8942	0.38	Many-to-many HOG composition between the two focal species.
+Unfiltered N13.tsv mapping before expression and PLS filtering	Mapped genes	Polistes dominula genes assigned to N13 HOGs	10085	NA	NA	Total P. dominula gene memberships in N13.tsv.
+Unfiltered N13.tsv mapping before expression and PLS filtering	Mapped genes	Vespula vulgaris genes assigned to N13 HOGs	9942	NA	NA	Total V. vulgaris gene memberships in N13.tsv.

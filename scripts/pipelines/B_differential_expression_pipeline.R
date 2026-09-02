@@ -57,6 +57,11 @@ f_obo <- file.path(dir_go, "go-basic.obo")
 go_annot_orthologs <- file.path(
   dir_base, "output_annotation", "N13_HOG_GO_final_long.tsv.gz"
 )
+n13_hog_file <- file.path(
+  dir_base, "nextflow_runs", "2_EXCON",
+  "2_EXCON_orthofinder_eggnogmapper_run", "results_EXCON", "orthofinder",
+  "Phylogenetic_Hierarchical_Orthogroups", "N13.tsv"
+)
 
 gene_model_script <- file.path(dir_base, "scripts", "upstream", "B1_gene_glmmTMB_raw_counts_length_offset.R")
 hog_model_script <- file.path(dir_base, "scripts", "upstream", "B1_N13_HOG_glmmTMB_raw_counts_length_offset.R")
@@ -79,7 +84,7 @@ required_inputs <- c(
   gene_object_pd_file, gene_object_vv_file,
   hog_object_pd_file, hog_object_vv_file,
   hog_shared_file, hog_membership_file, hog_annotation_file,
-  f_genetable_pd, f_genetable_vv, f_obo, go_annot_orthologs
+  f_genetable_pd, f_genetable_vv, f_obo, go_annot_orthologs, n13_hog_file
 )
 missing_inputs <- required_inputs[!file.exists(required_inputs)]
 if (length(missing_inputs)) {
@@ -148,6 +153,142 @@ orthologs <- readRDS(hog_annotation_file) %>%
 
 genetable_pd <- read_csv(f_genetable_pd, show_col_types = FALSE)
 genetable_vv <- read_csv(f_genetable_vv, show_col_types = FALSE)
+
+
+## 1.2.1 N13 HOG orthology-composition summary ####
+
+# Report the unfiltered N13 mapping used to construct the cross-species
+# transcriptomic units. These counts precede expression and PLS filtering.
+count_hog_members <- function(x) {
+  x <- if_else(is.na(x), "", str_trim(x))
+  if_else(x == "", 0L, as.integer(str_count(x, fixed(",")) + 1L))
+}
+
+n13_raw <- read_tsv(
+  n13_hog_file, col_types = cols(.default = col_character()),
+  show_col_types = FALSE, progress = FALSE,
+  na = character()
+)
+pd_n13_column <- "Polistes_dominula.clean"
+vv_n13_column <- "Vespula_vulgaris.clean"
+if (!all(c(pd_n13_column, vv_n13_column) %in% names(n13_raw))) {
+  stop("The focal-species columns are missing from N13.tsv.")
+}
+
+n13_composition <- n13_raw %>%
+  transmute(
+    HOG,
+    Polistes_members = count_hog_members(.data[[pd_n13_column]]),
+    Vespula_members = count_hog_members(.data[[vv_n13_column]])
+  )
+
+n13_total_hogs <- nrow(n13_composition)
+n13_shared_hogs <- sum(
+  n13_composition$Polistes_members > 0L &
+    n13_composition$Vespula_members > 0L
+)
+
+make_n13_summary_rows <- function(summary_group, metric, count, denominator,
+                                  definition) {
+  tibble(
+    analysis_scope = "Unfiltered N13.tsv mapping before expression and PLS filtering",
+    summary_group = summary_group,
+    metric = metric,
+    count = as.integer(count),
+    denominator = as.integer(denominator),
+    percentage = if_else(
+      is.na(denominator) | denominator == 0L,
+      NA_real_, round(100 * count / denominator, 2)
+    ),
+    definition = definition
+  )
+}
+
+n13_orthology_composition_summary <- bind_rows(
+  make_n13_summary_rows(
+    "HOG presence", "All N13 HOGs", n13_total_hogs, n13_total_hogs,
+    "All nonoverlapping HOGs defined at OrthoFinder node N13."
+  ),
+  make_n13_summary_rows(
+    "HOG presence", "HOGs containing Polistes dominula",
+    sum(n13_composition$Polistes_members > 0L), n13_total_hogs,
+    "N13 HOGs with at least one P. dominula gene."
+  ),
+  make_n13_summary_rows(
+    "HOG presence", "HOGs containing Vespula vulgaris",
+    sum(n13_composition$Vespula_members > 0L), n13_total_hogs,
+    "N13 HOGs with at least one V. vulgaris gene."
+  ),
+  make_n13_summary_rows(
+    "HOG presence", "HOGs represented in both focal species",
+    n13_shared_hogs, n13_total_hogs,
+    "N13 HOGs with at least one gene from each focal species."
+  ),
+  make_n13_summary_rows(
+    "HOG presence", "HOGs represented only in Polistes among the focal species",
+    sum(n13_composition$Polistes_members > 0L &
+          n13_composition$Vespula_members == 0L), n13_total_hogs,
+    "May also contain genes from nonfocal taxa in the OrthoFinder analysis."
+  ),
+  make_n13_summary_rows(
+    "HOG presence", "HOGs represented only in Vespula among the focal species",
+    sum(n13_composition$Polistes_members == 0L &
+          n13_composition$Vespula_members > 0L), n13_total_hogs,
+    "May also contain genes from nonfocal taxa in the OrthoFinder analysis."
+  ),
+  make_n13_summary_rows(
+    "HOG presence", "HOGs containing neither focal species",
+    sum(n13_composition$Polistes_members == 0L &
+          n13_composition$Vespula_members == 0L), n13_total_hogs,
+    "N13 HOGs represented only by other taxa in the OrthoFinder analysis."
+  ),
+  make_n13_summary_rows(
+    "Shared-HOG composition", "One Polistes gene : one Vespula gene",
+    sum(n13_composition$Polistes_members == 1L &
+          n13_composition$Vespula_members == 1L), n13_shared_hogs,
+    "One-to-one HOG composition between the two focal species."
+  ),
+  make_n13_summary_rows(
+    "Shared-HOG composition", "One Polistes gene : multiple Vespula genes",
+    sum(n13_composition$Polistes_members == 1L &
+          n13_composition$Vespula_members > 1L), n13_shared_hogs,
+    "One-to-many HOG composition in the Polistes-to-Vespula direction."
+  ),
+  make_n13_summary_rows(
+    "Shared-HOG composition", "Multiple Polistes genes : one Vespula gene",
+    sum(n13_composition$Polistes_members > 1L &
+          n13_composition$Vespula_members == 1L), n13_shared_hogs,
+    "Many-to-one HOG composition in the Polistes-to-Vespula direction."
+  ),
+  make_n13_summary_rows(
+    "Shared-HOG composition", "Multiple genes in both focal species",
+    sum(n13_composition$Polistes_members > 1L &
+          n13_composition$Vespula_members > 1L), n13_shared_hogs,
+    "Many-to-many HOG composition between the two focal species."
+  ),
+  make_n13_summary_rows(
+    "Mapped genes", "Polistes dominula genes assigned to N13 HOGs",
+    sum(n13_composition$Polistes_members), NA_integer_,
+    "Total P. dominula gene memberships in N13.tsv."
+  ),
+  make_n13_summary_rows(
+    "Mapped genes", "Vespula vulgaris genes assigned to N13 HOGs",
+    sum(n13_composition$Vespula_members), NA_integer_,
+    "Total V. vulgaris gene memberships in N13.tsv."
+  )
+)
+
+if (sum(n13_orthology_composition_summary$count[
+      n13_orthology_composition_summary$summary_group ==
+        "Shared-HOG composition"
+    ]) != n13_shared_hogs) {
+  stop("Shared N13 HOG relationship classes do not sum to the shared-HOG total.")
+}
+
+n13_orthology_summary_file <- file.path(
+  output_dir, "N13_HOG_orthology_composition_summary.tsv"
+)
+write_tsv(n13_orthology_composition_summary, n13_orthology_summary_file)
 
 
 ## 1.3 Complete gene- and N13 HOG-level differential-expression exports ####
@@ -3323,6 +3464,7 @@ analysis_metadata_final <- tibble(
     "PLS_features", "PLS_X_variance_by_component",
     "GO_annotation", "GO_foreground", "GO_test", "GO_multiple_testing",
     "ridge_bootstrap_test", "ridge_multiple_testing",
+    "N13_orthology_composition",
     "full_gene_DE_results", "full_N13_HOG_DE_results",
     "Figure1", "Figure2", "Supplementary_tables"
   ),
@@ -3341,6 +3483,7 @@ analysis_metadata_final <- tibble(
     "none; nominal topGO p values exported",
     "500 pairs-bootstrap replicates; two-sided centred-bootstrap P value with plus-one finite-sample correction",
     "Bonferroni correction across allowed Polistes predictors within each Vespula response stage",
+    repository_relative_path(n13_orthology_summary_file),
     repository_relative_path(full_gene_de_file),
     repository_relative_path(full_hog_de_file),
     repository_relative_path(figure1_file),
@@ -3354,6 +3497,7 @@ write_tsv(grid_mult, file.path(output_dir, "distributed_lag_nonnegative_ridge_re
 key_object_names <- intersect(
   c(
     "gene_de_pd", "gene_de_vv", "hog_de_shared",
+    "n13_composition", "n13_orthology_composition_summary",
     "ortholog_de_wide", "de_gene_categories", "de_stacked_counts",
     "de_stacked_counts_plot",
     "scores_export", "orthologs_pls", "pls_go_lists",
@@ -3405,6 +3549,13 @@ validation_checks <- c(
     is.na(grid_mult$p.value) |
       (grid_mult$p.value > 0 & grid_mult$p.value <= 1)
   ),
+  n13_orthology_summary_exported = file.exists(n13_orthology_summary_file),
+  n13_shared_relationship_classes_complete = sum(
+    n13_orthology_composition_summary$count[
+      n13_orthology_composition_summary$summary_group ==
+        "Shared-HOG composition"
+    ]
+  ) == n13_shared_hogs,
   full_DE_exports_exist = all(file.exists(c(
     full_gene_de_file, full_hog_de_file
   ))),
