@@ -1,4 +1,5 @@
 VALIDATION_OK
+fully_nested_PLS_LOOCV	TRUE
 final_GO_input	TRUE
 top_300_foreground	TRUE
 full_GO_names	TRUE
@@ -11,6 +12,8 @@ figure1_category_order	TRUE
 figure2_exported	TRUE
 figure2_panel_labels	TRUE
 finite_nonzero_bootstrap_p	TRUE
+n13_orthology_summary_exported	TRUE
+n13_shared_relationship_classes_complete	TRUE
 full_DE_exports_exist	TRUE
 full_DE_exports_under_100_MB	TRUE
 full_DE_global_FDR_flags_consistent	TRUE

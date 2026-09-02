@@ -852,8 +852,13 @@ fit_project_once <- function(Xtr, Xte, meta_tr, min_keep = 100, vip_preselect = 
   btr <- build_targets_Y(meta_tr)
   Ytr <- btr$Y
   
-  if (vip_preselect) { sel  <- vip_select(Xtr, Ytr, min_keep = min_keep)$sel_union } else { 
-    sel <- colnames(Xtr) }
+  if (vip_preselect) {
+    fold_vip <- vip_select(Xtr, Ytr, min_keep = min_keep)
+    sel <- fold_vip$sel_union
+  } else {
+    fold_vip <- NULL
+    sel <- colnames(Xtr)
+  }
   Xtr2 <- Xtr[, sel, drop=FALSE]
   Xte2 <- Xte[, sel, drop=FALSE]
   
@@ -878,13 +883,60 @@ fit_project_once <- function(Xtr, Xte, meta_tr, min_keep = 100, vip_preselect = 
   list(
     Axis1_SC      = f1 * as.numeric(SCOt[[ map["SC"]    ]]),
     Axis2_Stage   = f2 * as.numeric(SCOt[[ map["Stage"] ]]),
-    Axis3_Species = f3 * as.numeric(SCOt[[ map["Species"]]])
+    Axis3_Species = f3 * as.numeric(SCOt[[ map["Species"]]]),
+    selected_features = sel,
+    selected_by_target = if (is.null(fold_vip)) {
+      c(SC = length(sel), Stage = length(sel), Species = length(sel))
+    } else {
+      vapply(fold_vip$sel, length, integer(1))
+    }
   )
 }
 
-## Leave-one-out driver producing out-of-sample axis scores
-loo_pls_emm <- function(X, meta, min_keep = 100, vip_preselect = TRUE) {
-  stopifnot(nrow(X) == nrow(meta))
+## Select the TMM reference using training libraries only.
+choose_tmm_reference <- function(counts, train_columns) {
+  train_counts <- counts[, train_columns, drop = FALSE]
+  lib_size <- colSums(train_counts)
+  f75 <- apply(train_counts, 2, stats::quantile, probs = 0.75) / lib_size
+  if (stats::median(f75) < 1e-20) {
+    train_columns[which.max(colSums(sqrt(train_counts)))]
+  } else {
+    train_columns[which.min(abs(f75 - mean(f75)))]
+  }
+}
+
+## TMM-normalise all libraries relative to a training-derived reference. The
+## factor scaling is also based only on training libraries. The held-out sample
+## contributes only its own counts when its normalisation factor is estimated.
+tmm_logcpm_from_training <- function(counts, train_columns) {
+  ref_sample <- choose_tmm_reference(counts, train_columns)
+  ref_index <- match(ref_sample, colnames(counts))
+  train_index <- match(train_columns, colnames(counts))
+  norm_factors <- edgeR::calcNormFactors(
+    counts, method = "TMM", refColumn = ref_index
+  )
+  norm_factors <- norm_factors /
+    exp(mean(log(norm_factors[train_index])))
+  effective_lib_size <- colSums(counts) * norm_factors
+  list(
+    logcpm = edgeR::cpm(
+      counts, lib.size = effective_lib_size,
+      log = TRUE, prior.count = 1
+    ),
+    ref_sample = ref_sample
+  )
+}
+
+## Fully nested leave-one-sample-out cross-validation. Expression filtering,
+## TMM reference selection, HOG-wise centring/scaling, VIP/Kneedle selection,
+## PLS fitting, component assignment and orientation use training samples only.
+loo_pls_emm_nested <- function(pd_counts, vv_counts, metadata_pd, metadata_vv,
+                               meta, min_keep = 100,
+                               vip_preselect = TRUE) {
+  stopifnot(
+    identical(rownames(pd_counts), rownames(vv_counts)),
+    nrow(meta) == ncol(pd_counts) + ncol(vv_counts)
+  )
   n <- nrow(meta)
   
   meta <- meta %>%
@@ -897,22 +949,78 @@ loo_pls_emm <- function(X, meta, min_keep = 100, vip_preselect = TRUE) {
     )
   
   out <- vector("list", n)
+  diagnostics <- vector("list", n)
   for (i in seq_len(n)) {
     te <- i; tr <- setdiff(seq_len(n), te)
-    pr <- fit_project_once(Xtr = X[tr,,drop=FALSE], 
-                           Xte = X[te,,drop=FALSE],
-                           meta_tr = meta[tr,,drop=FALSE], 
-                           min_keep = min_keep, 
-                           vip_preselect = vip_preselect)
+    meta_tr <- meta[tr, , drop = FALSE]
+    pd_train <- intersect(colnames(pd_counts), meta_tr$sample)
+    vv_train <- intersect(colnames(vv_counts), meta_tr$sample)
+
+    pd_metadata_tr <- metadata_pd[
+      match(pd_train, metadata_pd$sampleNumber), , drop = FALSE
+    ]
+    pd_design_tr <- stats::model.matrix(
+      ~ lifeStage + larvalStage, data = pd_metadata_tr
+    )
+    pd_dge_tr <- edgeR::DGEList(
+      counts = pd_counts[, pd_train, drop = FALSE]
+    )
+    pd_dge_tr <- edgeR::calcNormFactors(pd_dge_tr, method = "TMM")
+    keep <- edgeR::filterByExpr(pd_dge_tr, design = pd_design_tr)
+    fold_features <- rownames(pd_counts)[keep]
+
+    pd_norm <- tmm_logcpm_from_training(
+      pd_counts[fold_features, , drop = FALSE], pd_train
+    )
+    vv_norm <- tmm_logcpm_from_training(
+      vv_counts[fold_features, , drop = FALSE], vv_train
+    )
+    X0 <- t(cbind(
+      pd_norm$logcpm[, colnames(pd_counts), drop = FALSE],
+      vv_norm$logcpm[, colnames(vv_counts), drop = FALSE]
+    ))
+    X0 <- X0[meta$sample, , drop = FALSE]
+
+    fold_means <- colMeans(X0[tr, , drop = FALSE])
+    fold_sds <- apply(X0[tr, , drop = FALSE], 2, stats::sd)
+    nonconstant <- is.finite(fold_sds) & fold_sds > 0
+    X0 <- X0[, nonconstant, drop = FALSE]
+    fold_means <- fold_means[nonconstant]
+    fold_sds <- fold_sds[nonconstant]
+    X <- sweep(X0, 2, fold_means, "-")
+    X <- sweep(X, 2, fold_sds, "/")
+
+    pr <- fit_project_once(
+      Xtr = X[tr, , drop = FALSE],
+      Xte = X[te, , drop = FALSE],
+      meta_tr = meta_tr,
+      min_keep = min_keep,
+      vip_preselect = vip_preselect
+    )
     out[[i]] <- tibble(
       sample         = meta$sample[te],
       Axis1_SC       = pr$Axis1_SC,
       Axis2_Stage    = pr$Axis2_Stage,
       Axis3_Species  = pr$Axis3_Species
     )
+    diagnostics[[i]] <- tibble(
+      sample = meta$sample[te],
+      candidate_HOGs = ncol(X),
+      selected_HOGs = length(pr$selected_features),
+      selected_SC = unname(pr$selected_by_target["SC"]),
+      selected_Stage = unname(pr$selected_by_target["Stage"]),
+      selected_Species = unname(pr$selected_by_target["Species"]),
+      pd_TMM_reference = pd_norm$ref_sample,
+      vv_TMM_reference = vv_norm$ref_sample
+    )
   }
-  dplyr::bind_rows(out) %>%
-    dplyr::left_join(meta[, c("sample","Stage","Species","SC2")], by = "sample")
+  list(
+    scores = dplyr::bind_rows(out) %>%
+      dplyr::left_join(
+        meta[, c("sample", "Stage", "Species", "SC2")], by = "sample"
+      ),
+    fold_diagnostics = dplyr::bind_rows(diagnostics)
+  )
 }
 
 
@@ -1187,9 +1295,20 @@ write.csv(orthologs_pls,  file = file.path(output_dir, "pls_N13_HOGs_with_loadin
 
 ## 2.2 CALCULATE LOOCV PERFORMANCE ####
 
-# calculate leave-one-out sample scores
-oos <- loo_pls_emm(X = Z_sub, meta = meta_all, min_keep = 100, 
-                   vip_preselect = vip_preselect)
+# Calculate fully nested leave-one-out sample scores from the unfiltered shared
+# HOG count matrices. No filtering, scaling or feature-selection information
+# from the held-out sample is used to fit its fold-specific PLS model.
+oos_nested <- loo_pls_emm_nested(
+  pd_counts = pd_og,
+  vv_counts = vv_og,
+  metadata_pd = metadata_pd,
+  metadata_vv = metadata_vv,
+  meta = meta_all,
+  min_keep = 100,
+  vip_preselect = vip_preselect
+)
+oos <- oos_nested$scores
+pls_loocv_fold_diagnostics <- oos_nested$fold_diagnostics
 
 # calculate significance of emmeans contrasts for season/caste, stage & species based on leave-one-out sample scores
 # TODO change lm_robust to MASS::lmrob & use marginaleffects package for significance
@@ -1289,6 +1408,10 @@ st_contr_oos
 
 # species contrasts per stage
 write.csv(data.frame(sp_contr_oos),  file = file.path(output_dir, "pls_species emmeans contrasts LOOCV scores.csv"), row.names = FALSE)
+readr::write_tsv(
+  pls_loocv_fold_diagnostics,
+  file.path(output_dir, "pls_fully_nested_LOOCV_fold_diagnostics.tsv")
+)
 sp_contr_oos
 # Stage = L1:
 #   contrast estimate    SE  df t.ratio p.value
@@ -3354,7 +3477,7 @@ supp_table_index <- tibble(
   Description = c(
     "Differential-expression counts by species, analysis unit and stage",
     "PLS-axis mapping and variance explained",
-    "Leave-one-sample-out season/caste contrasts on PLS axis 1",
+    "Fully nested leave-one-sample-out season/caste contrasts on PLS axis 1",
     "GO terms displayed in Fig. 1B",
     "Stagewise robust-regression results underlying Fig. 2A",
     "Nonnegative-ridge partial slopes underlying Fig. 2B"
@@ -3461,7 +3584,7 @@ analysis_metadata_final <- tibble(
   key = c(
     "script", "analysis_date", "gene_model", "HOG_model",
     "orthology_unit", "multiple_testing", "DEU_included",
-    "PLS_features", "PLS_X_variance_by_component",
+    "PLS_features", "PLS_cross_validation", "PLS_X_variance_by_component",
     "GO_annotation", "GO_foreground", "GO_test", "GO_multiple_testing",
     "ridge_bootstrap_test", "ridge_multiple_testing",
     "N13_orthology_composition",
@@ -3476,6 +3599,11 @@ analysis_metadata_final <- tibble(
     "global BH within species for differential-expression tests",
     "FALSE",
     as.character(length(sel)),
+    paste(
+      "fully nested leave-one-sample-out; expression filtering, TMM reference",
+      "selection, HOG-wise centring/scaling, VIP/Kneedle selection, PLS fitting,",
+      "component assignment and orientation estimated from training samples only"
+    ),
     paste(signif(plsfit$prop_expl_var$X, 6), collapse = ";"),
     "direct EXCON/Galaxy EggNOG and InterProScan conserved across wasps plus experimental FlyBase GO transferred through N13 Drosophila orthologues",
     "top 300 N13 HOGs in each oriented PLS loading direction",
@@ -3500,7 +3628,7 @@ key_object_names <- intersect(
     "n13_composition", "n13_orthology_composition_summary",
     "ortholog_de_wide", "de_gene_categories", "de_stacked_counts",
     "de_stacked_counts_plot",
-    "scores_export", "orthologs_pls", "pls_go_lists",
+    "scores_export", "orthologs_pls", "pls_loocv_fold_diagnostics", "pls_go_lists",
     "go_term_results_all", "go_term_results_enriched", "flat_all",
     "pls_foregrounds", "tbl", "p_go_sc_pos", "p_pls_figure",
     "slopes_by_stage", "p_stagewise_regression",
@@ -3519,6 +3647,10 @@ saveRDS(
 )
 
 validation_checks <- c(
+  fully_nested_PLS_LOOCV =
+    nrow(pls_loocv_fold_diagnostics) == nrow(meta_all) &&
+    all(pls_loocv_fold_diagnostics$candidate_HOGs > 0L) &&
+    all(pls_loocv_fold_diagnostics$selected_HOGs > 0L),
   final_GO_input = identical(
     basename(go_annot_orthologs), "N13_HOG_GO_final_long.tsv.gz"
   ),

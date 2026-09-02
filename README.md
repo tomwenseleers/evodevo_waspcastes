@@ -152,6 +152,12 @@ compressed TSV files can be read directly with `readr::read_tsv()`.
 For cross-species analyses, genes were summarised directly to OrthoFinder N13
 HOGs before model fitting. The final PLS, robust stage-wise regressions, and
 nonnegative ridge heterochrony model use ASH-shrunken N13-HOG log2 fold changes.
+PLS score stability is assessed by fully nested leave-one-sample-out
+cross-validation. Expression filtering, the TMM reference, HOG-wise centring
+and scaling, VIP/Kneedle feature selection, PLS fitting, component assignment
+and axis orientation are estimated from the training samples in each fold
+before the held-out sample is projected. Fold-level candidate and selected HOG
+counts are exported to `output/pls_fully_nested_LOOCV_fold_diagnostics.tsv`.
 The unfiltered focal-species mapping and the numbers of one-to-one,
 one-to-many, many-to-one and many-to-many HOGs are exported to
 `output/N13_HOG_orthology_composition_summary.tsv`.
