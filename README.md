@@ -68,11 +68,12 @@ two one-worker scripts in `scripts/upstream/` and should be run sequentially.
 |   `-- workspaces/          # compact CAFE/GO key-results RDS
 |-- scripts/
 |   |-- pipelines/           # complete analysis implementations
+|   |-- modules/             # cross-stage and pathway-figure modules called by pipeline B
 |   |-- upstream/            # costly model refits and dated-tree reconstruction
 |   `-- utilities/           # supplementary-table workbook/export utilities
 `-- output/
     |-- figures/             # Fig1, Fig2 and Fig3
-    |-- supplemental_figures/# FigS1, FigS2 and FigS3
+    |-- supplemental_figures/# FigS1 to FigS4
     |-- supplemental_tables/ # TableS1-TableS13 (S5 has A and B parts)
     `-- ...                  # complete derived analysis and audit tables
 ```
@@ -150,8 +151,33 @@ contains member genes and aggregated gene annotations for both wasps. The
 compressed TSV files can be read directly with `readr::read_tsv()`.
 
 For cross-species analyses, genes were summarised directly to OrthoFinder N13
-HOGs before model fitting. The final PLS, robust stage-wise regressions, and
-nonnegative ridge heterochrony model use ASH-shrunken N13-HOG log2 fold changes.
+HOGs before model fitting. The final PLS and cross-stage analyses use
+ASH-shrunken N13-HOG log2 fold changes and globally FDR-controlled
+differential-expression calls. Figure 2A tests directional concordance for all
+36 pairs of *Polistes* and *Vespula* stages. For each pair, the analysis is
+restricted to HOGs that are differentially expressed in both species and uses
+a one-sided Fisher exact test to ask whether concordant directions occur more
+often than expected. P values are Benjamini-Hochberg FDR-adjusted across all
+36 stage pairs. Figure 2B shows a mechanistically focused subset of concordant HOGs from
+the *Polistes* L1, L4, and L5 to *Vespula* L2 comparisons. Rows were selected
+from formal topGO or KEGG enrichment results and from the connected
+IIS/Wnt/mTOR/FoxO pathway network summarised in Figure 2C. Figure 2C highlights
+eight strictly concordant HOGs, including an SLC2-like sugar transporter, and
+distinguishes established pathway edges from indirect cross-talk.
+
+The multistage analyses are reported in Figure S4. Panel A fits a cumulative
+logit model to the three-level differential-expression status in each
+*Vespula* stage, using the status at all six *Polistes* stages simultaneously.
+Panel B fits an inverse-variance-weighted ridge model to continuous
+ASH-shrunken log2 fold changes, again using all six *Polistes* stages. Slopes
+are constrained to be nonnegative because these models test the directional
+reuse/canalisation hypothesis and because adjacent developmental predictors
+are strongly correlated. Negative stage-pair relationships remain visible in
+Figure 2A, but are not assigned positive partial contributions by the
+constrained models. One-sided pairs-bootstrap probabilities are calculated
+from 1,000 HOG resamples and Benjamini-Hochberg FDR-adjusted across all 36
+coefficients within each panel.
+
 PLS score stability is assessed by fully nested leave-one-sample-out
 cross-validation. Expression filtering, the TMM reference, HOG-wise centring
 and scaling, VIP/Kneedle feature selection, PLS fitting, component assignment
@@ -250,16 +276,21 @@ tested non-TE HOGs. BP, MF, and CC are tested with topGO `weight01`/Fisher. Give
 ## Manuscript outputs
 
 - `output/figures/Fig1.*`: PLS developmental/season-caste structure and GO enrichment.
-- `output/figures/Fig2.*`: cross-species stage-wise regressions and heterochrony model.
+- `output/figures/Fig2.*`: pairwise cross-stage directional concordance and GO/KEGG-supported functional HOGs.
+- `output/figures/Fig2C_source.*`: final IIS/Wnt/mTOR/FoxO pathway panel, including PNG, PDF, SVG and PowerPoint formats.
 - `output/figures/Fig3.*`: dated wasp phylogeny with focal CAFE changes and expansion classes.
 - `output/supplemental_figures/FigS1.png`: sampling and developmental-stage overview.
 - `output/supplemental_figures/FigS2.*`: numbers of differentially expressed genes by stage.
 - `output/supplemental_figures/FigS3.*`: stage-specific absolute shrunken log2 fold-change heatmap.
+- `output/supplemental_figures/FigS4.*`: all-stage nonnegative cumulative-logit and inverse-variance-weighted ridge models.
 - `output/supplemental_tables/TableS1.tsv` to `TableS13.tsv`: final supplementary tables; Table S5 is split into `TableS5A.tsv` and `TableS5B.tsv`.
 - `output/full_gene_level_differential_expression_results.tsv.gz`: complete annotated gene-by-stage differential-expression results for both species.
 - `output/full_N13_HOG_level_differential_expression_results.tsv.gz`: complete annotated N13-HOG-by-stage differential-expression results for both species.
 - `output/full_DE_results_file_index.tsv`: row counts, significant-test counts and compressed sizes for the two complete DE tables.
 - `output/N13_HOG_orthology_composition_summary.tsv`: unfiltered N13 mapping totals and focal-species one-to-one, one-to-many, many-to-one and many-to-many HOG counts.
+- `output/cross_stage_concordance/concordant_DE_HOGs_annotated.xlsx`: full annotated concordant-HOG lists for the L1-to-L2, L4-to-L2, L5-to-L2, and P-to-P comparisons.
+- `output/cross_stage_concordance/pairwise_directional_concordance_results.tsv`: complete 36-cell Fisher-test results underlying Figure 2A.
+- `output/cross_stage_concordance/all_stage_nonnegative_CLM_results.tsv` and `all_stage_nonnegative_ridge_results.tsv`: complete coefficient and bootstrap results underlying Figure S4.
 
 Tables S1-S3 and S9 summarise sampling, microsatellites, genome quality, and
 tree calibrations. B generates Tables S4-S8. C generates Tables S10-S13.
@@ -269,7 +300,7 @@ tree calibrations. B generates Tables S4-S8. C generates Tables S10-S13.
 The analyses were validated with R 4.5.x. Principal R dependencies are:
 `dplyr`, `tidyr`, `readr`, `stringr`, `purrr`, `KEGGREST`, `ontologyIndex`,
 `edgeR`, `glmmTMB`, `DESeq2`, `tximport`, `ashr`, `mixOmics`, `emmeans`, `topGO`, `GO.db`,
-`AnnotationDbi`, `estimatr`, `robustbase`, `glmnet`, `ape`, `export`, `officer`,
+`AnnotationDbi`, `ordinal`, `glmnet`, `clusterProfiler`, `ape`, `export`, `officer`, `xml2`,
 `pheatmap`, and `openxlsx`. The genome-download helper uses Python 3 with
 `requests` and `beautifulsoup4`; the supplementary XLSX builder additionally
 uses Python 3 with `openpyxl`.

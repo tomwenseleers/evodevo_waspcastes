@@ -1,0 +1,7 @@
+Completed 2026-09-09 13:01:49.677487
+Eight highlighted HOGs validated against the final strict overlap table.
+All highlighted HOGs are concordantly upregulated.
+sut1-3/SLC2-like is drawn as an independent carbohydrate transporter, not as a FoxO target.
+Dishevelled inhibits GSK3beta; no direct GSK3beta-to-NLK activation is shown.
+AKT inhibition of TSC1/2 and FoxO is shown explicitly.
+Dashed arrows denote cross-talk or indirect modulation, not demonstrated regulation in these wasps.

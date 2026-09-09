@@ -1,0 +1,7 @@
+Finalised 2026-09-09 13:16:35.070819
+Inference reused the previously completed 1,000 pairs-bootstrap fits.
+Benjamini-Hochberg FDR correction was applied across all 36 tests in each analysis.
+FDR-significant pairwise stage cells 6
+FDR-significant nonnegative CLM coefficients 5
+FDR-significant nonnegative ridge coefficients 8
+R version 4.5.0 (2025-04-11 ucrt)

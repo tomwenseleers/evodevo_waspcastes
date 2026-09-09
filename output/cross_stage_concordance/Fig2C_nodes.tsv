@@ -1,0 +1,29 @@
+node	label	x	y	w	h	highlight	stage_label	shape
+wnt	Wnt/wg	0.065	0.795	0.066	0.04	FALSE		pill
+fz	fz/fz2 + arr	0.165	0.76	0.087	0.045	FALSE		box
+dsh	dsh	0.275	0.76	0.052	0.045	FALSE		box
+gsk3	sgg/GSK3beta	0.39	0.76	0.105	0.052	TRUE	Pd L4/L5 -> Vv L2	box
+nlk	nmo/NLK	0.505	0.76	0.075	0.052	TRUE	Pd L4 -> Vv L2	box
+ilp	Ilp	0.055	0.485	0.045	0.038	FALSE		pill
+inr	InR	0.095	0.405	0.045	0.052	FALSE		box
+chico	chico/IRS	0.19	0.405	0.08	0.052	FALSE		box
+pi3k	Pi3K21B/92E	0.305	0.405	0.1	0.052	FALSE		box
+pdk1	Pdk1	0.415	0.405	0.062	0.052	TRUE	Pd L4 -> Vv L2	box
+akt	Akt1	0.505	0.405	0.058	0.052	FALSE		box
+tsc	TSC1/2 Tsc1 + gig	0.605	0.7	0.07	0.068	FALSE		box
+rheb	Rheb	0.68	0.7	0.052	0.048	FALSE		box
+tor	Tor	0.752	0.7	0.052	0.048	FALSE		box
+s6k	S6k	0.825	0.7	0.052	0.048	FALSE		box
+growth	Translation and growth	0.947	0.7	0.086	0.075	FALSE		output
+thor	Thor/4E-BP	0.77	0.585	0.086	0.05	FALSE		box
+eif4e	eIF4E1	0.77	0.505	0.065	0.05	FALSE		box
+wdr59	Wdr59 (GATOR2)	0.68	0.855	0.08	0.06	TRUE	Pd L1 -> Vv L2	box
+foxo	foxo	0.69	0.23	0.085	0.06	FALSE		foxo
+jnk	bsk/JNK	0.6	0.165	0.066	0.047	FALSE		box
+sir2	Sir2	0.625	0.1	0.055	0.047	FALSE		box
+cbp	nej/CBP	0.715	0.105	0.08	0.052	TRUE	Pd L1 -> Vv L2	box
+pepck	Pepck	0.805	0.3	0.07	0.052	TRUE	Pd L4 -> Vv L2	box
+bnip3	BNIP3	0.805	0.215	0.07	0.048	FALSE		box
+gbs	Gbs-76A	0.805	0.145	0.075	0.052	TRUE	Pd L4 -> Vv L2	box
+glut	sut1-3 / SLC2-like	0.915	0.295	0.082	0.06	TRUE	Pd L4 -> Vv L2	box
+carb	Carbohydrate uptake, metabolism and storage	0.94	0.145	0.1	0.078	FALSE		output

@@ -2109,867 +2109,14 @@ flat_all_filt <- flat_all %>%
   dplyr::select(-keep_flag)
 
 
-# 4. ARE PAPER WASP GENE EXPRESSION PROFILES PREDICTIVE OF COMMON WASP CASTE DIFFERENCES? ####
+# 4. CROSS-STAGE DIRECTIONAL CONCORDANCE AND HETEROCHRONY ####
 
-### 4.1 SCATTERPLOT OF UNIVARIATE ROBUST REGRESSION MODELS OF DE IN Vv vs THAT IN SAME STAGE IN Pd ####
-
-# robust regression models of Log2FC in Q vs W in Vespula vulgaris
-# in different larval stages in function of Log2FC in L vs E in Polistes dominula
-# with genes in both matched by orthogroup
-# to test if gene regulatory modules overexpressed in late-season female larvae
-# in primitively eusocial without morphologically distinct castes were co-opted 
-# in the evolution of morphologically specialised castes
-
-## ---- packages
-
-library(dplyr)
-library(rlang)
-library(marginaleffects)
-library(robustbase)
-library(forcats)
-# assumes `stages`, `ortholog_de_wide`, `sel_sc_pos_topK`, `sel_sc_neg_topK` exist
-
-## ---- helpers
-
-# choose rows (orthogroups) for the requested "universe"
-pick_universe <- function(wide, universe = c("all_orthologs","de_either","de_both", "vv_de_any","pls_top"),
-                          alpha = 0.05, pls_ids = NULL) {
-  universe <- match.arg(universe)
-  out <- wide
-  
-  # fast "any DE" flags from padj columns already inside `wide`
-  vv_p <- as.matrix(dplyr::select(out, dplyr::starts_with("padj_Vv_")))
-  pd_p <- as.matrix(dplyr::select(out, dplyr::starts_with("padj_Pd_")))
-  anyDE_Vv <- rowSums((vv_p < alpha) & !is.na(vv_p), na.rm = TRUE) > 0
-  anyDE_Pd <- rowSums((pd_p < alpha) & !is.na(pd_p), na.rm = TRUE) > 0
-  
-  keep <- switch(universe,
-                 all_orthologs = rep(TRUE, nrow(out)),
-                 de_either     = anyDE_Vv | anyDE_Pd,
-                 de_both       = anyDE_Vv & anyDE_Pd,
-                 vv_de_any     = anyDE_Vv,
-                 pls_top       = out$orthogroup %in% pls_ids
-  )
-  out[keep, , drop = FALSE]
-}
-
-
-# build per-stage data with toggle for raw vs shrunk LFCs/SEs
-make_stage_df <- function(stage, wide, lfc = c("raw","shrunk"), se = c("raw","auto","shrunk")) {
-  lfc <- match.arg(lfc)
-  se  <- match.arg(se)
-  
-  # dynamic names for LFCs
-  xcol  <- paste0("log2FC", lfc, "_Pd_", stage, "_LvsE")
-  ycol  <- paste0("log2FC", lfc, "_Vv_", stage, "_QvsW")
-  
-  # pick which SE to use
-  se_eff <- if (se == "auto") lfc else se
-  
-  # expected SE column name
-  wycol_try <- paste0("lfcSE", se_eff, "_Vv_", stage, "_QvsW")
-  
-  # graceful fallback if that column doesn't exist
-  wycol <- if (wycol_try %in% names(wide)) {
-    wycol_try
-  } else {
-    paste0("lfcSEraw_Vv_", stage, "_QvsW")
-  }
-  
-  # other dynamic names
-  padjP <- paste0("padj_Pd_", stage, "_LvsE")
-  padjV <- paste0("padj_Vv_", stage, "_QvsW")
-  bmP   <- paste0("baseMean_Pd_", stage, "_LvsE")
-  bmV   <- paste0("baseMean_Vv_", stage, "_QvsW")
-  
-  out <- wide %>%
-    transmute(
-      orthogroup,
-      stage = factor(stage, levels = stages),
-      x  = !!sym(xcol),
-      y  = !!sym(ycol),
-      wy = !!sym(wycol),
-      padj_pd = !!sym(padjP),
-      padj_vv = !!sym(padjV),
-      expr_gm_stage_best = sqrt(pmax(!!sym(bmP), 1e-8) * pmax(!!sym(bmV), 1e-8))
-    ) %>%
-    mutate(
-      sig_both = (padj_pd < 0.05) & (padj_vv < 0.05),
-      sig_lab  = ifelse(sig_both, "FDR < 0.05 in both", "NS in one/both"),
-      w        = 1 / (wy^2 + 1e-8)
-    ) %>%
-    filter(is.finite(x), is.finite(y), is.finite(w))
-  
-  out
-}
-
-# Fit robust simple regressions y ~ x per stage 
-fit_one_stage <- function(dat) {
-  f <- try(lmrob(y ~ x, data = dat, weights = w,
-                 init = "S",
-                 control = lmrob.control(max.it = 5000, refine.tol = 1e-5, setting = "KS2014")),
-           silent = TRUE)
-  if (inherits(f, "try-error")) lm(y ~ x, data = dat, weights = w) else f
-}
-
-## assemble modeling data
-# choose gene universe & options here:
-# "all_orthologs" (primary), 
-# "de_either" (DE in at least 1 stage in either species),
-# "de_both" (DE in at least 1 stage in both species),
-# "vv_de_any" (DE in at least 1 stage in Vv - to test predictive power for caste biased genes in Vv), 
-#  or "pls_top" (top PLS selected features along season/caste axis)
-universe_choice <- "vv_de_any" 
-alpha_universe  <- 0.05
-lfc_choice      <- "shrunk"
-se_choice       <- "raw"        # or "auto"/"shrunk"
-padj_method     <- "bonferroni" # or "BH" for FDR
-
-wide_use <- pick_universe(
-  ortholog_de_wide,
-  universe = universe_choice,
-  alpha    = alpha_universe,
-  pls_ids  = c(sel_sc_pos_topK, sel_sc_neg_topK)
-)
-
-df <- dplyr::bind_rows(lapply(
-  stages,
-  make_stage_df,
-  wide = wide_use,
-  lfc  = lfc_choice,
-  se   = se_choice
-))
-
-## ---- stage-wise fits & summaries
-slopes_by_stage <- df %>%
-  group_by(stage) %>%
-  group_modify(~{
-    fit <- fit_one_stage(.x)
-    s   <- slopes(fit, variables = "x", newdata = datagrid(), conf_level = 0.95)
-    tibble(
-      estimate  = s$estimate[1],
-      std.error = s$std.error[1],
-      conf.low  = s$conf.low[1],
-      conf.high = s$conf.high[1],
-      p.value   = s$p.value[1],
-      n         = nrow(.x)
-    )
-  }) %>%
-  ungroup() %>%
-  mutate(p.value.adj = p.adjust(p.value, padj_method)) %>%
-  arrange(stage)
-
-print(slopes_by_stage)
-dim(slopes_by_stage) # 6 8 - correct
-
-## ---- predictions for plotting
-pred <- df %>%
-  group_by(stage) %>%
-  do({
-    fit <- fit_one_stage(.)
-    xr  <- range(.$x, finite = TRUE)
-    grid <- tibble(x = seq(xr[1], xr[2], length.out = 200))
-    p <- as.data.frame(marginaleffects::predictions(fit, newdata = grid, conf_level = 0.95))
-    tibble(stage = unique(.$stage), x = p$x, estimate = p$estimate,
-           conf.low = p$conf.low, conf.high = p$conf.high)
-  }) %>% ungroup()
-
-
-# --- Plot
-p_stagewise_regression <- ggplot() +
-  geom_ribbon(data = pred, aes(x, ymin = conf.low, ymax = conf.high, fill = stage),
-              alpha = 0.15, colour = NA) +
-  geom_point(data = df, aes(x, y, colour = stage, alpha = sig_lab), shape = 16) +
-  scale_alpha_manual(values = c("FDR < 0.05 in both" = 1, "NS in one/both" = 0.05),
-                     name = "", guide = "none") +
-  geom_line(data = pred, aes(x, y = estimate, colour = stage), linewidth = 1) +
-  scale_colour_brewer(palette = "Spectral", direction = -1, guide = guide_legend(reverse = TRUE)) +
-  scale_fill_brewer(palette = "Spectral", direction = -1, guide = guide_legend(reverse = TRUE)) +
-  labs(x = expression(italic("Polistes dominula")~log[2]*"FC (L vs E)"),
-       y = expression(italic("Vespula vulgaris")~log[2]*"FC (Q vs W)")#,
-       # subtitle = paste("Universe:", universe_choice, "| LFC:", lfc_choice),
-       #title = "Stage-wise robust regressions (Vv ~ Pd)"
-       ) +
-  theme_few(base_size = 12) +
-  geom_hline(yintercept=0, colour=alpha("black", 0.1)) +
-  geom_vline(xintercept=0, colour=alpha("black", 0.1)) +
-  theme(axis.line = element_line(colour = NA),
-        axis.ticks = element_line(linewidth = 0.3, colour="black"),
-        plot.background = element_rect(fill = "transparent", colour = NA)) +
-  coord_cartesian(xlim = c(-7, 7), ylim = c(-7, 7))
-graph2png(x = p_stagewise_regression, file =file.path(figure_dir, "Fig2A_source.png"), width=6, height=5)
-graph2pdf(x = p_stagewise_regression, file =file.path(figure_dir, "Fig2A_source.pdf"), width=6, height=5)
-graph2ppt(x = p_stagewise_regression, file =file.path(figure_dir, "Fig2A_source.pptx"), width=6, height=5)
-
-
-
-### 4.2 TEST FOR HETEROCHRONY USING MULTIVARIATE DISTRIBUTED LAG ROBUST OR NONNEGATIVE RIDGE REGRESSIONS OF DE IN EACH STAGE OF Vv ~ SAME OR OTHER STAGES OF Pd ####
-
-library(glmnet)
-library(purrr)
-library(tidyr)
-
-# Build per-stage design matrix with flexible universe/LFC/SE/predictors
-# predictors = "all"           -> use all Pd stages as X
-#            = "older_or_equal"-> use Pd stages whose index >= y_stage index
-#            = "" -> 
-# LFC choice: lfc = "raw" | "shrunk"
-# SE choice : se  = "auto" (match LFC if present, else fall back to raw/shrunk)
-# scaling   : scale_X = TRUE to standardize columns of X
-
-build_mult_data2 <- function(wide, stages, y_stage,
-                             lfc = c("raw","shrunk"),
-                             se  = c("auto","raw","shrunk"),
-                             predictors = c("all","older_or_equal"),
-                             scale_X = TRUE) {
-  lfc <- match.arg(lfc)
-  se  <- match.arg(se)
-  predictors <- match.arg(predictors)
-  
-  # response and weights (Vv)
-  ycol <- sprintf("log2FC%s_Vv_%s_QvsW", lfc, y_stage)
-  
-  if (se == "auto") {
-    candidates <- c(sprintf("lfcSE%s_Vv_%s_QvsW", lfc, y_stage),
-                    sprintf("lfcSEraw_Vv_%s_QvsW",    y_stage),
-                    sprintf("lfcSEshrunk_Vv_%s_QvsW", y_stage))
-    wcol <- candidates[candidates %in% names(wide)][1]
-  } else {
-    wcol <- sprintf("lfcSE%s_Vv_%s_QvsW", se, y_stage)
-  }
-  if (!wcol %in% names(wide)) stop("Weight SE column not found: ", wcol)
-  
-  # choose predictor stages
-  if (predictors == "all") {
-    use_stages <- stages
-  } else {  # "older_or_equal": index >= y_stage
-    idx_y <- match(y_stage, stages)
-    if (is.na(idx_y)) stop("y_stage not found in 'stages'.")
-    use_stages <- stages[seq.int(idx_y, length(stages))]
-  }
-  
-  src_cols <- sprintf("log2FC%s_Pd_%s_LvsE", lfc, use_stages)
-  new_cols <- paste0("x_", use_stages)
-  
-  dat <- wide %>%
-    transmute(
-      y = .data[[ycol]],
-      w = 1 / ((.data[[wcol]])^2 + 1e-8),
-      !!! rlang::set_names(rlang::syms(src_cols), new_cols)
-    ) %>%
-    dplyr::filter(is.finite(y), is.finite(w)) %>%
-    tidyr::drop_na(dplyr::all_of(new_cols))
-  
-  if (nrow(dat) > 0L && scale_X) {
-    dat[new_cols] <- lapply(dat[new_cols], function(z) as.numeric(scale(z)))
-  }
-  attr(dat, "x_names") <- new_cols
-  dat
-}
-
-# Weighted least squares with intercept and optional slope constraint (single predictor)
-wls_single <- function(dat, x_name, lower = -Inf) {
-  x <- dat[[x_name]]
-  y <- dat$y
-  w <- dat$w
-  
-  ok <- is.finite(x) & is.finite(y) & is.finite(w)
-  x <- x[ok]; y <- y[ok]; w <- w[ok]
-  
-  if (length(x) < 3) return(list(intercept = NA_real_, slope = NA_real_))
-  
-  wsum <- sum(w)
-  wx <- sum(w * x) / wsum
-  wy <- sum(w * y) / wsum
-  
-  num <- sum(w * (x - wx) * (y - wy))
-  den <- sum(w * (x - wx)^2)
-  
-  b_uc <- if (den > 0) num / den else NA_real_
-  a_uc <- wy - b_uc * wx
-  
-  # Exact constrained solution for slope >= 0:
-  # if unconstrained slope < 0, optimum is at boundary b=0
-  if (is.finite(lower) && lower == 0 && is.finite(b_uc) && b_uc < 0) {
-    list(intercept = wy, slope = 0)
-  } else {
-    list(intercept = a_uc, slope = b_uc)
-  }
-}
-
-bootstrap_wls_single <- function(dat, x_name, B = 200, lower = -Inf, seed = NULL) {
-  if (!is.null(seed)) set.seed(seed)
-  n <- nrow(dat)
-  out <- rep(NA_real_, B)
-  
-  for (b in seq_len(B)) {
-    idx <- sample.int(n, n, replace = TRUE)
-    fb  <- wls_single(dat[idx, , drop = FALSE], x_name, lower = lower)
-    out[b] <- fb$slope
-  }
-  out
-}
-
-# Fit weighted ridge with CV, optional coefficient constraints
-fit_ridge_cv <- function(dat, x_names,
-                         lower.limits = -Inf, upper.limits = Inf,
-                         nfolds = 10, standardize = FALSE, ...) {
-  X <- as.matrix(dat[, x_names, drop = FALSE])
-  y <- dat$y
-  w <- dat$w
-  
-  # glmnet expects lower/upper limits length = p or 1
-  p <- ncol(X)
-  if (length(lower.limits) == 1) lower.limits <- rep(lower.limits, p)
-  if (length(upper.limits) == 1) upper.limits <- rep(upper.limits, p)
-  
-  cvfit <- cv.glmnet(
-    x = X, y = y,
-    alpha = 0,
-    weights = w,
-    nfolds = nfolds,
-    standardize = standardize,
-    intercept = TRUE,
-    lower.limits = lower.limits,
-    upper.limits = upper.limits,
-    ...
-  )
-  
-  # extract coefficients at lambda.min
-  b <- as.matrix(coef(cvfit, s = "lambda.min"))
-  # named vector for predictors only
-  beta <- setNames(rep(NA_real_, length(x_names)), x_names)
-  common <- intersect(x_names, rownames(b))
-  beta[common] <- b[common, 1]
-  
-  list(cvfit = cvfit, beta = beta)
-}
-
-
-# Bootstrap ridge coefficients (pairs bootstrap)
-bootstrap_ridge <- function(dat, x_names,
-                            B = 200,
-                            lower.limits = -Inf, upper.limits = Inf,
-                            nfolds = 10, standardize = FALSE,
-                            refit_cv = TRUE,
-                            seed = NULL, ...) {
-  if (!is.null(seed)) set.seed(seed)
-  
-  n <- nrow(dat)
-  p <- length(x_names)
-  boot_mat <- matrix(NA_real_, nrow = B, ncol = p,
-                     dimnames = list(NULL, x_names))
-  
-  # Option: if you prefer fixed lambda from original fit,
-  # set refit_cv = FALSE and pass lambda_fixed externally.
-  for (b in seq_len(B)) {
-    idx <- sample.int(n, n, replace = TRUE)
-    d   <- dat[idx, , drop = FALSE]
-    
-    # If too small or degenerate, skip
-    if (nrow(d) < 10) next
-    
-    fb <- try(
-      fit_ridge_cv(
-        d, x_names,
-        lower.limits = lower.limits,
-        upper.limits = upper.limits,
-        nfolds = nfolds,
-        standardize = standardize,
-        ...
-      ),
-      silent = TRUE
-    )
-    if (inherits(fb, "try-error")) next
-    
-    boot_mat[b, ] <- fb$beta
-  }
-  
-  boot_mat
-}
-
-
-# Finite two-sided test based on the centred bootstrap error distribution.
-# The plus-one correction prevents impossible P = 0 values with finite B.
-centred_bootstrap_p <- function(beta_hat, boot) {
-  boot <- boot[is.finite(boot)]
-  if (!length(boot) || !is.finite(beta_hat)) return(NA_real_)
-
-  null_distance <- abs(beta_hat)
-  bootstrap_error <- abs(boot - beta_hat)
-  min(1, (sum(bootstrap_error >= null_distance) + 1) / (length(boot) + 1))
-}
-
-# Summarise bootstrap distribution into estimate/SE/CI/p
-summarise_boot <- function(beta_hat, boot_mat) {
-  # boot_mat: B x p
-  se <- apply(boot_mat, 2, sd, na.rm = TRUE)
-  ci <- t(apply(boot_mat, 2, function(z) {
-    stats::quantile(z, c(0.025, 0.975), na.rm = TRUE)
-  }))
-  
-  # Two-sided centred-bootstrap P value with finite-sample correction.
-  pval <- vapply(seq_along(beta_hat), function(j) {
-    centred_bootstrap_p(beta_hat[j], boot_mat[, j])
-  }, numeric(1))
-  
-  tibble(
-    estimate  = as.numeric(beta_hat),
-    std.error = as.numeric(se),
-    conf.low  = as.numeric(ci[, 1]),
-    conf.high = as.numeric(ci[, 2]),
-    p.value   = as.numeric(pval)
-  )
-}
-
-fit_mult_stage2 <- function(dat, y_stage,
-                            model = c("lmrob","ridge"),
-                            # ridge options
-                            lower.limits = -Inf,
-                            upper.limits = Inf,
-                            ridge_B = 200,
-                            ridge_nfolds = 10,
-                            ridge_standardize = FALSE,
-                            ridge_refit_cv = TRUE,
-                            ridge_seed = NULL) {
-  model <- match.arg(model)
-  
-  x_names <- attr(dat, "x_names")
-  
-  if (length(x_names) == 0L || nrow(dat) < 10) {
-    return(tibble(
-      vv_stage = y_stage,
-      pd_stage = character(),
-      estimate = numeric(),
-      std.error = numeric(),
-      p.value = numeric(),
-      conf.low = numeric(),
-      conf.high = numeric(),
-      n = nrow(dat)
-    ))
-  }
-  
-  if (model == "lmrob") {
-    form <- as.formula(paste("y ~", paste(x_names, collapse = " + ")))
-    fit <- try(
-      robustbase::lmrob(
-        form, data = dat, weights = w,
-        init = "S",
-        control = robustbase::lmrob.control(
-          max.it = 5000, refine.tol = 1e-5, setting = "KS2014"
-        )
-      ),
-      silent = TRUE
-    )
-    if (inherits(fit, "try-error")) fit <- lm(form, data = dat, weights = w)
-    
-    sm <- summary(fit)$coefficients
-    sm <- sm[intersect(rownames(sm), x_names), , drop = FALSE]
-    
-    # lmrob/lm can supply SE and p directly;
-    # CI not previously returned, but we now add it for consistency
-    est <- sm[, "Estimate"]
-    se  <- sm[, "Std. Error"]
-    p   <- sm[, ncol(sm)]
-    ci_low  <- est - 1.96 * se
-    ci_high <- est + 1.96 * se
-    
-    tibble(
-      vv_stage = y_stage,
-      pd_stage = sub("^x_", "", rownames(sm)),
-      estimate = as.numeric(est),
-      std.error = as.numeric(se),
-      conf.low = as.numeric(ci_low),
-      conf.high = as.numeric(ci_high),
-      p.value = as.numeric(p),
-      n = nrow(dat)
-    )
-    
-  } else {
-    # ridge backend with bootstrap inference
-    
-    # ---- SPECIAL CASE: only 1 predictor -> use unregularised weighted fit
-    if (length(x_names) == 1) {
-      x1 <- x_names[1]
-      
-      # interpret scalar lower.limits for this single coefficient
-      lower1 <- if (length(lower.limits) == 1) lower.limits else lower.limits[1]
-      
-      f1 <- wls_single(dat, x1, lower = lower1)
-      boot <- bootstrap_wls_single(dat, x1, B = ridge_B, lower = lower1, seed = ridge_seed)
-      
-      se  <- sd(boot, na.rm = TRUE)
-      ci  <- quantile(boot, c(0.025, 0.975), na.rm = TRUE)
-      
-      # Same centred two-sided bootstrap test used for multivariable fits.
-      z <- boot[is.finite(boot)]
-      p <- if (!length(z) || !is.finite(se) || se == 0) NA_real_
-      else centred_bootstrap_p(f1$slope, z)
-      
-      return(tibble(
-        vv_stage = y_stage,
-        pd_stage = sub("^x_", "", x1),
-        estimate = f1$slope,
-        std.error = se,
-        conf.low = as.numeric(ci[1]),
-        conf.high = as.numeric(ci[2]),
-        p.value = p,
-        n = nrow(dat)
-      ))
-    }
-    
-    # ---- regular ridge path for >=2 predictors
-    fr <- fit_ridge_cv(
-      dat, x_names,
-      lower.limits = lower.limits,
-      upper.limits = upper.limits,
-      nfolds = ridge_nfolds,
-      standardize = ridge_standardize
-    )
-    
-    boot_mat <- bootstrap_ridge(
-      dat, x_names,
-      B = ridge_B,
-      lower.limits = lower.limits,
-      upper.limits = upper.limits,
-      nfolds = ridge_nfolds,
-      standardize = ridge_standardize,
-      refit_cv = ridge_refit_cv,
-      seed = ridge_seed
-    )
-    
-    summ <- summarise_boot(fr$beta, boot_mat)
-    
-    tibble(
-      vv_stage = y_stage,
-      pd_stage = sub("^x_", "", x_names)
-    ) %>%
-      bind_cols(summ) %>%
-      mutate(n = nrow(dat))
-  }
-}
-
-run_mult_grid <- function(wide, stages,
-                          universe = c("all_orthologs","de_either","de_both","vv_de_any","pls_top"),
-                          alpha = 0.05, pls_ids = NULL,
-                          lfc = c("raw","shrunk"),
-                          se  = c("auto","raw","shrunk"),
-                          predictors = c("all","older_or_equal"),
-                          scale_X = TRUE,
-                          p_adj = c("bonferroni","BH"),
-                          # NEW
-                          model = c("lmrob","ridge"),
-                          # ridge options
-                          lower.limits = -Inf,
-                          upper.limits = Inf,
-                          ridge_B = 200,
-                          ridge_nfolds = 10,
-                          ridge_standardize = FALSE,
-                          ridge_refit_cv = TRUE,
-                          ridge_seed = NULL) {
-  
-  universe   <- match.arg(universe)
-  lfc        <- match.arg(lfc)
-  se         <- match.arg(se)
-  predictors <- match.arg(predictors)
-  p_adj      <- match.arg(p_adj)
-  model      <- match.arg(model)
-  
-  wide_use <- pick_universe(wide, universe = universe, alpha = alpha, pls_ids = pls_ids)
-  
-  # run stage-wise models
-  res <- purrr::map_dfr(stages, function(ys) {
-    dat <- build_mult_data2(
-      wide_use, stages = stages, y_stage = ys,
-      lfc = lfc, se = se, predictors = predictors, scale_X = scale_X
-    )
-    
-    fit_mult_stage2(
-      dat, y_stage = ys,
-      model = model,
-      lower.limits = lower.limits,
-      upper.limits = upper.limits,
-      ridge_B = ridge_B,
-      ridge_nfolds = ridge_nfolds,
-      ridge_standardize = ridge_standardize,
-      ridge_refit_cv = ridge_refit_cv,
-      ridge_seed = ridge_seed
-    )
-  }) %>%
-    mutate(
-      vv_stage = factor(vv_stage, levels = stages),
-      pd_stage = factor(pd_stage, levels = stages)
-    )
-  
-  # FULL vv × pd template
-  template <- tidyr::expand_grid(
-    vv_stage = factor(stages, levels = stages),
-    pd_stage = factor(stages, levels = stages)
-  ) %>%
-    mutate(
-      allowed = if (predictors == "all") TRUE else
-        as.integer(pd_stage) >= as.integer(vv_stage)
-    )
-  
-  # join results onto full grid
-  out <- template %>%
-    left_join(res, by = c("vv_stage","pd_stage"))
-  
-  # set non-allowed cells explicitly to NA
-  out <- out %>%
-    mutate(
-      estimate  = ifelse(allowed, estimate, NA_real_),
-      std.error = ifelse(allowed, std.error, NA_real_),
-      conf.low  = ifelse(allowed, conf.low, NA_real_),
-      conf.high = ifelse(allowed, conf.high, NA_real_),
-      p.value   = ifelse(allowed, p.value, NA_real_),
-      n         = ifelse(allowed, n, NA_real_)
-    )
-  
-  # p.adjust within each Vv stage, only for allowed + non-NA p's
-  out <- out %>%
-    group_by(vv_stage) %>%
-    mutate(
-      p.adj = {
-        p <- p.value
-        adj <- rep(NA_real_, length(p))
-        idx <- which(allowed & !is.na(p))
-        if (length(idx)) adj[idx] <- stats::p.adjust(p[idx], method = p_adj)
-        adj
-      }
-    ) %>%
-    ungroup() %>%
-    mutate(
-      lag = as.integer(vv_stage) - as.integer(pd_stage),
-      universe = universe, lfc = lfc, se = se,
-      predictors = predictors, model = model
-    )
-  
-  out
-}
-
-# Run analysis
-# choices: "all_orthologs","de_either","de_both","vv_de_any","pls_top"
-universe_choice <- "vv_de_any"
-alpha_universe  <- 0.05
-lfc_choice      <- "shrunk"      # or "raw"
-se_choice       <- "raw"         # or "auto"/"shrunk"
-pred_policy     <- "older_or_equal"  # or "all"
-padj_method     <- "bonferroni"
-scale_X         <- FALSE
-
-# # robust regression
-# grid_mult <- run_mult_grid(
-#   wide       = ortholog_de_wide,
-#   stages     = stages,
-#   universe   = universe_choice,
-#   alpha      = alpha_universe,
-#   pls_ids    = c(sel_sc_pos_topK, sel_sc_neg_topK),
-#   lfc        = lfc_choice,
-#   se         = se_choice,
-#   predictors = pred_policy,
-#   scale_X    = scale_X,
-#   p_adj      = padj_method,
-#   model      = "lmrob"
-# )
-# 
-# # ridge regression
-# grid_mult <- run_mult_grid(
-#   wide       = ortholog_de_wide,
-#   stages     = stages,
-#   universe   = universe_choice,
-#   alpha      = alpha_universe,
-#   pls_ids    = c(sel_sc_pos_topK, sel_sc_neg_topK),
-#   lfc        = lfc_choice,
-#   se         = se_choice,
-#   predictors = pred_policy,
-#   scale_X    = scale_X,
-#   p_adj      = padj_method,
-#   model      = "ridge",
-#   ridge_B    = 500,
-#   ridge_nfolds = 10
-# )
-
-# ridge regression with nonnegativity constraints
-grid_mult <- run_mult_grid(
-  wide       = ortholog_de_wide,
-  stages     = stages,
-  universe   = universe_choice,
-  alpha      = alpha_universe,
-  pls_ids    = c(sel_sc_pos_topK, sel_sc_neg_topK),
-  lfc        = lfc_choice,
-  se         = se_choice,
-  predictors = pred_policy,
-  scale_X    = scale_X,
-  p_adj      = padj_method,
-  model      = "ridge",
-  lower.limits = 0,          # <-- nonnegative coefficients
-  ridge_B    = 500
-)
-
-# Heatmap of partial slopes
-p_heterochrony <- ggplot(grid_mult, aes(x = pd_stage, y = vv_stage, fill = estimate)) +
-  geom_tile(color = "white") +
-  geom_text(aes(label = gtools::stars.pval(p.adj)), size = 5) +
-  scale_fill_gradient2("partial\nslope", low = "#92C2FFFF", mid = "white", high = "red2",
-                       midpoint = 0, na.value = "grey90",
-                       # oob     = scales::squish,
-                       # limits = c(0, 0.7)
-  ) +
-  labs(x = expression(italic("Polistes dominula") ~ "stage (predictors)"),
-       y = expression(italic("Vespula vulgaris") ~ "stage (response)"),
-       fill = "Partial slope"
-  ) +
-  theme_minimal(base_size = 12)
-graph2png(x = p_heterochrony, file =file.path(figure_dir, "Fig2B_source.png"), width=6, height=4)
-graph2pdf(x = p_heterochrony, file =file.path(figure_dir, "Fig2B_source.pdf"), width=6, height=4)
-graph2ppt(x = p_heterochrony, file =file.path(figure_dir, "Fig2B_source.pptx"), width=6, height=4)
-
-# Main-text Figure 2: editable vector robust-regression and heterochrony panels.
-# Wasp photographs are intentionally omitted so they can be placed manually.
-p_stagewise_regression_figure <- p_stagewise_regression +
-  theme(
-    text = element_text(family = "Arial"),
-    axis.title = element_text(size = 13),
-    axis.text = element_text(size = 10),
-    legend.title = element_text(size = 11),
-    legend.text = element_text(size = 10),
-    plot.margin = margin(12, 12, 8, 18)
-  )
-
-p_heterochrony_figure <- p_heterochrony +
-  theme(
-    text = element_text(family = "Arial"),
-    axis.title = element_text(size = 13),
-    axis.text = element_text(size = 10),
-    legend.title = element_text(size = 11),
-    legend.text = element_text(size = 10),
-    plot.margin = margin(8, 12, 12, 18)
-  )
-
-figure2_plot <- patchwork::wrap_plots(
-  p_stagewise_regression_figure,
-  p_heterochrony_figure,
-  ncol = 1,
-  heights = c(1.35, 1)
-) +
-  patchwork::plot_annotation(
-    tag_levels = "A",
-    theme = theme(
-      plot.tag = element_text(
-        # graph2ppt applies a 0.6 text scaling factor; 40 ggplot points gives
-        # a 24-point PowerPoint text box. The OOXML correction below then
-        # enforces the exact requested font properties in the exported deck.
-        family = "Arial", face = "bold", size = 40, colour = "black"
-      ),
-      plot.tag.position = c(0.01, 0.99),
-      plot.margin = margin(10, 10, 10, 10)
-    )
-  )
-
-# graph2ppt/svglite currently drops the bold flag on patchwork tags. Correct
-# only the A/B tag runs in the exported PPTX while preserving all editable
-# vector elements and the slide master/layout.
-enforce_pptx_panel_label_style <- function(
-    file, labels = c("A", "B"), font_family = "Arial", font_size = 24) {
-  stopifnot(file.exists(file))
-  unpack_dir <- tempfile("figure2_pptx_")
-  dir.create(unpack_dir)
-  on.exit(unlink(unpack_dir, recursive = TRUE, force = TRUE), add = TRUE)
-  utils::unzip(file, exdir = unpack_dir)
-
-  slide_files <- list.files(
-    file.path(unpack_dir, "ppt", "slides"),
-    pattern = "^slide[0-9]+\\.xml$", full.names = TRUE
-  )
-  matched <- character()
-
-  for (slide_file in slide_files) {
-    doc <- xml2::read_xml(slide_file)
-    ns <- xml2::xml_ns(doc)
-    text_nodes <- xml2::xml_find_all(doc, ".//a:t", ns)
-    target_nodes <- text_nodes[xml2::xml_text(text_nodes) %in% labels]
-
-    for (node in target_nodes) {
-      label <- xml2::xml_text(node)
-      run_properties <- xml2::xml_find_first(
-        node, "parent::a:r/a:rPr", ns
-      )
-      if (inherits(run_properties, "xml_missing")) next
-      xml2::xml_set_attrs(
-        run_properties,
-        c(sz = as.character(round(font_size * 100)), b = "1", i = "0")
-      )
-      for (font_node_name in c("a:latin", "a:cs")) {
-        font_node <- xml2::xml_find_first(
-          run_properties, paste0("./", font_node_name), ns
-        )
-        if (inherits(font_node, "xml_missing")) {
-          font_node <- xml2::xml_add_child(
-            run_properties, sub("^a:", "", font_node_name),
-            .where = 1, .namespace = unname(ns[["a"]])
-          )
-        }
-        xml2::xml_set_attr(font_node, "typeface", font_family)
-      }
-      matched <- c(matched, label)
-    }
-    xml2::write_xml(doc, slide_file)
-  }
-
-  if (!setequal(unique(matched), labels)) {
-    stop(
-      "Could not identify all requested PowerPoint panel labels: ",
-      paste(setdiff(labels, unique(matched)), collapse = ", ")
-    )
-  }
-
-  rebuilt <- tempfile(fileext = ".pptx")
-  archive_files <- list.files(
-    unpack_dir, recursive = TRUE, all.files = TRUE,
-    include.dirs = FALSE, no.. = TRUE
-  )
-  zip::zipr(
-    zipfile = rebuilt, files = archive_files, root = unpack_dir,
-    include_directories = FALSE, mode = "mirror"
-  )
-  officer::read_pptx(rebuilt)
-  if (!file.copy(rebuilt, file, overwrite = TRUE)) {
-    stop("Could not replace PPTX after correcting panel-label typography.")
-  }
-  invisible(file)
-}
-
-figure2_file <- file.path(figure_dir, "Fig2.pptx")
-graph2png(
-  x = figure2_plot,
-  file = file.path(figure_dir, "Fig2.png"),
-  width = 7.5, height = 10
-)
-graph2pdf(
-  x = figure2_plot,
-  file = file.path(figure_dir, "Fig2.pdf"),
-  width = 7.5, height = 10
-)
-graph2ppt(
-  x = figure2_plot,
-  file = figure2_file,
-  width = 7.5, height = 10
-)
-enforce_pptx_panel_label_style(
-  figure2_file, labels = c("A", "B"),
-  font_family = "Arial", font_size = 24
-)
-
-# -> l2, L3 and L4 sign. predict differential expression in Q vs W in L2 in Vv 
-# consistent with caste-biased gene expression in Vespula being 
-# moved forward in development to the L2 stage, i.e. with heterochrony 
-# (more specifically, predisplacement). 
-
-# -> The positive P vs P fits the “shared maturation/overwintering” module being 
-# reused (fat body buildup, stress tolerance, storage).
-
-
+source(file.path(
+  dir_base, "scripts", "modules", "B_cross_stage_concordance.R"
+), local = TRUE)
+source(file.path(
+  dir_base, "scripts", "modules", "B_IIS_Wnt_mTOR_FoxO_panel.R"
+), local = TRUE)
 
 # 5. HEATMAPS OF SIGNIFICANTLY DIFFERENTIALLY EXPRESSED N13 HOGS IN BOTH SPECIES ####
 
@@ -3438,49 +2585,60 @@ supp_table_s6 <- tbl %>%
   arrange(factor(Category, c("Nutrient metabolism", "Hibernation",
                              "Reproduction", "Other")), weight01_P)
 
-supp_table_s7 <- slopes_by_stage %>%
+supp_table_s7 <- pairwise_concordance_results %>%
   transmute(
-    Stage = as.character(stage),
-    HOGs = n,
-    Robust_slope = estimate,
-    SE = std.error,
-    CI_95_lower = conf.low,
-    CI_95_upper = conf.high,
-    P_value = p.value,
-    Bonferroni_P = p.value.adj
+    Polistes_stage = as.character(pd_stage),
+    Vespula_stage = as.character(vv_stage),
+    Jointly_DE_HOGs = jointly_DE_n,
+    Concordant_HOGs = concordant_DE_n,
+    Concordant_fraction = concordance_fraction,
+    Expected_fraction_from_margins =
+      expected_concordance_fraction_from_margins,
+    Concordance_log2_odds_ratio = concordance_log2_odds_ratio_HA,
+    One_sided_Fisher_P = fisher_one_sided_p_greater,
+    FDR_P_36_tests = fisher_p_FDR_36
   ) %>%
-  arrange(factor(Stage, stages))
+  arrange(factor(Vespula_stage, stages), factor(Polistes_stage, stages))
 
-supp_table_s8 <- grid_mult %>%
-  filter(allowed) %>%
-  transmute(
-    Vespula_response_stage = as.character(vv_stage),
-    Polistes_predictor_stage = as.character(pd_stage),
-    Stage_lag = lag,
-    HOGs = n,
-    Partial_slope = estimate,
-    Bootstrap_SE = std.error,
-    CI_95_lower = conf.low,
-    CI_95_upper = conf.high,
-    Centred_bootstrap_P = p.value,
-    Bonferroni_P = p.adj
+supp_table_s8_effects <- heatmap_data %>%
+  mutate(
+    column = as.character(column),
+    effect = sprintf("%.3f (%s)", log2FC, if_else(de_significance == "", "ns", de_significance))
   ) %>%
-  arrange(factor(Vespula_response_stage, stages),
-          factor(Polistes_predictor_stage, stages))
+  dplyr::select(HOG, column, effect) %>%
+  pivot_wider(names_from = column, values_from = effect)
+
+supp_table_s8 <- selected_hogs %>%
+  left_join(orth_annotation, by = "HOG") %>%
+  left_join(supp_table_s8_effects, by = "HOG") %>%
+  transmute(
+    HOG,
+    Displayed_gene = plot_label,
+    Functional_group = functional_theme,
+    Selected_comparison = selected_from,
+    `Polistes L1 late vs early` = `Polistes L1\nlate vs early`,
+    `Polistes L4 late vs early` = `Polistes L4\nlate vs early`,
+    `Polistes L5 late vs early` = `Polistes L5\nlate vs early`,
+    `Vespula L2 queen vs worker` = `Vespula L2\nqueen vs worker`
+  ) %>%
+  arrange(
+    factor(Functional_group, levels = theme_patterns$functional_theme),
+    Displayed_gene
+  )
 
 supp_table_index <- tibble(
   Table = c("S4", "S5A", "S5B", "S6", "S7", "S8"),
   Worksheet = c(
     "S4_DE_summary", "S5A_PLS_axes", "S5B_PLS_LOOCV",
-    "S6_Fig1_GO", "S7_Fig2A_regressions", "S8_Fig2B_ridge"
+    "S6_Fig1_GO", "S7_Fig2A_concordance", "S8_Fig2B_HOGs"
   ),
   Description = c(
     "Differential-expression counts by species, analysis unit and stage",
     "PLS-axis mapping and variance explained",
     "Fully nested leave-one-sample-out season/caste contrasts on PLS axis 1",
     "GO terms displayed in Fig. 1B",
-    "Stagewise robust-regression results underlying Fig. 2A",
-    "Nonnegative-ridge partial slopes underlying Fig. 2B"
+    "Pairwise directional-concordance tests underlying Fig. 2A",
+    "Functionally supported concordant HOGs displayed in Fig. 2B"
   )
 )
 
@@ -3490,8 +2648,8 @@ supplementary_tables <- list(
   S5A_PLS_axes = supp_table_s5a,
   S5B_PLS_LOOCV = supp_table_s5b,
   S6_Fig1_GO = supp_table_s6,
-  S7_Fig2A_regressions = supp_table_s7,
-  S8_Fig2B_ridge = supp_table_s8
+  S7_Fig2A_concordance = supp_table_s7,
+  S8_Fig2B_HOGs = supp_table_s8
 )
 
 supplementary_table_source_dir <- file.path(output_dir, "workbook_sources")
@@ -3566,6 +2724,38 @@ if (!identical(supplementary_workbook_status, 0L)) {
   stop("Supplementary workbook export failed with status ", supplementary_workbook_status)
 }
 
+# openxlsx can leave stale drawing relationships in workbooks that contain no
+# drawings under some Windows installations. Rebuild these detailed workbooks
+# with openpyxl so Excel and non-Microsoft readers open them without repair.
+workbook_rebuilder <- file.path(
+  dir_base, "scripts", "utilities", "rebuild_openxlsx_workbook.py"
+)
+if (!file.exists(workbook_rebuilder)) {
+  stop("Missing workbook rebuilder: ", workbook_rebuilder)
+}
+detailed_workbooks <- file.path(
+  cross_stage_output_dir,
+  c(
+    "concordant_DE_HOGs_annotated.xlsx",
+    "cross_stage_concordance_results.xlsx",
+    "IIS_Wnt_mTOR_FoxO_pathway_HOGs.xlsx"
+  )
+)
+for (workbook_path in detailed_workbooks[file.exists(detailed_workbooks)]) {
+  rebuild_status <- system2(
+    find_python(),
+    args = c(
+      shQuote(workbook_rebuilder),
+      shQuote(workbook_path),
+      shQuote(workbook_path)
+    )
+  )
+  if (!identical(rebuild_status, 0L)) {
+    stop("Detailed workbook rebuild failed for ", workbook_path,
+         " with status ", rebuild_status)
+  }
+}
+
 
 
 
@@ -3586,7 +2776,7 @@ analysis_metadata_final <- tibble(
     "orthology_unit", "multiple_testing", "DEU_included",
     "PLS_features", "PLS_cross_validation", "PLS_X_variance_by_component",
     "GO_annotation", "GO_foreground", "GO_test", "GO_multiple_testing",
-    "ridge_bootstrap_test", "ridge_multiple_testing",
+    "cross_stage_tests", "cross_stage_multiple_testing",
     "N13_orthology_composition",
     "full_gene_DE_results", "full_N13_HOG_DE_results",
     "Figure1", "Figure2", "Supplementary_tables"
@@ -3609,8 +2799,12 @@ analysis_metadata_final <- tibble(
     "top 300 N13 HOGs in each oriented PLS loading direction",
     "topGO weight01 Fisher; nodeSize 20",
     "none; nominal topGO p values exported",
-    "500 pairs-bootstrap replicates; two-sided centred-bootstrap P value with plus-one finite-sample correction",
-    "Bonferroni correction across allowed Polistes predictors within each Vespula response stage",
+    paste0(
+      "pairwise one-sided Fisher tests of directional concordance; all-stage ",
+      "nonnegative cumulative-logit and inverse-variance-weighted ridge models; ",
+      bootstrap_B, " pairs-bootstrap replicates with plus-one correction"
+    ),
+    "Benjamini-Hochberg FDR correction across all 36 stage pairs or coefficients per analysis",
     repository_relative_path(n13_orthology_summary_file),
     repository_relative_path(full_gene_de_file),
     repository_relative_path(full_hog_de_file),
@@ -3620,8 +2814,20 @@ analysis_metadata_final <- tibble(
   )
 )
 write_tsv(analysis_metadata_final, file.path(output_dir, "analysis_metadata.tsv"))
-write_tsv(slopes_by_stage, file.path(output_dir, "stagewise_robust_regression_slopes.tsv"))
-write_tsv(grid_mult, file.path(output_dir, "distributed_lag_nonnegative_ridge_results.tsv"))
+write_tsv(
+  pairwise_concordance_results %>%
+    mutate(cell_label = str_replace_all(cell_label, "\\n", " ")),
+  file.path(output_dir, "pairwise_directional_concordance_results.tsv")
+)
+write_tsv(
+  nonnegative_clm_results %>%
+    mutate(panel_label = str_replace_all(panel_label, "\\n", " ")),
+  file.path(output_dir, "all_stage_nonnegative_CLM_results.tsv")
+)
+write_tsv(
+  all_stage_ridge_results,
+  file.path(output_dir, "all_stage_nonnegative_ridge_results.tsv")
+)
 key_object_names <- intersect(
   c(
     "gene_de_pd", "gene_de_vv", "hog_de_shared",
@@ -3631,8 +2837,10 @@ key_object_names <- intersect(
     "scores_export", "orthologs_pls", "pls_loocv_fold_diagnostics", "pls_go_lists",
     "go_term_results_all", "go_term_results_enriched", "flat_all",
     "pls_foregrounds", "tbl", "p_go_sc_pos", "p_pls_figure",
-    "slopes_by_stage", "p_stagewise_regression",
-    "grid_mult", "p_heterochrony", "figure2_plot",
+    "pairwise_concordance_results", "p_pairwise_concordance",
+    "nonnegative_clm_results", "p_nonnegative_clm",
+    "all_stage_ridge_results", "p_all_stage_ridge",
+    "selected_hogs", "heatmap_data", "figure2_ab_plot", "figure_s4_plot",
     "supp_table_s4", "supp_table_s5a", "supp_table_s5b",
     "supp_table_s6", "supp_table_s7", "supp_table_s8",
     "wide_sel", "mat_pd", "mat_vv"
@@ -3677,10 +2885,22 @@ validation_checks <- c(
   figure2_panel_labels = all(c("A", "B") %in% officer::pptx_summary(
     officer::read_pptx(figure2_file)
   )$text),
-  finite_nonzero_bootstrap_p = all(
-    is.na(grid_mult$p.value) |
-      (grid_mult$p.value > 0 & grid_mult$p.value <= 1)
-  ),
+  finite_nonzero_bootstrap_p = all(c(
+    nonnegative_clm_results$bootstrap_p_one_sided,
+    all_stage_ridge_results$bootstrap_p_one_sided
+  ) > 0 & c(
+    nonnegative_clm_results$bootstrap_p_one_sided,
+    all_stage_ridge_results$bootstrap_p_one_sided
+  ) <= 1),
+  global_36_test_FDR = all(c(
+    pairwise_concordance_results$fisher_p_FDR_36,
+    nonnegative_clm_results$bootstrap_p_FDR_36,
+    all_stage_ridge_results$bootstrap_p_FDR_36
+  ) >= 0 & c(
+    pairwise_concordance_results$fisher_p_FDR_36,
+    nonnegative_clm_results$bootstrap_p_FDR_36,
+    all_stage_ridge_results$bootstrap_p_FDR_36
+  ) <= 1),
   n13_orthology_summary_exported = file.exists(n13_orthology_summary_file),
   n13_shared_relationship_classes_complete = sum(
     n13_orthology_composition_summary$count[

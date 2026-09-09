@@ -2360,6 +2360,25 @@ export::graph2ppt(
   vector.graphic = TRUE
 )
 
+tree_png <- file.path(output_root, "figures", "Fig3.png")
+grDevices::png(
+  filename = tree_png,
+  width = 3300,
+  height = 2340,
+  units = "px",
+  res = 200,
+  type = "cairo"
+)
+plot_wasp_tree(
+  tree_file = file.path(
+    run_definitions$wasp$run_dir,
+    "cafe", "base", "SpeciesTree_rooted_ultra.txt"
+  ),
+  node_summary = node_summary,
+  figure_category_summary = figure_category_summary
+)
+grDevices::dev.off()
+
 CAFE_key_results <- list(
   node_summary = node_summary,
   annotated_events = annotated_events,
@@ -2375,7 +2394,8 @@ CAFE_key_results <- list(
   TableS11 = table_s11,
   TableS12 = table_s12,
   TableS13 = table_s13,
-  Fig3 = file.path("output", "figures", "Fig3.pptx")
+  Fig3 = file.path("output", "figures", "Fig3.pptx"),
+  Fig3_png = file.path("output", "figures", "Fig3.png")
 )
 saveRDS(
   CAFE_key_results,

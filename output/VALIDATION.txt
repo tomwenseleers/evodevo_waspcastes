@@ -12,6 +12,13 @@ figure1_category_order	TRUE
 figure2_exported	TRUE
 figure2_panel_labels	TRUE
 finite_nonzero_bootstrap_p	TRUE
+global_36_test_Bonferroni	TRUE
+pairwise_36	TRUE
+clm_36	TRUE
+ridge_36	TRUE
+panelB_12_HOGs	TRUE
+tableS7_36_rows	TRUE
+tableS8_12_rows	TRUE
 n13_orthology_summary_exported	TRUE
 n13_shared_relationship_classes_complete	TRUE
 full_DE_exports_exist	TRUE

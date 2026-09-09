@@ -1,0 +1,9 @@
+HOG	node	display_label	expected_pd_stages	observed_pd_stages	direction	valid
+N13.HOG0004507	cbp	nej/CBP	L1	L1	up	TRUE
+N13.HOG0005758	wdr59	Wdr59 (GATOR2)	L1	L1	up	TRUE
+N13.HOG0006185	gsk3	sgg/GSK3beta	L4/L5	L4/L5	up	TRUE
+N13.HOG0006961	pepck	Pepck	L4	L4	up	TRUE
+N13.HOG0007424	pdk1	Pdk1	L4	L4	up	TRUE
+N13.HOG0008912	glut	sut1-3 / SLC2-like	L4	L4	up	TRUE
+N13.HOG0009263	nlk	nmo/NLK	L4	L4	up	TRUE
+N13.HOG0010043	gbs	Gbs-76A	L4	L4	up	TRUE
