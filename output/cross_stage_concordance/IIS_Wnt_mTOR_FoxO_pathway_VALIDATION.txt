@@ -1,4 +1,4 @@
-Completed 2026-09-09 13:01:49.677487
+Completed 2026-09-10 15:10:52.659126
 Eight highlighted HOGs validated against the final strict overlap table.
 All highlighted HOGs are concordantly upregulated.
 sut1-3/SLC2-like is drawn as an independent carbohydrate transporter, not as a FoxO target.

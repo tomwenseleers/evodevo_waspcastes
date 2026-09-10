@@ -17,8 +17,7 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 SHEETS = [
     "Table_index",
     "S4_DE_summary",
-    "S5A_PLS_axes",
-    "S5B_PLS_LOOCV",
+    "S5_PLS_LOOCV",
     "S6_Fig1_GO",
     "S7_Fig2A_concordance",
     "S8_Fig2B_HOGs",

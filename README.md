@@ -74,7 +74,7 @@ two one-worker scripts in `scripts/upstream/` and should be run sequentially.
 `-- output/
     |-- figures/             # Fig1, Fig2 and Fig3
     |-- supplemental_figures/# FigS1 to FigS4
-    |-- supplemental_tables/ # TableS1-TableS13 (S5 has A and B parts)
+    |-- supplemental_tables/ # TableS1-TableS13
     `-- ...                  # complete derived analysis and audit tables
 ```
 
@@ -85,6 +85,17 @@ BUSCO summaries and CAFE results directly from these directories, avoiding
 duplicate copies under the downstream `input_*` folders. Compact R objects are
 also included so that the final analyses can be inspected without rerunning the
 computationally expensive upstream pipelines.
+
+Files ending in `.rds` contain one serialized R object and must be read with
+`readRDS()`, for example:
+
+```r
+key_results <- readRDS(
+  "input_differential_expression/workspaces/B_differential_expression_key_results.rds"
+)
+```
+
+Use `load()` only for `.RData` files, which may contain multiple named objects.
 
 ## A. Functional annotation
 
@@ -184,6 +195,11 @@ and scaling, VIP/Kneedle feature selection, PLS fitting, component assignment
 and axis orientation are estimated from the training samples in each fold
 before the held-out sample is projected. Fold-level candidate and selected HOG
 counts are exported to `output/pls_fully_nested_LOOCV_fold_diagnostics.tsv`.
+Season/caste differences on the oriented held-out axis-1 scores are evaluated
+using planned right-tailed contrasts of late-season minus early-season
+*P. dominula* and queen-destined minus worker-destined *V. vulgaris* within
+each developmental stage. These prespecified contrasts use `adjust = "none"`;
+their one-sided *P* values are reported in Table S5.
 The unfiltered focal-species mapping and the numbers of one-to-one,
 one-to-many, many-to-one and many-to-many HOGs are exported to
 `output/N13_HOG_orthology_composition_summary.tsv`.
@@ -283,7 +299,8 @@ tested non-TE HOGs. BP, MF, and CC are tested with topGO `weight01`/Fisher. Give
 - `output/supplemental_figures/FigS2.*`: numbers of differentially expressed genes by stage.
 - `output/supplemental_figures/FigS3.*`: stage-specific absolute shrunken log2 fold-change heatmap.
 - `output/supplemental_figures/FigS4.*`: all-stage nonnegative cumulative-logit and inverse-variance-weighted ridge models.
-- `output/supplemental_tables/TableS1.tsv` to `TableS13.tsv`: final supplementary tables; Table S5 is split into `TableS5A.tsv` and `TableS5B.tsv`.
+- `output/supplemental_tables/TableS1.tsv` to `TableS13.tsv`: final supplementary tables. Table S5 contains the planned one-sided season/caste contrasts from fully nested leave-one-sample-out PLS scores; its compact caption reports the PLS-axis mapping and variance explained.
+- `output/pls_axis_summary.tsv`: repository-only PLS-axis mapping and variance summary underlying the Table S5 caption.
 - `output/full_gene_level_differential_expression_results.tsv.gz`: complete annotated gene-by-stage differential-expression results for both species.
 - `output/full_N13_HOG_level_differential_expression_results.tsv.gz`: complete annotated N13-HOG-by-stage differential-expression results for both species.
 - `output/full_DE_results_file_index.tsv`: row counts, significant-test counts and compressed sizes for the two complete DE tables.

@@ -1317,8 +1317,16 @@ pls_loocv_fold_diagnostics <- oos_nested$fold_diagnostics
 afex::set_sum_contrasts()
 library(estimatr)
 fit_axis1_oos <- estimatr::lm_robust(Axis1_SC ~ (SC2 + Stage + Species)^2, data = oos) 
-sc_contr_oos  <- emmeans::contrast(emmeans::emmeans(fit_axis1_oos, ~ SC2 | Stage*Species),
-                                   method = "revpairwise")
+sc_contr_oos <- emmeans::contrast(
+  emmeans::emmeans(fit_axis1_oos, ~ SC2 | Stage * Species),
+  method = "revpairwise",
+  adjust = "none"
+)
+sc_contr_oos_result <- summary(
+  sc_contr_oos,
+  side = ">",
+  adjust = "none"
+)
 
 fit_axis2_oos <- estimatr::lm_robust(Axis2_Stage ~ (SC2 + Stage + Species)^2, data = oos)
 st_contr_oos  <- emmeans::contrast(emmeans::emmeans(fit_axis2_oos, ~ Stage | Species),
@@ -1329,79 +1337,18 @@ sp_contr_oos  <- emmeans::contrast(emmeans::emmeans(fit_axis3_oos, ~ Species | S
                                    method = "revpairwise")
 
 # Season/Caste contrasts per stage & species
-write.csv(data.frame(sc_contr_oos),  file = file.path(output_dir, "pls_season caste emmeans contrasts LOOCV scores.csv"), row.names = FALSE)
-sc_contr_oos
-# Stage = L1, Species = Pd:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)    15.16 3.68 124   4.125  0.0001
-# 
-# Stage = L2, Species = Pd:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)    18.61 2.71 124   6.857  <.0001
-# 
-# Stage = L3, Species = Pd:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)    14.40 3.06 124   4.713  <.0001
-# 
-# Stage = L4, Species = Pd:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)    16.63 2.30 124   7.237  <.0001
-# 
-# Stage = L5, Species = Pd:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)    12.18 2.62 124   4.649  <.0001
-# 
-# Stage = P, Species = Pd:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)    15.74 3.41 124   4.617  <.0001
-# 
-# Stage = L1, Species = Vv:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)     7.31 3.11 124   2.352  0.0203
-# 
-# Stage = L2, Species = Vv:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)    10.76 2.23 124   4.818  <.0001
-# 
-# Stage = L3, Species = Vv:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)     6.55 2.60 124   2.522  0.0129
-# 
-# Stage = L4, Species = Vv:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)     8.77 2.41 124   3.644  0.0004
-# 
-# Stage = L5, Species = Vv:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)     4.32 2.18 124   1.984  0.0495
-# 
-# Stage = P, Species = Vv:
-#   contrast      estimate   SE  df t.ratio p.value
-# (L/Q) - (E/W)     7.89 3.06 124   2.581  0.0110
-
-# -> significant shift in expected direction across all stages for both species
+write.csv(
+  data.frame(sc_contr_oos_result),
+  file = file.path(output_dir, "pls_season caste emmeans contrasts LOOCV scores.csv"),
+  row.names = FALSE
+)
+sc_contr_oos_result
+# Planned right-tailed contrasts test (L/Q) - (E/W) > 0 without multiplicity
+# adjustment. Exact current results are exported above and in TableS5.tsv.
 
 # stage contrasts per species
 write.csv(data.frame(st_contr_oos),  file = file.path(output_dir, "pls_stage emmeans contrasts LOOCV scores.csv"), row.names = FALSE)
 st_contr_oos
-# Species = Pd:
-#   contrast estimate   SE  df t.ratio p.value
-# L2 - L1      8.00 9.52 124   0.840  0.8833
-# L3 - L2     13.10 6.51 124   2.013  0.1855
-# L4 - L3      7.38 4.05 124   1.822  0.2692
-# L5 - L4     23.14 4.17 124   5.554  <.0001
-# P - L5      11.34 4.05 124   2.798  0.0268
-# 
-# Species = Vv:
-#   contrast estimate   SE  df t.ratio p.value
-# L2 - L1      8.56 4.75 124   1.802  0.2745
-# L3 - L2     24.53 6.51 124   3.767  0.0011
-# L4 - L3     21.15 5.44 124   3.890  0.0006
-# L5 - L4     20.49 3.79 124   5.410  <.0001
-# P - L5       4.37 3.22 124   1.359  0.5438
-# 
-# Results are averaged over the levels of: SC2 
-# P value adjustment: mvt method for 5 tests 
 
 # -> biggest shift from L4 to L5 and L5 to P in Polistes dominula (late in development),
 # but in L2 to L3, L3 to L4 and L4 to L5 in Vespula vulgaris (shifted earlier in development)
@@ -1413,31 +1360,6 @@ readr::write_tsv(
   file.path(output_dir, "pls_fully_nested_LOOCV_fold_diagnostics.tsv")
 )
 sp_contr_oos
-# Stage = L1:
-#   contrast estimate    SE  df t.ratio p.value
-# Vv - Pd      84.8 2.250 124  37.744  <.0001
-# 
-# Stage = L2:
-#   contrast estimate    SE  df t.ratio p.value
-# Vv - Pd      81.3 1.850 124  44.001  <.0001
-# 
-# Stage = L3:
-#   contrast estimate    SE  df t.ratio p.value
-# Vv - Pd      76.4 2.260 124  33.748  <.0001
-# 
-# Stage = L4:
-#   contrast estimate    SE  df t.ratio p.value
-# Vv - Pd      71.9 0.930 124  77.230  <.0001
-# 
-# Stage = L5:
-#   contrast estimate    SE  df t.ratio p.value
-# Vv - Pd      67.8 1.270 124  53.316  <.0001
-# 
-# Stage = P:
-#   contrast estimate    SE  df t.ratio p.value
-# Vv - Pd      61.0 0.747 124  81.643  <.0001
-# 
-# Results are averaged over the levels of: SC2
 
 # -> significant shifts by species across all stages
 
@@ -2543,7 +2465,7 @@ supp_table_s5a <- tibble(
   HOGs_in_final_model = ncol(Z_sub)
 )
 
-supp_table_s5b <- as_tibble(as.data.frame(sc_contr_oos)) %>%
+supp_table_s5 <- as_tibble(as.data.frame(sc_contr_oos_result)) %>%
   transmute(
     Species = recode(as.character(Species),
                      Pd = "Polistes dominula", Vv = "Vespula vulgaris"),
@@ -2553,7 +2475,7 @@ supp_table_s5b <- as_tibble(as.data.frame(sc_contr_oos)) %>%
     SE = SE,
     df = df,
     t_ratio = t.ratio,
-    P_value = p.value
+    One_sided_P = p.value
   ) %>%
   arrange(factor(Species, c("Polistes dominula", "Vespula vulgaris")),
           factor(Stage, stages))
@@ -2627,15 +2549,14 @@ supp_table_s8 <- selected_hogs %>%
   )
 
 supp_table_index <- tibble(
-  Table = c("S4", "S5A", "S5B", "S6", "S7", "S8"),
+  Table = c("S4", "S5", "S6", "S7", "S8"),
   Worksheet = c(
-    "S4_DE_summary", "S5A_PLS_axes", "S5B_PLS_LOOCV",
+    "S4_DE_summary", "S5_PLS_LOOCV",
     "S6_Fig1_GO", "S7_Fig2A_concordance", "S8_Fig2B_HOGs"
   ),
   Description = c(
     "Differential-expression counts by species, analysis unit and stage",
-    "PLS-axis mapping and variance explained",
-    "Fully nested leave-one-sample-out season/caste contrasts on PLS axis 1",
+    "Planned one-sided season/caste contrasts from fully nested leave-one-sample-out PLS axis-1 scores",
     "GO terms displayed in Fig. 1B",
     "Pairwise directional-concordance tests underlying Fig. 2A",
     "Functionally supported concordant HOGs displayed in Fig. 2B"
@@ -2645,8 +2566,7 @@ supp_table_index <- tibble(
 supplementary_tables <- list(
   Table_index = supp_table_index,
   S4_DE_summary = supp_table_s4,
-  S5A_PLS_axes = supp_table_s5a,
-  S5B_PLS_LOOCV = supp_table_s5b,
+  S5_PLS_LOOCV = supp_table_s5,
   S6_Fig1_GO = supp_table_s6,
   S7_Fig2A_concordance = supp_table_s7,
   S8_Fig2B_HOGs = supp_table_s8
@@ -2663,8 +2583,7 @@ purrr::iwalk(
 # more descriptive source filenames above are retained for the XLSX builder.
 numbered_supplementary_tables <- list(
   TableS4 = supp_table_s4,
-  TableS5A = supp_table_s5a,
-  TableS5B = supp_table_s5b,
+  TableS5 = supp_table_s5,
   TableS6 = supp_table_s6,
   TableS7 = supp_table_s7,
   TableS8 = supp_table_s8
@@ -2673,16 +2592,25 @@ purrr::iwalk(
   numbered_supplementary_tables,
   ~ readr::write_tsv(.x, file.path(supplemental_table_dir, paste0(.y, ".tsv")))
 )
+readr::write_tsv(supp_table_s5a, file.path(output_dir, "pls_axis_summary.tsv"))
+legacy_s5_files <- c(
+  file.path(supplemental_table_dir, "TableS5A.tsv"),
+  file.path(supplemental_table_dir, "TableS5B.tsv"),
+  file.path(supplementary_table_source_dir, "S5A_PLS_axes.tsv"),
+  file.path(supplementary_table_source_dir, "S5B_PLS_LOOCV.tsv")
+)
+invisible(file.remove(legacy_s5_files[file.exists(legacy_s5_files)]))
 
 find_python <- function() {
+  bundled_python <- file.path(
+    Sys.getenv("USERPROFILE"), ".cache", "codex-runtimes",
+    "codex-primary-runtime", "dependencies", "python", "python.exe"
+  )
   candidates <- c(
     Sys.getenv("RETICULATE_PYTHON", unset = ""),
+    bundled_python,
     Sys.which("python"),
-    Sys.which("python3"),
-    file.path(
-      Sys.getenv("USERPROFILE"), ".cache", "codex-runtimes",
-      "codex-primary-runtime", "dependencies", "python", "python.exe"
-    )
+    Sys.which("python3")
   )
   candidates <- unique(candidates[nzchar(candidates) & file.exists(candidates)])
   usable <- vapply(
@@ -2774,7 +2702,8 @@ analysis_metadata_final <- tibble(
   key = c(
     "script", "analysis_date", "gene_model", "HOG_model",
     "orthology_unit", "multiple_testing", "DEU_included",
-    "PLS_features", "PLS_cross_validation", "PLS_X_variance_by_component",
+    "PLS_features", "PLS_cross_validation", "PLS_score_contrasts",
+    "PLS_X_variance_by_component",
     "GO_annotation", "GO_foreground", "GO_test", "GO_multiple_testing",
     "cross_stage_tests", "cross_stage_multiple_testing",
     "N13_orthology_composition",
@@ -2793,6 +2722,10 @@ analysis_metadata_final <- tibble(
       "fully nested leave-one-sample-out; expression filtering, TMM reference",
       "selection, HOG-wise centring/scaling, VIP/Kneedle selection, PLS fitting,",
       "component assignment and orientation estimated from training samples only"
+    ),
+    paste(
+      "planned right-tailed late/queen minus early/worker contrasts within each",
+      "stage and species; no multiplicity adjustment"
     ),
     paste(signif(plsfit$prop_expl_var$X, 6), collapse = ";"),
     "direct EXCON/Galaxy EggNOG and InterProScan conserved across wasps plus experimental FlyBase GO transferred through N13 Drosophila orthologues",
@@ -2841,7 +2774,7 @@ key_object_names <- intersect(
     "nonnegative_clm_results", "p_nonnegative_clm",
     "all_stage_ridge_results", "p_all_stage_ridge",
     "selected_hogs", "heatmap_data", "figure2_ab_plot", "figure_s4_plot",
-    "supp_table_s4", "supp_table_s5a", "supp_table_s5b",
+    "supp_table_s4", "supp_table_s5a", "supp_table_s5",
     "supp_table_s6", "supp_table_s7", "supp_table_s8",
     "wide_sel", "mat_pd", "mat_vv"
   ),
