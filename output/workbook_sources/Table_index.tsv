@@ -4,3 +4,4 @@ S5	S5_PLS_LOOCV	Planned one-sided season/caste contrasts from fully nested leave
 S6	S6_Fig1_GO	GO terms displayed in Fig. 1B
 S7	S7_Fig2A_concordance	Pairwise directional-concordance tests underlying Fig. 2A
 S8	S8_Fig2B_HOGs	Functionally supported concordant HOGs displayed in Fig. 2B
+S9	S9_concordant_GO	GO enrichment of concordantly regulated HOGs for Polistes L4 to Vespula L2 and pupae to pupae

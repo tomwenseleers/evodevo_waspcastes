@@ -21,6 +21,7 @@ SHEETS = [
     "S6_Fig1_GO",
     "S7_Fig2A_concordance",
     "S8_Fig2B_HOGs",
+    "S9_concordant_GO",
 ]
 
 INTEGER_RE = re.compile(r"^[+-]?\d+$")
@@ -55,9 +56,9 @@ def load_tsv(path: Path) -> list[list[object]]:
 
 def column_width(values: list[object], header: str) -> float:
     longest = max((len(str(value)) for value in values if value is not None), default=0)
-    if header in {"GO_term", "Description", "GO_or_KEGG_support"}:
+    if header in {"GO_term", "GO term", "Description", "GO_or_KEGG_support"}:
         return min(max(longest + 2, 28), 55)
-    if header == "Contributing_HOGs":
+    if header in {"Contributing_HOGs", "Contributing HOGs"}:
         return 55
     if header in {
         "Species", "Analysis_unit", "Contrast", "Biological_contrast",
@@ -104,7 +105,12 @@ def build(source_dir: Path, output_file: Path) -> None:
                 cell.alignment = Alignment(vertical="top", wrap_text=True)
                 if isinstance(cell.value, float):
                     header = worksheet.cell(1, cell.column).value or ""
-                    cell.number_format = "0.000E+00" if "P" in str(header) else "0.000"
+                    header_text = str(header)
+                    is_p_value = header_text in {
+                        "One_sided_P", "weight01_P", "One_sided_Fisher_P",
+                        "FDR_P_36_tests", "weight01 P",
+                    }
+                    cell.number_format = "0.00E+00" if is_p_value else "0.###"
 
         headers = [str(cell.value) for cell in worksheet[1]]
         for column_number, header in enumerate(headers, start=1):

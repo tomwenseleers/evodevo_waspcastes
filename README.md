@@ -74,7 +74,7 @@ two one-worker scripts in `scripts/upstream/` and should be run sequentially.
 `-- output/
     |-- figures/             # Fig1, Fig2 and Fig3
     |-- supplemental_figures/# FigS1 to FigS4
-    |-- supplemental_tables/ # TableS1-TableS13
+    |-- supplemental_tables/ # TableS1-TableS14
     `-- ...                  # complete derived analysis and audit tables
 ```
 
@@ -299,7 +299,7 @@ tested non-TE HOGs. BP, MF, and CC are tested with topGO `weight01`/Fisher. Give
 - `output/supplemental_figures/FigS2.*`: numbers of differentially expressed genes by stage.
 - `output/supplemental_figures/FigS3.*`: stage-specific absolute shrunken log2 fold-change heatmap.
 - `output/supplemental_figures/FigS4.*`: all-stage nonnegative cumulative-logit and inverse-variance-weighted ridge models.
-- `output/supplemental_tables/TableS1.tsv` to `TableS13.tsv`: final supplementary tables. Table S5 contains the planned one-sided season/caste contrasts from fully nested leave-one-sample-out PLS scores; its compact caption reports the PLS-axis mapping and variance explained.
+- `output/supplemental_tables/TableS1.tsv` to `TableS14.tsv`: final supplementary tables. Table S5 contains the planned one-sided season/caste contrasts from fully nested leave-one-sample-out PLS scores; Table S9 reports GO enrichment and contributing HOGs for the focal L4-to-L2 and pupal concordances.
 - `output/pls_axis_summary.tsv`: repository-only PLS-axis mapping and variance summary underlying the Table S5 caption.
 - `output/full_gene_level_differential_expression_results.tsv.gz`: complete annotated gene-by-stage differential-expression results for both species.
 - `output/full_N13_HOG_level_differential_expression_results.tsv.gz`: complete annotated N13-HOG-by-stage differential-expression results for both species.
@@ -309,8 +309,9 @@ tested non-TE HOGs. BP, MF, and CC are tested with topGO `weight01`/Fisher. Give
 - `output/cross_stage_concordance/pairwise_directional_concordance_results.tsv`: complete 36-cell Fisher-test results underlying Figure 2A.
 - `output/cross_stage_concordance/all_stage_nonnegative_CLM_results.tsv` and `all_stage_nonnegative_ridge_results.tsv`: complete coefficient and bootstrap results underlying Figure S4.
 
-Tables S1-S3 and S9 summarise sampling, microsatellites, genome quality, and
-tree calibrations. B generates Tables S4-S8. C generates Tables S10-S13.
+Tables S1-S3 summarise sampling, microsatellites, and genome quality. B
+generates Tables S4-S9. C generates Tables S10-S14, beginning with the tree
+calibrations in Table S10.
 
 ## Software requirements
 

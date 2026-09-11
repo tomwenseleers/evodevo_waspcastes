@@ -2148,6 +2148,25 @@ fwrite(model_summary, file.path(output_root, "CAFE_model_summary.tsv"), sep = "\
 supplemental_table_dir <- file.path(output_root, "supplemental_tables")
 dir.create(supplemental_table_dir, recursive = TRUE, showWarnings = FALSE)
 
+table_s10 <- data.table(
+  `Calibrated clade` = c(
+    "Crown Aculeata", "Formicidae + Apoidea", "Crown Apoidea",
+    "Sampled Vespidae", "Polistinae + Vespinae"
+  ),
+  `Age (Ma)` = sprintf("%.2f", c(142.30, 108.60, 102.13, 110.00, 75.00)),
+  Source = c(
+    "{Blaimer, 2023 #1096}", "{Blaimer, 2023 #1096}",
+    "{Blaimer, 2023 #1096}", "{Luo, 2022 #1102}",
+    "{Luo, 2022 #1102}"
+  ),
+  Use = c(
+    "Primary molecular estimate", "Primary molecular estimate",
+    "Primary molecular estimate", "Checked against {Blaimer, 2023 #1096}",
+    "Focal Node 20 calibration"
+  )
+)
+fwrite(table_s10, file.path(supplemental_table_dir, "TableS10.tsv"), sep = "\t")
+
 gamma_lines <- readLines(file.path(
   run_definitions$wasp$run_dir, "cafe", "best", "Gamma_results.txt"
 ))
@@ -2171,7 +2190,7 @@ large_root_zero <- root_zero_summary[
 node20_counts <- node_summary[node == "20"]
 node25_counts <- node_summary[node == "25"]
 
-table_s10 <- data.table(
+table_s11 <- data.table(
   Quantity = c(
     "Included species", "Prepared standard-track HOGs",
     "Prepared high-differential HOGs", "Root-zero standard HOGs",
@@ -2185,9 +2204,9 @@ table_s10 <- data.table(
     length(wasp_species), standard_prepared, large_prepared,
     standard_root_zero, large_root_zero,
     model_summary$n_standard_families, model_summary$n_large_families,
-    model_summary$best_k, "Poisson", signif(model_summary$lambda, 6),
-    signif(extract_gamma_value("Alpha"), 6),
-    signif(extract_gamma_value("Epsilon"), 6),
+    model_summary$best_k, "Poisson", signif(model_summary$lambda, 4),
+    signif(extract_gamma_value("Alpha"), 4),
+    signif(extract_gamma_value("Epsilon"), 4),
     paste0("P < ", family_p_cutoff), paste0("Viterbi probability < ", branch_p_cutoff),
     paste0("+", node20_counts$n_significant_expansions, " / -", node20_counts$n_significant_contractions),
     paste0("+", node25_counts$n_significant_expansions, " / -", node25_counts$n_significant_contractions)
@@ -2206,25 +2225,25 @@ table_s10 <- data.table(
     "Displayed and interpreted after TE exclusion"
   )
 )
-fwrite(table_s10, file.path(supplemental_table_dir, "TableS10.tsv"), sep = "\t")
+fwrite(table_s11, file.path(supplemental_table_dir, "TableS11.tsv"), sep = "\t")
 
 event_figure_categories <- unique(figure_events[, .(node, HOG, figure_category)])
-table_s11 <- merge(
+table_s12 <- merge(
   annotated_events,
   event_figure_categories,
   by = c("node", "HOG"), all.x = TRUE, sort = FALSE
 )
-table_s11[is.na(figure_category), figure_category := "Not classified"]
-table_s11[, Track := fifelse(
+table_s12[is.na(figure_category), figure_category := "Not classified"]
+table_s12[, Track := fifelse(
   result_source == "main_model", "Standard", "Large-family"
 )]
-table_s11 <- table_s11[, .(
+table_s12 <- table_s12[, .(
   Node = node,
   Direction = direction,
   HOG,
   Change = change,
-  `Family P` = family_p,
-  `Viterbi branch probability` = branch_p,
+  `Family P` = signif(family_p, 3),
+  `Viterbi branch probability` = signif(branch_p, 3),
   Track,
   `Consensus HOG name` = consensus_gene_name,
   `Fig. 3 class` = figure_category,
@@ -2237,25 +2256,25 @@ table_s11 <- table_s11[, .(
     Ancistrocerus_nigricornis_gene_ids
   )
 )]
-setorder(table_s11, Node, Direction, HOG)
-fwrite(table_s11, file.path(supplemental_table_dir, "TableS11.tsv"), sep = "\t")
+setorder(table_s12, Node, Direction, HOG)
+fwrite(table_s12, file.path(supplemental_table_dir, "TableS12.tsv"), sep = "\t")
 
-table_s12 <- go_filtered[, .(
+table_s13 <- go_filtered[, .(
   Node = node,
   Ontology = ontology,
   `GO ID` = GO.ID,
   `GO term` = Term,
   `Total HOGs (n)` = Annotated,
   `Foreground HOGs (n)` = Significant,
-  Expected,
-  `Fold enrichment` = FoldEnrichment,
-  `weight01 P` = p_raw,
+  Expected = round(Expected, 2),
+  `Fold enrichment` = signif(FoldEnrichment, 3),
+  `weight01 P` = signif(p_raw, 3),
   `Contributing HOGs` = Members
 )]
-setorder(table_s12, Node, Ontology, `weight01 P`, `GO ID`)
-fwrite(table_s12, file.path(supplemental_table_dir, "TableS12.tsv"), sep = "\t")
+setorder(table_s13, Node, Ontology, `weight01 P`, `GO ID`)
+fwrite(table_s13, file.path(supplemental_table_dir, "TableS13.tsv"), sep = "\t")
 
-table_s13 <- root_zero_biologically_relevant[, .(
+table_s14 <- root_zero_biologically_relevant[, .(
   HOG,
   `Interest class` = biological_interest_class,
   `Consensus HOG name` = consensus_gene_name,
@@ -2265,8 +2284,8 @@ table_s13 <- root_zero_biologically_relevant[, .(
   `Copies across all solitary/outgroup taxa` = outgroup_total_copies,
   `Total member copies across all social wasps` = social_wasp_total_copies
 )]
-setorder(table_s13, `Interest class`, HOG)
-fwrite(table_s13, file.path(supplemental_table_dir, "TableS13.tsv"), sep = "\t")
+setorder(table_s14, `Interest class`, HOG)
+fwrite(table_s14, file.path(supplemental_table_dir, "TableS14.tsv"), sep = "\t")
 
 annotation_qc <- data.table(
   item = c(
@@ -2394,6 +2413,7 @@ CAFE_key_results <- list(
   TableS11 = table_s11,
   TableS12 = table_s12,
   TableS13 = table_s13,
+  TableS14 = table_s14,
   Fig3 = file.path("output", "figures", "Fig3.pptx"),
   Fig3_png = file.path("output", "figures", "Fig3.png")
 )

@@ -2398,7 +2398,7 @@ graph2ppt(fun = function() grid::grid.draw(p_heatmap$gtable), file=file.path(sup
 # gene/HOG-level outputs remain available in the analysis output directory and
 # are intentionally not reproduced as very large tables in the supplement.
 supplementary_xlsx <- file.path(
-  supplemental_table_dir, "TablesS4-S8.xlsx"
+  supplemental_table_dir, "TablesS4-S9.xlsx"
 )
 
 summarise_de_tests <- function(dat, species, unit, contrast,
@@ -2461,7 +2461,7 @@ supp_table_s5a <- tibble(
   Axis = paste("Axis", 1:3),
   Biological_contrast = axis_targets,
   PLS_component = paste("Component", axis_map),
-  X_variance_explained_percent = axis_variance,
+  X_variance_explained_percent = round(axis_variance, 2),
   HOGs_in_final_model = ncol(Z_sub)
 )
 
@@ -2471,11 +2471,11 @@ supp_table_s5 <- as_tibble(as.data.frame(sc_contr_oos_result)) %>%
                      Pd = "Polistes dominula", Vv = "Vespula vulgaris"),
     Stage = as.character(Stage),
     Contrast = as.character(contrast),
-    Estimate = estimate,
-    SE = SE,
-    df = df,
-    t_ratio = t.ratio,
-    One_sided_P = p.value
+    Estimate = signif(estimate, 4),
+    SE = signif(SE, 4),
+    df = round(df, 1),
+    t_ratio = signif(t.ratio, 4),
+    One_sided_P = signif(p.value, 3)
   ) %>%
   arrange(factor(Species, c("Polistes dominula", "Vespula vulgaris")),
           factor(Stage, stages))
@@ -2499,10 +2499,10 @@ supp_table_s6 <- tbl %>%
     GO_term = as.character(Term),
     Annotated_HOGs = Annotated,
     Foreground_HOGs = Significant,
-    Expected_HOGs = Expected,
-    Fold_enrichment = FoldEnrichment,
-    weight01_P = p,
-    Contributing_HOGs = MembersStr
+    Expected_HOGs = round(Expected, 2),
+    Fold_enrichment = signif(FoldEnrichment, 3),
+    weight01_P = signif(p, 3),
+    `Contributing HOGs` = MembersStr
   ) %>%
   arrange(factor(Category, c("Nutrient metabolism", "Hibernation",
                              "Reproduction", "Other")), weight01_P)
@@ -2513,12 +2513,12 @@ supp_table_s7 <- pairwise_concordance_results %>%
     Vespula_stage = as.character(vv_stage),
     Jointly_DE_HOGs = jointly_DE_n,
     Concordant_HOGs = concordant_DE_n,
-    Concordant_fraction = concordance_fraction,
+    Concordant_fraction = signif(concordance_fraction, 3),
     Expected_fraction_from_margins =
-      expected_concordance_fraction_from_margins,
-    Concordance_log2_odds_ratio = concordance_log2_odds_ratio_HA,
-    One_sided_Fisher_P = fisher_one_sided_p_greater,
-    FDR_P_36_tests = fisher_p_FDR_36
+      signif(expected_concordance_fraction_from_margins, 3),
+    Concordance_log2_odds_ratio = signif(concordance_log2_odds_ratio_HA, 3),
+    One_sided_Fisher_P = signif(fisher_one_sided_p_greater, 3),
+    FDR_P_36_tests = signif(fisher_p_FDR_36, 3)
   ) %>%
   arrange(factor(Vespula_stage, stages), factor(Polistes_stage, stages))
 
@@ -2548,18 +2548,54 @@ supp_table_s8 <- selected_hogs %>%
     Displayed_gene
   )
 
+concordance_comparison_labels <- c(
+  L4_to_L2 = "Polistes L4 to Vespula L2",
+  P_to_P = "Pupae to pupae"
+)
+concordance_direction_labels <- c(
+  concordant_up = "Concordant up",
+  concordant_down = "Concordant down"
+)
+supp_table_s9 <- topgo_results_all %>%
+  filter(
+    comparison %in% names(concordance_comparison_labels),
+    set %in% names(concordance_direction_labels),
+    weight01_p <= 0.02,
+    foreground_n >= 3,
+    fold_enrichment >= 1.5
+  ) %>%
+  transmute(
+    Comparison = unname(concordance_comparison_labels[comparison]),
+    Direction = unname(concordance_direction_labels[set]),
+    `GO ID` = GO,
+    `GO term` = term_name,
+    `Annotated HOGs` = background_n,
+    `Foreground HOGs` = foreground_n,
+    `Expected HOGs` = round(expected_n, 2),
+    `Fold enrichment` = signif(fold_enrichment, 3),
+    `weight01 P` = signif(weight01_p, 3),
+    `Contributing HOGs` = foreground_HOGs
+  ) %>%
+  arrange(
+    factor(Comparison, unname(concordance_comparison_labels)),
+    factor(Direction, unname(concordance_direction_labels)),
+    `weight01 P`, `GO ID`
+  )
+
 supp_table_index <- tibble(
-  Table = c("S4", "S5", "S6", "S7", "S8"),
+  Table = c("S4", "S5", "S6", "S7", "S8", "S9"),
   Worksheet = c(
     "S4_DE_summary", "S5_PLS_LOOCV",
-    "S6_Fig1_GO", "S7_Fig2A_concordance", "S8_Fig2B_HOGs"
+    "S6_Fig1_GO", "S7_Fig2A_concordance", "S8_Fig2B_HOGs",
+    "S9_concordant_GO"
   ),
   Description = c(
     "Differential-expression counts by species, analysis unit and stage",
     "Planned one-sided season/caste contrasts from fully nested leave-one-sample-out PLS axis-1 scores",
     "GO terms displayed in Fig. 1B",
     "Pairwise directional-concordance tests underlying Fig. 2A",
-    "Functionally supported concordant HOGs displayed in Fig. 2B"
+    "Functionally supported concordant HOGs displayed in Fig. 2B",
+    "GO enrichment of concordantly regulated HOGs for Polistes L4 to Vespula L2 and pupae to pupae"
   )
 )
 
@@ -2569,7 +2605,8 @@ supplementary_tables <- list(
   S5_PLS_LOOCV = supp_table_s5,
   S6_Fig1_GO = supp_table_s6,
   S7_Fig2A_concordance = supp_table_s7,
-  S8_Fig2B_HOGs = supp_table_s8
+  S8_Fig2B_HOGs = supp_table_s8,
+  S9_concordant_GO = supp_table_s9
 )
 
 supplementary_table_source_dir <- file.path(output_dir, "workbook_sources")
@@ -2586,7 +2623,8 @@ numbered_supplementary_tables <- list(
   TableS5 = supp_table_s5,
   TableS6 = supp_table_s6,
   TableS7 = supp_table_s7,
-  TableS8 = supp_table_s8
+  TableS8 = supp_table_s8,
+  TableS9 = supp_table_s9
 )
 purrr::iwalk(
   numbered_supplementary_tables,
@@ -2771,11 +2809,12 @@ key_object_names <- intersect(
     "go_term_results_all", "go_term_results_enriched", "flat_all",
     "pls_foregrounds", "tbl", "p_go_sc_pos", "p_pls_figure",
     "pairwise_concordance_results", "p_pairwise_concordance",
+    "topgo_results_all", "kegg_results_all",
     "nonnegative_clm_results", "p_nonnegative_clm",
     "all_stage_ridge_results", "p_all_stage_ridge",
     "selected_hogs", "heatmap_data", "figure2_ab_plot", "figure_s4_plot",
     "supp_table_s4", "supp_table_s5a", "supp_table_s5",
-    "supp_table_s6", "supp_table_s7", "supp_table_s8",
+    "supp_table_s6", "supp_table_s7", "supp_table_s8", "supp_table_s9",
     "wide_sel", "mat_pd", "mat_vv"
   ),
   ls(envir = .GlobalEnv)
@@ -2860,8 +2899,9 @@ validation_checks <- c(
     )
   )),
   supplementary_workbook_exported = file.exists(supplementary_xlsx),
-  supplementary_GO_names_complete = !any(str_detect(
-    supp_table_s6$GO_term, fixed("...")
+  supplementary_GO_names_complete = !any(c(
+    str_detect(supp_table_s6$GO_term, fixed("...")),
+    str_detect(supp_table_s9$`GO term`, fixed("..."))
   )),
   supplementary_tables_nonempty = all(vapply(
     supplementary_tables[-1], nrow, integer(1)

@@ -931,7 +931,7 @@ run_topgo <- function(pair_dat, comparison, set_name) {
   result <- runTest(go_data, algorithm = "weight01", statistic = "fisher")
   tab <- GenTable(
     go_data, weight01 = result,
-    orderBy = "weight01", topNodes = length(score(result))
+    orderBy = "weight01", topNodes = length(score(result)), numChar = 1000
   ) %>%
     as_tibble() %>%
     rename(
