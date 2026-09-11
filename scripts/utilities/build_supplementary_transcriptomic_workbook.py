@@ -20,8 +20,8 @@ SHEETS = [
     "S5_PLS_LOOCV",
     "S6_Fig1_GO",
     "S7_Fig2A_concordance",
-    "S8_Fig2B_HOGs",
-    "S9_concordant_GO",
+    "S8_concordant_GO",
+    "S9_Fig2B_HOGs",
 ]
 
 INTEGER_RE = re.compile(r"^[+-]?\d+$")
@@ -56,13 +56,21 @@ def load_tsv(path: Path) -> list[list[object]]:
 
 def column_width(values: list[object], header: str) -> float:
     longest = max((len(str(value)) for value in values if value is not None), default=0)
-    if header in {"GO_term", "GO term", "Description", "GO_or_KEGG_support"}:
+    if header in {
+        "GO_term", "GO term", "Description", "GO_or_KEGG_support",
+        "Polistes descriptions", "Vespula descriptions",
+        "Supporting enriched GO terms",
+        "Supporting BH-significant KEGG pathways",
+    }:
         return min(max(longest + 2, 28), 55)
-    if header in {"Contributing_HOGs", "Contributing HOGs"}:
+    if header in {
+        "Contributing_HOGs", "Contributing HOGs",
+        "Contributing consensus HOG names",
+    }:
         return 55
     if header in {
         "Species", "Analysis_unit", "Contrast", "Biological_contrast",
-        "Functional_group", "Selected_comparison",
+        "Functional_group", "Selected_comparison", "Selection_basis",
     }:
         return min(max(longest + 2, 16), 30)
     return min(max(longest + 2, 11), 24)

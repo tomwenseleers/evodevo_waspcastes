@@ -3,5 +3,5 @@ S4	S4_DE_summary	Differential-expression counts by species, analysis unit and st
 S5	S5_PLS_LOOCV	Planned one-sided season/caste contrasts from fully nested leave-one-sample-out PLS axis-1 scores
 S6	S6_Fig1_GO	GO terms displayed in Fig. 1B
 S7	S7_Fig2A_concordance	Pairwise directional-concordance tests underlying Fig. 2A
-S8	S8_Fig2B_HOGs	Functionally supported concordant HOGs displayed in Fig. 2B
-S9	S9_concordant_GO	GO enrichment of concordantly regulated HOGs for Polistes L4 to Vespula L2 and pupae to pupae
+S8	S8_concordant_GO	GO enrichment of concordantly regulated HOGs for Polistes L4 to Vespula L2 and pupae to pupae
+S9	S9_Fig2B_HOGs	Functionally supported concordant HOGs displayed in Fig. 2B

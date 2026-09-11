@@ -2486,6 +2486,124 @@ category_labels <- c(
   "Reproduction / caste-related development" = "Reproduction",
   "Other" = "Other"
 )
+
+# Build a focal-species consensus name for each N13 HOG. Symbols shared by
+# Polistes and Vespula are preferred; informative focal symbols and then focal
+# descriptions provide deterministic fallbacks when annotations differ.
+split_focal_annotation <- function(x) {
+  if (length(x) == 0L || is.na(x) || !nzchar(str_trim(x))) {
+    return(character())
+  }
+  values <- str_trim(unlist(str_split(x, fixed("|"))))
+  unique(values[nzchar(values)])
+}
+
+informative_focal_symbols <- function(x) {
+  values <- split_focal_annotation(x)
+  values[!str_detect(
+    values,
+    regex("^(LOC[0-9]+|ENS[A-Z0-9._-]+|CG[0-9]+|NA|N/A)$", ignore_case = TRUE)
+  )]
+}
+
+informative_focal_descriptions <- function(x) {
+  values <- split_focal_annotation(x) %>%
+    str_remove(regex("^(LOW QUALITY PROTEIN:|PREDICTED:)\\s*", ignore_case = TRUE))
+  values[!str_detect(
+    values,
+    regex("^(uncharacterized|hypothetical protein|predicted protein|NA|N/A)(\\s|$)",
+          ignore_case = TRUE)
+  )]
+}
+
+normalise_focal_name <- function(x) {
+  x %>%
+    str_remove(regex("-like$", ignore_case = TRUE)) %>%
+    str_squish() %>%
+    str_to_lower()
+}
+
+consensus_focal_hog_name <- function(gene_pd, symbol_pd, description_pd,
+                                     gene_vv, symbol_vv, description_vv) {
+  pd_symbols <- informative_focal_symbols(symbol_pd)
+  vv_symbols <- informative_focal_symbols(symbol_vv)
+  if (length(pd_symbols) > 0L && length(vv_symbols) > 0L) {
+    shared <- intersect(
+      normalise_focal_name(pd_symbols), normalise_focal_name(vv_symbols)
+    )
+    if (length(shared) > 0L) {
+      return(pd_symbols[match(shared[[1]], normalise_focal_name(pd_symbols))])
+    }
+  }
+
+  symbols <- unique(c(pd_symbols, vv_symbols))
+  if (length(symbols) > 0L) {
+    return(paste(head(symbols, 3L), collapse = " / "))
+  }
+
+  pd_descriptions <- informative_focal_descriptions(description_pd)
+  vv_descriptions <- informative_focal_descriptions(description_vv)
+  if (length(pd_descriptions) > 0L && length(vv_descriptions) > 0L) {
+    shared <- intersect(
+      normalise_focal_name(pd_descriptions),
+      normalise_focal_name(vv_descriptions)
+    )
+    if (length(shared) > 0L) {
+      matched <- pd_descriptions[
+        match(shared[[1]], normalise_focal_name(pd_descriptions))
+      ]
+      return(str_remove(matched, regex("-like$", ignore_case = TRUE)))
+    }
+  }
+
+  descriptions <- unique(c(pd_descriptions, vv_descriptions))
+  if (length(descriptions) > 0L) {
+    return(paste(head(descriptions, 2L), collapse = " / "))
+  }
+
+  focal_gene_ids <- unique(c(
+    str_trim(unlist(str_split(coalesce(gene_pd, ""), "[,|]"))),
+    str_trim(unlist(str_split(coalesce(gene_vv, ""), "[,|]")))
+  ))
+  focal_gene_ids <- focal_gene_ids[nzchar(focal_gene_ids)]
+  if (length(focal_gene_ids) > 0L) {
+    return(paste0(
+      "uncharacterized (", paste(head(focal_gene_ids, 2L), collapse = " / "), ")"
+    ))
+  }
+  "uncharacterized HOG"
+}
+
+n13_consensus_names <- orth_annotation %>%
+  transmute(
+    HOG,
+    consensus_HOG_name = pmap_chr(
+      list(gene_pd, symbol_pd, description_pd,
+           gene_vv, symbol_vv, description_vv),
+      consensus_focal_hog_name
+    ) %>%
+      str_replace_all(fixed(";"), ",") %>%
+      str_squish()
+  ) %>%
+  distinct(HOG, .keep_all = TRUE)
+
+consensus_name_lookup <- setNames(
+  n13_consensus_names$consensus_HOG_name,
+  n13_consensus_names$HOG
+)
+
+collapse_contributing_hog_names <- function(hog_string) {
+  if (length(hog_string) == 0L || is.na(hog_string) || !nzchar(str_trim(hog_string))) {
+    return(NA_character_)
+  }
+  hogs <- str_trim(unlist(str_split(hog_string, fixed(";"))))
+  hogs <- hogs[nzchar(hogs)]
+  consensus_names <- unname(consensus_name_lookup[hogs])
+  consensus_names[is.na(consensus_names) | !nzchar(consensus_names)] <-
+    "uncharacterized HOG"
+  paste(consensus_names, collapse = "; ")
+}
+
 supp_table_s6 <- tbl %>%
   left_join(
     go_term_results_all %>%
@@ -2502,7 +2620,10 @@ supp_table_s6 <- tbl %>%
     Expected_HOGs = round(Expected, 2),
     Fold_enrichment = signif(FoldEnrichment, 3),
     weight01_P = signif(p, 3),
-    `Contributing HOGs` = MembersStr
+    `Contributing HOGs` = MembersStr,
+    `Contributing consensus HOG names` = map_chr(
+      MembersStr, collapse_contributing_hog_names
+    )
   ) %>%
   arrange(factor(Category, c("Nutrient metabolism", "Hibernation",
                              "Reproduction", "Other")), weight01_P)
@@ -2522,7 +2643,7 @@ supp_table_s7 <- pairwise_concordance_results %>%
   ) %>%
   arrange(factor(Vespula_stage, stages), factor(Polistes_stage, stages))
 
-supp_table_s8_effects <- heatmap_data %>%
+supp_table_selected_hog_effects <- heatmap_data %>%
   mutate(
     column = as.character(column),
     effect = sprintf("%.3f (%s)", log2FC, if_else(de_significance == "", "ns", de_significance))
@@ -2530,9 +2651,20 @@ supp_table_s8_effects <- heatmap_data %>%
   dplyr::select(HOG, column, effect) %>%
   pivot_wider(names_from = column, values_from = effect)
 
-supp_table_s8 <- selected_hogs %>%
+supp_table_selected_hogs <- selected_hogs %>%
   left_join(orth_annotation, by = "HOG") %>%
-  left_join(supp_table_s8_effects, by = "HOG") %>%
+  left_join(n13_consensus_names, by = "HOG") %>%
+  left_join(supp_table_selected_hog_effects, by = "HOG") %>%
+  mutate(
+    Selection_basis = case_when(
+      !is.na(enriched_GO_evidence) & !is.na(BH_significant_KEGG_evidence) ~
+        "Qualifying GO and BH-significant KEGG enrichment",
+      !is.na(enriched_GO_evidence) ~ "Qualifying GO enrichment",
+      !is.na(BH_significant_KEGG_evidence) ~
+        "BH-significant KEGG enrichment",
+      TRUE ~ "Connected component in the IIS/Wnt/mTOR/FoxO network"
+    )
+  ) %>%
   transmute(
     HOG,
     Displayed_gene = plot_label,
@@ -2541,7 +2673,21 @@ supp_table_s8 <- selected_hogs %>%
     `Polistes L1 late vs early` = `Polistes L1\nlate vs early`,
     `Polistes L4 late vs early` = `Polistes L4\nlate vs early`,
     `Polistes L5 late vs early` = `Polistes L5\nlate vs early`,
-    `Vespula L2 queen vs worker` = `Vespula L2\nqueen vs worker`
+    `Vespula L2 queen vs worker` = `Vespula L2\nqueen vs worker`,
+    `Consensus HOG name` = consensus_HOG_name,
+    `Polistes gene IDs` = gene_pd,
+    `Polistes symbols` = symbol_pd,
+    `Polistes descriptions` = description_pd,
+    `Vespula gene IDs` = gene_vv,
+    `Vespula symbols` = symbol_vv,
+    `Vespula descriptions` = description_vv,
+    Selection_basis,
+    `Supporting enriched GO terms` = enriched_GO_evidence,
+    `Minimum topGO weight01 P` = signif(minimum_topGO_weight01_p, 3),
+    `Supporting BH-significant KEGG pathways` = BH_significant_KEGG_evidence,
+    `Minimum KEGG BH P` = signif(minimum_KEGG_BH_p, 3),
+    `Wang et al. 2021 pathway component` = Wang_2021_component,
+    `Maximum concordance z` = signif(max_concordance_z, 3)
   ) %>%
   arrange(
     factor(Functional_group, levels = theme_patterns$functional_theme),
@@ -2556,7 +2702,7 @@ concordance_direction_labels <- c(
   concordant_up = "Concordant up",
   concordant_down = "Concordant down"
 )
-supp_table_s9 <- topgo_results_all %>%
+supp_table_concordant_go <- topgo_results_all %>%
   filter(
     comparison %in% names(concordance_comparison_labels),
     set %in% names(concordance_direction_labels),
@@ -2574,7 +2720,10 @@ supp_table_s9 <- topgo_results_all %>%
     `Expected HOGs` = round(expected_n, 2),
     `Fold enrichment` = signif(fold_enrichment, 3),
     `weight01 P` = signif(weight01_p, 3),
-    `Contributing HOGs` = foreground_HOGs
+    `Contributing HOGs` = foreground_HOGs,
+    `Contributing consensus HOG names` = map_chr(
+      foreground_HOGs, collapse_contributing_hog_names
+    )
   ) %>%
   arrange(
     factor(Comparison, unname(concordance_comparison_labels)),
@@ -2582,20 +2731,25 @@ supp_table_s9 <- topgo_results_all %>%
     `weight01 P`, `GO ID`
   )
 
+# Supplementary numbering follows the analytical sequence: enrichment results
+# precede the smaller mechanistic set selected from those results for Fig. 2B.
+supp_table_s8 <- supp_table_concordant_go
+supp_table_s9 <- supp_table_selected_hogs
+
 supp_table_index <- tibble(
   Table = c("S4", "S5", "S6", "S7", "S8", "S9"),
   Worksheet = c(
     "S4_DE_summary", "S5_PLS_LOOCV",
-    "S6_Fig1_GO", "S7_Fig2A_concordance", "S8_Fig2B_HOGs",
-    "S9_concordant_GO"
+    "S6_Fig1_GO", "S7_Fig2A_concordance", "S8_concordant_GO",
+    "S9_Fig2B_HOGs"
   ),
   Description = c(
     "Differential-expression counts by species, analysis unit and stage",
     "Planned one-sided season/caste contrasts from fully nested leave-one-sample-out PLS axis-1 scores",
     "GO terms displayed in Fig. 1B",
     "Pairwise directional-concordance tests underlying Fig. 2A",
-    "Functionally supported concordant HOGs displayed in Fig. 2B",
-    "GO enrichment of concordantly regulated HOGs for Polistes L4 to Vespula L2 and pupae to pupae"
+    "GO enrichment of concordantly regulated HOGs for Polistes L4 to Vespula L2 and pupae to pupae",
+    "Functionally supported concordant HOGs displayed in Fig. 2B"
   )
 )
 
@@ -2605,8 +2759,8 @@ supplementary_tables <- list(
   S5_PLS_LOOCV = supp_table_s5,
   S6_Fig1_GO = supp_table_s6,
   S7_Fig2A_concordance = supp_table_s7,
-  S8_Fig2B_HOGs = supp_table_s8,
-  S9_concordant_GO = supp_table_s9
+  S8_concordant_GO = supp_table_s8,
+  S9_Fig2B_HOGs = supp_table_s9
 )
 
 supplementary_table_source_dir <- file.path(output_dir, "workbook_sources")
@@ -2638,6 +2792,13 @@ legacy_s5_files <- c(
   file.path(supplementary_table_source_dir, "S5B_PLS_LOOCV.tsv")
 )
 invisible(file.remove(legacy_s5_files[file.exists(legacy_s5_files)]))
+
+legacy_s8_s9_files <- c(
+  file.path(supplementary_table_source_dir, "S8_Fig2B_HOGs.tsv"),
+  file.path(supplementary_table_source_dir, "S8_Fig2B_ridge.tsv"),
+  file.path(supplementary_table_source_dir, "S9_concordant_GO.tsv")
+)
+invisible(file.remove(legacy_s8_s9_files[file.exists(legacy_s8_s9_files)]))
 
 find_python <- function() {
   bundled_python <- file.path(
@@ -2814,6 +2975,7 @@ key_object_names <- intersect(
     "all_stage_ridge_results", "p_all_stage_ridge",
     "selected_hogs", "heatmap_data", "figure2_ab_plot", "figure_s4_plot",
     "supp_table_s4", "supp_table_s5a", "supp_table_s5",
+    "n13_consensus_names",
     "supp_table_s6", "supp_table_s7", "supp_table_s8", "supp_table_s9",
     "wide_sel", "mat_pd", "mat_vv"
   ),
@@ -2901,8 +3063,33 @@ validation_checks <- c(
   supplementary_workbook_exported = file.exists(supplementary_xlsx),
   supplementary_GO_names_complete = !any(c(
     str_detect(supp_table_s6$GO_term, fixed("...")),
-    str_detect(supp_table_s9$`GO term`, fixed("..."))
+    str_detect(supp_table_s8$`GO term`, fixed("..."))
   )),
+  supplementary_contributing_HOG_names_aligned = all(c(
+    map2_lgl(
+      supp_table_s6$`Contributing HOGs`,
+      supp_table_s6$`Contributing consensus HOG names`,
+      ~ length(str_split_1(.x, fixed(";"))) ==
+        length(str_split_1(.y, fixed(";")))
+    ),
+    map2_lgl(
+      supp_table_s8$`Contributing HOGs`,
+      supp_table_s8$`Contributing consensus HOG names`,
+      ~ length(str_split_1(.x, fixed(";"))) ==
+        length(str_split_1(.y, fixed(";")))
+    )
+  )),
+  supplementary_contributing_HOG_names_complete = all(c(
+    !is.na(supp_table_s6$`Contributing consensus HOG names`) &
+      nzchar(supp_table_s6$`Contributing consensus HOG names`),
+    !is.na(supp_table_s8$`Contributing consensus HOG names`) &
+      nzchar(supp_table_s8$`Contributing consensus HOG names`)
+  )),
+  supplementary_selected_HOG_provenance_complete =
+    !anyDuplicated(supp_table_s9$HOG) &&
+    setequal(supp_table_s9$HOG, selected_hogs$HOG) &&
+    all(!is.na(supp_table_s9$`Consensus HOG name`)) &&
+    all(nzchar(supp_table_s9$Selection_basis)),
   supplementary_tables_nonempty = all(vapply(
     supplementary_tables[-1], nrow, integer(1)
   ) > 0L)

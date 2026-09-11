@@ -299,7 +299,7 @@ tested non-TE HOGs. BP, MF, and CC are tested with topGO `weight01`/Fisher. Give
 - `output/supplemental_figures/FigS2.*`: numbers of differentially expressed genes by stage.
 - `output/supplemental_figures/FigS3.*`: stage-specific absolute shrunken log2 fold-change heatmap.
 - `output/supplemental_figures/FigS4.*`: all-stage nonnegative cumulative-logit and inverse-variance-weighted ridge models.
-- `output/supplemental_tables/TableS1.tsv` to `TableS14.tsv`: final supplementary tables. Table S5 contains the planned one-sided season/caste contrasts from fully nested leave-one-sample-out PLS scores; Table S9 reports GO enrichment and contributing HOGs for the focal L4-to-L2 and pupal concordances.
+- `output/supplemental_tables/TableS1.tsv` to `TableS14.tsv`: final supplementary tables. Table S5 contains the planned one-sided season/caste contrasts from fully nested leave-one-sample-out PLS scores. The repository versions of Tables S6 and S8 list contributing HOGs and consensus HOG names derived from the *Polistes dominula* and *Vespula vulgaris* gene annotations for each GO term; Table S8 covers the focal L4-to-L2 and pupal concordances. Repository Table S9 documents the focal-species annotations and GO/KEGG selection evidence for the HOGs displayed in Fig. 2B.
 - `output/pls_axis_summary.tsv`: repository-only PLS-axis mapping and variance summary underlying the Table S5 caption.
 - `output/full_gene_level_differential_expression_results.tsv.gz`: complete annotated gene-by-stage differential-expression results for both species.
 - `output/full_N13_HOG_level_differential_expression_results.tsv.gz`: complete annotated N13-HOG-by-stage differential-expression results for both species.
