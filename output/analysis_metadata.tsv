@@ -1,6 +1,6 @@
 key	value
 script	B_differential expression analysis.R
-analysis_date	2026-09-10
+analysis_date	2026-09-11
 gene_model	glmmTMB nbinom2 with gene-by-sample length/library offset and colonyNested random intercept
 HOG_model	same model fitted directly to tximport-summarised N13 HOG counts; ASH shrinkage by species and stage
 orthology_unit	OrthoFinder hierarchical orthogroups at node N13
@@ -21,4 +21,4 @@ full_gene_DE_results	output/full_gene_level_differential_expression_results.tsv.
 full_N13_HOG_DE_results	output/full_N13_HOG_level_differential_expression_results.tsv.gz
 Figure1	output/figures/Fig1.pptx
 Figure2	output/figures/Fig2.pptx
-Supplementary_tables	output/supplemental_tables/TablesS4-S8.xlsx
+Supplementary_tables	output/supplemental_tables/TablesS4-S9.xlsx

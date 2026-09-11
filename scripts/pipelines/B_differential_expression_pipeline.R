@@ -2717,7 +2717,7 @@ supp_table_concordant_go <- topgo_results_all %>%
     `GO term` = term_name,
     `Annotated HOGs` = background_n,
     `Foreground HOGs` = foreground_n,
-    `Expected HOGs` = round(expected_n, 2),
+    `Expected HOGs` = signif(expected_n, 3),
     `Fold enrichment` = signif(fold_enrichment, 3),
     `weight01 P` = signif(weight01_p, 3),
     `Contributing HOGs` = foreground_HOGs,

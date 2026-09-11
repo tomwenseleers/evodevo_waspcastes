@@ -252,14 +252,26 @@ run_topgo_test <- function(
     tab[, (method) := p.adjust(p_raw, method = method)]
   }
 
-  tab[, FoldEnrichment := fifelse(Expected > 0, Significant / Expected, Inf)]
-  tab[, ontology := ontology]
-  tab[, algorithm := algorithm]
-  tab[, statistic := statistic]
-
   foreground_members <- names(all_genes)[all_genes == 1L]
   term_members <- genesInTerm(go_data, tab$GO.ID)
   members <- lapply(term_members, intersect, y = foreground_members)
+
+  # GenTable formats Expected for display and can round small positive values
+  # to zero. Recompute the contingency-table counts and hypergeometric mean at
+  # full precision before deriving fold enrichment.
+  tab[, Annotated := lengths(term_members)]
+  tab[, Significant := lengths(members)]
+  foreground_fraction <- length(foreground_members) / length(universe)
+  tab[, Expected := Annotated * foreground_fraction]
+  tab[, FoldEnrichment := Significant / Expected]
+  if (any(!is.finite(tab$Expected) | tab$Expected <= 0) ||
+      any(!is.finite(tab$FoldEnrichment) | tab$FoldEnrichment < 0)) {
+    stop("Invalid exact GO enrichment quantities detected.")
+  }
+
+  tab[, ontology := ontology]
+  tab[, algorithm := algorithm]
+  tab[, statistic := statistic]
   tab[, Members_n := lengths(members)]
   tab[, Members := vapply(members, paste, collapse = ";", FUN.VALUE = character(1))]
 
@@ -2037,6 +2049,10 @@ for (run_id in names(run_definitions)) {
       ),
       GO_p_cutoff = go_p_cutoff,
       GO_p_adjustment = "none",
+      GO_expected_count_method = paste(
+        "Exact hypergeometric expectation from the term background count",
+        "and GO-annotated foreground fraction"
+      ),
       top_nodes_per_ontology = "Inf"
     )
     fwrite(metadata, file.path(result_dir, "analysis_metadata.tsv"), sep = "\t")
@@ -2266,7 +2282,7 @@ table_s13 <- go_filtered[, .(
   `GO term` = Term,
   `Total HOGs (n)` = Annotated,
   `Foreground HOGs (n)` = Significant,
-  Expected = round(Expected, 2),
+  Expected = signif(Expected, 3),
   `Fold enrichment` = signif(FoldEnrichment, 3),
   `weight01 P` = signif(p_raw, 3),
   `Contributing HOGs` = Members
@@ -2314,7 +2330,7 @@ analysis_metadata <- data.table(
     "primary_analysis", "family_wide_screen", "focal_branch_threshold",
     "threshold_logic", "multiple_testing", "TE_policy",
     "TE_scope_caution", "root_zero_policy", "GO_method", "GO_ontologies",
-    "text_truncation_policy"
+    "text_truncation_policy", "GO_expected_count_method"
   ),
   value = c(
     "EXCON/CAFE analysis of Vespidae plus Ancistrocerus, Anoplius and Tiphia outgroups",
@@ -2339,6 +2355,10 @@ analysis_metadata <- data.table(
     paste(
       "GO names are recovered in full from GO.db by GO identifier; annotation",
       "text is exported in full and is never shortened with an ellipsis"
+    ),
+    paste(
+      "Exact hypergeometric expectation: term background count multiplied by",
+      "the GO-annotated foreground fraction; no GenTable display rounding"
     )
   )
 )

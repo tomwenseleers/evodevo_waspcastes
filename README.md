@@ -175,6 +175,9 @@ from formal topGO or KEGG enrichment results and from the connected
 IIS/Wnt/mTOR/FoxO pathway network summarised in Figure 2C. Figure 2C highlights
 eight strictly concordant HOGs, including an SLC2-like sugar transporter, and
 distinguishes established pathway edges from indirect cross-talk.
+For the cross-stage GO analyses, expected counts and fold enrichment are
+calculated at full precision from term background counts and the
+comparison-specific GO-annotated foreground fraction.
 
 The multistage analyses are reported in Figure S4. Panel A fits a cumulative
 logit model to the three-level differential-expression status in each
@@ -285,9 +288,13 @@ functional classification, GO foregrounds, and GO backgrounds. Families
 removed after an inferred root size of zero are reported separately because no
 family-wide or branch-specific CAFE result can be assigned to them.
 
-Node-wise GO enrichment tests significantly expanded, non-TE HOGs at Node 20
+Node-wise GO enrichment analyses test significantly expanded, non-TE HOGs at Node 20
 (stem Polistinae+Vespinae) and Node 25 (stem Vespinae) against all GO-annotated,
 tested non-TE HOGs. BP, MF, and CC are tested with topGO `weight01`/Fisher. Given the dependencies in the GO ontology tree, and as recommended by the topGO package authors, these p values are not FDR corrected.
+Expected counts are calculated at full precision as the number of background
+HOGs annotated with a term multiplied by the node-specific fraction of
+GO-annotated foreground HOGs; fold enrichment is the observed foreground count
+divided by this exact expectation.
 
 ## Manuscript outputs
 

@@ -1,10 +1,10 @@
-Completed 2026-09-10 15:10:48.490694
+Completed 2026-09-11 21:02:20.939353
 Pairwise Fisher stage cells 36
 Nonnegative CLM coefficients 36
 Nonnegative CLM converged stage fits 6
 Bootstrap resamples per constrained model 1000
 topGO result rows 45468
 KEGG result rows 898
-Selected GO terms 15
+Selected GO terms 17
 Selected panel-B HOGs 14
 R version 4.5.0 (2025-04-11 ucrt)

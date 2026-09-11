@@ -100,17 +100,33 @@ rebuild_openxlsx_compat <- function(path) {
   script <- file.path(
     dir_base, "scripts", "utilities", "rebuild_openxlsx_workbook.py"
   )
+  bundled_python <- file.path(
+    Sys.getenv("USERPROFILE"), ".cache", "codex-runtimes",
+    "codex-primary-runtime", "dependencies", "python", "python.exe"
+  )
   python_candidates <- c(
     Sys.getenv("RETICULATE_PYTHON", unset = ""),
-    Sys.which("python"), Sys.which("python3"),
-    file.path(
-      Sys.getenv("USERPROFILE"), ".cache", "codex-runtimes",
-      "codex-primary-runtime", "dependencies", "python", "python.exe"
-    )
+    bundled_python,
+    Sys.which("python"), Sys.which("python3")
   )
   python_candidates <- unique(
     python_candidates[nzchar(python_candidates) & file.exists(python_candidates)]
   )
+  usable <- vapply(
+    python_candidates,
+    function(candidate) {
+      identical(
+        suppressWarnings(system2(
+          candidate,
+          args = c("-c", shQuote("import openpyxl")),
+          stdout = FALSE, stderr = FALSE
+        )),
+        0L
+      )
+    },
+    logical(1)
+  )
+  python_candidates <- python_candidates[usable]
   if (!length(python_candidates) || !file.exists(script)) {
     warning("Could not rebuild the openxlsx workbook for wider XLSX compatibility")
     return(invisible(FALSE))
@@ -937,23 +953,32 @@ run_topgo <- function(pair_dat, comparison, set_name) {
     rename(
       GO = GO.ID, term_name = Term, background_n = Annotated,
       foreground_n = Significant, expected_n = Expected
-    ) %>%
+    )
+  term_members <- genesInTerm(go_data, tab$GO)
+  foreground_members <- lapply(term_members, intersect, y = foreground)
+
+  # GenTable formats Expected for display and can round small positive values.
+  # Recompute all contingency-table quantities at full precision before
+  # deriving fold enrichment or applying enrichment thresholds.
+  tab <- tab %>%
     mutate(
+      background_n = lengths(term_members),
+      foreground_n = lengths(foreground_members),
+      expected_n = background_n * length(foreground) / length(background),
       weight01_p = parse_topgo_p(weight01),
       fold_enrichment = foreground_n / expected_n,
       comparison = comparison,
       set = set_name,
       foreground_total = length(foreground),
       background_total = length(background),
-      foreground_HOGs = map_chr(
-        GO,
-        ~ paste(
-          sort(intersect(genesInTerm(go_data, .x)[[1]], foreground)),
-          collapse = "; "
-        )
-      )
+      foreground_HOGs = map_chr(foreground_members, ~ paste(sort(.x), collapse = "; "))
     ) %>%
     arrange(weight01_p, desc(fold_enrichment))
+  if (any(!is.finite(tab$expected_n) | tab$expected_n <= 0) ||
+      any(!is.finite(tab$fold_enrichment) | tab$fold_enrichment < 0)) {
+    stop("Invalid exact GO enrichment quantities detected for ", comparison,
+         " / ", set_name, ".")
+  }
   list(table = tab, data = go_data, foreground = foreground)
 }
 
