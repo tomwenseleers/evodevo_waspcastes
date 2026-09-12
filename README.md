@@ -298,7 +298,8 @@ divided by this exact expectation.
 
 ## Manuscript outputs
 
-- `output/figures/Fig1.*`: PLS developmental/season-caste structure and GO enrichment.
+- `output/figures/Fig1.*`: PLS developmental/season-caste structure and GO enrichment. In panel A, stage-specific arrows connect the early/worker centroid to the corresponding late/queen centroid and are drawn above the observations.
+- `output/Fig1A_centroid_arrow_coordinates.tsv`: species- and stage-specific centroid coordinates and displacements used for the arrows in Figure 1A.
 - `output/figures/Fig2.*`: pairwise cross-stage directional concordance and GO/KEGG-supported functional HOGs.
 - `output/figures/Fig2C_source.*`: final IIS/Wnt/mTOR/FoxO pathway panel, including PNG, PDF, SVG and PowerPoint formats.
 - `output/figures/Fig3.*`: dated wasp phylogeny with focal CAFE changes and expansion classes.

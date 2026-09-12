@@ -1173,6 +1173,66 @@ hull_all2$Species <- factor(hull_all2$Species,
 hull_all2$SC2 <- factor(hull_all2$SC2,
                           levels = c("E/W", "L/Q"),
                           labels = c("Early / Worker", "Late / Queen"))
+
+stage_palette <- setNames(
+  rev(RColorBrewer::brewer.pal(6, "Spectral")),
+  levels(scores_all2$Stage)
+)
+darken_colour <- function(colour, proportion = 0.72) {
+  rgb_values <- grDevices::col2rgb(colour) * proportion
+  grDevices::rgb(
+    rgb_values[1, ], rgb_values[2, ], rgb_values[3, ],
+    maxColorValue = 255
+  )
+}
+arrow_palette <- setNames(
+  darken_colour(stage_palette, proportion = 0.72),
+  names(stage_palette)
+)
+
+centroid_arrows <- scores_all2 %>%
+  group_by(Species, Stage, SC2) %>%
+  summarise(
+    centroid_x = mean(Axis1_SC),
+    centroid_y = mean(Axis2_Stage),
+    sample_n = n(),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(
+    names_from = SC2,
+    values_from = c(centroid_x, centroid_y, sample_n),
+    names_sep = "__"
+  ) %>%
+  transmute(
+    Species,
+    Stage,
+    x = `centroid_x__Early / Worker`,
+    y = `centroid_y__Early / Worker`,
+    xend = `centroid_x__Late / Queen`,
+    yend = `centroid_y__Late / Queen`,
+    source_n = `sample_n__Early / Worker`,
+    target_n = `sample_n__Late / Queen`,
+    displacement = sqrt((xend - x)^2 + (yend - y)^2),
+    arrow_colour = unname(arrow_palette[as.character(Stage)])
+  )
+
+if (nrow(centroid_arrows) != 12L || any(!is.finite(unlist(
+  centroid_arrows[c("x", "y", "xend", "yend", "displacement")]
+)))) {
+  stop("Expected complete centroid arrows for six stages in both species.")
+}
+write_tsv(
+  centroid_arrows %>% dplyr::select(-arrow_colour),
+  file.path(output_dir, "Fig1A_centroid_arrow_coordinates.tsv")
+)
+
+arrow_spec_halo <- grid::arrow(
+  angle = 19, length = grid::unit(0.155, "inches"), type = "closed"
+)
+arrow_spec_colour <- grid::arrow(
+  angle = 19, length = grid::unit(0.155, "inches"), type = "closed"
+)
+
 p_all <- ggplot(scores_all2,
                 aes(Axis1_SC, Axis2_Stage, color = Stage, shape = SC2)) +
   facet_wrap(~ Species, ncol = 1) +
@@ -1181,31 +1241,48 @@ p_all <- ggplot(scores_all2,
                    fill = Stage, color = Stage, alpha = SC2),
                linewidth = 0.25, inherit.aes = TRUE) +
   geom_point(size = 2) +
+  geom_segment(
+    data = centroid_arrows,
+    aes(x = x, y = y, xend = xend, yend = yend),
+    inherit.aes = FALSE,
+    colour = "white",
+    linewidth = 2.20,
+    lineend = "round",
+    arrow = arrow_spec_halo
+  ) +
+  geom_segment(
+    data = centroid_arrows,
+    aes(x = x, y = y, xend = xend, yend = yend),
+    inherit.aes = FALSE,
+    colour = centroid_arrows$arrow_colour,
+    linewidth = 1.28,
+    lineend = "round",
+    arrow = arrow_spec_colour
+  ) +
   scale_shape_manual("Season / Caste", values = c(17, 16)) +
-  scale_alpha_manual("Season / Caste", values = c(0.22, 0.60)) +
-  scale_color_manual(values = rev(brewer.pal(6, "Spectral")),
-                     guide = guide_legend(reverse = TRUE)) +
-  scale_fill_manual(values = rev(brewer.pal(6, "Spectral")),
-                    guide = guide_legend(reverse = TRUE)) +
+  scale_alpha_manual("Season / Caste", values = c(0.22, 0.60), guide = "none") +
+  scale_color_manual(values = stage_palette, guide = "none") +
+  scale_fill_manual(values = stage_palette, guide = "none") +
   xlab("Axis 1: Season / Caste") +
   ylab("Axis 2: Stage") +
   # labs(title = "Combined PLS — Pd + Vv") +
   theme_few() +
-  theme(panel.border = element_rect(fill = NA, linewidth = 0.5),
+  # With rvg, 0.47 ggplot linewidth units exports as approximately 1.00 pt.
+  theme(panel.border = element_rect(fill = NA, linewidth = 0.47),
         axis.line = element_blank(),
-        axis.ticks = element_line(colour = "black", linewidth = 0.3),
-        strip.background = element_rect(fill = NA),
+        axis.ticks = element_line(colour = "black", linewidth = 0.47),
+        strip.background = element_blank(),
         strip.text = element_text(face = "italic", size = 10),
+        aspect.ratio = 0.93,
+        panel.spacing = grid::unit(0.18, "cm"),
         panel.background = element_blank(),
         plot.background = element_blank(),
+        legend.position = "none",
         legend.key.size = unit(0.3, 'cm'),
         legend.key.height = unit(0.4, 'cm'),
         legend.title = element_text(size=10),
         legend.text = element_text(size=9))
 print(p_all)
-graph2png(x = ggplot2::last_plot(), file =file.path(figure_dir, "Fig1A_source.png"), width=4.5, height=5.5) 
-graph2pdf(x = ggplot2::last_plot(), file =file.path(figure_dir, "Fig1A_source.pdf"), width=4.5, height=5.5)
-graph2ppt(x = ggplot2::last_plot(), file =file.path(figure_dir, "Fig1A_source.pptx"), width=4.5, height=5.5)
 
 ## sanity checks
 cor(Axis1_SC,   Y[, "SC"])       # 0.5763527
@@ -1786,12 +1863,12 @@ graph2ppt(
 # Main-text Figure 1: editable vector PLS and GO panels on a 4:3 slide.
 stage_legend_data <- tibble(
   Species = factor(
-    "Polistes dominula",
+    "Vespula vulgaris",
     levels = c("Polistes dominula", "Vespula vulgaris")
   ),
   Stage = factor(c("P", "L5", "L4", "L3", "L2", "L1"), levels = stages),
-  Axis1_SC = -39,
-  Axis2_Stage = seq(-7, -57, length.out = 6),
+  Axis1_SC = -41.5,
+  Axis2_Stage = seq(8, -32, length.out = 6),
   label = c("P", "L5", "L4", "L3", "L2", "L1")
 )
 sc_legend_data <- tibble(
@@ -1803,32 +1880,43 @@ sc_legend_data <- tibble(
     c("Early / Worker", "Late / Queen"),
     levels = c("Early / Worker", "Late / Queen")
   ),
-  Axis1_SC = -39,
-  Axis2_Stage = c(-46, -58),
+  Axis1_SC = -41.5,
+  Axis2_Stage = c(-55, -67),
   label = c("Early / Worker", "Late / Queen")
+)
+direction_legend_data <- tibble(
+  Species = factor(
+    c("Polistes dominula", "Vespula vulgaris"),
+    levels = c("Polistes dominula", "Vespula vulgaris")
+  ),
+  x = 16, xend = 32,
+  y = -80,
+  label_x = 24,
+  label_y = -70,
+  label = c("LATE SEASON", "QUEEN-BIASED")
 )
 
 p_pls_figure <- p_all +
   geom_text(
     data = tibble(
       Species = factor(
-        "Polistes dominula",
+        "Vespula vulgaris",
         levels = c("Polistes dominula", "Vespula vulgaris")
       ),
-      Axis1_SC = -41, Axis2_Stage = 4, label = "Stage"
+      Axis1_SC = -43.5, Axis2_Stage = 20, label = "Stage"
     ),
     aes(Axis1_SC, Axis2_Stage, label = label),
-    inherit.aes = FALSE, hjust = 0, size = 3.7
+    inherit.aes = FALSE, hjust = 0, size = 3.1
   ) +
   geom_point(
     data = stage_legend_data,
     aes(Axis1_SC, Axis2_Stage, colour = Stage),
-    inherit.aes = FALSE, shape = 15, size = 3.3
+    inherit.aes = FALSE, shape = 15, size = 3.0
   ) +
   geom_text(
     data = stage_legend_data,
     aes(Axis1_SC + 4, Axis2_Stage, label = label),
-    inherit.aes = FALSE, hjust = 0, size = 3.2
+    inherit.aes = FALSE, hjust = 0, size = 2.7
   ) +
   geom_text(
     data = tibble(
@@ -1836,20 +1924,39 @@ p_pls_figure <- p_all +
         "Vespula vulgaris",
         levels = c("Polistes dominula", "Vespula vulgaris")
       ),
-      Axis1_SC = -41, Axis2_Stage = -34, label = "Season / Caste"
+      Axis1_SC = -43.5, Axis2_Stage = -44, label = "Season / Caste"
     ),
     aes(Axis1_SC, Axis2_Stage, label = label),
-    inherit.aes = FALSE, hjust = 0, size = 3.7
+    inherit.aes = FALSE, hjust = 0, size = 3.1
   ) +
   geom_point(
     data = sc_legend_data,
     aes(Axis1_SC, Axis2_Stage, shape = SC2),
-    inherit.aes = FALSE, colour = "black", size = 3.3
+    inherit.aes = FALSE, colour = "black", size = 3.0
   ) +
   geom_text(
     data = sc_legend_data,
     aes(Axis1_SC + 4, Axis2_Stage, label = label),
-    inherit.aes = FALSE, hjust = 0, size = 3.2
+    inherit.aes = FALSE, hjust = 0, size = 2.7
+  ) +
+  geom_segment(
+    data = direction_legend_data,
+    aes(x = x, y = y, xend = xend, yend = y),
+    inherit.aes = FALSE,
+    colour = "#7F7F7F",
+    linewidth = 0.80,
+    lineend = "round",
+    arrow = grid::arrow(
+      angle = 19, length = grid::unit(0.12, "inches"), type = "closed"
+    )
+  ) +
+  geom_text(
+    data = direction_legend_data,
+    aes(x = label_x, y = label_y, label = label),
+    inherit.aes = FALSE,
+    colour = "#7F7F7F",
+    fontface = "bold",
+    size = 3.0
   ) +
   theme(
     legend.position = "none",
@@ -1858,6 +1965,22 @@ p_pls_figure <- p_all +
     axis.text = element_text(size = 9),
     plot.margin = margin(4, 4, 4, 4)
   )
+
+graph2png(
+  x = p_pls_figure,
+  file = file.path(figure_dir, "Fig1A_source.png"),
+  width = 4.5, height = 7.5
+)
+graph2pdf(
+  x = p_pls_figure,
+  file = file.path(figure_dir, "Fig1A_source.pdf"),
+  width = 4.5, height = 7.5
+)
+graph2ppt(
+  x = p_pls_figure,
+  file = file.path(figure_dir, "Fig1A_source.pptx"),
+  width = 4.5, height = 7.5
+)
 
 figure1_file <- file.path(figure_dir, "Fig1.pptx")
 figure1_pptx <- officer::read_pptx()
@@ -2966,7 +3089,7 @@ key_object_names <- intersect(
     "n13_composition", "n13_orthology_composition_summary",
     "ortholog_de_wide", "de_gene_categories", "de_stacked_counts",
     "de_stacked_counts_plot",
-    "scores_export", "orthologs_pls", "pls_loocv_fold_diagnostics", "pls_go_lists",
+    "scores_export", "centroid_arrows", "orthologs_pls", "pls_loocv_fold_diagnostics", "pls_go_lists",
     "go_term_results_all", "go_term_results_enriched", "flat_all",
     "pls_foregrounds", "tbl", "p_go_sc_pos", "p_pls_figure",
     "pairwise_concordance_results", "p_pairwise_concordance",
