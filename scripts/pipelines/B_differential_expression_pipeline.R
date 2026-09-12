@@ -710,7 +710,10 @@ p_de_stacked <- ggplot(
   theme_few(base_size = 15) +
   theme(
     strip.text = element_text(face = "italic", size = 16),
-    panel.border = element_rect(fill = NA, linewidth = 0.5),
+    strip.background = element_blank(),
+    panel.border = element_rect(fill = NA, linewidth = 0.47),
+    axis.line = element_blank(),
+    axis.ticks = element_line(colour = "black", linewidth = 0.47),
     panel.spacing = grid::unit(0.15, "cm"),
     legend.position = "inside",
     legend.position.inside = c(0.18, 0.88),
