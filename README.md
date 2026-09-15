@@ -278,9 +278,18 @@ nextflow run main.nf -profile singularity --custom_config cluster.config \
   --cafe_max_differential 20 --cafe_filter_first -bg -resume
 ```
 
-Standard families were fitted jointly. High-differential families were fitted
-individually using the same fixed global lambda, Gamma settings, and error
-model. The final downstream screen requires both a CAFE family-wide
+Standard families were fitted jointly. In the archived EXCON 2.3.2 run,
+high-differential families were fitted individually with a separately estimated
+lambda for each family and their successful outputs were subsequently combined
+with the standard-family results. This behaviour is recorded by
+`cafe/large_families/large_family_lambda_summary.tsv` and the
+`large_family_own_lambda` source label. It differs from the fixed-parameter
+strategy recommended in the CAFE5 tutorial and used by Vizueta et al. (2025).
+For the planned rerun, shared lambda, Gamma-category/alpha, root-distribution,
+and error-model parameters should first be estimated from the filtered,
+well-behaved families and then held fixed while the complete root-eligible
+family set, including high-differential families, is analysed. The final
+downstream screen requires both a CAFE family-wide
 `P < 0.05` and focal-branch Viterbi probability `< 0.01`. These nominal values
 were not FDR-adjusted. Conservatively identified transposable-element HOGs were
 retained in the fitted CAFE model but excluded from reported biological totals,
